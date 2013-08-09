@@ -1,0 +1,15 @@
+@font-face {
+	font-family: 'StMarieWebSCThin';
+	src: url('stmarie-thin_web_sc-webfont.eot');
+	src: url('stmarie-thin_web_sc-webfont.woff') format('woff'), url('stmarie-thin_web_sc-webfont.svg#webfonti6QgH8L5') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'StMarieWebThin';
+	src: url('stmarie-thin_web-webfont.eot');
+	src: url('stmarie-thin_web-webfont.woff') format('woff'), url('stmarie-thin_web-webfont.svg#webfontHNmhr3jr') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>i am a writer</title>
+	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.2.1/pure-min.css" />
+	<link rel="stylesheet" href="src/layout/blog.css" />
+	<link rel="stylesheet" href="src/layout/prism.css">
+	<script src="src/script/sea.js"></script>
+	<script src="src/script/prism.js"></script>
+	<!--[if lt IE 9]>
+	<script src="src/script/IE9.js"></script>
+	<![endif]-->
+	<script src="epiceditor/js/epiceditor.min.js"></script>
+</head>
+<body>
+	<header>
+		<ul>
+			<li><a href="">home</a></li>
+			<li><a href="">blog</a></li>
+			<li><a href="">me</a></li>
+		</ul>
+	</header>
+	<section>
+		<article id="epiceditor">
+			
+		</article>
+		<a class="pure-button pure-button-primary" id="export"> 生成博客预览</a>
+		<a class="pure-button pure-button-secondary" id="saveblog">上传该博客</a>
+		<br clear="both" />
+		<article class="piece" id="blogpreview">
+		</article>
+	</section>
+	<footer>
+		
+	</footer>
+	<script>
+		seajs.config();
+		seajs.use("writer.js");
+		var editor = new EpicEditor().load();
+	</script>
+</body>
+</html>

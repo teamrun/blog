@@ -1,0 +1,15 @@
+html { padding:10px; }
+
+body {
+  border:0;
+  background: #002833;
+  font-family:monospace;
+  font-size: 16px;
+  /*letter-spacing: 0.125em;*/
+  /*word-spacing: 0.125em;*/
+  padding:10px;
+  color:#eee;
+  line-height:1.5em;
+  margin:0;
+  padding:0;
+}

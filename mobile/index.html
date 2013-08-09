@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>mobile交互实例</title>
+	<link rel="stylesheet" href="../src/layout/mobile.css" />
+</head>
+<body>
+	<header></header>
+	<aside>
+		<ul>
+			<li>首页</li>
+			<li>企业服务</li>
+			<li>支持</li>
+			<li>博客</li>
+		</ul>
+	</aside>
+	<section>
+		<a class="btn">menu</a>
+	</section>
+
+	<script>
+		var aside = document.querySelector('aside');
+		var section = document.querySelector('section');
+
+		var btn = document.querySelector('.btn');
+
+		btn.onclick = function(){
+			var activeIndex = aside.className.indexOf( 'active' )
+			if( activeIndex >=0 ){
+				aside.className = aside.className.substr(0, activeIndex-1);
+				section.className = section.className.substr(0, activeIndex-1);
+			}
+			else{
+				aside.className += ' active';
+				section.className += ' active';
+			}
+		}
+	</script>
+</body>
+</html>
