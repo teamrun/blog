@@ -288,7 +288,8 @@ define(function( require, exports, module){
 				var languageType = tempArr[i+1].substr(0, languageEnd );
 				tempArr[i] +='<pre class="line-numbers"><code class="language-' + languageType + '">';
 				// 剪切字符串  因为有个换行符 所以要多减一个
-				tempArr[i+1] = tempArr[i+1].substr( languageEnd+2, tempArr[i+1].length);
+				tempArr[i+1] = tempArr[i+1].substr( languageEnd+1, tempArr[i+1].length);
+				tempArr[i+1] = tempArr[i+1].replace(/\n/,'');
 				console.log( i );
 			}
 		}

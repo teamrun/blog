@@ -13,8 +13,11 @@ define(function( require, exports, module ){
 			callback: function( data ){
 				if( data || data[0] ){
 					blogCtn.innerHTML = data[0].content;
+					
 					// 渲染ajax获取下来的内容  整个文档重新渲染
-					Prism.highlightAll();
+					setTimeout( function(){
+						Prism.highlightAll();
+					}, 300);
 				}
 			}
 		});

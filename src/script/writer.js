@@ -23,7 +23,6 @@ define(function( require, exports, module ){
 			}, 500);
 			console.log( newBlog );
 		}, 500);
-
 	};
 
 	newBlogBtn.onclick = function(){
@@ -35,7 +34,7 @@ define(function( require, exports, module ){
 
 		var blogObj = {
 			title: title,
-			content: newBlog,
+			content: util.addSyntaxHighLight( newBlog ),
 			author: 'chenllos'
 		};
 
