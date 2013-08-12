@@ -159,3 +159,18 @@ article p{
 #previewIntro{
 	color: #777;
 }
+
+#info_suc{
+	border-radius: 5px;
+	background: rgba(78, 155, 185, 0.5);
+	color: #444;
+	display: none;
+	padding: 0.5em 2em;
+}
+
+#info_err{
+	border-radius: 5px;
+	background: rgba(177, 50, 84, 0.5);
+	color: #444;
+	display: none;
+}

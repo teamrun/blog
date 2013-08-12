@@ -297,6 +297,28 @@ define(function( require, exports, module){
 		return tempArr.join('');
 	}
 
+	function showInfo( type, msg ){
+		var toshow, tohide;
+	if( type === 0 ){
+		tohide = '#info_msg';
+		toshow = '#info_err';
+	}
+	else if( type === 1 ){
+		tohide = '#info_err';
+		toshow = '#info_suc';
+	}
+
+	var ele2show = qs( toshow );
+	ele2show.innerHTML = msg ;
+	ele2show.style.display = 'block';
+	setTimeout( function(){
+		ele2show.style.display = 'none';
+	}, 5000);
+
+	qs( tohide).style.display = 'none';
+	return false;
+	}
+
 
 	exports.qs = qs;
 	exports.qsa = qsa;
@@ -316,6 +338,7 @@ define(function( require, exports, module){
 
 
 	exports.addSyntaxHighLight = addSyntaxHighLight;
+	exports.showInfo = showInfo;
 
 
 	exports.md5 = hex_md5;
