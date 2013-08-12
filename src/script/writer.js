@@ -27,6 +27,7 @@ define(function( require, exports, module ){
 	newBlogBtn.onclick = function(){
 		// 临时避免导出时undefined的bug，导出两次；
 		newBlog = getNewBlog();
+		console.log( newBlog );
 		// var titleReg = new RegExp( /<h[\d\D]>[\d\D]+<\/h>[\d\D]> /);
 
 		var title = newBlog.substr( newBlog.indexOf('<h')+4, newBlog.indexOf('</h')-4 );
@@ -57,7 +58,7 @@ define(function( require, exports, module ){
 	function getNewBlog(){
 		var newBlog;
 		do{
-			newBlog = editor.exportFile(newBlog, 'html' );
+			newBlog = editor.exportFile();
 		}while( newBlog === undefined );
 
 		return newBlog;

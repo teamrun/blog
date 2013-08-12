@@ -3,3 +3,7 @@ backend/node_modules/*
 
 
 *.yml
+
+.idea/.name
+
+.idea/*
