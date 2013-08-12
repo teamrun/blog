@@ -22,6 +22,12 @@ var routeList = [
 		action: 'get',
 		url: '/blog/:id',
 		handler: Blog.getById
+	},
+
+	{
+		action: 'post',
+		url: '/comment',
+		handler: Comment.create
 	}
 ];
 

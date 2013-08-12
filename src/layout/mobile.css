@@ -43,7 +43,7 @@ aside{
 	background: #accded;
 	z-index: 800;
 
-	-webkit-transform: perspective(1000px)  translateX(-100%) rotateY(-80deg);
+	-webkit-transform: perspective(1000px)  translateX(-100%) rotateY(-90deg);
 	-webkit-transform-origin: 100% 50%;
  /* todo:  aside内部加渐变 增加aside翻转的立体感
   * 当然填充了内容之后也是会增强的
@@ -56,7 +56,7 @@ aside{
 }
 
 aside.active{
-	-webkit-transform: perspective(1000px) translateY(0%) rotateY(0deg);
+	-webkit-transform: perspective(1000px) translateX(0%) rotateY(0deg);
 	box-shadow: none;
 }
 
@@ -79,6 +79,7 @@ section{
 }
 
 section.active{
-	-webkit-transform: perspective(1000px) translateX( 120px );
+	-webkit-transform: perspective(1000px) translateX( 25% );
+	/*-webkit-transform: perspective(1000px) translateX( 120px );*/
 	-webkit-transform-origin: 50% 50%;
 }

@@ -254,10 +254,6 @@ define(function( require, exports, module){
 	}
 
 
-	function show( obj ){
-		obj.style.display = 'block';
-		return false;
-	}
 	function ajaxFail( statusCode ){
 		var state = '请求出错，原因是：。。。';
 		switch( statusCode ){
@@ -280,40 +276,25 @@ define(function( require, exports, module){
 	}
 
 
-	function popOutField( domNode, cordX, cordY, direction ){
-		domNode.style.top = cordY + 'px';
-		domNode.style.left = cordX + 'px';
-		this.addClass( domNode, 'show');
-		// 该绑定怎样的事件让它来隐藏呢···？
-		// Util.Event.addHandler();
-	}
-	function hideField( domNode ){
-		try{
-			Util.removeClass( domNode, 'show' );
-		}
-		catch( err ){
 
-		}
-	}
+	function addSyntaxHighLight( str ){
+		
+		var tempArr = str.split('<pre><code>$');
+		var codeCount = tempArr.length;
+		if( codeCount > 1 ){
+			for( var i=0; i+1 < codeCount; i++){
+				var languageEnd = tempArr[i+1].indexOf('$');
 
-	var errMap = {
-		1:	'未知错误',
-		2:	'写入数据失败(Mongodb_Writter Filed)',
-		3:	'用户名占用',
-		4:	'提交数据为空',
-		5:	'用户不存在',
-		6:	'密码不正确',
-		7:	'token无效或登录超时',
-		8:	'注销失败',
-		9:	'数据依赖关系不完整',
-		10:	'指定列表不存在',
-		11:	'列表有数据,请先删除列表中的事务',
-		12:	'不能将列表共享给自己',
-		13:	'列表数量有误',
-		14:	'该事务不存在',
-		15:	'事务数量有误',
-		16:	'笔记不存在'
-	};
+				var languageType = tempArr[i+1].substr(0, languageEnd );
+				tempArr[i] +='<pre class="line-numbers"><code class="language-' + languageType + '">';
+				// 剪切字符串  因为有个换行符 所以要多减一个
+				tempArr[i+1] = tempArr[i+1].substr( languageEnd+2, tempArr[i+1].length);
+				console.log( i );
+			}
+		}
+
+		return tempArr.join('');
+	}
 
 
 	exports.qs = qs;
@@ -328,14 +309,13 @@ define(function( require, exports, module){
 	exports.ajaxPost = ajaxPost;
 	exports.ajax = ajax;
 
-	exports.show = show;
 	exports.trim = trim;
 
 	exports.Event = Event;
-	exports.errMap = errMap;
 
-	exports.popOutField = popOutField;
-	exports.hideField = hideField;
+
+	exports.addSyntaxHighLight = addSyntaxHighLight;
+
 
 	exports.md5 = hex_md5;
 

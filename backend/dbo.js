@@ -38,9 +38,11 @@ var firstBlog = new Blog({
 var commentSchema = mongoose.Schema({
 	title: String,
 	content: String,
+	dt_create: String,
 	from: String,
 	to: String,
-	base: String
+	base_article: String,
+	base_cmt: String
 	// subcom
 });
 

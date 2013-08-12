@@ -14,7 +14,13 @@ define(function( require, exports, module ){
 		newBlog = editor.exportFile(newBlog, 'html');
 
 		setTimeout( function(){
-			$('#blogpreview').innerHTML = newBlog;
+			// $('#blogpreview').innerHTML = newBlog;
+			$('#blogpreview').innerHTML = util.addSyntaxHighLight( newBlog );
+
+			setTimeout( function(){
+				// Prism.highlightElement( $('code')[0] );
+				Prism.highlightAll();
+			}, 500);
 			console.log( newBlog );
 		}, 500);
 
@@ -42,4 +48,6 @@ define(function( require, exports, module ){
 				}
 		})
 	};
+
+
 });
