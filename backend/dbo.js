@@ -9,7 +9,7 @@ var blogSchema = mongoose.Schema({
 	title: String,
 	alia: String,
 	content: String,
-	summery: String,
+	summery: Object,
 	dt_create: Date,
 	dt_modify: Array,
 	author: String,

@@ -28,13 +28,17 @@ define(function( require, exports, module ){
 		// 临时避免导出时undefined的bug，导出两次；
 		newBlog = getNewBlog();
 		console.log( newBlog );
-		// var titleReg = new RegExp( /<h[\d\D]>[\d\D]+<\/h>[\d\D]> /);
+		var titleReg = new RegExp( /#+.+\n/);
 
-		var title = newBlog.substr( newBlog.indexOf('<h')+4, newBlog.indexOf('</h')-4 );
+		// var title = newBlog.substr( newBlog.indexOf('<h')+4, newBlog.indexOf('</h')-4 );
+
+		var tmpArr = newBlog.match( titleReg );
+		var title = tmpArr[0];
+		tmpArr = null;
 
 
 		var blogObj = {
-			title: title,
+			// title: title,
 			content: util.addSyntaxHighLight( newBlog ),
 			author: 'chenllos'
 		};

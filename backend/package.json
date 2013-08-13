@@ -2,7 +2,8 @@
 	"name": "myBlog",
 	"version": "0.0.1",
 	"dependencies": {
-		"mongoose": "*",
-		"express": "*"
+		"mongoose":     "*",
+		"express":      "*",
+		"markdown-js":  "*"
 	}
 }
