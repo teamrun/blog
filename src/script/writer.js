@@ -60,10 +60,10 @@ define(function( require, exports, module ){
 	};
 
 	function getNewBlog(){
-		var newBlog;
-		do{
-			newBlog = editor.exportFile();
-		}while( newBlog === undefined );
+		var newBlog = editor.exportFile(null);
+		// do{
+		// 	newBlog = editor.exportFile();
+		// }while( newBlog === undefined );
 
 		return newBlog;
 	}
