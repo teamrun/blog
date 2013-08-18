@@ -91,7 +91,7 @@ var blogCtrl = {
 		else{
 			dbo.Blog.find({},'_id title summery author dt_create dt_modify location like comment tag').limit(3).exec( function( err, data ){
 				if( !err ){
-					re.send( data );
+					res.send( data );
 				}
 				else{
 				}
