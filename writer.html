@@ -6,12 +6,17 @@
 	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.2.1/pure-min.css" />
 	<link rel="stylesheet" href="src/layout/blog.css" />
 	<link rel="stylesheet" href="src/layout/prism.css">
+
 	<script src="src/script/sea.js"></script>
 	<script src="src/script/prism.js"></script>
+
 	<!--[if lt IE 9]>
 	<script src="src/script/IE9.js"></script>
 	<![endif]-->
 	<script src="epiceditor/js/epiceditor.min.js"></script>
+	<!-- for mdstr2htmlstr and preview with syntax heightlight -->
+	<!-- 要是epiceditor有单独的导出htmlstr的功能,而不是import mdstr 然后 export html ,我就不用再加载这个markdownjs了 -->
+	<script src="src/script/markdown.js"></script>
 </head>
 <body>
 	<header>

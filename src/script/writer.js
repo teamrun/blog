@@ -1,5 +1,7 @@
 define(function( require, exports, module ){
 	var util = require('./util');
+	var tools = require('./blogtool');
+
 
 	var $ = util.qs;
 	var $A = util.qsa;
@@ -15,7 +17,7 @@ define(function( require, exports, module ){
 		console.log( newBlog );
 
 		// setTimeout( function(){
-			$('#blogpreview').innerHTML = util.addSyntaxHighLight( newBlog );
+			$('#blogpreview').innerHTML = tools.addSyntaxHL( newBlog );
 
 			setTimeout( function(){
 				Prism.highlightAll();
@@ -59,8 +61,8 @@ define(function( require, exports, module ){
 		})
 	};
 
-	function getNewBlog(){
-		var newBlog = editor.exportFile(null);
+	function getNewBlog( type ){
+		var newBlog = editor.exportFile(null, type);
 		// do{
 		// 	newBlog = editor.exportFile();
 		// }while( newBlog === undefined );
