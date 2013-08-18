@@ -163,6 +163,15 @@ define(function( require, exports, module){
 		}
 	}
 
+	function replaceClass( obj, replaced, replacer ){
+		if( obj.className.indexOf( replaced)  >= 0 ){
+			obj.className.replace( replaced, replacer );
+		}
+		else{
+			addClass(obj, replacer);
+		}
+	}
+
 
 	function ajaxGet( url, param, callBack){
 		var xhr = new XMLHttpRequest();
@@ -327,6 +336,7 @@ define(function( require, exports, module){
 	exports.hasClass = hasClass;
 	exports.removeClass = removeClass;
 	exports.toggleClass = toggleClass;
+	exports.replaceClass = replaceClass;
 
 	exports.ajaxGet = ajaxGet;
 	exports.ajaxPost = ajaxPost;
