@@ -1,0 +1,148 @@
+/* line 45, mainlayout.less */
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  color: #ffffff;
+}
+/* line 55, mainlayout.less */
+header,
+aside,
+section {
+  position: fixed;
+  height: 100%;
+  overflow-y: auto;
+}
+/* ------ 固定样式 and 常规样式 ------*/
+/* line 62, mainlayout.less */
+header {
+  width: 300px;
+  background: #586c5d;
+}
+/* line 66, mainlayout.less */
+#timeline {
+  width: auto;
+  background: #8b9f90;
+  margin-left: 300px;
+}
+/* line 71, mainlayout.less */
+section {
+  box-sizing: border-box;
+  width: 0;
+  background: #bed2c3;
+  margin-left: 480px;
+}
+/* line 77, mainlayout.less */
+section img {
+  max-width: 800px;
+}
+/* -------- 阅读模式, header略窄, timeline紧缩, section阅读区显示为主体  --------*/
+/* line 83, mainlayout.less */
+body.readmode #timeline {
+  width: 180px;
+}
+/* line 86, mainlayout.less */
+body.readmode section {
+  width: 100%;
+  padding: 2.5em;
+  padding-right: 482.5px;
+}
+/*  ------------ details of timeline  -----------*/
+/* line 102, mainlayout.less */
+body.glancemode #timeline {
+  position: relative;
+  height: 100%;
+  background: #212E32;
+}
+/* line 107, mainlayout.less */
+body.glancemode #timeline ul#itermCtn {
+  position: relative;
+  width: 1000px;
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+/* line 116, mainlayout.less */
+body.glancemode #timeline #line {
+  position: absolute;
+  width: 4px;
+  height: 100%;
+  left: 50%;
+  margin-left: -2px;
+  background: rgba(255, 255, 255, 0.7);
+}
+/* line 124, mainlayout.less */
+body.glancemode #timeline .iterm {
+  position: absolute;
+  width: 500px;
+  margin: 1.5em 0;
+  box-sizing: border-box;
+  font-size: 1em;
+  min-height: 4em;
+}
+/* line 134, mainlayout.less */
+body.glancemode #timeline .iterm .bubble {
+  position: relative;
+  width: 405px;
+  padding: 0.5em;
+  box-sizing: border-box;
+  font-size: 1em;
+  line-height: 1.375em;
+  color: #444;
+  background: #dcdcdc;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+/* line 148, mainlayout.less */
+body.glancemode #timeline .iterm .connect {
+  position: absolute;
+  top: 30px;
+  margin-top: -4px;
+  width: 74px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.7);
+}
+/* line 156, mainlayout.less */
+body.glancemode #timeline .iterm .linetag {
+  position: absolute;
+  top: 15px;
+  width: 30px;
+  height: 30px;
+  background: #5facc4;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+}
+/* line 165, mainlayout.less */
+body.glancemode #timeline .iterm.left {
+  left: 0;
+}
+/* line 170, mainlayout.less */
+body.glancemode #timeline .iterm.left .connect {
+  right: 18px;
+}
+/* line 173, mainlayout.less */
+body.glancemode #timeline .iterm.left .linetag {
+  right: -15px;
+}
+/* line 177, mainlayout.less */
+body.glancemode #timeline .iterm.right {
+  left: 500px;
+}
+/* line 179, mainlayout.less */
+body.glancemode #timeline .iterm.right .bubble {
+  left: 95px;
+}
+/* line 183, mainlayout.less */
+body.glancemode #timeline .iterm.right .connect {
+  left: 18px;
+}
+/* line 186, mainlayout.less */
+body.glancemode #timeline .iterm.right .linetag {
+  left: -15px;
+}
