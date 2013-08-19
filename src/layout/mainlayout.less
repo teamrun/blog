@@ -8,9 +8,11 @@
 @timelineZoneW: 1000px;
 @lineW: 4px;
 @lineTagW: 30px;
-@connectW: 80px;
-@connectContentW: 74px;
+@connectW: 40px;
+@connectContentW: @connectW - 4px;
+
 @itermW: @timelineZoneW/2;
+
 @bubbleW: ( @itermW - @lineTagW/2 - @connectW) ;
 @lineBGC: rgba(255,255,255,0.7);
 .lineTagRadius( @radius ){
@@ -142,13 +144,54 @@ body.glancemode{
                 color: #444;
                 background: @bubbleBGC;
 
-                .iterm-border-radius( 5px );                
+                .iterm-border-radius( 5px );
+
+                .top{
+                    margin: 0 0 0.5em 0;
+                    border: none;
+                    border-bottom: 2px solid rgba(0,0,0,0.125);
+                }
+                .midddle{
+
+                }
+                .bottom{
+                    margin: 0.5em 0 0 0;
+                }
+
+                h1, h2, h3, h4, h5{
+                    margin: 0;
+                    // font-size: 1em;
+                }
+                h2{
+                    font-size: 1.125em;
+                }
+                h3{
+                    font-size: 1em;
+                }
+                p{
+                    margin: 0;
+                    line-height: 1.25em;
+                    font-size: 0.9em;
+                    text-indent: 1em;
+                }
+                blockquote{
+                    border: none;
+                    border-left: 3px solid #212E32;
+                    margin-left:  1em ;
+                    box-sizing: border-box;
+                    padding: 0.125em 0.25em;
+                    p{
+                        text-indent: 0;
+                        color: #999;
+                        font-style: italic;
+                    }
+                }
             }
             // 暂时把connect的样式设置的和line差不多
             .connect{
                 position: absolute;
                 top: @lineTagW;
-                margin-top: -@lineW;
+                margin-top: -@lineW/2;
                 width: @connectContentW;
                 height: @lineW;
                 background: @lineBGC;

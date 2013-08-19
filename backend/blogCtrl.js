@@ -36,7 +36,7 @@ var blogCtrl = {
 		var blogTitle = reqContent.match( titleReg )[0];
 		var summeryObj = {};
 		summeryObj.text = getSummery( reqContent );
-		summeryObj.img = reqContent.match( imgReg )[0];
+		summeryObj.img = reqContent.match( imgReg );
 		var blogObj = {
 			title: blogTitle,
 			content: reqContent,

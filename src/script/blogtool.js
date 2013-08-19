@@ -44,7 +44,12 @@ define( function(require, exports, module){
             var blog = new Blog( data.summery.text, 'html' );
             
             var extra = '<div class="connect"></div><div class="linetag"></div>';
-            return '<div class="bubble">'+ blog.title + blog.content + '</div>' + extra;
+
+            var top = '<div class="top">' + blog.title + '</div>';
+            var middle = '<div class="middle">' + blog.content + '</div>';
+            var bottom = '<div class="bottom">' + '</div>';
+
+            return '<div class="bubble">' + top + middle + bottom + '</div>' + extra;
         }
 
         return htmlStr;

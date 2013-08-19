@@ -70,7 +70,10 @@
 		
 	</footer>
 	<script>
-		seajs.config();
+		seajs.config({
+			debug: true,
+		    plugins: ['nocache']
+		});
 		seajs.use("index.js");
 	</script>
 </body>

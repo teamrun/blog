@@ -8,7 +8,7 @@ define(function( require, exports, module){
     var $A = util.qsa;
 
     var Timeline = function( opt ){
-        this.defaultMargin = opt.marginTop;
+        this.defaultMargin = '60' || opt.marginTop;
         this.itermCtnSelector = opt.itermCtn || '#itermCtn';
         this.itermCtn = $( this.itermCtnSelector );
         this.sideFirst = opt.sideFirst || 'left';
@@ -18,7 +18,7 @@ define(function( require, exports, module){
         // this.itermConstructor = tools.constructor;
 
         this.leftBottom = this.itermCtn.offsetTop;
-        this.rightBottom = this.itermCtn.offsetTop + this.defaultMargin;
+        this.rightBottom = this.itermCtn.offsetTop + parseInt( this.defaultMargin );
 
         var thisClass = this;
 
@@ -46,14 +46,24 @@ define(function( require, exports, module){
                     class2add = 'left';
                 }
                 // 添加合适的类,添加定位数据
-                util.replaceClass( iterms[j], 'raw', class2add );
-                iterms[j].style.top = thisClass[ class2add+'Bottom' ] + 'px';
+                // util.replaceClass( iterms[j], 'raw', class2add );
+                iterms[j].className = iterms[j].className.replace( 'raw', class2add );
+                iterms[j].style.top = thisClass[ class2add + 'Bottom' ] + 'px';
+                console.group();
+
+                console.log( 'now positioning for: ' + j );
+                console.log('it will be posed at: ' + thisClass[ class2add+'Bottom' ] );
+
+
 
                 // 为下一次循环做准备
                 var curItermHeight = window.getComputedStyle( iterms[j] ).height;
-
                 curItermHeight = curItermHeight.substr( 0, curItermHeight.length-2 );
-                thisClass[ class2add+'Bottom' ] += curItermHeight + thisClass.defaultMargin;
+                console.log( j+'\'s height is: ' + curItermHeight);
+
+                thisClass[ class2add+'Bottom' ] += Number( curItermHeight ) + Number( thisClass.defaultMargin );
+                console.log( thisClass[ class2add+'Bottom' ] );
+                console.groupEnd();
             }
         };
 
