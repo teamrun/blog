@@ -27,47 +27,50 @@
 			
 			box-shadow: 0 0 0 rgba(0,0,0,0.5);
 			background: #A9AF90;
-			-webkit-transform: rotate(7deg);
-			-webkit-transition: all 400ms ease-in;
+			-webkit-transform: rotate(3deg);
+			-webkit-transition: all 400ms linear;
 			opacity: 0;
 		}
 
-		.ani{
-			/*-webkit-animation: friendcard 600ms ease-in;
-			-webkit-animation-iteration-count: 1;
-			-webkit-animation-direction: normal;*/
-			/*-webkit-transform: roatate(5deg);*/
+		.posed{
 			box-shadow: 0 0 15px rgba(0,0,0,0.3);
 			opacity: 1;
-			-webkit-transform: rotate(7deg);
-			top: 50%;
-			margin-top: -200px;
+			-webkit-transform: rotate(3deg);
+			top: 200px;
+			/*margin-top: -200px;*/
 		}
-		.posed{
-			-webkit-transform: rotate(0deg);
-			top: 100px;
+		.ani{
+			-webkit-animation: friendcard 350ms linear;
+			-webkit-animation-iteration-count: 1;
+			-webkit-animation-direction: normal;
+			/*-webkit-transform: roatate(5deg);*/
+			/*-webkit-transform: rotate(0deg);*/
+			top: 200px;
+			opacity: 1;
 		}
 
 		@-webkit-keyframes friendcard {
 			0% {
-				-webkit-transform: rotate( 5deg );
+				-webkit-transform: rotate(3deg);
+				top: 200px;
 			}
-			70%{
-				top: 100px;
-				-webkit-transform: rotate( 5deg );
+			/*25% {
+				-webkit-transform: rotate(0deg);
+				top: 210px;
+			}*/
+			40% {
+				-webkit-transform: rotate(6deg);
+				top: 220px;
 			}
-			80%{
-				top: 100px;
-				-webkit-transform: rotate( 3deg );
-			}
-			90% {
-				top: 100px;
-				-webkit-transform: rotate( 0deg );
-			}
+			/*75% {
+				-webkit-transform: rotate(3deg);
+				top: 210px;
+			}*/
 			100% {
-				top: 100px;
-				-webkit-transform: rotate( 0deg );
+				-webkit-transform: rotate(0deg);
+				top: 200px;
 			}
+
 		}
 	</style>
 </head>
@@ -85,17 +88,23 @@
 
 
 		chatBtn.onclick = function(){
-			card.className = 'ani';
+			card.className = 'posed';
 			card.addEventListener( transitionEnd, function(){
-				card.style.webkitTransitionDuration = '80ms';
-				card.style.webkitTransform = 'rotate(-5deg)';
-				// 可以抽象出一个addNewTransitionEndHandler的函数，当然如果后半部分的效果用animation实现的话，不会有那么多绑定和解绑的
+				// card.style.webkitTransitionDuration = '80ms';
+				// card.style.webkitTransform = 'rotate(-5deg)';
+				// // 可以抽象出一个addNewTransitionEndHandler的函数，当然如果后半部分的效果用animation实现的话，不会有那么多绑定和解绑的
+				// card.removeEventListener( transitionEnd );
+				// setTimeout( function(){
+				// 	card.addEventListener( transitionEnd, function(){
+				// 		card.style.webkitTransform = 'rotate(0deg)';
+				// 	});
+				// },1);
+
+				card.className = 'ani';
 				card.removeEventListener( transitionEnd );
-				setTimeout( function(){
-					card.addEventListener( transitionEnd, function(){
-						card.style.webkitTransform = 'rotate(0deg)';
-					});
-				},1);
+				card.addEventListener( transitionEnd, function(){
+					card.style.webkitTransform = 'rotate(0deg)';
+				})
 			});
 		}
 
