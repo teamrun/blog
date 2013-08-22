@@ -24,17 +24,17 @@
 
 
 // 一些颜色
-@headerC: #586C5D;
-@timelineC: @headerC + #333;
+@headerBGC: #4E9BB9;
+@headerC: #fff;
+
+@timelineC: #FCFCFC;
+
 @sectionC: @timelineC+ #333;
 @dFontC: #fff;
 @bubbleBGC: #dcdcdc;
 @lineTagBGC: #5FACC4;
 
-// readermode下的section布局
 @readerPadding: 2.5em;
-
-
 
 
 
@@ -63,7 +63,14 @@ header, aside, section{
 /* ------ 固定样式 and 常规样式 ------*/
 header{
     width: @navW;
-    background: @headerC;
+    background: @headerBGC;
+    color: @headerC;
+
+    nav{
+        a{
+            color: @headerC;
+        }
+    }
 }
 #timeline{
     width: auto;
@@ -104,7 +111,7 @@ body.glancemode{
     #timeline{
         position: relative;
         height: 100%;
-        background: #212E32;
+        background: #timelineC;
 
         ul#itermCtn{
             position: relative;

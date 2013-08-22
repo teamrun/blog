@@ -45,7 +45,8 @@ define( function(require, exports, module){
             
             var extra = '<div class="connect"></div><div class="linetag"></div>';
 
-            var top = '<div class="top">' + blog.title + '</div>';
+            // var top = '<div class="top">' + blog.title + '</div>';
+            var top = '<div class="top"><h2 class="title" data-_id="' + data._id + '">' + data.title.replace(/#+/g, '') + '</div>';
             var middle = '<div class="middle">' + blog.content + '</div>';
             var bottom = '<div class="bottom">' + '</div>';
 

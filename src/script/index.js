@@ -26,9 +26,6 @@ define(function( require, exports, module ){
 
 					blogDataSet = data;
 
-					// Prism.highlightAll()
-					
-					
 
 					var option = {
 						itermCtn: '#itermCtn',
@@ -40,6 +37,8 @@ define(function( require, exports, module ){
 					var timeline = new Timeline( option );
 
 					timeline.init();
+
+					timeline.bind();
 
 					// 渲染ajax获取下来的内容  整个文档重新渲染
 					// setTimeout( function(){

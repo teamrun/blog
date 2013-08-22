@@ -3,9 +3,13 @@ define(function( require, exports, module){
     var util = require('./util');
     var tools = require('./blogtool');
 
+    var Blog = require('./blogCtrl');
+
 
     var $ = util.qs;
     var $A = util.qsa;
+
+    var blogIdentitifor = '_id';
 
     var Timeline = function( opt ){
         this.defaultMargin = '60' || opt.marginTop;
@@ -79,6 +83,21 @@ define(function( require, exports, module){
 
         return this;
     };
+
+    Timeline.prototype.bind = function(){
+        util.Event.addHandler(  $('#timeline'), 'click', delegateClick );
+    };
+
+    function delegateClick( e ){
+        var target = e.target;
+
+        if( util.hasClass( target, 'title' ) ){
+            Blog.get( blogIdentitifor, target.dataset[ blogIdentitifor ], function(data){
+                console.log( data );
+            } );
+        }
+
+    }
 
     exports.Timeline = Timeline;
 });
