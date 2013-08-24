@@ -1,0 +1,48 @@
+// 主布局
+@navW: 300px;
+@thinNavW: 240px;
+
+
+// timeline细节布局
+@timelineZoneW: 1000px;
+@thinTimeW: 180px;
+@lineW: 4px;
+@lineTagW: 30px;
+@connectW: 40px;
+@connectContentW: @connectW - 4px;
+
+@itermW: @timelineZoneW/2;
+@thinItermW: @thinTimeW/2;
+@bubbleW: ( @itermW - @lineTagW/2 - @connectW);
+
+// @sectionW: 100% - @navW - @timelineW;
+@sectionW: 1440px - @thinNavW - @thinTimeW;
+
+
+// 一些颜色
+@headerBGC: #4E9BB9;
+@headerC: #fff;
+
+@timelineC: #E3D46C;
+@lineBGC: rgba(255,255,255,0.7);
+
+
+@sectionC: #fefefe;
+@dFontC: #000;
+@bubbleBGC: #FEFEFE;
+@lineTagBGC: #5FACC4;
+
+@readerPadding: 2.5em;
+
+
+.iterm-border-radius( @radius ){
+    -webkit-border-radius: @radius;
+    -moz-border-radius: @radius;
+    border-radius: @radius;
+}
+
+.lineTagRadius( @radius ){
+    -webkit-border-radius: @radius;
+    -moz-border-radius: @radius;
+    border-radius: @radius;
+}
