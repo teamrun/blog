@@ -17,7 +17,7 @@ define(function( require, exports, module ){
 		console.log( newBlog );
 
 		// setTimeout( function(){
-			$('#blogpreview').innerHTML = tools.addSyntaxHL( newBlog );
+			$('#blogpreview').innerHTML = tools.addLanguageType( newBlog );
 
 			setTimeout( function(){
 				Prism.highlightAll();

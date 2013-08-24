@@ -1,48 +1,5 @@
-// 主布局
-@navW: 300px;
-@thinW: 180px;
-// @sectionW: 100% - @navW - @timelineW;
-@sectionW: 1440px - @navW - @thinW;
+@import "config.less";
 
-// timeline细节布局
-@timelineZoneW: 1000px;
-@lineW: 4px;
-@lineTagW: 30px;
-@connectW: 40px;
-@connectContentW: @connectW - 4px;
-
-@itermW: @timelineZoneW/2;
-
-@bubbleW: ( @itermW - @lineTagW/2 - @connectW) ;
-@lineBGC: rgba(255,255,255,0.7);
-.lineTagRadius( @radius ){
-    -webkit-border-radius: @radius;
-    -moz-border-radius: @radius;
-    border-radius: @radius;
-}
-
-
-
-// 一些颜色
-@headerBGC: #4E9BB9;
-@headerC: #fff;
-
-@timelineC: #FCFCFC;
-
-@sectionC: @timelineC+ #333;
-@dFontC: #fff;
-@bubbleBGC: #dcdcdc;
-@lineTagBGC: #5FACC4;
-
-@readerPadding: 2.5em;
-
-
-
-.iterm-border-radius( @radius ){
-    -webkit-border-radius: @radius;
-    -moz-border-radius: @radius;
-    border-radius: @radius;
-}
 
 html,body{
     height: 100%;
@@ -52,7 +9,6 @@ html,body{
     overflow: hidden;
     color: @dFontC;
 }
-
 
 header, aside, section{
     position: fixed;
@@ -66,6 +22,8 @@ header{
     background: @headerBGC;
     color: @headerC;
 
+    transition: width 300ms ease;
+
     nav{
         a{
             color: @headerC;
@@ -76,29 +34,148 @@ header{
     width: auto;
     background: @timelineC;
     margin-left: @navW;
+
+    transition: margin 300ms ease;
+}
+#timeline{
+
+    ul#itermCtn{
+        position: relative;
+        width: @timelineZoneW;
+        margin: 0 auto;
+        padding: 0;
+        box-sizing: border-box;
+        list-style: none;
+    }
+
+    #line{
+        position: absolute;
+        width: @lineW;
+        height: 100%;
+        left: 50%;
+        margin-left: -@lineW/2;
+        background: @lineBGC;
+    }
+    .iterm{
+        position: absolute;
+        width: @itermW;
+        margin: 1.5em 0;
+        box-sizing: border-box;
+        font-size: 1em;
+        min-height: 4em;
+        // outline: 1px solid pink;
+
+
+        .bubble{
+            position: relative;
+            width: @bubbleW;
+            padding: 0.5em;
+            box-sizing: border-box;
+
+            font-size: 1em;
+            line-height: 1.375em;
+            color: #444;
+            background: @bubbleBGC;
+
+            box-shadow: 0 0 5px rgba(0,0,0,0.25);
+
+            .iterm-border-radius( 5px );
+
+            .top{
+                margin: 0 0 0.5em 0;
+                border: none;
+                border-bottom: 2px solid rgba(0,0,0,0.125);
+            }
+            .midddle{
+
+            }
+            .bottom{
+                margin: 0.5em 0 0 0;
+            }
+
+            h1, h2, h3, h4, h5{
+                margin: 0;
+                // font-size: 1em;
+            }
+            h2{
+                font-size: 1.125em;
+            }
+            h3{
+                font-size: 1em;
+            }
+            p{
+                margin: 0;
+                line-height: 1.25em;
+                font-size: 0.9em;
+                text-indent: 1em;
+            }
+            blockquote{
+                border: none;
+                border-left: 3px solid #212E32;
+                margin-left:  1em ;
+                box-sizing: border-box;
+                padding: 0.125em 0.25em;
+                p{
+                    text-indent: 0;
+                    color: #999;
+                    font-style: italic;
+                }
+            }
+        }
+        // 暂时把connect的样式设置的和line差不多
+        .connect{
+            position: absolute;
+            top: @lineTagW;
+            margin-top: -@lineW/2;
+            width: @connectContentW;
+            height: @lineW;
+            background: @lineBGC;
+        }
+        .linetag{
+            position: absolute;
+            top: @lineTagW/2;
+            width: @lineTagW;
+            height: @lineTagW;
+            background: @lineTagBGC;
+            .lineTagRadius( @lineTagW );
+        }
+    }
+    .iterm.left{
+        left: 0;
+        .bubble{
+            
+        }
+        .connect{
+            right: @lineTagW/2+( @connectW - @connectContentW )/2;
+        }
+        .linetag{
+            right: -@lineTagW/2;
+        }
+    }
+    .iterm.right{
+        left: @itermW;
+        .bubble{
+            left: @lineTagW/2 + @connectW;
+        }
+
+        .connect{
+            left: @lineTagW/2 + ( @connectW - @connectContentW )/2;
+        }
+        .linetag{
+            left: -@lineTagW/2;
+        }
+    }
 }
 section{
     box-sizing: border-box;
     width: 0;
     background: @sectionC;
-    margin-left: @navW + @thinW;
+    margin-left: @navW + @thinNavW;
 }
 section img{
     max-width: 800px;
 }
-/* -------- 阅读模式, header略窄, timeline紧缩, section阅读区显示为主体  --------*/
 
-body.readmode{
-    #timeline{
-        width: @thinW;
-    }
-    section{
-        width: 100%;
-        padding: 2.5em;
-        padding-right: @navW + @thinW + @readerPadding;
-    }
-
-}
 
 /*  ------------ details of timeline  -----------*/
 body.glancemode{
@@ -238,4 +315,121 @@ body.glancemode{
             }
         }
     }
+}
+
+/* -------- 阅读模式, header略窄, timeline紧缩, section阅读区显示为主体  --------*/
+
+body.readmode{
+    header{
+        width: @thinNavW;
+    }
+    #timeline{
+        width: @thinTimeW;
+        margin-left: @thinNavW;
+    }
+    section{
+        width: 100%;
+        margin-left: @thinNavW + @thinTimeW;
+        padding: 1.5em 2.5em;
+        padding-right: @thinNavW + @thinTimeW + @readerPadding;
+    }
+
+    #timeline{
+        ul#itermCtn{
+            position: relative;
+            width: @timelineZoneW;
+            margin: 0 auto;
+            padding: 0;
+            box-sizing: border-box;
+            list-style: none;
+        }
+
+        #line{
+            position: absolute;
+            width: @lineW;
+            height: 100%;
+            left: 50%;
+            margin-left: -@lineW/2;
+            background: @lineBGC;
+        }
+        .iterm{
+            box-sizing: border-box;
+
+            position: absolute;
+            width: @thinItermW;
+
+            margin: 1.5em 0;
+            font-size: 1em;
+            min-height: 4em;
+
+            .bubble{
+                display: none;
+            }
+            // 暂时把connect的样式设置的和line差不多
+            .connect{
+                display: none;
+            }
+            .linetag{
+                
+            }
+        }
+        .iterm.left{
+        }
+        .iterm.right{
+        }
+    }
+
+    .piece{
+        h1, h2{
+            text-align: left;
+        }
+
+        p{
+            text-indent: 1em;
+            margin: 0.375em 0;
+            line-height: 1.25em;
+        }
+        img{
+            max-width: 80%;
+            height: auto;
+            margin: 0 auto;
+            text-align: center;
+        }
+        blockquote{
+            box-sizing: border-box;
+            padding: 0.25em 1.5em;
+            margin: 2em 2.25em;
+            border: 0.375em none #999;
+            border-left-style: solid;
+        }
+        
+        blockquote p{
+            text-indent: 1em;
+            margin: 0em;
+            color: #888;
+            font-style: italic;
+        }
+
+        // pre{
+        //     border: 1px solid #ccc;
+        //     box-sizing: border-box;
+        //     /*低级浏览器中 不识别类匹配符 所以会使用这里的bgcolor*/
+        //     background: #272822;
+
+        // }
+        pre code{
+            font-size: 0.875em;
+            line-height: 1.375em;
+        }
+
+        ol, ul{
+            padding: 0 0 0 5em;
+            margin: 1.5em 0;
+        }
+
+        li{
+            padding: 0.375em 0;
+        }
+    }
+
 }

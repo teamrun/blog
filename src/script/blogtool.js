@@ -4,7 +4,7 @@ define( function(require, exports, module){
         return markdown.toHTML( mdStr );
     }
 
-    function addSyntaxHL( mdStr ){
+    function addLanguageType( mdStr ){
         var htmlStr = md2html( mdStr );
         var tempArr = htmlStr.split('<pre><code>$');
         var codeCount = tempArr.length;
@@ -93,7 +93,7 @@ define( function(require, exports, module){
 
 
 
-    exports.addSyntaxHL = addSyntaxHL;
+    exports.addLanguageType = addLanguageType;
     exports.md2html = md2html;
     exports.Blog = Blog;
 

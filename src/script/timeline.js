@@ -1,9 +1,10 @@
 define(function( require, exports, module){
 
     var util = require('./util');
-    var tools = require('./blogtool');
 
     var Blog = require('./blogCtrl');
+
+    var UI = require('./UI');
 
 
     var $ = util.qs;
@@ -19,7 +20,6 @@ define(function( require, exports, module){
         this.handler = opt.handler;
         this.data = opt.data;
         this.itermConstructor = opt.itermConstructor;
-        // this.itermConstructor = tools.constructor;
 
         this.leftBottom = this.itermCtn.offsetTop;
         this.rightBottom = this.itermCtn.offsetTop + parseInt( this.defaultMargin );
@@ -92,11 +92,12 @@ define(function( require, exports, module){
         var target = e.target;
 
         if( util.hasClass( target, 'title' ) ){
-            Blog.get( blogIdentitifor, target.dataset[ blogIdentitifor ], function(data){
-                console.log( data );
-            } );
+            var tmpBlog = new Blog({
+                title: target.innerHTML,
+                _id: target.dataset[blogIdentitifor]
+            });
+            tmpBlog.get( blogIdentitifor, target.dataset[ blogIdentitifor ], UI.renderBlog);
         }
-
     }
 
     exports.Timeline = Timeline;

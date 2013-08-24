@@ -8,8 +8,30 @@ define(function( require, exports, module ){
     var $ajax = util.ajax;
 
 
-    var Blog = {};
-    Blog.get = function( key, val, callback ){
+    var Blog = function( arg ){
+        // Blog的构造函数,接受两种参数,md字符串,和已经构建好的obj
+        // title为纯字符串 没有#号没有h2标签
+        this.title = '';
+        this.content = '';
+        if( arg instanceof String ){
+            // 通过mdstr构建blog对象
+            var titleReg = /#+.+\n+/;
+
+            var tempArr = mdStr.match( titleReg );
+            thisClass.title = ( tempArr && tempArr.length >0 )? tempArr[0] : '##无题';
+            thisClass.content = mdStr.substr( thisClass.title.length, mdStr.length );
+
+            thisClass.title = thisClass.title.replace(/[#+\n+]/g, '');
+        }
+        else if( typeof arg === 'object' && arg instanceof Object ){
+            for( var i in arg ){
+                this[i] = arg[i];
+            }
+        }
+        return this;
+    };
+
+    Blog.prototype.get = function( key, val, callback ){
 
         var reqParam = {
             key: key,
@@ -24,8 +46,86 @@ define(function( require, exports, module ){
         });
         return false;
     };
+    Blog.prototype.renderContent = function(){
+        return addLanguageType(this.content);
+    };
+
+    function addLanguageType( mdStr ){
+        var htmlStr = markdown.toHTML( mdStr );
+        var tempArr = htmlStr.split('<pre><code>$');
+        var codeCount = tempArr.length;
+        if( codeCount > 1 ){
+            for( var i=0; i+1 < codeCount; i++){
+                var languageEnd = tempArr[i+1].indexOf('$');
+
+                var languageType = tempArr[i+1].substr(0, languageEnd );
+                tempArr[i] +='<pre class="line-numbers"><code class="language-' + languageType + '">';
+                // 剪切字符串  因为有个换行符 所以要多减一个
+                tempArr[i+1] = tempArr[i+1].substr( languageEnd+1, tempArr[i+1].length);
+                tempArr[i+1] = tempArr[i+1].replace(/\n/,'');
+                console.log( i );
+            }
+        }
+
+        return tempArr.join('');
+    }
+
+
+
+
 
 
     module.exports = Blog;
+
+
+
+    // function addLanguageType( mdStr ){
+    //     var htmlStr = md2html( mdStr );
+    //     var tempArr = htmlStr.split('<pre><code>$');
+    //     var codeCount = tempArr.length;
+    //     if( codeCount > 1 ){
+    //         for( var i=0; i+1 < codeCount; i++){
+    //             var languageEnd = tempArr[i+1].indexOf('$');
+
+    //             var languageType = tempArr[i+1].substr(0, languageEnd );
+    //             tempArr[i] +='<pre class="line-numbers"><code class="language-' + languageType + '">';
+    //             // 剪切字符串  因为有个换行符 所以要多减一个
+    //             tempArr[i+1] = tempArr[i+1].substr( languageEnd+1, tempArr[i+1].length);
+    //             tempArr[i+1] = tempArr[i+1].replace(/\n/,'');
+    //             console.log( i );
+    //         }
+    //     }
+
+    //     return tempArr.join('');
+    // }
+
+    // function itermConstructor( data ){
+    //     var len = data.length;
+    //     var htmlStr = '';
+    //     if( len > 0 ){
+    //         for(var n=0; n < len; n++ ){
+
+    //             htmlStr += '<div class="iterm raw">' + consSingalIterm( data[n] ) + '</div>';
+    //         }
+    //     }
+    //     else{
+    //         htmlStr = '';
+    //     }
+
+
+
+    //     function consSingalIterm( data ){
+    //         // var html = md2html( data.summery.text );
+    //         var blog = new Blog( data.summery.text, 'html' );
+    //         var extra = '<div class="connect"></div><div class="linetag"></div>';
+    //         // var top = '<div class="top">' + blog.title + '</div>';
+    //         var top = '<div class="top"><h2 class="title" data-_id="' + data._id + '">' + data.title.replace(/#+/g, '') + '</div>';
+    //         var middle = '<div class="middle">' + blog.content + '</div>';
+    //         var bottom = '<div class="bottom">' + '</div>';
+
+    //         return '<div class="bubble">' + top + middle + bottom + '</div>' + extra;
+    //     }
+    //     return htmlStr;
+    // }
 
 });

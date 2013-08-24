@@ -20,9 +20,6 @@ define(function( require, exports, module ){
 			callback: function( data ){
 				if( data || data[0] ){
 					// 使用markdown.js渲染blog 或 缩略图
-					// blogCtn.innerHTML = tools.md2html( data[0].summery.text );
-
-					// blogCtn.innerHTML += tools.addSyntaxHL( data[0].content );
 
 					blogDataSet = data;
 
@@ -50,7 +47,6 @@ define(function( require, exports, module ){
 	}
 
 	// var mdStr = '##书签栏小工具的编写 and “剪客工具”的原理\n\n###书签栏小工具\n书签小工具（Bookmarklets）是一个非常棒的javascript代码小片断伪装成的小应用，它驻留在你的浏览器里并为网页提供额外的功能。\n下面介绍如何写一个书签栏小工具，以及如何扩展。\n>书签栏小工具其实就是超链接\n\n通过查找资料可以发';
-	// var blog = new tools.Blog( mdStr, 'html' );
 
 	// var data = [{}];
 	// data[0].summery = {
