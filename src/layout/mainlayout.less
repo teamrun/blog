@@ -259,34 +259,7 @@ body.glancemode{
 
                 .iterm-border-radius( 5px );
 
-                .top{
-                    margin: 0 0 0.5em 0;
-                    border: none;
-                    border-bottom: 2px solid rgba(0,0,0,0.125);
-                }
-                .midddle{
-
-                }
-                .bottom{
-                    margin: 0.5em 0 0 0;
-                }
-
-                h1, h2, h3, h4, h5{
-                    margin: 0;
-                    // font-size: 1em;
-                }
-                h2{
-                    font-size: 1.125em;
-                }
-                h3{
-                    font-size: 1em;
-                }
-                p{
-                    margin: 0;
-                    line-height: 1.25em;
-                    font-size: 0.9em;
-                    text-indent: 1em;
-                }
+                
                 blockquote{
                     border: none;
                     border-left: 3px solid #212E32;
@@ -397,12 +370,24 @@ body.readmode{
                 // display: none;
                 // opacity: 0;
                 // height: 0;
-                // left: @lineTagW/2 + 10px;
-                left: 0;
+                // left: @thinItermW/4;
+                // left: 0;
                 transition: all 300ms ease;
-
                 z-index: 1000;
+
+                .top{
+                    margin: 0 0 0.5em 0;
+                    border: none;
+                    border-bottom: 2px solid rgba(0,0,0,0.125);
+                }
+                .middle{
+                    display: none;
+                }
+                .bottom{
+                    display: none;
+                }
             }
+            
             // 暂时把connect的样式设置的和line差不多
             .connect{
                 display: none;
@@ -417,21 +402,21 @@ body.readmode{
             }
         }
         .iterm.left{
-            left: @thinItermW;
+            left: @thinItermW/2;
             .bubble{
                 
             }
             .linetag{
-                // left: -@lineTagW/2;
-                left: 0;
+                left: -@lineTagW/2;
+                // left: 0;
             }
         }
         .iterm.right{
-            left: @thinItermW;
+            left: @thinItermW/2;
             
             .linetag{
-                // left: -@lineTagW/2;
-                left: 0;
+                left: -@lineTagW/2;
+                // left: 0;
             }
         }
     }

@@ -7,3 +7,7 @@ backend/node_modules/*
 .idea/.name
 
 .idea/*
+
+src/layout/mainlayout.css
+
+src/layout/mainlayout.css
