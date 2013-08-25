@@ -43,14 +43,16 @@ define( function(require, exports, module){
             // var html = md2html( data.summery.text );
             var blog = new Blog( data.summery.text, 'html' );
             
-            var extra = '<div class="connect"></div><div class="linetag"></div>';
+            var extraBefore = '<div class="linetag"></div>';
+
+            var extraAfter = '<div class="connect"></div>';
 
             // var top = '<div class="top">' + blog.title + '</div>';
             var top = '<div class="top"><h2 class="title" data-_id="' + data._id + '">' + data.title.replace(/#+/g, '') + '</div>';
             var middle = '<div class="middle">' + blog.content + '</div>';
             var bottom = '<div class="bottom">' + '</div>';
 
-            return '<div class="bubble">' + top + middle + bottom + '</div>' + extra;
+            return extraBefore + '<div class="bubble">' + top + middle + bottom + '</div>' + extraAfter;
         }
 
         return htmlStr;
