@@ -33,7 +33,7 @@ define(function(require, exports, module){
                 if( curReading ){
                     console.log( curReading.className );
                     // Util.replaceClass(curReading,'reading', 'go');
-                    $('.piece.reading').className = 'piece go';
+                   Util.replaceClass($('.piece.reading'),'reading', 'go');
                     console.log( curReading.className );
                 }
 

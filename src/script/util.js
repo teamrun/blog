@@ -164,8 +164,9 @@ define(function( require, exports, module){
 	}
 
 	function replaceClass( obj, replaced, replacer ){
-		if( obj.className.indexOf( replaced)  >= 0 ){
-			obj.className.replace( replaced, replacer );
+		var classStr = obj.className;
+		if( classStr.indexOf( replaced)  >= 0 ){
+			obj.className = classStr.replace( replaced, replacer );
 		}
 		else{
 			addClass(obj, replacer);

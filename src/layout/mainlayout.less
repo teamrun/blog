@@ -25,9 +25,28 @@ header{
     transition: width 300ms ease;
 
     nav{
-        a{
-            color: @headerC;
+        ul{
+            list-style: none;
+
+            li{
+                font-size: 2em;
+                padding: 0 0.5em;
+                transition: all 300ms ease;
+                &:hover {
+                    background: #fff;
+                    a{
+                        color: @headerBGC;
+                    }
+                }
+                a{
+                    display: block;
+                    color: @headerC;
+                    text-decoration: none;
+                    transition: all 300ms ease;
+                }
+            }
         }
+        
     }
 }
 #timeline{
@@ -138,6 +157,8 @@ header{
             height: @lineTagW;
             background: @lineTagBGC;
             .lineTagRadius( @lineTagW );
+
+            cursor: pointer;
         }
     }
     .iterm.left{
@@ -171,6 +192,14 @@ section{
     width: 0;
     background: @sectionC;
     margin-left: @navW + @thinNavW;
+    #blogCtn{
+        position: relative;
+
+
+        #blogCtn{
+            position: absolute;
+        }
+    }
 }
 section img{
     max-width: 800px;
@@ -326,18 +355,21 @@ body.readmode{
     #timeline{
         width: @thinTimeW;
         margin-left: @thinNavW;
+        overflow: hidden;
     }
     section{
         width: 100%;
         margin-left: @thinNavW + @thinTimeW;
         padding: 1.5em 2.5em;
         padding-right: @thinNavW + @thinTimeW + @readerPadding;
+        transition: all 300ms ease-in;
+
     }
 
     #timeline{
         ul#itermCtn{
             position: relative;
-            width: @timelineZoneW;
+            width: @thinTimeW;
             margin: 0 auto;
             padding: 0;
             box-sizing: border-box;
@@ -354,7 +386,6 @@ body.readmode{
         }
         .iterm{
             box-sizing: border-box;
-
             position: absolute;
             width: @thinItermW;
 
@@ -363,23 +394,66 @@ body.readmode{
             min-height: 4em;
 
             .bubble{
-                display: none;
+                // display: none;
+                // opacity: 0;
+                // height: 0;
+                // left: @lineTagW/2 + 10px;
+                left: 0;
+                transition: all 300ms ease;
+
+                z-index: 1000;
             }
             // 暂时把connect的样式设置的和line差不多
             .connect{
                 display: none;
             }
             .linetag{
-                
+                position: absolute;
+            }
+            .linetag:hover ~ .bubble{
+                display: block;
+                opacity: 1;
+                height: auto;
             }
         }
         .iterm.left{
+            left: @thinItermW;
+            .bubble{
+                
+            }
+            .linetag{
+                // left: -@lineTagW/2;
+                left: 0;
+            }
         }
         .iterm.right{
+            left: @thinItermW;
+            
+            .linetag{
+                // left: -@lineTagW/2;
+                left: 0;
+            }
         }
     }
 
     .piece{
+        top: 0;
+        transition: all 300ms ease;
+        &.go{
+            right: -1000px;
+            opacity: 0;
+            height: 0;
+        }
+        &.wait2come{
+            left: -1000px;
+            opacity: 0;
+            height: 0;
+        }
+        &.reading{
+            left: 0;
+            opacity: 1;
+            height: auto;
+        }
         h1, h2{
             text-align: left;
         }

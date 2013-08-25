@@ -96,7 +96,7 @@ define(function( require, exports, module){
                 title: target.innerHTML,
                 _id: target.dataset[blogIdentitifor]
             });
-            tmpBlog.get( blogIdentitifor, target.dataset[ blogIdentitifor ], UI.renderBlog);
+            tmpBlog.get( blogIdentitifor, target.dataset[ blogIdentitifor ], UI.deliverBlog);
         }
     }
 
