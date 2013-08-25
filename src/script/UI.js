@@ -1,29 +1,49 @@
 define(function(require, exports, module){
-    var util = require('./util');
+    var Util = require('./util');
     var Blog = require('./BlogCtrl');
 
 
 
 
-    var $ = util.qs;
-    var $A = util.qsa;
+    var $ = Util.qs;
+    var $A = Util.qsa;
 
     var UI = {};
-    var BlogArea = $('section');
+    var BlogArea = $('section #blogCtn');
 
 
-    UI.renderBlog = function( data ){
+    UI.deliverBlog = function( data ){
+        // 尽快引入DomCached机制
         if( data && data[0] && data[0].content ){
+            // 切换至阅读模式
             document.body.className = 'readmode';
-            if( $('article.piece[data-_id="'+ data[0]._id+ '"]') ){
+            var curReading = $('.piece.reading');
 
+            if( curReading && curReading.dataset['_id'] == data[0]._id){
+                // 如果在读这一篇,不做操作
             }
             else{
+                // 如果未在读
                 var tmpBlog = new Blog(data[0]);
 
-                BlogArea.innerHTML += '<article class="piece" data-_id="' + tmpBlog._id + '">' + tmpBlog.renderContent() + '</article>';
+                BlogArea.innerHTML += '<article class="piece wait2come" data-_id="' + tmpBlog._id + '">' + tmpBlog.renderContent() + '</article>';
 
                 Prism.highlightAll();
+
+                if( curReading ){
+                    console.log( curReading.className );
+                    // Util.replaceClass(curReading,'reading', 'go');
+                    $('.piece.reading').className = 'piece go';
+                    console.log( curReading.className );
+                }
+
+                var nextReading =  $('article.piece.wait2come');
+
+                setTimeout(function(){
+
+                    Util.replaceClass(nextReading, 'wait2come', 'reading');
+                },300);
+
             }
         }
     };
