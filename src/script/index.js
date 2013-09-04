@@ -1,7 +1,9 @@
 define(function( require, exports, module ){
 	var util = require('./util');
 	var tools = require('./blogtool');
-	var Timeline = require('./timeline.js').Timeline;
+	var Timeline = require('./Timeline.js').Timeline;
+
+	var Widget = require('./widgetCtrl.js');
 
 
 	var $ = util.qs;
@@ -57,7 +59,5 @@ define(function( require, exports, module ){
 	// data.push( data[0] );
 	// data.push( data[0] );
 	// data.push( data[0] );
-
-	
 
 });

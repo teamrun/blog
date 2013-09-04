@@ -1,41 +1,41 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" manifest="teamrun.appcache">
 <head>
-	<meta charset="UTF-8">
-	<title>mobile交互实例</title>
-	<link rel="stylesheet" href="../src/layout/mobile.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1/2, maximum-scale=1/2, minimum-scale=1/2">
+    <title>chenllos Blog Mobile App</title>
+    <!-- mobile app 全屏显示 -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!-- topbar style -->
+    <meta name="apple-mobile-app-status-bar-style" content="white" />
+    <!-- <meta name="apple-mobile-app-status-bar-style" content="black" /> -->
+    <!-- icon 已经预处理,不再需要高光 -->
+    <link rel="apple-touch-icon-precomposed" href="/src/image/appicon.png" />
+
+    <link rel="stylesheet" href="/mobile/asset/layout/main.css">
+
+      <script src="/src/script/base/sea.js"></script> 
+    <!--  <script src="/mobile/asset/script/app.js "></script>  -->
 </head>
 <body>
-	<header></header>
-	<aside>
-		<ul>
-			<li>首页</li>
-			<li>企业服务</li>
-			<li>支持</li>
-			<li>博客</li>
-		</ul>
-	</aside>
-	<section>
-		<a class="btn">menu</a>
-	</section>
+    <header></header>
+    <nav></nav>
+    <section>
+        <!-- <a class="btn" onclick="document.body.className = 'menushow'" >显示 隐藏</a> -->
+        <a class="btn" id="menuBtn" >显示 隐藏</a>
+    </section>
+    <footer></footer>
 
-	<script>
-		var aside = document.querySelector('aside');
-		var section = document.querySelector('section');
+     <script>
+        seajs.config({
+            debug: true,
+            plugins: ['nocache'],
 
-		var btn = document.querySelector('.btn');
-
-		btn.onclick = function(){
-			var activeIndex = aside.className.indexOf( 'active' )
-			if( activeIndex >=0 ){
-				aside.className = aside.className.substr(0, activeIndex-1);
-				section.className = section.className.substr(0, activeIndex-1);
-			}
-			else{
-				aside.className += ' active';
-				section.className += ' active';
-			}
-		}
-	</script>
+            "alias": {
+                "seajs-debug": "/src/script/base/sea-modules/seajs/seajs-debug/1.0.0/seajs-debug.js"
+              }
+        });
+        seajs.use("/mobile/asset/script/app.js");
+    </script>
 </body>
 </html>

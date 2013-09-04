@@ -21,15 +21,28 @@ header{
     width: @navW;
     background: @headerBGC;
     color: @headerC;
+    overflow-y: hidden;
+    box-shadow: 0 0 0.75em rgba(0,0,0,0.4);
+    z-index: 1000;
 
     transition: width 300ms ease;
 
     nav{
+        width: @navW - 100px;
+        height: 100%;
+        margin: 0 auto;
+        padding: 5em 0;
+        .box-sizing();
+
+        vertical-align: middle;
         ul{
+            
             list-style: none;
+            padding: 0;
+            text-align: center;
 
             li{
-                font-size: 2em;
+                font-size: 1.5em;
                 padding: 0 0.5em;
                 transition: all 300ms ease;
                 &:hover {
@@ -63,7 +76,7 @@ header{
         width: @timelineZoneW;
         margin: 0 auto;
         padding: 0;
-        box-sizing: border-box;
+        .box-sizing();
         list-style: none;
     }
 
@@ -79,7 +92,7 @@ header{
         position: absolute;
         width: @itermW;
         margin: 1.5em 0;
-        box-sizing: border-box;
+        .box-sizing();
         font-size: 1em;
         min-height: 4em;
         // outline: 1px solid pink;
@@ -89,7 +102,7 @@ header{
             position: relative;
             width: @bubbleW;
             padding: 0.5em;
-            box-sizing: border-box;
+            .box-sizing();
 
             font-size: 1em;
             line-height: 1.375em;
@@ -103,7 +116,7 @@ header{
             .top{
                 margin: 0 0 0.5em 0;
                 border: none;
-                border-bottom: 2px solid rgba(0,0,0,0.125);
+                border-bottom: 1px solid rgba(0,0,0,0.125);
             }
             .midddle{
 
@@ -132,7 +145,7 @@ header{
                 border: none;
                 border-left: 3px solid #212E32;
                 margin-left:  1em ;
-                box-sizing: border-box;
+                .box-sizing();
                 padding: 0.125em 0.25em;
                 p{
                     text-indent: 0;
@@ -188,17 +201,27 @@ header{
     }
 }
 section{
-    box-sizing: border-box;
+    position: static;
+    .box-sizing();
     width: 0;
     background: @sectionC;
     margin-left: @navW + @thinNavW;
     #blogCtn{
         position: relative;
-
-
         #blogCtn{
             position: absolute;
         }
+    }
+
+    #widget{
+        position: absolute;
+        bottom: 3em;
+        right: 2em;
+        height: auto;
+        // min-height: 2em;
+        width: 2em;
+        background: #accded;
+        cursor: pointer;
     }
 }
 section img{
@@ -224,7 +247,7 @@ body.glancemode{
             width: @timelineZoneW;
             margin: 0 auto;
             padding: 0;
-            box-sizing: border-box;
+            .box-sizing();
             list-style: none;
         }
 
@@ -240,7 +263,7 @@ body.glancemode{
             position: absolute;
             width: @itermW;
             margin: 1.5em 0;
-            box-sizing: border-box;
+            .box-sizing();
             font-size: 1em;
             min-height: 4em;
             // outline: 1px solid pink;
@@ -250,7 +273,7 @@ body.glancemode{
                 position: relative;
                 width: @bubbleW;
                 padding: 0.5em;
-                box-sizing: border-box;
+                .box-sizing();
 
                 font-size: 1em;
                 line-height: 1.375em;
@@ -264,7 +287,7 @@ body.glancemode{
                     border: none;
                     border-left: 3px solid #212E32;
                     margin-left:  1em ;
-                    box-sizing: border-box;
+                    .box-sizing();
                     padding: 0.125em 0.25em;
                     p{
                         text-indent: 0;
@@ -333,10 +356,16 @@ body.readmode{
     section{
         width: 100%;
         margin-left: @thinNavW + @thinTimeW;
-        padding: 1.5em 2.5em;
-        padding-right: @thinNavW + @thinTimeW + @readerPadding;
+        padding: 1em 4em;
+        padding-right: @thinNavW + @thinTimeW + @readerPadding + 30px;
         transition: all 300ms ease-in;
-
+        
+        #widget{
+            #collapse{
+                height: 2em;
+                width: 100%;
+            }
+        }
     }
 
     #timeline{
@@ -345,7 +374,7 @@ body.readmode{
             width: @thinTimeW;
             margin: 0 auto;
             padding: 0;
-            box-sizing: border-box;
+            .box-sizing();
             list-style: none;
         }
 
@@ -358,22 +387,41 @@ body.readmode{
             background: @lineBGC;
         }
         .iterm{
-            box-sizing: border-box;
+            .box-sizing();
             position: absolute;
-            width: @thinItermW;
+            width: @thinItermW*2;
 
             margin: 1.5em 0;
             font-size: 1em;
-            min-height: 4em;
+            min-height: 6em;
+            background: #accded;
+            outline: 1px solid #aaa;
+            
+            &:hover{
+                &{
+                    padding-top: @lineTagW;
+                }
+                .bubble{
+                    opacity: 1;
+                    height: auto;
+
+                    // top: @thinConnectH/2;
+                }
+                .linetag{
+                    top: -@thinConnectH/2;
+                }
+            }
 
             .bubble{
-                // display: none;
-                // opacity: 0;
-                // height: 0;
-                // left: @thinItermW/4;
-                // left: 0;
-                transition: all 300ms ease;
+                opacity: 0;
+                height: 0;
+                width: @thinBubbleW ;
+                transition: all 400ms ease;
                 z-index: 1000;
+
+                h2{
+                    font-size: 1em;
+                }
 
                 .top{
                     margin: 0 0 0.5em 0;
@@ -394,28 +442,27 @@ body.readmode{
             }
             .linetag{
                 position: absolute;
-            }
-            .linetag:hover ~ .bubble{
-                display: block;
-                opacity: 1;
-                height: auto;
+                left: @thinTimeW /2 - @lineTagW/2;
+                transition: all 400ms ease;
             }
         }
         .iterm.left{
-            left: @thinItermW/2;
+            left: 0;
             .bubble{
-                
+                left: (@thinTimeW - @thinBubbleW) /2;
             }
             .linetag{
-                left: -@lineTagW/2;
+                left: @thinTimeW /2 - @lineTagW/2;
                 // left: 0;
             }
         }
         .iterm.right{
-            left: @thinItermW/2;
-            
+            left: 0;
+            .bubble{
+                left: (@thinTimeW - @thinBubbleW) /2;
+            }
             .linetag{
-                left: -@lineTagW/2;
+                left: @thinTimeW /2 - @lineTagW/2;
                 // left: 0;
             }
         }
@@ -424,13 +471,15 @@ body.readmode{
     .piece{
         top: 0;
         transition: all 300ms ease;
+        font-size: 1em;
         &.go{
-            right: -1000px;
+            // right: -1000px;
             opacity: 0;
             height: 0;
+            overflow: hidden;
         }
         &.wait2come{
-            left: -1000px;
+            // left: -1000px;
             opacity: 0;
             height: 0;
         }
@@ -439,23 +488,26 @@ body.readmode{
             opacity: 1;
             height: auto;
         }
-        h1, h2{
+        h1, h2, h3, h4, h5{
             text-align: left;
+            margin-bottom: 0.75em;
+            margin-left: -1em;
         }
 
         p{
-            text-indent: 1em;
-            margin: 0.375em 0;
+            // text-indent: 1.5em;
+            margin: 0 0 0.75em 0;
             line-height: 1.25em;
         }
         img{
             max-width: 80%;
             height: auto;
-            margin: 0 auto;
+            margin: 0.75em auto;
             text-align: center;
+            box-shadow: 0 0 0.75em rgba(0,0,0,0.375);
         }
         blockquote{
-            box-sizing: border-box;
+            .box-sizing();
             padding: 0.25em 1.5em;
             margin: 2em 2.25em;
             border: 0.375em none #999;
@@ -468,14 +520,6 @@ body.readmode{
             color: #888;
             font-style: italic;
         }
-
-        // pre{
-        //     border: 1px solid #ccc;
-        //     box-sizing: border-box;
-        //     /*低级浏览器中 不识别类匹配符 所以会使用这里的bgcolor*/
-        //     background: #272822;
-
-        // }
         pre code{
             font-size: 0.875em;
             line-height: 1.375em;
@@ -490,5 +534,4 @@ body.readmode{
             padding: 0.375em 0;
         }
     }
-
 }

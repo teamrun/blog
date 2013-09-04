@@ -1,8 +1,9 @@
 define(function( require, exports, module){
 
     var util = require('./util');
+    
 
-    var Blog = require('./blogCtrl');
+    var Blog = require('./BlogCtrl');
 
     var UI = require('./UI');
 
@@ -13,7 +14,9 @@ define(function( require, exports, module){
     var blogIdentitifor = '_id';
 
     var Timeline = function( opt ){
-        this.defaultMargin = '60' || opt.marginTop;
+        var fontSize = window.getComputedStyle( document.body ).fontSize;
+        fontSize = fontSize.substr(0, fontSize.length-2 );
+        this.defaultMargin = fontSize*2.5 || opt.marginTop;
         this.itermCtnSelector = opt.itermCtn || '#itermCtn';
         this.itermCtn = $( this.itermCtnSelector );
         this.sideFirst = opt.sideFirst || 'left';

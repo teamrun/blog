@@ -89,7 +89,8 @@ var blogCtrl = {
 			});
 		}
 		else{
-			dbo.Blog.find({},'_id title summery author dt_create dt_modify location like comment tag').limit(3).exec( function( err, data ){
+//			dbo.Blog.find({},'_id title summery author dt_create dt_modify location like comment tag').limit(3).exec( function( err, data ){
+			dbo.Blog.find({},'_id title summery author dt_create dt_modify location like comment tag').exec( function( err, data ){
 				if( !err ){
 					res.send( data );
 				}
@@ -102,6 +103,9 @@ var blogCtrl = {
 		
 	},
 
+	// TODO 读者点击blog标题后,由于网络传输速度和数据库查询,会有一定的延迟,所以最还加个loading
+	// 考虑好在哪里加,在Timeline的点击事件里加, 还是在具体的获取函数处添加
+	// loading函数接收dom对象, 结合css的class实现,应该是最优的方法
 	getById: function getBlogById(req, res ){
 		// var identifor = req.query.key;
 		var query = {};

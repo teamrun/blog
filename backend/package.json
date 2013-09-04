@@ -4,6 +4,7 @@
 	"dependencies": {
 		"mongoose":     "*",
 		"express":      "*",
-		"markdown-js":  "*"
+		"markdown-js":  "*",
+        "formidable":   "*"
 	}
 }

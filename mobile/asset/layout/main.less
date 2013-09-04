@@ -1,0 +1,59 @@
+@import "config.less";
+// @import "/src/layout/";
+
+html, body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    background: #000;
+    border-radius: 0.5em;
+}
+
+nav{
+    position: absolute;
+    width: @menuW;
+    height: 100%;
+    background: @menuBGC;
+    z-index: 800;
+    .transition();
+    .transOrigin( 100%, 50%);
+
+    -webkit-transform: perspective(1000px)  translateX(-100%) rotateY(-90deg);
+    box-shadow: inset -0.5em 0 2em rgba(0,0,0,0.75);
+}
+section{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: @sectionBGC;
+    z-index: 2000;
+
+    .transition();
+    .transOrigin();
+}
+body.menushow{
+    nav{
+        -webkit-transform: perspective(1000px) translateX(0%) rotateY(0deg);
+        box-shadow: none;
+        bacground: #000;
+        box-shadow: inset -0.5em 0 1em rgba(0,0,0,0.1);
+    }
+    section{
+        -webkit-transform: perspective(1000px) translateX( @menuW );
+    }
+}
+.btn{
+    display: inline-block;
+    padding: 0.5em 0.8em;
+    background: #00BBF6;
+    box-shadow: 0 0 0.5em rgba(0,0,0,0.375);
+    color: #fff;
+    cursor: pointer;
+}
+
+#menuBtn{
+    margin: 1em;
+}

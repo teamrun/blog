@@ -5,15 +5,20 @@
 
 // timeline细节布局
 @timelineZoneW: 1000px;
-@thinTimeW: 180px;
+@thinTimeW: 250px;
+
 @lineW: 4px;
 @lineTagW: 30px;
+
 @connectW: 40px;
+@thinConnectH: @lineTagW + 10px;
+
 @connectContentW: @connectW - 4px;
 
 @itermW: @timelineZoneW/2;
 @thinItermW: @thinTimeW/2;
 @bubbleW: ( @itermW - @lineTagW/2 - @connectW);
+@thinBubbleW: @thinTimeW - 20px;
 
 // @sectionW: 100% - @navW - @timelineW;
 @sectionW: 1440px - @thinNavW - @thinTimeW;
@@ -23,12 +28,13 @@
 @headerBGC: #4E9BB9;
 @headerC: #fff;
 
-@timelineC: #E3D46C;
+// @timelineC: #E3D46C;
+@timelineC: #ddd;
 @lineBGC: rgba(255,255,255,0.7);
 
 
 @sectionC: #fefefe;
-@dFontC: #000;
+@dFontC: #333;
 @bubbleBGC: #FEFEFE;
 @lineTagBGC: #5FACC4;
 
@@ -45,4 +51,9 @@
     -webkit-border-radius: @radius;
     -moz-border-radius: @radius;
     border-radius: @radius;
+}
+.box-sizing( @box: border-box ){
+    -webkit-box-sizing: @box;
+    -moz-box-sizing: @box;
+    box-sizing: @box;
 }

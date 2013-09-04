@@ -16,8 +16,8 @@
 	<![endif]-->
 	
 </head>
-<!-- <body class="glancemode"> -->
-<body class="readmode">
+<body class="glancemode">
+<!-- <body class="readmode"> -->
 	<header>
 		<nav>
 			<ul>
@@ -50,8 +50,11 @@
 	</aside>
 
 	<section>
-		<div id="blogCtn">
-			
+		<div id="blogCtn"></div>
+		<div id="commentCtn"></div>
+		<div id="widget">
+			<div id="collapse"></div>
+			<div id="scolltop"></div>
 		</div>
 	</section>
 	<footer>
@@ -61,9 +64,12 @@
 		seajs.config({
 			debug: true,
 		    plugins: ['nocache'],
-		    base: '/blog'
+
+		    "alias": {
+			    "seajs-debug": "/src/script/base/sea-modules/seajs/seajs-debug/1.0.0/seajs-debug.js"
+			  }
 		});
-		seajs.use("./src/script/index.js");
+		seajs.use("/src/script/index.js");
 	</script>
 </body>
 </html>
