@@ -15,17 +15,18 @@ nav {
   height: 100%;
   background: #4e9bb9;
   z-index: 800;
-  -webkit-transition: all 350ms ease;
-  -moz-transition: all 350ms ease;
-  -ms-transition: all 350ms ease;
-  -o-transition: all 350ms ease;
-  transition: all 350ms ease;
+  -webkit-transition: all 3250ms ease;
+  -moz-transition: all 3250ms ease;
+  -ms-transition: all 3250ms ease;
+  -o-transition: all 3250ms ease;
+  transition: all 3250ms ease;
   -webkit-transform-origin: 100% 50%;
   -moz-transform-origin: 100% 50%;
   -ms-transform-origin: 100% 50%;
   -o-transform-origin: 100% 50%;
   transform-origin: 100% 50%;
   -webkit-transform: perspective(1000px) translateX(-100%) rotateY(-90deg);
+  box-shadow: inset -0.5em 0 2em rgba(0, 0, 0, 0.75);
 }
 section {
   position: absolute;
@@ -33,11 +34,11 @@ section {
   width: 100%;
   background: #85937a;
   z-index: 2000;
-  -webkit-transition: all 350ms ease;
-  -moz-transition: all 350ms ease;
-  -ms-transition: all 350ms ease;
-  -o-transition: all 350ms ease;
-  transition: all 350ms ease;
+  -webkit-transition: all 3250ms ease;
+  -moz-transition: all 3250ms ease;
+  -ms-transition: all 3250ms ease;
+  -o-transition: all 3250ms ease;
+  transition: all 3250ms ease;
   -webkit-transform-origin: 50% 50%;
   -moz-transform-origin: 50% 50%;
   -ms-transform-origin: 50% 50%;
@@ -48,6 +49,7 @@ body.menushow nav {
   -webkit-transform: perspective(1000px) translateX(0%) rotateY(0deg);
   box-shadow: none;
   bacground: #000;
+  box-shadow: inset -0.5em 0 1em rgba(0, 0, 0, 0.1);
 }
 body.menushow section {
   -webkit-transform: perspective(1000px) translateX(35%);

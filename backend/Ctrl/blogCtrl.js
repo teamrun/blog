@@ -1,8 +1,6 @@
-
-
-var dbo = require('./dbo.js');
-var config = require('./config');
-var Valid = require('./valid');
+var dbo = require('../Base/dbo.js');
+var config = require('../Base/config');
+var Valid = require('../Base/valid');
 
 var titleReg = new RegExp( /#+.+\n/);
 var imgReg = new RegExp(/\!\[.+\]\(.+\)/);

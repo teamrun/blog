@@ -1,5 +1,0 @@
-post -|- /app/blog -|- newBlog
-get -|- /app/blog -|- getSomeBlog
-get -|- /app/blog/:id -|- getBlogById
-app is listeing @ : 3000
-app is listening at this port: 3000

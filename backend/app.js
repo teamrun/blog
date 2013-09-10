@@ -1,6 +1,6 @@
 var express = require('express');
 
-var config = require('./config');
+var config = require('./Base/config');
 
 var route = require('./route');
 

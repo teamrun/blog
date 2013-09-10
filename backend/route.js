@@ -1,13 +1,14 @@
 
-var config = require('./config');
+var config = require('./Base/config');
 
 
-var Blog = require('./blogCtrl.js');
-var Comment = require('./commentCtrl.js');
+var Blog = require('./Ctrl/blogCtrl.js');
+var Comment = require('./Ctrl/commentCtrl.js');
 
 var baseUrl = '/app';
 
 var routeList = [
+//    Blog的CGUD操作
 	{
 		action: 'post',
 		url: '/blog',
@@ -23,12 +24,17 @@ var routeList = [
 		url: '/blog/:id',
 		handler: Blog.getById
 	},
-
+//     Comment的 CGUD 操作
 	{
 		action: 'post',
 		url: '/comment',
 		handler: Comment.create
-	}
+	},
+    {
+        action: 'get',
+        url: '/comment',
+        handler: Comment.get
+    }
 ];
 
 
