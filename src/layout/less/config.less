@@ -8,20 +8,23 @@
 @thinTimeW: 250px;
 
 @lineW: 4px;
-@lineTagW: 30px;
+@lineTagW: 20px;
 
-@connectW: 40px;
-@thinConnectH: @lineTagW + 10px;
 
-@connectContentW: @connectW - 4px;
+@connectBGC: #fff;
+@connectBorderLRW: 16px;
+@connectBorderTBW: (@connectBorderLRW / 1.5);
+@thinConnectH: ( @lineTagW + 10px );
+@connectContentW: ( @connectBorderLRW - 4px );
 
-@itermW: @timelineZoneW/2;
-@thinItermW: @thinTimeW/2;
-@bubbleW: ( @itermW - @lineTagW/2 - @connectW);
-@thinBubbleW: @thinTimeW - 20px;
+
+@itermW: ( @timelineZoneW/2 );
+@thinItermW: ( @thinTimeW/2 );
+@bubbleW: ( @itermW - @lineTagW/2 - @connectBorderLRW);
+@thinBubbleW: ( @thinTimeW - 20px );
 
 // @sectionW: 100% - @navW - @timelineW;
-@sectionW: 1440px - @thinNavW - @thinTimeW;
+@sectionW: ( 1440px - @thinNavW - @thinTimeW );
 
 
 // 一些颜色
@@ -56,4 +59,12 @@
     -webkit-box-sizing: @box;
     -moz-box-sizing: @box;
     box-sizing: @box;
+}
+
+.transition( @v1:all, @v2:300ms, @v3:ease){
+    -webkit-transition: @v1 @v2 @v3;
+    -moz-transition: @v1 @v2 @v3;
+    -ms-transition: @v1 @v2 @v3;
+    -o-transition: @v1 @v2 @v3;
+    transition: @v1 @v2 @v3;
 }

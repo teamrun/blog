@@ -62,7 +62,6 @@ define(function( require, exports, module){
                 console.log('it will be posed at: ' + thisClass[ class2add+'Bottom' ] );
 
 
-
                 // 为下一次循环做准备
                 var curItermHeight = window.getComputedStyle( iterms[j] ).height;
                 curItermHeight = curItermHeight.substr( 0, curItermHeight.length-2 );
@@ -102,6 +101,7 @@ define(function( require, exports, module){
             tmpBlog.get( blogIdentitifor, target.dataset[ blogIdentitifor ], UI.deliverBlog);
         }
     }
+
 
     exports.Timeline = Timeline;
 });

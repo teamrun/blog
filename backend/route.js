@@ -24,6 +24,11 @@ var routeList = [
 		url: '/blog/:id',
 		handler: Blog.getById
 	},
+	{
+		action: 'put',
+		url: '/blog/:id',
+		handler: Blog.updateOne
+	},
 //     Comment的 CGUD 操作
 	{
 		action: 'post',

@@ -1,0 +1,64 @@
+body.readmode .piece {
+  top: 0;
+  font-size: 1em;
+}
+body.readmode .piece.go {
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+}
+body.readmode .piece.wait2come {
+  opacity: 0;
+  height: 0;
+}
+body.readmode .piece.reading {
+  left: 0;
+  opacity: 1;
+  height: auto;
+}
+body.readmode .piece h1,
+body.readmode .piece h2,
+body.readmode .piece h3,
+body.readmode .piece h4,
+body.readmode .piece h5 {
+  text-align: left;
+  margin-bottom: 0.75em;
+}
+body.readmode .piece p {
+  margin: 0 0 1em 0;
+  line-height: 1.25em;
+}
+body.readmode .piece img {
+  max-width: 80%;
+  height: auto;
+  margin: 0.75em auto 0 auto;
+  text-align: center;
+  box-shadow: 0 0 0.75em rgba(0, 0, 0, 0.375);
+}
+body.readmode .piece blockquote {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0.25em 1.5em;
+  margin: 2em 2.25em;
+  border: 0.375em none #999;
+  border-left-style: solid;
+}
+body.readmode .piece blockquote p {
+  text-indent: 1em;
+  margin: 0em;
+  color: #888;
+  font-style: italic;
+}
+body.readmode .piece pre code {
+  font-size: 0.875em;
+  line-height: 1.375em;
+}
+body.readmode .piece ol,
+body.readmode .piece ul {
+  padding: 0 0 0 5em;
+  margin: 1.5em 0;
+}
+body.readmode .piece li {
+  padding: 0.375em 0;
+}

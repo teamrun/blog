@@ -230,7 +230,7 @@ define(function( require, exports, module){
 
 	function ajax( opt ){
 		var xhr = new XMLHttpRequest();
-		var data = null;
+		var data = '';
 		
 		if( opt.action.toLowerCase() === 'get' ){
 			opt.url = montageUrl( opt.url , opt.data);
@@ -240,12 +240,8 @@ define(function( require, exports, module){
 			xhr.open( opt.action, opt.url);
 			
 			xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;');
-
-			data = '';
-			for( var i in opt.data){
-				data += i+'='+ opt.data[i]+'&' ;
-			}
-			data = data? data.substr(0, data.length - 1) : null;
+			data = $param( opt.data, data);
+			data = data? data : null;
 		}
 
 		
@@ -329,6 +325,22 @@ define(function( require, exports, module){
 	return false;
 	}
 
+	// function $param( data, key ){
+	// 	var param = '';
+
+	// 	function helper( data ){
+	// 		if( data instanceof Array ){
+	// 			var len = data.length;
+				
+	// 		}
+	// 		else if( data[key] instanceof Object ){
+	// 			for( var j in data[key] ){
+	// 				param += key+'['+j+']=' data[key][j] + '&';
+	// 			}
+	// 		}
+	// 	}
+	// }
+
 
 	exports.qs = qs;
 	exports.qsa = qsa;
@@ -376,6 +388,57 @@ define(function( require, exports, module){
 		}
 		
 		return requestUrl;
+	}
+
+	function $param( data, pStr, keyName ){
+		if( keyName ){
+            if( data instanceof Array ){
+                var len = data.length;
+                for( var j=0; j<len;j++){
+                    // 不同于基本对象, 复合对象的pStr不能用+
+                    // 因为最终都是只对基本对象做参数字符串的拼接
+                    pStr = $param( data[j], pStr, keyName+'[]');
+                }
+            }
+            else if( data instanceof Object){
+                for( var i in data ){
+                    pStr = $param( data[i], pStr, keyName+'['+i+']');
+                }
+                // pStr += 
+            }
+            else if( typeof data ==  'string' || typeof data == 'number' ){
+                pStr += keyName + '=' + data + '&';
+            }
+        }
+        else{
+            if( data instanceof Object){
+                for( var m in data ){
+                    console.log( typeof data[m] );
+                    if( data[m] instanceof Array ){
+                        var len = data[m].length;
+                            for( var k=0; k<len;k++){
+                                // 不同于基本对象, 复合对象的pStr不能用+
+                                pStr = $param( data[m][k], pStr, m+'[]');
+                            }
+                    }
+                    else if( data[m] instanceof Object ){
+                        for( var n in data[m] ){
+                            pStr = $param( data[m][n], pStr, m +'['+n+']');
+                        }
+                    }
+                    else if( typeof data[m] ==  'string' || typeof data[m] == 'number' ){
+                        pStr += m + '=' + data[m] + '&';
+                    }
+
+                }
+            }
+            else{
+                return 'not a valid data for ajax';
+            }
+            
+        }        
+        pStr = pStr.substr( 0, pStr.length );
+        return pStr;
 	}
 
 	function parseObj( str ){

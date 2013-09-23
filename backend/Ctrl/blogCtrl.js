@@ -27,6 +27,7 @@ function getSummery( content ){
 }
 
 var blogCtrl = {
+	// fucntion声明时的名称并没有用,在定义的作用域中调用还是会报undefined错误,  此处写上名字只是为了可以在函数内部调用callee时可以有function name
 	create: function newBlog(req, res){
 
 		var reqContent = req.body.content;
@@ -87,7 +88,6 @@ var blogCtrl = {
 			});
 		}
 		else{
-//			dbo.Blog.find({},'_id title summery author dt_create dt_modify location like comment tag').limit(3).exec( function( err, data ){
 			dbo.Blog.find({},'_id title summery author dt_create dt_modify location like comment tag').exec( function( err, data ){
 				if( !err ){
 					res.send( data );
@@ -117,6 +117,50 @@ var blogCtrl = {
 
 			}
 		});
+        return false;
+    },
+
+    updateOne: function updateOne( req, res ){
+//		var updateFields = req.body.updateFields;
+		var updateFields = req.param('updateFields');
+//		var updateValues = req.body.updateValues;
+		var updateValues = req.param('updateValues');
+		var blogID = req.params.id;
+		if( !(updateFields instanceof Array) || updateFields.length > 0 ){
+			res.send({
+				code: 322,
+				msg: 'wrong updateFields: not array or length 0'
+			});
+			return false;
+		}
+		if( !(updateValues instanceof Array) && updateValues.length > 0){
+			res.send({
+				code: 322,
+				msg: 'wrong updateValues: not array or length 0'
+			});
+			return false;
+		}
+		if( blogID && blogID.length === 24 ){
+			var updates = {};
+
+			var updateFieldsCount = updateFields.length;
+			for( var i=0; i< updateFieldsCount; i++){
+				if( updateFields[i] && updateValues[i] !== undefined ){
+					updates[ updateFields[i] ] = updateValues[i];
+				}
+			}
+			dbo.Blog.update({id: blogID}, updates, function(err, data){
+				console.log( data );
+				console.log( err );
+			} );
+		}
+		else{
+			res.send({
+				code: 322,
+				msg: 'wrong blogid: not an id'
+			});
+			return false;
+		}
         return false;
     }
 

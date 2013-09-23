@@ -33,7 +33,7 @@ var commentCtrl = {
 		return false;
 	},
 
-    get: function( req, res ){
+    get: function getCommment( req, res ){
         var query = {};
         query.base_article = req.query.base_article;
         dbo.Comment.find( query, function( err, data ){

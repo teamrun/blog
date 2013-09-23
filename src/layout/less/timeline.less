@@ -1,0 +1,302 @@
+@import "config.less";
+
+
+/*  ------------ details of timeline  -----------*/
+body.glancemode{
+
+    // timeline布局思想:
+    // #timeline自由宽度,line总在最中间
+    // itermCtn宽度进行限制,响应式, iterm宽度为一半
+    // iterm中含有timeline中除line之外的所有其他元素:
+    //  bubble, connect,和驻留在line上的tag
+    #timeline{
+        position: relative;
+        height: 100%;
+        background: #timelineC;
+
+        ul#itermCtn{
+            position: relative;
+            width: @timelineZoneW;
+            margin: 0 auto;
+            padding: 0;
+            .box-sizing();
+            list-style: none;
+        }
+
+        #line{
+            position: absolute;
+            width: @lineW;
+            height: 100%;
+            left: 50%;
+            margin-left: (-@lineW/2);
+            background: @lineBGC;
+        }
+        .iterm{
+            position: absolute;
+            width: @itermW;
+            margin: 1.5em 0;
+            .box-sizing();
+            font-size: 1em;
+            min-height: 4em;
+            // outline: 1px solid pink;
+
+
+            .bubble{
+                position: relative;
+                width: @bubbleW;
+                padding: 0.5em;
+                .box-sizing();
+
+                font-size: 1em;
+                line-height: 1.375em;
+                color: #444;
+                background: @bubbleBGC;
+
+                box-shadow: 0 0 0.25em rgba(0,0,0,0.15);
+
+                .iterm-border-radius( 5px );
+
+                .top{
+                    margin: 0 0 0.5em 0;
+                    border: none;
+                    border-bottom: 1px solid rgba(0,0,0,0.125);
+                    cursor: pointer;
+                }
+                .midddle{
+
+                }
+                .bottom{
+                    margin: 0.5em 0 0 0;
+                }
+
+                h1, h2, h3, h4, h5{
+                    margin: 0;
+                    // font-size: 1em;
+                }
+                h2{
+                    font-size: 1.125em;
+                }
+                h3{
+                    font-size: 1em;
+                }
+                p{
+                    margin: 0;
+                    line-height: 1.25em;
+                    font-size: 0.9em;
+                    text-indent: 0em;
+                }
+                blockquote{
+                    border: none;
+                    border-left: 3px solid #212E32;
+                    margin-left:  1em ;
+                    .box-sizing();
+                    padding: 0.125em 0.25em;
+                    p{
+                        text-indent: 0;
+                        color: #999;
+                        font-style: italic;
+                    }
+                }
+            }
+            // 暂时把connect的样式设置的和line差不多
+            .connect{
+                position: absolute;
+                top: (@lineTagW/1.5);
+
+                width:0;
+                height:0;
+                padding: 0;
+                border: none;
+                
+            }
+            .linetag{
+                position: absolute;
+                top: (@lineTagW/1.5);
+                width: @lineTagW;
+                height: @lineTagW;
+                background: @lineTagBGC;
+                .lineTagRadius( @lineTagW );
+            }
+        }
+        .iterm.left{
+            left: 0;
+            .bubble{
+                
+            }
+            .connect{
+                // right: (@lineTagW/2+( @connectBorderLRW - @connectContentW )/2);
+                right: (@lineTagW/2+( @connectBorderLRW - @connectContentW ));
+
+                border-top: @connectBorderTBW solid transparent;
+                border-left: (@connectContentW) solid @connectBGC;
+                border-bottom: @connectBorderTBW solid transparent;
+            }
+            .linetag{
+                right: (-@lineTagW/2);
+            }
+        }
+        .iterm.right{
+            left: @itermW;
+            .bubble{
+                left: (@lineTagW/2 + @connectBorderLRW);
+            }
+
+            .connect{
+                // left: (@lineTagW/2 + ( @connectBorderLRW - @connectContentW )/2);
+                left: (@lineTagW/2 + ( @connectBorderLRW - @connectContentW ));
+
+                border-top: @connectBorderTBW solid transparent;
+                border-right: (@connectContentW) solid @connectBGC;
+                border-bottom: @connectBorderTBW solid transparent;
+            }
+            .linetag{
+                left: (-@lineTagW/2);
+            }
+        }
+    }
+}
+
+
+
+// #timeline{
+//     ul#itermCtn{
+//         position: relative;
+//         width: @timelineZoneW;
+//         margin: 0 auto;
+//         padding: 0;
+//         .box-sizing();
+//         list-style: none;
+//     }
+
+//     #line{
+//         position: absolute;
+//         width: @lineW;
+//         height: 100%;
+//         left: 50%;
+//         margin-left:  -@lineW/2;
+//         background: @lineBGC;
+//     }
+//     .iterm{
+//         position: absolute;
+//         width: @itermW;
+//         margin: 1.5em 0;
+//         .box-sizing();
+//         font-size: 1em;
+//         min-height: 4em;
+//         // outline: 1px solid pink;
+
+
+//         .bubble{
+//             position: relative;
+//             width: @bubbleW;
+//             padding: 0.5em;
+//             .box-sizing();
+
+//             font-size: 1em;
+//             line-height: 1.375em;
+//             color: #444;
+//             background: @bubbleBGC;
+
+//             box-shadow: 0 0 0.25em rgba(0,0,0,0.15);
+
+//             .iterm-border-radius( 5px );
+
+//             .top{
+//                 margin: 0 0 0.5em 0;
+//                 border: none;
+//                 border-bottom: 1px solid rgba(0,0,0,0.125);
+//                 cursor: pointer;
+//             }
+//             .midddle{
+
+//             }
+//             .bottom{
+//                 margin: 0.5em 0 0 0;
+//             }
+
+//             h1, h2, h3, h4, h5{
+//                 margin: 0;
+//                 // font-size: 1em;
+//             }
+//             h2{
+//                 font-size: 1.125em;
+//             }
+//             h3{
+//                 font-size: 1em;
+//             }
+//             p{
+//                 margin: 0;
+//                 line-height: 1.25em;
+//                 font-size: 0.9em;
+//                 text-indent: 0em;
+//             }
+//             blockquote{
+//                 border: none;
+//                 border-left: 3px solid #212E32;
+//                 margin-left:  1em ;
+//                 .box-sizing();
+//                 padding: 0.125em 0.25em;
+//                 p{
+//                     text-indent: 0;
+//                     color: #999;
+//                     font-style: italic;
+//                 }
+//             }
+//         }
+//         // 暂时把connect的样式设置的和line差不多
+//         .connect{
+//             // position: absolute;
+//             // top: @lineTagW;
+//             // margin-top: ( -@lineW/2 );
+//             // width: @connectContentW;
+//             // height: @lineW;
+//             // background: @lineBGC;
+
+
+
+//             width:0;
+//             height:0;
+//             padding: 0;
+//             border: none;
+//             border-top: (@connectContentW / 2) solid transparent;
+//             border-right: (@connectContentW) solid #a9d401;
+//             border-bottom: (@connectContentW / 2) solid transparent;
+//         }
+//         .linetag{
+//             position: absolute;
+//             top: ( @lineTagW/2 );
+//             width: @lineTagW;
+//             height: @lineTagW;
+//             background: @lineTagBGC;
+//             .lineTagRadius( @lineTagW );
+
+//             cursor: pointer;
+//             transition: all 300ms ease-out;
+//         }
+//     }
+//     .iterm.left{
+//         left: 0;
+//         .bubble{
+            
+//         }
+//         .connect{
+//             right: ( @lineTagW/2+( @connectW - @connectContentW )/2 );
+//         }
+//         .linetag{
+//             right: ( -@lineTagW/2 );
+//         }
+//     }
+//     .iterm.right{
+//         left: @itermW;
+//         .bubble{
+//             left: ( @lineTagW/2 + @connectW );
+//         }
+
+//         .connect{
+//             left: ( @lineTagW/2 + ( @connectW - @connectContentW )/2 );
+//         }
+//         .linetag{
+//             left: ( -@lineTagW/2 );
+//         }
+//     }
+// }
