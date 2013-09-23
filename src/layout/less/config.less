@@ -19,7 +19,7 @@
 
 
 @itermW: ( @timelineZoneW/2 );
-@thinItermW: ( @thinTimeW/2 );
+@thinItermW: @thinTimeW;
 @bubbleW: ( @itermW - @lineTagW/2 - @connectBorderLRW);
 @thinBubbleW: ( @thinTimeW - 20px );
 
@@ -38,7 +38,7 @@
 
 @sectionC: #fefefe;
 @dFontC: #333;
-@bubbleBGC: #FEFEFE;
+@bubbleBGC: #fff;
 @lineTagBGC: #5FACC4;
 
 @readerPadding: 2.5em;
@@ -61,10 +61,10 @@
     box-sizing: @box;
 }
 
-.transition( @v1:all, @v2:300ms, @v3:ease){
-    -webkit-transition: @v1 @v2 @v3;
-    -moz-transition: @v1 @v2 @v3;
-    -ms-transition: @v1 @v2 @v3;
-    -o-transition: @v1 @v2 @v3;
-    transition: @v1 @v2 @v3;
+.transition( @v1:all, @v2:300ms, @v3:ease, @delay: 0){
+    -webkit-transition: @v1 @v2 @v3 @delay;
+    -moz-transition: @v1 @v2 @v3 @delay;
+    -ms-transition: @v1 @v2 @v3 @delay;
+    -o-transition: @v1 @v2 @v3 @delay;
+    transition: @v1 @v2 @v3 @delay;
 }

@@ -1,3 +1,24 @@
+/*  ------------ details of timeline  -----------*/
+/* line 12, timeline.less */
+#timeline {
+  position: relative;
+  width: auto;
+  height: 100%;
+  margin-left: 300px;
+  background: #efefef;
+  -webkit-transition: width 300ms ease 1s;
+  -moz-transition: width 300ms ease 1s;
+  -ms-transition: width 300ms ease 1s;
+  -o-transition: width 300ms ease 1s;
+  transition: width 300ms ease 1s;
+}
+/* line 24, timeline.less */
+body.readmode #timeline {
+  width: 250px;
+  margin-left: 240px;
+  overflow: hidden;
+}
+/* line 31, timeline.less */
 #timeline ul#itermCtn {
   position: relative;
   width: 1000px;
@@ -8,14 +29,20 @@
   box-sizing: border-box;
   list-style: none;
 }
+/* line 39, timeline.less */
+body.readmode #timeline ul#itermCtn {
+  width: 250px;
+}
+/* line 44, timeline.less */
 #timeline #line {
   position: absolute;
   width: 4px;
   height: 100%;
   left: 50%;
-  margin-left: -4px/2;
+  margin-left: -2px;
   background: rgba(255, 255, 255, 0.7);
 }
+/* line 54, timeline.less */
 #timeline .iterm {
   position: absolute;
   width: 500px;
@@ -25,10 +52,34 @@
   box-sizing: border-box;
   font-size: 1em;
   min-height: 4em;
+  outline: 1px solid pink;
 }
+/* line 63, timeline.less */
+body.readmode #timeline .iterm {
+  width: 250px;
+  min-height: 6em;
+}
+/* line 68, timeline.less */
+body.readmode #timeline .iterm:hover {
+  padding-top: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.35);
+}
+/* line 72, timeline.less */
+body.readmode #timeline .iterm:hover .bubble {
+  opacity: 1;
+  height: auto;
+}
+/* line 76, timeline.less */
+body.readmode #timeline .iterm:hover .linetag {
+  top: -15px;
+  left: 115px;
+  width: 20px;
+  height: 20px;
+}
+/* line 86, timeline.less */
 #timeline .iterm .bubble {
   position: relative;
-  width: 460px;
+  width: 474px;
   padding: 0.5em;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -36,21 +87,29 @@
   font-size: 1em;
   line-height: 1.375em;
   color: #444;
-  background: #fefefe;
+  background: #ffffff;
   box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.15);
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
+  -webkit-transition: all 300ms ease 0;
+  -moz-transition: all 300ms ease 0;
+  -ms-transition: all 300ms ease 0;
+  -o-transition: all 300ms ease 0;
+  transition: all 300ms ease 0;
 }
+/* line 104, timeline.less */
 #timeline .iterm .bubble .top {
   margin: 0 0 0.5em 0;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
   cursor: pointer;
 }
+/* line 113, timeline.less */
 #timeline .iterm .bubble .bottom {
   margin: 0.5em 0 0 0;
 }
+/* line 117, timeline.less */
 #timeline .iterm .bubble h1,
 #timeline .iterm .bubble h2,
 #timeline .iterm .bubble h3,
@@ -58,18 +117,22 @@
 #timeline .iterm .bubble h5 {
   margin: 0;
 }
+/* line 121, timeline.less */
 #timeline .iterm .bubble h2 {
   font-size: 1.125em;
 }
+/* line 124, timeline.less */
 #timeline .iterm .bubble h3 {
   font-size: 1em;
 }
+/* line 127, timeline.less */
 #timeline .iterm .bubble p {
   margin: 0;
   line-height: 1.25em;
   font-size: 0.9em;
   text-indent: 0em;
 }
+/* line 133, timeline.less */
 #timeline .iterm .bubble blockquote {
   border: none;
   border-left: 3px solid #212E32;
@@ -79,49 +142,118 @@
   box-sizing: border-box;
   padding: 0.125em 0.25em;
 }
+/* line 139, timeline.less */
 #timeline .iterm .bubble blockquote p {
   text-indent: 0;
   color: #999;
   font-style: italic;
 }
+/* line 146, timeline.less */
+body.readmode #timeline .iterm .bubble {
+  opacity: 1;
+  height: auto;
+  width: 230px;
+  transition: all 400ms ease;
+  z-index: 1000;
+}
+/* line 153, timeline.less */
+body.readmode #timeline .iterm .bubble h2 {
+  font-size: 1em;
+}
+/* line 157, timeline.less */
+body.readmode #timeline .iterm .bubble .top {
+  margin: 0 0 0.5em 0;
+  border: none;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.125);
+}
+/* line 162, timeline.less */
+body.readmode #timeline .iterm .bubble .middle {
+  display: none;
+}
+/* line 165, timeline.less */
+body.readmode #timeline .iterm .bubble .bottom {
+  display: none;
+}
+/* line 172, timeline.less */
 #timeline .iterm .connect {
   position: absolute;
-  top: 20px;
-  margin-top: -2px;
-  width: 26px;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.7);
+  top: 13.333333333333334px;
+  width: 0;
+  height: 0;
+  padding: 0;
+  border: none;
 }
+/* line 181, timeline.less */
+body.readmode #timeline .iterm .connect {
+  display: none;
+}
+/* line 186, timeline.less */
 #timeline .iterm .linetag {
   position: absolute;
-  top: 10px;
+  top: 13.333333333333334px;
   width: 20px;
   height: 20px;
   background: #5facc4;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   border-radius: 20px;
-  cursor: pointer;
-  transition: all 300ms ease-out;
 }
+/* line 194, timeline.less */
+body.readmode #timeline .iterm .linetag {
+  position: absolute;
+  left: 111.25px;
+  width: 27.5px;
+  height: 27.5px;
+}
+/* line 203, timeline.less */
 #timeline .iterm.left {
   left: 0;
 }
+/* line 205, timeline.less */
 #timeline .iterm.left .connect {
-  right: 12px;
+  right: 14px;
+  border-top: 10.666666666666666px solid transparent;
+  border-left: 12px solid #ffffff;
+  border-bottom: 10.666666666666666px solid transparent;
 }
+/* line 213, timeline.less */
 #timeline .iterm.left .linetag {
   right: -10px;
 }
+/* line 217, timeline.less */
+body.readmode #timeline .iterm.left {
+  left: 50%;
+  margin-left: -115px;
+}
+/* line 221, timeline.less */
+body.readmode #timeline .iterm.left .bubble {
+  left: 10px;
+}
+/* line 227, timeline.less */
 #timeline .iterm.right {
   left: 500px;
 }
+/* line 229, timeline.less */
 #timeline .iterm.right .bubble {
-  left: 40px;
+  left: 26px;
 }
+/* line 233, timeline.less */
 #timeline .iterm.right .connect {
-  left: 12px;
+  left: 14px;
+  border-top: 10.666666666666666px solid transparent;
+  border-right: 12px solid #ffffff;
+  border-bottom: 10.666666666666666px solid transparent;
 }
+/* line 240, timeline.less */
 #timeline .iterm.right .linetag {
   left: -10px;
+}
+/* line 244, timeline.less */
+body.readmode #timeline .iterm.right {
+  left: 50%;
+  margin-left: -115px;
+}
+/* line 247, timeline.less */
+body.readmode #timeline .iterm.right .bubble {
+  left: 10px;
 }

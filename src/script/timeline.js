@@ -30,12 +30,6 @@ define(function( require, exports, module){
         var thisClass = this;
 
         this.consIterm = function( data ){
-            // var itermCount = data.length;
-            // var htmlStr = '';
-            // for( var i=0; i< itermCount; i++ ){
-            //     htmlStr += thisClass.itermConstructor( data[i]);
-            // }
-
             var htmlStr = thisClass.itermConstructor( data );
             thisClass.itermCtn.innerHTML += htmlStr;
         };
@@ -53,11 +47,9 @@ define(function( require, exports, module){
                     class2add = 'left';
                 }
                 // 添加合适的类,添加定位数据
-                // util.replaceClass( iterms[j], 'raw', class2add );
                 iterms[j].className = iterms[j].className.replace( 'raw', class2add );
                 iterms[j].style.top = thisClass[ class2add + 'Bottom' ] + 'px';
                 console.group();
-
                 console.log( 'now positioning for: ' + j );
                 console.log('it will be posed at: ' + thisClass[ class2add+'Bottom' ] );
 
@@ -94,11 +86,40 @@ define(function( require, exports, module){
         var target = e.target;
 
         if( util.hasClass( target, 'title' ) ){
+
+            
+
             var tmpBlog = new Blog({
                 title: target.innerHTML,
                 _id: target.dataset[blogIdentitifor]
             });
             tmpBlog.get( blogIdentitifor, target.dataset[ blogIdentitifor ], UI.deliverBlog);
+        }
+    }
+
+    function posDom( opt ){
+        var targetSelector = opt.targetSelector;   //最后是改变谁的style值
+        var refSelector = opt.refSelector || opt.targetSelector;         //根据谁来确定值
+        var defaultMargin = opt.defaultMargin;
+        var classDef = opt.classDef;
+        var curTopOffset = opt.curTopOffset || 0 - defaultMargin;
+
+        var targets = $A( targetSelector );
+        var refs = $A( refSelector );
+        var len = refs.length;
+        if( classDef ){
+            var class2add;
+
+            for( var i=0; i<len ;i++ ){
+
+            }
+        }
+        else{
+            for( var i=0; i<len ;i++ ){
+                targets[i].style.top = curTopOffset + defaultMargin + 'px';
+                var refHeight = window.getComputedStyle( refs[i] ).height;
+                curTopOffset += defaultMargin + Number( refHeight.substr(0, refHeight.length-2) );
+            }
         }
     }
 

@@ -1,5 +1,6 @@
+/* line 4, nav.less */
 nav {
-  width: 180px;
+  width: 200px;
   height: 100%;
   margin: 0 auto;
   padding: 5em 0;
@@ -8,22 +9,27 @@ nav {
   box-sizing: border-box;
   vertical-align: top;
 }
+/* line 12, nav.less */
 nav ul {
   list-style: none;
   padding: 0;
   text-align: center;
 }
+/* line 18, nav.less */
 nav ul li {
   font-size: 1.5em;
   padding: 0 0.5em;
   transition: all 300ms ease;
 }
+/* line 22, nav.less */
 nav ul li:hover {
   background: #fff;
 }
+/* line 24, nav.less */
 nav ul li:hover a {
   color: #4e9bb9;
 }
+/* line 28, nav.less */
 nav ul li a {
   display: block;
   color: #ffffff;

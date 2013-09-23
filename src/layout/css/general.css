@@ -1,5 +1,5 @@
 nav {
-  width: 100px;
+  width: 200px;
   height: 100%;
   margin: 0 auto;
   padding: 5em 0;
@@ -57,7 +57,7 @@ body.readmode .piece h5 {
   margin-bottom: 0.75em;
 }
 body.readmode .piece p {
-  margin: 0 0 1em 0;
+  margin: 0;
   line-height: 1.25em;
 }
 body.readmode .piece img {
@@ -85,6 +85,7 @@ body.readmode .piece blockquote p {
 body.readmode .piece pre code {
   font-size: 0.875em;
   line-height: 1.375em;
+  letter-spacing: 0.075em;
 }
 body.readmode .piece ol,
 body.readmode .piece ul {
@@ -93,6 +94,24 @@ body.readmode .piece ul {
 }
 body.readmode .piece li {
   padding: 0.375em 0;
+}
+/*  ------------ details of timeline  -----------*/
+#timeline {
+  position: relative;
+  width: auto;
+  height: 100%;
+  margin-left: 300px;
+  background: #efefef;
+  -webkit-transition: width 300ms ease 1s;
+  -moz-transition: width 300ms ease 1s;
+  -ms-transition: width 300ms ease 1s;
+  -o-transition: width 300ms ease 1s;
+  transition: width 300ms ease 1s;
+}
+body.readmode #timeline {
+  width: 250px;
+  margin-left: 240px;
+  overflow: hidden;
 }
 #timeline ul#itermCtn {
   position: relative;
@@ -103,6 +122,9 @@ body.readmode .piece li {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   list-style: none;
+}
+body.readmode #timeline ul#itermCtn {
+  width: 250px;
 }
 #timeline #line {
   position: absolute;
@@ -121,10 +143,29 @@ body.readmode .piece li {
   box-sizing: border-box;
   font-size: 1em;
   min-height: 4em;
+  outline: 1px solid pink;
+}
+body.readmode #timeline .iterm {
+  width: 250px;
+  min-height: 6em;
+}
+body.readmode #timeline .iterm:hover {
+  padding-top: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.35);
+}
+body.readmode #timeline .iterm:hover .bubble {
+  opacity: 1;
+  height: auto;
+}
+body.readmode #timeline .iterm:hover .linetag {
+  top: -15px;
+  left: 115px;
+  width: 20px;
+  height: 20px;
 }
 #timeline .iterm .bubble {
   position: relative;
-  width: 460px;
+  width: 474px;
   padding: 0.5em;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -132,11 +173,16 @@ body.readmode .piece li {
   font-size: 1em;
   line-height: 1.375em;
   color: #444;
-  background: #fefefe;
+  background: #ffffff;
   box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.15);
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
+  -webkit-transition: all 300ms ease 0;
+  -moz-transition: all 300ms ease 0;
+  -ms-transition: all 300ms ease 0;
+  -o-transition: all 300ms ease 0;
+  transition: all 300ms ease 0;
 }
 #timeline .iterm .bubble .top {
   margin: 0 0 0.5em 0;
@@ -180,46 +226,94 @@ body.readmode .piece li {
   color: #999;
   font-style: italic;
 }
+body.readmode #timeline .iterm .bubble {
+  opacity: 1;
+  height: auto;
+  width: 230px;
+  transition: all 400ms ease;
+  z-index: 1000;
+}
+body.readmode #timeline .iterm .bubble h2 {
+  font-size: 1em;
+}
+body.readmode #timeline .iterm .bubble .top {
+  margin: 0 0 0.5em 0;
+  border: none;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.125);
+}
+body.readmode #timeline .iterm .bubble .middle {
+  display: none;
+}
+body.readmode #timeline .iterm .bubble .bottom {
+  display: none;
+}
 #timeline .iterm .connect {
   position: absolute;
-  top: 20px;
-  margin-top: -2px;
-  width: 26px;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.7);
+  top: 13.333333333333334px;
+  width: 0;
+  height: 0;
+  padding: 0;
+  border: none;
+}
+body.readmode #timeline .iterm .connect {
+  display: none;
 }
 #timeline .iterm .linetag {
   position: absolute;
-  top: 10px;
+  top: 13.333333333333334px;
   width: 20px;
   height: 20px;
   background: #5facc4;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   border-radius: 20px;
-  cursor: pointer;
-  transition: all 300ms ease-out;
+}
+body.readmode #timeline .iterm .linetag {
+  position: absolute;
+  left: 111.25px;
+  width: 27.5px;
+  height: 27.5px;
 }
 #timeline .iterm.left {
   left: 0;
 }
 #timeline .iterm.left .connect {
-  right: 12px;
+  right: 14px;
+  border-top: 10.666666666666666px solid transparent;
+  border-left: 12px solid #ffffff;
+  border-bottom: 10.666666666666666px solid transparent;
 }
 #timeline .iterm.left .linetag {
   right: -10px;
+}
+body.readmode #timeline .iterm.left {
+  left: 50%;
+  margin-left: -115px;
+}
+body.readmode #timeline .iterm.left .bubble {
+  left: 10px;
 }
 #timeline .iterm.right {
   left: 500px;
 }
 #timeline .iterm.right .bubble {
-  left: 40px;
+  left: 26px;
 }
 #timeline .iterm.right .connect {
-  left: 12px;
+  left: 14px;
+  border-top: 10.666666666666666px solid transparent;
+  border-right: 12px solid #ffffff;
+  border-bottom: 10.666666666666666px solid transparent;
 }
 #timeline .iterm.right .linetag {
   left: -10px;
+}
+body.readmode #timeline .iterm.right {
+  left: 50%;
+  margin-left: -115px;
+}
+body.readmode #timeline .iterm.right .bubble {
+  left: 10px;
 }
 html,
 body {
@@ -232,7 +326,6 @@ body {
   font-family: 'Microsoft Yahei', '微软雅黑', 'STHeiti', 'SimHei', 'SimSun';
 }
 header,
-aside,
 section {
   position: fixed;
   height: 100%;
@@ -240,19 +333,13 @@ section {
 }
 /* ------ 固定样式 and 常规样式 ------*/
 header {
-  width: 200px;
+  width: 300px;
   background: #4e9bb9;
   color: #ffffff;
   overflow-y: hidden;
   box-shadow: 0 0 0.75em rgba(0, 0, 0, 0.4);
   z-index: 1000;
   transition: width 300ms ease;
-}
-#timeline {
-  width: auto;
-  background: #efefef;
-  margin-left: 200px;
-  transition: margin 300ms ease;
 }
 section {
   position: static;
@@ -261,7 +348,7 @@ section {
   box-sizing: border-box;
   width: 0;
   background: #fff;
-  margin-left: 440px;
+  margin-left: 540px;
 }
 section #blogCtn {
   position: relative;
@@ -281,116 +368,9 @@ section #widget {
 section img {
   max-width: 800px;
 }
-/*  ------------ details of timeline  -----------*/
-body.glancemode #timeline {
-  position: relative;
-  height: 100%;
-  background: #timelineC;
-}
-body.glancemode #timeline ul#itermCtn {
-  position: relative;
-  width: 1000px;
-  margin: 0 auto;
-  padding: 0;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  list-style: none;
-}
-body.glancemode #timeline #line {
-  position: absolute;
-  width: 4px;
-  height: 100%;
-  left: 50%;
-  margin-left: -2px;
-  background: rgba(255, 255, 255, 0.7);
-}
-body.glancemode #timeline .iterm {
-  position: absolute;
-  width: 500px;
-  margin: 1.5em 0;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  font-size: 1em;
-  min-height: 4em;
-}
-body.glancemode #timeline .iterm .bubble {
-  position: relative;
-  width: 460px;
-  padding: 0.5em;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  font-size: 1em;
-  line-height: 1.375em;
-  color: #444;
-  background: #fefefe;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-}
-body.glancemode #timeline .iterm .bubble blockquote {
-  border: none;
-  border-left: 3px solid #212E32;
-  margin-left: 1em ;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  padding: 0.125em 0.25em;
-}
-body.glancemode #timeline .iterm .bubble blockquote p {
-  text-indent: 0;
-  color: #999;
-  font-style: italic;
-}
-body.glancemode #timeline .iterm .connect {
-  position: absolute;
-  top: 20px;
-  margin-top: -2px;
-  width: 26px;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.7);
-}
-body.glancemode #timeline .iterm .linetag {
-  position: absolute;
-  top: 10px;
-  width: 20px;
-  height: 20px;
-  background: #5facc4;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  border-radius: 20px;
-}
-body.glancemode #timeline .iterm.left {
-  left: 0;
-}
-body.glancemode #timeline .iterm.left .connect {
-  right: 12px;
-}
-body.glancemode #timeline .iterm.left .linetag {
-  right: -10px;
-}
-body.glancemode #timeline .iterm.right {
-  left: 500px;
-}
-body.glancemode #timeline .iterm.right .bubble {
-  left: 40px;
-}
-body.glancemode #timeline .iterm.right .connect {
-  left: 12px;
-}
-body.glancemode #timeline .iterm.right .linetag {
-  left: -10px;
-}
 /* -------- 阅读模式, header略窄, timeline紧缩, section阅读区显示为主体  --------*/
 body.readmode header {
   width: 240px;
-}
-body.readmode #timeline {
-  width: 250px;
-  margin-left: 240px;
-  overflow: hidden;
 }
 body.readmode section {
   width: 100%;
@@ -401,92 +381,4 @@ body.readmode section {
 body.readmode section #widget #collapse {
   height: 2em;
   width: 100%;
-}
-body.readmode #timeline ul#itermCtn {
-  position: relative;
-  width: 250px;
-  margin: 0 auto;
-  padding: 0;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  list-style: none;
-}
-body.readmode #timeline #line {
-  position: absolute;
-  width: 4px;
-  height: 100%;
-  left: 50%;
-  margin-left: -2px;
-  background: rgba(255, 255, 255, 0.7);
-}
-body.readmode #timeline .iterm {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  position: absolute;
-  width: 250px;
-  margin: 1.5em 0;
-  font-size: 1em;
-  min-height: 6em;
-  /* --------  debug  ------- */
-
-}
-body.readmode #timeline .iterm:hover {
-  padding-top: 20px;
-  /* --------  debug  ------- */
-
-  border-top: 1px solid rgba(0, 0, 0, 0.35);
-}
-body.readmode #timeline .iterm:hover .bubble {
-  opacity: 1;
-  height: auto;
-}
-body.readmode #timeline .iterm:hover .linetag {
-  top: -15px;
-  left: 115px;
-  width: 20px;
-  height: 20px;
-}
-body.readmode #timeline .iterm .bubble {
-  opacity: 0;
-  height: 0;
-  width: 230px;
-  transition: all 400ms ease;
-  z-index: 1000;
-}
-body.readmode #timeline .iterm .bubble h2 {
-  font-size: 1em;
-}
-body.readmode #timeline .iterm .bubble .top {
-  margin: 0 0 0.5em 0;
-  border: none;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.125);
-}
-body.readmode #timeline .iterm .bubble .middle {
-  display: none;
-}
-body.readmode #timeline .iterm .bubble .bottom {
-  display: none;
-}
-body.readmode #timeline .iterm .connect {
-  display: none;
-}
-body.readmode #timeline .iterm .linetag {
-  position: absolute;
-  left: 111.25px;
-  width: 27.5px;
-  height: 27.5px;
-}
-body.readmode #timeline .iterm.left {
-  left: 0;
-}
-body.readmode #timeline .iterm.left .bubble {
-  left: 10px;
-}
-body.readmode #timeline .iterm.right {
-  left: 0;
-}
-body.readmode #timeline .iterm.right .bubble {
-  left: 10px;
 }

@@ -15,7 +15,7 @@ html,body{
     font-family: 'Microsoft Yahei', '微软雅黑', 'STHeiti', 'SimHei', 'SimSun';
 }
 
-header, aside, section{
+header, section{
     position: fixed;
     height: 100%;
     overflow-y: auto;
@@ -34,12 +34,6 @@ header{
     transition: width 300ms ease;
 }
 #timeline{
-    width: auto;
-    // background: @timelineC;
-    background: #efefef;
-    margin-left: @navW;
-
-    transition: margin 300ms ease;
 }
 section{
     position: static;
@@ -79,11 +73,6 @@ body.readmode{
     header{
         width: @thinNavW;
     }
-    #timeline{
-        width: @thinTimeW;
-        margin-left: @thinNavW;
-        overflow: hidden;
-    }
     section{
         width: 100%;
         margin-left: (@thinNavW + @thinTimeW);
@@ -95,105 +84,6 @@ body.readmode{
             #collapse{
                 height: 2em;
                 width: 100%;
-            }
-        }
-    }
-
-    #timeline{
-        ul#itermCtn{
-            position: relative;
-            width: @thinTimeW;
-            margin: 0 auto;
-            padding: 0;
-            .box-sizing();
-            list-style: none;
-        }
-
-        #line{
-            position: absolute;
-            width: @lineW;
-            height: 100%;
-            left: 50%;
-            margin-left:( -@lineW/2);
-            background: @lineBGC;
-        }
-        .iterm{
-            .box-sizing();
-            position: absolute;
-            width: (@thinItermW*2);
-
-            margin: 1.5em 0;
-            font-size: 1em;
-            min-height: 6em;
-            /* --------  debug  ------- */
-            // background: #accded;
-            
-            
-            &:hover{
-                &{
-                    padding-top: @lineTagW;
-                    /* --------  debug  ------- */
-                    border-top: 1px solid rgba(0,0,0,0.35);
-                }
-                .bubble{
-                    opacity: 1;
-                    height: auto;
-
-                    // top: @thinConnectH/2;
-                }
-                .linetag{
-                    top: (-@thinConnectH/2);
-                    left: ( @thinTimeW /2 - @lineTagW*0.5 );
-                    width: @lineTagW;
-                    height: @lineTagW;
-                }
-            }
-
-            .bubble{
-                opacity: 0;
-                height: 0;
-                width: @thinBubbleW ;
-                transition: all 400ms ease;
-                z-index: 1000;
-
-                h2{
-                    font-size: 1em;
-                }
-
-                .top{
-                    margin: 0 0 0.5em 0;
-                    border: none;
-                    border-bottom: 2px solid rgba(0,0,0,0.125);
-                }
-                .middle{
-                    display: none;
-                }
-                .bottom{
-                    display: none;
-                }
-            }
-            
-            // 暂时把connect的样式设置的和line差不多
-            .connect{
-                display: none;
-            }
-            .linetag{
-                position: absolute;
-                left: ( @thinTimeW /2 - @lineTagW*1.375/2 );
-                width: ( @lineTagW*1.375 );
-                height: ( @lineTagW*1.375 );
-            }
-        }
-        .iterm.left{
-            left: 0;
-            .bubble{
-                left: ( (@thinTimeW - @thinBubbleW) /2 );
-            }
-        }
-        .iterm.right{
-            left: 0;
-            .bubble{
-                left: ( (@thinTimeW - @thinBubbleW) /2 );
             }
         }
     }
