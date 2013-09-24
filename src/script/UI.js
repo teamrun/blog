@@ -67,6 +67,15 @@ define(function(require, exports, module){
         return false;
     };
 
+    UI.switchStatus = function(){
+        if( document.body.className == 'readmode' ){
+
+        }
+        else{
+            document.body.className = 'readmode';
+        }
+    };
+
 
     function addNewBlog( blogData ){
         var tmpBlog = new Blog( blogData );

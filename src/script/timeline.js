@@ -87,13 +87,17 @@ define(function( require, exports, module){
 
         if( util.hasClass( target, 'title' ) ){
 
-            
+            // 切换状态,glance -> read ,期间由css负责动画
+            // section已显示,调用UI的呈现函数(传递"获取blog"的函数), 呈现函数负责查看是否已缓存
+            // 缓存的话直接切换显示,未缓存的话,(显示loading,然后)使用传递过来的获取函数,从(本地存储)remote获取blog
 
-            var tmpBlog = new Blog({
-                title: target.innerHTML,
-                _id: target.dataset[blogIdentitifor]
-            });
-            tmpBlog.get( blogIdentitifor, target.dataset[ blogIdentitifor ], UI.deliverBlog);
+            UI.switchStatus();
+
+            // var tmpBlog = new Blog({
+            //     title: target.innerHTML,
+            //     _id: target.dataset[blogIdentitifor]
+            // });
+            // tmpBlog.get( blogIdentitifor, target.dataset[ blogIdentitifor ], UI.deliverBlog);
         }
     }
 

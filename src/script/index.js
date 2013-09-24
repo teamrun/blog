@@ -13,6 +13,8 @@ define(function( require, exports, module ){
 	var blogCtn = $('.piece');
 	window.onload = function(){
 
+		patchStyle();
+
 		var blogDataSet;
 
 		$ajax({
@@ -59,5 +61,17 @@ define(function( require, exports, module ){
 	// data.push( data[0] );
 	// data.push( data[0] );
 	// data.push( data[0] );
+
+	function patchStyle(){
+		var headerNode = $('header');
+		var timelineNode = $('#timeline');
+
+		headerNodeW = window.getComputedStyle( headerNode ).width;
+
+		// timelineNode.style.width = ( document.body.clientWidth - Number( headerNodeW.substr(0, headerNodeW.length-2) ) ) + 'px';
+		// setTimeout( function(){
+		// 	timelineNode.style.visibility = 'visible';
+		// }, 305);
+	}
 
 });

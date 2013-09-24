@@ -10,21 +10,25 @@
     //  bubble, connect,和驻留在line上的tag
 
 #timeline{
+    // width为auto的元素在发生width的transition时,会先变成0, 然后再变成transition后的值,这样就会造成闪动
     position: relative;
-    // top: 0;
-    // bottom: 0;
-    width: auto;
+    width: 100%;
     height: 100%;
-    margin-left: @navW;
+    margin: @timelineMargin;
+    padding: @timelinePadding;
+    .box-sizing();
     // background: #timelineC;
     background: #efefef;
+    // visibility: hidden;
 
-    .transition( width, 300ms, ease, 1s);
+    .transition( width, 300ms, ease);
 
     body.readmode &{
         width: @thinTimeW;
         margin-left: @thinNavW;
+        padding: 0;
         overflow: hidden;
+        .transition( width, 450ms, ease, 5s);
     }
 
 
@@ -46,8 +50,14 @@
         width: @lineW;
         height: 100%;
         left: 50%;
-        margin-left: (-@lineW/2);
+        margin-left: @lineMarginLeft;
         background: @lineBGC;
+    }
+
+    body.readmode & #line{
+        // #timeline的宽度specilize之后,不再有padding-right, 所以只要修正自身宽度即可
+        margin-left: -( @lineW/2 );
+        .transition( margin, 300ms, ease, 1s);
     }
 
 
@@ -216,7 +226,7 @@
     }
     body.readmode & .iterm.left{
         left: 50%;
-        margin-left: (-@thinBubbleW/2);
+        margin-left: @readingItermPosFix;
 
         .bubble{
             left: ( (@thinTimeW - @thinBubbleW) /2 );
@@ -243,7 +253,7 @@
     }
     body.readmode & .iterm.right{
         left: 50%;
-        margin-left: (-@thinBubbleW/2);
+        margin-left: @readingItermPosFix;
         .bubble{
             left: ( (@thinTimeW - @thinBubbleW) /2 );
         }
