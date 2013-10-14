@@ -10,17 +10,15 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   background: #efefef;
-  -webkit-transition: width 300ms ease 0;
-  -moz-transition: width 300ms ease 0;
-  -ms-transition: width 300ms ease 0;
-  -o-transition: width 300ms ease 0;
-  transition: width 300ms ease 0;
+  -webkit-transition: width 300ms ease;
+  -moz-transition: width 300ms ease;
+  -ms-transition: width 300ms ease;
+  -o-transition: width 300ms ease;
+  transition: width 300ms ease;
 }
 /* line 26, timeline.less */
 body.readmode #timeline {
-  width: 250px;
   margin-left: 240px;
-  padding: 0;
   overflow: hidden;
   -webkit-transition: width 450ms ease 5s;
   -moz-transition: width 450ms ease 5s;
@@ -41,7 +39,7 @@ body.readmode #timeline {
 }
 /* line 43, timeline.less */
 body.readmode #timeline ul#itermCtn {
-  width: 250px;
+  width: 300px;
 }
 /* line 48, timeline.less */
 #timeline #line {
@@ -75,27 +73,22 @@ body.readmode #timeline #line {
 }
 /* line 73, timeline.less */
 body.readmode #timeline .iterm {
-  width: 250px;
+  width: 300px;
   min-height: 6em;
 }
-/* line 78, timeline.less */
-body.readmode #timeline .iterm:hover {
+/* line 79, timeline.less */
+.transition( top 300ms ease, left 300ms ease ) body.readmode #timeline .iterm:hover {
   padding-top: 20px;
   border-top: 1px solid rgba(0, 0, 0, 0.35);
 }
-/* line 82, timeline.less */
-body.readmode #timeline .iterm:hover .bubble {
-  opacity: 1;
-  height: auto;
-}
-/* line 86, timeline.less */
-body.readmode #timeline .iterm:hover .linetag {
+/* line 87, timeline.less */
+.transition( top 300ms ease, left 300ms ease ) body.readmode #timeline .iterm:hover .linetag {
   top: -15px;
-  left: 115px;
+  left: 140px;
   width: 20px;
   height: 20px;
 }
-/* line 96, timeline.less */
+/* line 97, timeline.less */
 #timeline .iterm .bubble {
   position: relative;
   width: 474px;
@@ -111,24 +104,24 @@ body.readmode #timeline .iterm:hover .linetag {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  -webkit-transition: all 300ms ease 0;
-  -moz-transition: all 300ms ease 0;
-  -ms-transition: all 300ms ease 0;
-  -o-transition: all 300ms ease 0;
-  transition: all 300ms ease 0;
+  -webkit-transition: all 300ms ease;
+  -moz-transition: all 300ms ease;
+  -ms-transition: all 300ms ease;
+  -o-transition: all 300ms ease;
+  transition: all 300ms ease;
 }
-/* line 114, timeline.less */
+/* line 115, timeline.less */
 #timeline .iterm .bubble .top {
   margin: 0 0 0.5em 0;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
   cursor: pointer;
 }
-/* line 123, timeline.less */
+/* line 124, timeline.less */
 #timeline .iterm .bubble .bottom {
   margin: 0.5em 0 0 0;
 }
-/* line 127, timeline.less */
+/* line 128, timeline.less */
 #timeline .iterm .bubble h1,
 #timeline .iterm .bubble h2,
 #timeline .iterm .bubble h3,
@@ -136,22 +129,22 @@ body.readmode #timeline .iterm:hover .linetag {
 #timeline .iterm .bubble h5 {
   margin: 0;
 }
-/* line 131, timeline.less */
+/* line 132, timeline.less */
 #timeline .iterm .bubble h2 {
   font-size: 1.125em;
 }
-/* line 134, timeline.less */
+/* line 135, timeline.less */
 #timeline .iterm .bubble h3 {
   font-size: 1em;
 }
-/* line 137, timeline.less */
+/* line 138, timeline.less */
 #timeline .iterm .bubble p {
   margin: 0;
   line-height: 1.25em;
   font-size: 0.9em;
   text-indent: 0em;
 }
-/* line 143, timeline.less */
+/* line 144, timeline.less */
 #timeline .iterm .bubble blockquote {
   border: none;
   border-left: 3px solid #212E32;
@@ -161,39 +154,39 @@ body.readmode #timeline .iterm:hover .linetag {
   box-sizing: border-box;
   padding: 0.125em 0.25em;
 }
-/* line 149, timeline.less */
+/* line 150, timeline.less */
 #timeline .iterm .bubble blockquote p {
   text-indent: 0;
   color: #999;
   font-style: italic;
 }
-/* line 156, timeline.less */
+/* line 157, timeline.less */
 body.readmode #timeline .iterm .bubble {
   opacity: 1;
   height: auto;
-  width: 230px;
+  width: 280px;
   transition: all 400ms ease;
   z-index: 1000;
 }
-/* line 163, timeline.less */
+/* line 164, timeline.less */
 body.readmode #timeline .iterm .bubble h2 {
   font-size: 1em;
 }
-/* line 167, timeline.less */
+/* line 168, timeline.less */
 body.readmode #timeline .iterm .bubble .top {
   margin: 0 0 0.5em 0;
   border: none;
   border-bottom: 2px solid rgba(0, 0, 0, 0.125);
 }
-/* line 172, timeline.less */
+/* line 173, timeline.less */
 body.readmode #timeline .iterm .bubble .middle {
   display: none;
 }
-/* line 175, timeline.less */
+/* line 176, timeline.less */
 body.readmode #timeline .iterm .bubble .bottom {
   display: none;
 }
-/* line 182, timeline.less */
+/* line 183, timeline.less */
 #timeline .iterm .connect {
   position: absolute;
   top: 13.333333333333334px;
@@ -202,11 +195,11 @@ body.readmode #timeline .iterm .bubble .bottom {
   padding: 0;
   border: none;
 }
-/* line 191, timeline.less */
+/* line 192, timeline.less */
 body.readmode #timeline .iterm .connect {
   display: none;
 }
-/* line 196, timeline.less */
+/* line 197, timeline.less */
 #timeline .iterm .linetag {
   position: absolute;
   top: 13.333333333333334px;
@@ -217,62 +210,62 @@ body.readmode #timeline .iterm .connect {
   -moz-border-radius: 20px;
   border-radius: 20px;
 }
-/* line 204, timeline.less */
+/* line 205, timeline.less */
 body.readmode #timeline .iterm .linetag {
   position: absolute;
-  left: 111.25px;
+  left: 136.25px;
   width: 27.5px;
   height: 27.5px;
 }
-/* line 213, timeline.less */
+/* line 214, timeline.less */
 #timeline .iterm.left {
   left: 0;
 }
-/* line 215, timeline.less */
+/* line 216, timeline.less */
 #timeline .iterm.left .connect {
   right: 14px;
   border-top: 10.666666666666666px solid transparent;
   border-left: 12px solid #ffffff;
   border-bottom: 10.666666666666666px solid transparent;
 }
-/* line 223, timeline.less */
+/* line 224, timeline.less */
 #timeline .iterm.left .linetag {
   right: -10px;
 }
-/* line 227, timeline.less */
+/* line 228, timeline.less */
 body.readmode #timeline .iterm.left {
   left: 50%;
-  margin-left: -115px;
+  margin-left: -150px;
 }
-/* line 231, timeline.less */
+/* line 232, timeline.less */
 body.readmode #timeline .iterm.left .bubble {
   left: 10px;
 }
-/* line 237, timeline.less */
+/* line 238, timeline.less */
 #timeline .iterm.right {
   left: 500px;
 }
-/* line 239, timeline.less */
+/* line 240, timeline.less */
 #timeline .iterm.right .bubble {
   left: 26px;
 }
-/* line 243, timeline.less */
+/* line 244, timeline.less */
 #timeline .iterm.right .connect {
   left: 14px;
   border-top: 10.666666666666666px solid transparent;
   border-right: 12px solid #ffffff;
   border-bottom: 10.666666666666666px solid transparent;
 }
-/* line 250, timeline.less */
+/* line 251, timeline.less */
 #timeline .iterm.right .linetag {
   left: -10px;
 }
-/* line 254, timeline.less */
+/* line 255, timeline.less */
 body.readmode #timeline .iterm.right {
   left: 50%;
-  margin-left: -115px;
+  margin-left: -150px;
 }
-/* line 257, timeline.less */
+/* line 258, timeline.less */
 body.readmode #timeline .iterm.right .bubble {
   left: 10px;
 }

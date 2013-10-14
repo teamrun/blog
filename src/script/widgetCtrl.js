@@ -1,5 +1,6 @@
 define(function( require, exports, module ){
     var util = require('./util');
+    var timeline = require('./timeline');
 
     var $ = util.qs;
 

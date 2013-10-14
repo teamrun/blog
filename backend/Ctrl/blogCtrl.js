@@ -5,6 +5,9 @@ var Valid = require('../Base/valid');
 var titleReg = new RegExp( /#+.+\n/);
 var imgReg = new RegExp(/\!\[.+\]\(.+\)/);
 
+
+console.log( dbo );
+
 function getSummery( content ){
 	var summery;
 	if( content.length < 120 ){

@@ -5,7 +5,7 @@
 
 // timeline细节布局
 @timelineZoneW: 1000px;
-@thinTimeW: 250px;
+@thinTimeW: 300px;
 
 @timelineMargin: 0 0 0 (@navW/2);
 @timelinePadding:0 (@navW/2);
@@ -32,7 +32,7 @@
 @thinBubbleW: ( @thinTimeW - 20px );
 
 // @readingItermPosFix: (0 - @thinBubbleW/2 - @navW/2 );
-@readingItermPosFix: (0 - @thinBubbleW/2 );
+@readingItermPosFix: (0 - @thinItermW/2 );
 
 // @sectionW: 100% - @navW - @timelineW;
 @sectionW: ( 1440px - @thinNavW - @thinTimeW );
@@ -72,10 +72,25 @@
     box-sizing: @box;
 }
 
-.transition( @v1:all, @v2:300ms, @v3:ease, @delay: 0){
-    -webkit-transition: @v1 @v2 @v3 @delay;
-    -moz-transition: @v1 @v2 @v3 @delay;
-    -ms-transition: @v1 @v2 @v3 @delay;
-    -o-transition: @v1 @v2 @v3 @delay;
-    transition: @v1 @v2 @v3 @delay;
+// 函数重载```
+.trans( @r: all 300ms ease ){
+    -webkit-transition: @r;
+    -moz-transition: @r;
+    -ms-transition: @r;
+    -o-transition: @r;
+    transition: @r;
+}
+.trans( @r1, @r2 ){
+    -webkit-transition: @r1, @r2;
+    -moz-transition: @r1, @r2;
+    -ms-transition: @r1, @r2;
+    -o-transition: @r1, @r2;
+    transition: @r1, @r2;
+}
+.trans( @r1, @r2, @r3 ){
+    -webkit-transition: @r1, @r2, @r3;
+    -moz-transition: @r1, @r2, @r3;
+    -ms-transition: @r1, @r2, @r3;
+    -o-transition: @r1, @r2, @r3;
+    transition: @r1, @r2, @r3;
 }

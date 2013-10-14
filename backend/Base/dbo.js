@@ -1,26 +1,32 @@
 var mongoose = require('mongoose');
 
 var config = require('./config');
-var child = require('child_process')
-    , exec = child.exec;
 
-exec('mongo', function(err, stdout, stderr){
-	if( stderr ){
-		startMongod();
-	}
-	else{
-		initDB();
-	}
-});
 
-function startMongod(){
-	exec('mongod', function(err, stdout, stderr){
-		if( !err && !stderr ){
-			initDB();
-		}
-	} );
-}
-function initDB(){
+var Blog, Comment;
+
+// var child = require('child_process'),
+// 	exec = child.exec;
+// 必须使用同步方法,因为exports方法必须在最外面执行,不能被包裹在{}中,而且导出的对象也是
+// exec('mongo', function(err, stdout, stderr){
+// 	if( stderr ){
+// 		startMongod();
+// 	}
+// 	else{
+// 		// initDB();
+// 	}
+// });
+
+// function startMongod(){
+// 	exec('mongod', function(err, stdout, stderr){
+// 		if( !err && !stderr ){
+// 			// initDB();
+// 		}
+// 	} );
+// }
+
+// sleep( 2000 );
+// function initDB(){
 	
 	var connect = mongoose.connect('mongodb://localhost/blog');
 	var blogSchema = mongoose.Schema({
@@ -37,7 +43,7 @@ function initDB(){
 		tag: Array
 	});
 
-	var Blog = mongoose.model('blog', blogSchema);
+	Blog = mongoose.model('blog', blogSchema);
 
 	var firstBlog = new Blog({
 		title: '搭建自己的博客',
@@ -64,9 +70,26 @@ function initDB(){
 		// subcom
 	});
 
-	var Comment = mongoose.model( 'comment', commentSchema );
-	
+	Comment = mongoose.model( 'comment', commentSchema );
 
-	exports.Blog = Blog;
-	exports.Comment = Comment;
+// }
+
+// setTimeout()
+
+
+console.log( Blog );
+
+
+function sleep( ms ){
+	var starter = Date.now();
+	while(true){
+		if( Date.now() - starter > ms ){
+			break;
+		}
+	}
+
+	return false;
 }
+
+exports.Blog = Blog;
+exports.Comment = Comment;

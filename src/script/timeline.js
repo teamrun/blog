@@ -36,33 +36,41 @@ define(function( require, exports, module){
 
 
         this.position = function(){
-            var iterms = $A( thisClass.itermCtnSelector + ' .iterm.raw');
-            var itermCount = iterms.length;
-            var class2add;
-            for( var j=0; j< itermCount; j++ ){
-                if( thisClass.leftBottom >= this.rightBottom ){
-                    class2add = 'right';
-                }
-                else{
-                    class2add = 'left';
-                }
-                // 添加合适的类,添加定位数据
-                iterms[j].className = iterms[j].className.replace( 'raw', class2add );
-                iterms[j].style.top = thisClass[ class2add + 'Bottom' ] + 'px';
-                console.group();
-                console.log( 'now positioning for: ' + j );
-                console.log('it will be posed at: ' + thisClass[ class2add+'Bottom' ] );
+            // var iterms = $A( thisClass.itermCtnSelector + ' .iterm.raw');
+            // var itermCount = iterms.length;
+            // var class2add;
+            // for( var j=0; j< itermCount; j++ ){
+            //     if( thisClass.leftBottom >= this.rightBottom ){
+            //         class2add = 'right';
+            //     }
+            //     else{
+            //         class2add = 'left';
+            //     }
+            //     // 添加合适的类,添加定位数据
+            //     iterms[j].className = iterms[j].className.replace( 'raw', class2add );
+            //     iterms[j].style.top = thisClass[ class2add + 'Bottom' ] + 'px';
 
+            //     // 为下一次循环做准备
+            //     var curItermHeight = window.getComputedStyle( iterms[j] ).height;
+            //     curItermHeight = curItermHeight.substr( 0, curItermHeight.length-2 );
 
-                // 为下一次循环做准备
-                var curItermHeight = window.getComputedStyle( iterms[j] ).height;
-                curItermHeight = curItermHeight.substr( 0, curItermHeight.length-2 );
-                console.log( j+'\'s height is: ' + curItermHeight);
+            //     thisClass[ class2add+'Bottom' ] += Number( curItermHeight ) + Number( thisClass.defaultMargin );
+            // }
 
-                thisClass[ class2add+'Bottom' ] += Number( curItermHeight ) + Number( thisClass.defaultMargin );
-                console.log( thisClass[ class2add+'Bottom' ] );
-                console.groupEnd();
-            }
+            var opt = {
+                targetSelector: thisClass.itermCtnSelector + ' .iterm.raw',
+                // refSelector: '',
+                classDef: true,
+                class1: 'left',
+                class2: 'right',
+                class1B: thisClass.leftBottom,
+                class2B: thisClass.rightBottom,
+                defaultMargin: thisClass.defaultMargin,
+                class2repalce: 'raw'
+            };
+            console.log( opt );
+
+            posDom( opt );
         };
 
         this.init = function(){
@@ -93,6 +101,16 @@ define(function( require, exports, module){
 
             UI.switchStatus();
 
+            var option = {
+                targetSelector: '#timeline .iterm',
+                refSelector: '#timeline .iterm .bubble',
+                defaultMargin: 60,
+                classDef: false,
+                curTopOffset: 0
+            };
+
+            posDom( option );
+
             // var tmpBlog = new Blog({
             //     title: target.innerHTML,
             //     _id: target.dataset[blogIdentitifor]
@@ -112,11 +130,37 @@ define(function( require, exports, module){
         var refs = $A( refSelector );
         var len = refs.length;
         if( classDef ){
-            var class2add;
+            var class2add, top2add;
+            var class1B = opt.class1B||1, class2B = opt.class2B||0;
+            var class1 = opt.class1, class2 = opt.class2;
+            var defaultMargin = opt.defaultMargin;
 
+            var class2repalce=opt.class2repalce;
+            // var startB1 = opt.startB1||0, startB2 = opt.startB2||-1;
+
+            var curItermHeight;
             for( var i=0; i<len ;i++ ){
 
+                // 计算当前元素的高度
+                curItermHeight = window.getComputedStyle( targets[i] ).height;
+                curItermHeight = curItermHeight.substr( 0, curItermHeight.length-2 );
+                // 确定要添加的类 和 更新两个"底部值""
+                if( class1B >= class2B ){
+                    class2add = class2;
+                    // 给元素添加定位信息top
+                    top2add = class2B;
+                    class2B += Number( curItermHeight ) + Number( defaultMargin );
+                }
+                else{
+                    class2add = class1;
+                    top2add = class1B;
+                    class1B += Number( curItermHeight ) + Number( defaultMargin );
+                }
+                targets[i].className = targets[i].className.replace( class2repalce, class2add );
+                targets[i].style.top = top2add + 'px';
             }
+
+            return [ class1B, class2B ];
         }
         else{
             for( var i=0; i<len ;i++ ){

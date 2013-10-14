@@ -21,14 +21,14 @@
     background: #efefef;
     // visibility: hidden;
 
-    .transition( width, 300ms, ease);
+    .trans( width 300ms ease);
 
     body.readmode &{
         width: @thinTimeW;
         margin-left: @thinNavW;
         padding: 0;
         overflow: hidden;
-        .transition( width, 450ms, ease, 5s);
+        .trans( all 550ms ease 500ms);
     }
 
 
@@ -57,7 +57,7 @@
     body.readmode & #line{
         // #timeline的宽度specilize之后,不再有padding-right, 所以只要修正自身宽度即可
         margin-left: -( @lineW/2 );
-        .transition( margin, 300ms, ease, 1s);
+        .trans( margin 300ms ease 300ms);
     }
 
 
@@ -68,21 +68,23 @@
         .box-sizing();
         font-size: 1em;
         min-height: 4em;
-        outline: 1px solid pink;
+
+        // outline: 1px solid pink;
 
         body.readmode &{
             width: @thinItermW;
             min-height: 6em;
+            .trans( all 300ms ease);
 
             &:hover{
                 &{
                     padding-top: @lineTagW;
-                    border-top: 1px solid rgba(0,0,0,0.35);
+                    // border-top: 1px solid rgba(0,0,0,0.35);
                 }
-                .bubble{
-                    opacity: 1;
-                    height: auto;
-                }
+                // .bubble{
+                //     opacity: 1;
+                //     height: auto;
+                // }
                 .linetag{
                     top: (-@thinConnectH/2);
                     left: ( @thinTimeW /2 - @lineTagW*0.5 );
@@ -108,7 +110,7 @@
 
             .iterm-border-radius( 5px );
 
-            .transition();
+            .trans();
 
 
             .top{

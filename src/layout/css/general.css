@@ -106,22 +106,22 @@ body.readmode .piece li {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   background: #efefef;
-  -webkit-transition: width 300ms ease 0;
-  -moz-transition: width 300ms ease 0;
-  -ms-transition: width 300ms ease 0;
-  -o-transition: width 300ms ease 0;
-  transition: width 300ms ease 0;
+  -webkit-transition: width 300ms ease;
+  -moz-transition: width 300ms ease;
+  -ms-transition: width 300ms ease;
+  -o-transition: width 300ms ease;
+  transition: width 300ms ease;
 }
 body.readmode #timeline {
-  width: 250px;
+  width: 300px;
   margin-left: 240px;
   padding: 0;
   overflow: hidden;
-  -webkit-transition: width 450ms ease 5s;
-  -moz-transition: width 450ms ease 5s;
-  -ms-transition: width 450ms ease 5s;
-  -o-transition: width 450ms ease 5s;
-  transition: width 450ms ease 5s;
+  -webkit-transition: all 550ms ease 500ms;
+  -moz-transition: all 550ms ease 500ms;
+  -ms-transition: all 550ms ease 500ms;
+  -o-transition: all 550ms ease 500ms;
+  transition: all 550ms ease 500ms;
 }
 #timeline ul#itermCtn {
   position: relative;
@@ -134,7 +134,7 @@ body.readmode #timeline {
   list-style: none;
 }
 body.readmode #timeline ul#itermCtn {
-  width: 250px;
+  width: 300px;
 }
 #timeline #line {
   position: absolute;
@@ -145,12 +145,12 @@ body.readmode #timeline ul#itermCtn {
   background: rgba(255, 255, 255, 0.7);
 }
 body.readmode #timeline #line {
-  margin-left: -(4px/2);
-  -webkit-transition: margin 300ms ease 1s;
-  -moz-transition: margin 300ms ease 1s;
-  -ms-transition: margin 300ms ease 1s;
-  -o-transition: margin 300ms ease 1s;
-  transition: margin 300ms ease 1s;
+  margin-left: -2px;
+  -webkit-transition: margin 300ms ease 300ms;
+  -moz-transition: margin 300ms ease 300ms;
+  -ms-transition: margin 300ms ease 300ms;
+  -o-transition: margin 300ms ease 300ms;
+  transition: margin 300ms ease 300ms;
 }
 #timeline .iterm {
   position: absolute;
@@ -161,23 +161,22 @@ body.readmode #timeline #line {
   box-sizing: border-box;
   font-size: 1em;
   min-height: 4em;
-  outline: 1px solid pink;
 }
 body.readmode #timeline .iterm {
-  width: 250px;
+  width: 300px;
   min-height: 6em;
+  -webkit-transition: all 300ms ease;
+  -moz-transition: all 300ms ease;
+  -ms-transition: all 300ms ease;
+  -o-transition: all 300ms ease;
+  transition: all 300ms ease;
 }
 body.readmode #timeline .iterm:hover {
   padding-top: 20px;
-  border-top: 1px solid rgba(0, 0, 0, 0.35);
-}
-body.readmode #timeline .iterm:hover .bubble {
-  opacity: 1;
-  height: auto;
 }
 body.readmode #timeline .iterm:hover .linetag {
   top: -15px;
-  left: 115px;
+  left: 140px;
   width: 20px;
   height: 20px;
 }
@@ -196,11 +195,11 @@ body.readmode #timeline .iterm:hover .linetag {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  -webkit-transition: all 300ms ease 0;
-  -moz-transition: all 300ms ease 0;
-  -ms-transition: all 300ms ease 0;
-  -o-transition: all 300ms ease 0;
-  transition: all 300ms ease 0;
+  -webkit-transition: all 300ms ease;
+  -moz-transition: all 300ms ease;
+  -ms-transition: all 300ms ease;
+  -o-transition: all 300ms ease;
+  transition: all 300ms ease;
 }
 #timeline .iterm .bubble .top {
   margin: 0 0 0.5em 0;
@@ -247,7 +246,7 @@ body.readmode #timeline .iterm:hover .linetag {
 body.readmode #timeline .iterm .bubble {
   opacity: 1;
   height: auto;
-  width: 230px;
+  width: 280px;
   transition: all 400ms ease;
   z-index: 1000;
 }
@@ -288,7 +287,7 @@ body.readmode #timeline .iterm .connect {
 }
 body.readmode #timeline .iterm .linetag {
   position: absolute;
-  left: 111.25px;
+  left: 136.25px;
   width: 27.5px;
   height: 27.5px;
 }
@@ -306,7 +305,7 @@ body.readmode #timeline .iterm .linetag {
 }
 body.readmode #timeline .iterm.left {
   left: 50%;
-  margin-left: -115px;
+  margin-left: -150px;
 }
 body.readmode #timeline .iterm.left .bubble {
   left: 10px;
@@ -328,7 +327,7 @@ body.readmode #timeline .iterm.left .bubble {
 }
 body.readmode #timeline .iterm.right {
   left: 50%;
-  margin-left: -115px;
+  margin-left: -150px;
 }
 body.readmode #timeline .iterm.right .bubble {
   left: 10px;
@@ -360,6 +359,10 @@ header {
   overflow-y: hidden;
   box-shadow: 0 0 0.75em rgba(0, 0, 0, 0.4);
   z-index: 1000;
+  -webkit-transition: width 300ms ease;
+  -moz-transition: width 300ms ease;
+  -ms-transition: width 300ms ease;
+  -o-transition: width 300ms ease;
   transition: width 300ms ease;
 }
 section {
@@ -395,9 +398,9 @@ body.readmode header {
 }
 body.readmode section {
   width: 100%;
-  margin-left: 490px;
+  margin-left: 540px;
   padding: 1em 4em;
-  padding-right: 522.5px;
+  padding-right: 572.5px;
 }
 body.readmode section #widget #collapse {
   height: 2em;
