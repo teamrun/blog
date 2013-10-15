@@ -1,3 +1,5 @@
+/**^^^^^^^^^^^^^^^ 第二期工程 ^^^^^^^^^^^^^^^^^**/
+/* line 4, nav.less */
 nav {
   width: 200px;
   height: 100%;
@@ -8,46 +10,56 @@ nav {
   box-sizing: border-box;
   vertical-align: top;
 }
+/* line 12, nav.less */
 nav ul {
   list-style: none;
   padding: 0;
   text-align: center;
 }
+/* line 18, nav.less */
 nav ul li {
   font-size: 1.5em;
   padding: 0 0.5em;
   transition: all 300ms ease;
 }
+/* line 22, nav.less */
 nav ul li:hover {
   background: #fff;
 }
+/* line 24, nav.less */
 nav ul li:hover a {
   color: #4e9bb9;
 }
+/* line 28, nav.less */
 nav ul li a {
   display: block;
   color: #ffffff;
   text-decoration: none;
   transition: all 300ms ease;
 }
+/* line 4, reading.less */
 body.readmode .piece {
   top: 0;
   font-size: 1em;
 }
+/* line 8, reading.less */
 body.readmode .piece.go {
   opacity: 0;
   height: 0;
   overflow: hidden;
 }
+/* line 14, reading.less */
 body.readmode .piece.wait2come {
   opacity: 0;
   height: 0;
 }
+/* line 19, reading.less */
 body.readmode .piece.reading {
   left: 0;
   opacity: 1;
   height: auto;
 }
+/* line 24, reading.less */
 body.readmode .piece h1,
 body.readmode .piece h2,
 body.readmode .piece h3,
@@ -56,10 +68,12 @@ body.readmode .piece h5 {
   text-align: left;
   margin-bottom: 0.75em;
 }
+/* line 30, reading.less */
 body.readmode .piece p {
   margin: 0;
   line-height: 1.25em;
 }
+/* line 35, reading.less */
 body.readmode .piece img {
   max-width: 80%;
   height: auto;
@@ -67,6 +81,7 @@ body.readmode .piece img {
   text-align: center;
   box-shadow: 0 0 0.75em rgba(0, 0, 0, 0.375);
 }
+/* line 42, reading.less */
 body.readmode .piece blockquote {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -76,26 +91,31 @@ body.readmode .piece blockquote {
   border: 0.375em none #999;
   border-left-style: solid;
 }
+/* line 50, reading.less */
 body.readmode .piece blockquote p {
   text-indent: 1em;
   margin: 0em;
   color: #888;
   font-style: italic;
 }
+/* line 56, reading.less */
 body.readmode .piece pre code {
   font-size: 0.875em;
   line-height: 1.375em;
   letter-spacing: 0.075em;
 }
+/* line 62, reading.less */
 body.readmode .piece ol,
 body.readmode .piece ul {
   padding: 0 0 0 5em;
   margin: 1.5em 0;
 }
+/* line 67, reading.less */
 body.readmode .piece li {
   padding: 0.375em 0;
 }
 /*  ------------ details of timeline  -----------*/
+/* line 12, timeline.less */
 #timeline {
   position: relative;
   width: 100%;
@@ -112,17 +132,19 @@ body.readmode .piece li {
   -o-transition: width 300ms ease;
   transition: width 300ms ease;
 }
+/* line 26, timeline.less */
 body.readmode #timeline {
   width: 300px;
   margin-left: 240px;
   padding: 0;
   overflow: hidden;
-  -webkit-transition: all 550ms ease 500ms;
-  -moz-transition: all 550ms ease 500ms;
-  -ms-transition: all 550ms ease 500ms;
-  -o-transition: all 550ms ease 500ms;
-  transition: all 550ms ease 500ms;
+  -webkit-transition: all 450ms ease 450ms;
+  -moz-transition: all 450ms ease 450ms;
+  -ms-transition: all 450ms ease 450ms;
+  -o-transition: all 450ms ease 450ms;
+  transition: all 450ms ease 450ms;
 }
+/* line 35, timeline.less */
 #timeline ul#itermCtn {
   position: relative;
   width: 1000px;
@@ -133,9 +155,11 @@ body.readmode #timeline {
   box-sizing: border-box;
   list-style: none;
 }
+/* line 43, timeline.less */
 body.readmode #timeline ul#itermCtn {
   width: 300px;
 }
+/* line 48, timeline.less */
 #timeline #line {
   position: absolute;
   width: 4px;
@@ -144,6 +168,7 @@ body.readmode #timeline ul#itermCtn {
   margin-left: -2px;
   background: rgba(255, 255, 255, 0.7);
 }
+/* line 57, timeline.less */
 body.readmode #timeline #line {
   margin-left: -2px;
   -webkit-transition: margin 300ms ease 300ms;
@@ -152,6 +177,7 @@ body.readmode #timeline #line {
   -o-transition: margin 300ms ease 300ms;
   transition: margin 300ms ease 300ms;
 }
+/* line 64, timeline.less */
 #timeline .iterm {
   position: absolute;
   width: 500px;
@@ -162,6 +188,7 @@ body.readmode #timeline #line {
   font-size: 1em;
   min-height: 4em;
 }
+/* line 74, timeline.less */
 body.readmode #timeline .iterm {
   width: 300px;
   min-height: 6em;
@@ -171,15 +198,18 @@ body.readmode #timeline .iterm {
   -o-transition: all 300ms ease;
   transition: all 300ms ease;
 }
+/* line 80, timeline.less */
 body.readmode #timeline .iterm:hover {
   padding-top: 20px;
 }
+/* line 88, timeline.less */
 body.readmode #timeline .iterm:hover .linetag {
   top: -15px;
   left: 140px;
   width: 20px;
   height: 20px;
 }
+/* line 98, timeline.less */
 #timeline .iterm .bubble {
   position: relative;
   width: 474px;
@@ -201,15 +231,18 @@ body.readmode #timeline .iterm:hover .linetag {
   -o-transition: all 300ms ease;
   transition: all 300ms ease;
 }
+/* line 116, timeline.less */
 #timeline .iterm .bubble .top {
   margin: 0 0 0.5em 0;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
   cursor: pointer;
 }
+/* line 125, timeline.less */
 #timeline .iterm .bubble .bottom {
   margin: 0.5em 0 0 0;
 }
+/* line 129, timeline.less */
 #timeline .iterm .bubble h1,
 #timeline .iterm .bubble h2,
 #timeline .iterm .bubble h3,
@@ -217,18 +250,22 @@ body.readmode #timeline .iterm:hover .linetag {
 #timeline .iterm .bubble h5 {
   margin: 0;
 }
+/* line 133, timeline.less */
 #timeline .iterm .bubble h2 {
   font-size: 1.125em;
 }
+/* line 136, timeline.less */
 #timeline .iterm .bubble h3 {
   font-size: 1em;
 }
+/* line 139, timeline.less */
 #timeline .iterm .bubble p {
   margin: 0;
   line-height: 1.25em;
   font-size: 0.9em;
   text-indent: 0em;
 }
+/* line 145, timeline.less */
 #timeline .iterm .bubble blockquote {
   border: none;
   border-left: 3px solid #212E32;
@@ -238,11 +275,13 @@ body.readmode #timeline .iterm:hover .linetag {
   box-sizing: border-box;
   padding: 0.125em 0.25em;
 }
+/* line 151, timeline.less */
 #timeline .iterm .bubble blockquote p {
   text-indent: 0;
   color: #999;
   font-style: italic;
 }
+/* line 158, timeline.less */
 body.readmode #timeline .iterm .bubble {
   opacity: 1;
   height: auto;
@@ -250,20 +289,25 @@ body.readmode #timeline .iterm .bubble {
   transition: all 400ms ease;
   z-index: 1000;
 }
+/* line 165, timeline.less */
 body.readmode #timeline .iterm .bubble h2 {
   font-size: 1em;
 }
+/* line 169, timeline.less */
 body.readmode #timeline .iterm .bubble .top {
   margin: 0 0 0.5em 0;
   border: none;
   border-bottom: 2px solid rgba(0, 0, 0, 0.125);
 }
+/* line 174, timeline.less */
 body.readmode #timeline .iterm .bubble .middle {
   display: none;
 }
+/* line 177, timeline.less */
 body.readmode #timeline .iterm .bubble .bottom {
   display: none;
 }
+/* line 184, timeline.less */
 #timeline .iterm .connect {
   position: absolute;
   top: 13.333333333333334px;
@@ -272,9 +316,11 @@ body.readmode #timeline .iterm .bubble .bottom {
   padding: 0;
   border: none;
 }
+/* line 193, timeline.less */
 body.readmode #timeline .iterm .connect {
   display: none;
 }
+/* line 198, timeline.less */
 #timeline .iterm .linetag {
   position: absolute;
   top: 13.333333333333334px;
@@ -285,53 +331,66 @@ body.readmode #timeline .iterm .connect {
   -moz-border-radius: 20px;
   border-radius: 20px;
 }
+/* line 206, timeline.less */
 body.readmode #timeline .iterm .linetag {
   position: absolute;
   left: 136.25px;
   width: 27.5px;
   height: 27.5px;
 }
+/* line 215, timeline.less */
 #timeline .iterm.left {
   left: 0;
 }
+/* line 217, timeline.less */
 #timeline .iterm.left .connect {
   right: 14px;
   border-top: 10.666666666666666px solid transparent;
   border-left: 12px solid #ffffff;
   border-bottom: 10.666666666666666px solid transparent;
 }
+/* line 225, timeline.less */
 #timeline .iterm.left .linetag {
   right: -10px;
 }
+/* line 229, timeline.less */
 body.readmode #timeline .iterm.left {
   left: 50%;
   margin-left: -150px;
 }
+/* line 233, timeline.less */
 body.readmode #timeline .iterm.left .bubble {
   left: 10px;
 }
+/* line 239, timeline.less */
 #timeline .iterm.right {
   left: 500px;
 }
+/* line 241, timeline.less */
 #timeline .iterm.right .bubble {
   left: 26px;
 }
+/* line 245, timeline.less */
 #timeline .iterm.right .connect {
   left: 14px;
   border-top: 10.666666666666666px solid transparent;
   border-right: 12px solid #ffffff;
   border-bottom: 10.666666666666666px solid transparent;
 }
+/* line 252, timeline.less */
 #timeline .iterm.right .linetag {
   left: -10px;
 }
+/* line 256, timeline.less */
 body.readmode #timeline .iterm.right {
   left: 50%;
   margin-left: -150px;
 }
+/* line 259, timeline.less */
 body.readmode #timeline .iterm.right .bubble {
   left: 10px;
 }
+/* line 7, general.less */
 html,
 body {
   height: 100%;
@@ -342,9 +401,11 @@ body {
   color: #333333;
   font-family: 'Microsoft Yahei', '微软雅黑', 'STHeiti', 'SimHei', 'SimSun';
 }
+/* line 18, general.less */
 body {
   overflow-x: hidden;
 }
+/* line 21, general.less */
 header,
 section {
   position: fixed;
@@ -352,9 +413,14 @@ section {
   overflow-y: auto;
 }
 /* ------ 固定样式 and 常规样式 ------*/
+/* line 28, general.less */
 header {
   width: 300px;
   background: #4e9bb9;
+  background-image: url(../../image/headerBG.jpg);
+  background-size: auto 100%;
+  background-position: 50% 100%;
+  background-repeat: no-repeat;
   color: #ffffff;
   overflow-y: hidden;
   box-shadow: 0 0 0.75em rgba(0, 0, 0, 0.4);
@@ -365,6 +431,7 @@ header {
   -o-transition: width 300ms ease;
   transition: width 300ms ease;
 }
+/* line 45, general.less */
 section {
   position: static;
   -webkit-box-sizing: border-box;
@@ -374,12 +441,15 @@ section {
   background: #fff;
   margin-left: 540px;
 }
+/* line 52, general.less */
 section #blogCtn {
   position: relative;
 }
+/* line 54, general.less */
 section #blogCtn #blogCtn {
   position: absolute;
 }
+/* line 59, general.less */
 section #widget {
   position: absolute;
   bottom: 3em;
@@ -389,19 +459,28 @@ section #widget {
   background: #accded;
   cursor: pointer;
 }
+/* line 70, general.less */
 section img {
   max-width: 800px;
 }
 /* -------- 阅读模式, header略窄, timeline紧缩, section阅读区显示为主体  --------*/
+/* line 80, general.less */
 body.readmode header {
   width: 240px;
+  -webkit-transition: width 300ms ease 450ms;
+  -moz-transition: width 300ms ease 450ms;
+  -ms-transition: width 300ms ease 450ms;
+  -o-transition: width 300ms ease 450ms;
+  transition: width 300ms ease 450ms;
 }
+/* line 84, general.less */
 body.readmode section {
   width: 100%;
   margin-left: 540px;
   padding: 1em 4em;
   padding-right: 572.5px;
 }
+/* line 92, general.less */
 body.readmode section #widget #collapse {
   height: 2em;
   width: 100%;

@@ -1,3 +1,4 @@
+/**^^^^^^^^^^^^^^^ 第二期工程 ^^^^^^^^^^^^^^^^^**/
 /*  ------------ details of timeline  -----------*/
 /* line 12, timeline.less */
 #timeline {
@@ -18,13 +19,15 @@
 }
 /* line 26, timeline.less */
 body.readmode #timeline {
+  width: 300px;
   margin-left: 240px;
+  padding: 0;
   overflow: hidden;
-  -webkit-transition: width 450ms ease 5s;
-  -moz-transition: width 450ms ease 5s;
-  -ms-transition: width 450ms ease 5s;
-  -o-transition: width 450ms ease 5s;
-  transition: width 450ms ease 5s;
+  -webkit-transition: all 450ms ease 450ms;
+  -moz-transition: all 450ms ease 450ms;
+  -ms-transition: all 450ms ease 450ms;
+  -o-transition: all 450ms ease 450ms;
+  transition: all 450ms ease 450ms;
 }
 /* line 35, timeline.less */
 #timeline ul#itermCtn {
@@ -52,12 +55,12 @@ body.readmode #timeline ul#itermCtn {
 }
 /* line 57, timeline.less */
 body.readmode #timeline #line {
-  margin-left: -(4px/2);
-  -webkit-transition: margin 300ms ease 1s;
-  -moz-transition: margin 300ms ease 1s;
-  -ms-transition: margin 300ms ease 1s;
-  -o-transition: margin 300ms ease 1s;
-  transition: margin 300ms ease 1s;
+  margin-left: -2px;
+  -webkit-transition: margin 300ms ease 300ms;
+  -moz-transition: margin 300ms ease 300ms;
+  -ms-transition: margin 300ms ease 300ms;
+  -o-transition: margin 300ms ease 300ms;
+  transition: margin 300ms ease 300ms;
 }
 /* line 64, timeline.less */
 #timeline .iterm {
@@ -69,26 +72,29 @@ body.readmode #timeline #line {
   box-sizing: border-box;
   font-size: 1em;
   min-height: 4em;
-  outline: 1px solid pink;
 }
-/* line 73, timeline.less */
+/* line 74, timeline.less */
 body.readmode #timeline .iterm {
   width: 300px;
   min-height: 6em;
+  -webkit-transition: all 300ms ease;
+  -moz-transition: all 300ms ease;
+  -ms-transition: all 300ms ease;
+  -o-transition: all 300ms ease;
+  transition: all 300ms ease;
 }
-/* line 79, timeline.less */
-.transition( top 300ms ease, left 300ms ease ) body.readmode #timeline .iterm:hover {
+/* line 80, timeline.less */
+body.readmode #timeline .iterm:hover {
   padding-top: 20px;
-  border-top: 1px solid rgba(0, 0, 0, 0.35);
 }
-/* line 87, timeline.less */
-.transition( top 300ms ease, left 300ms ease ) body.readmode #timeline .iterm:hover .linetag {
+/* line 88, timeline.less */
+body.readmode #timeline .iterm:hover .linetag {
   top: -15px;
   left: 140px;
   width: 20px;
   height: 20px;
 }
-/* line 97, timeline.less */
+/* line 98, timeline.less */
 #timeline .iterm .bubble {
   position: relative;
   width: 474px;
@@ -110,18 +116,18 @@ body.readmode #timeline .iterm {
   -o-transition: all 300ms ease;
   transition: all 300ms ease;
 }
-/* line 115, timeline.less */
+/* line 116, timeline.less */
 #timeline .iterm .bubble .top {
   margin: 0 0 0.5em 0;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
   cursor: pointer;
 }
-/* line 124, timeline.less */
+/* line 125, timeline.less */
 #timeline .iterm .bubble .bottom {
   margin: 0.5em 0 0 0;
 }
-/* line 128, timeline.less */
+/* line 129, timeline.less */
 #timeline .iterm .bubble h1,
 #timeline .iterm .bubble h2,
 #timeline .iterm .bubble h3,
@@ -129,22 +135,22 @@ body.readmode #timeline .iterm {
 #timeline .iterm .bubble h5 {
   margin: 0;
 }
-/* line 132, timeline.less */
+/* line 133, timeline.less */
 #timeline .iterm .bubble h2 {
   font-size: 1.125em;
 }
-/* line 135, timeline.less */
+/* line 136, timeline.less */
 #timeline .iterm .bubble h3 {
   font-size: 1em;
 }
-/* line 138, timeline.less */
+/* line 139, timeline.less */
 #timeline .iterm .bubble p {
   margin: 0;
   line-height: 1.25em;
   font-size: 0.9em;
   text-indent: 0em;
 }
-/* line 144, timeline.less */
+/* line 145, timeline.less */
 #timeline .iterm .bubble blockquote {
   border: none;
   border-left: 3px solid #212E32;
@@ -154,13 +160,13 @@ body.readmode #timeline .iterm {
   box-sizing: border-box;
   padding: 0.125em 0.25em;
 }
-/* line 150, timeline.less */
+/* line 151, timeline.less */
 #timeline .iterm .bubble blockquote p {
   text-indent: 0;
   color: #999;
   font-style: italic;
 }
-/* line 157, timeline.less */
+/* line 158, timeline.less */
 body.readmode #timeline .iterm .bubble {
   opacity: 1;
   height: auto;
@@ -168,25 +174,25 @@ body.readmode #timeline .iterm .bubble {
   transition: all 400ms ease;
   z-index: 1000;
 }
-/* line 164, timeline.less */
+/* line 165, timeline.less */
 body.readmode #timeline .iterm .bubble h2 {
   font-size: 1em;
 }
-/* line 168, timeline.less */
+/* line 169, timeline.less */
 body.readmode #timeline .iterm .bubble .top {
   margin: 0 0 0.5em 0;
   border: none;
   border-bottom: 2px solid rgba(0, 0, 0, 0.125);
 }
-/* line 173, timeline.less */
+/* line 174, timeline.less */
 body.readmode #timeline .iterm .bubble .middle {
   display: none;
 }
-/* line 176, timeline.less */
+/* line 177, timeline.less */
 body.readmode #timeline .iterm .bubble .bottom {
   display: none;
 }
-/* line 183, timeline.less */
+/* line 184, timeline.less */
 #timeline .iterm .connect {
   position: absolute;
   top: 13.333333333333334px;
@@ -195,11 +201,11 @@ body.readmode #timeline .iterm .bubble .bottom {
   padding: 0;
   border: none;
 }
-/* line 192, timeline.less */
+/* line 193, timeline.less */
 body.readmode #timeline .iterm .connect {
   display: none;
 }
-/* line 197, timeline.less */
+/* line 198, timeline.less */
 #timeline .iterm .linetag {
   position: absolute;
   top: 13.333333333333334px;
@@ -210,62 +216,62 @@ body.readmode #timeline .iterm .connect {
   -moz-border-radius: 20px;
   border-radius: 20px;
 }
-/* line 205, timeline.less */
+/* line 206, timeline.less */
 body.readmode #timeline .iterm .linetag {
   position: absolute;
   left: 136.25px;
   width: 27.5px;
   height: 27.5px;
 }
-/* line 214, timeline.less */
+/* line 215, timeline.less */
 #timeline .iterm.left {
   left: 0;
 }
-/* line 216, timeline.less */
+/* line 217, timeline.less */
 #timeline .iterm.left .connect {
   right: 14px;
   border-top: 10.666666666666666px solid transparent;
   border-left: 12px solid #ffffff;
   border-bottom: 10.666666666666666px solid transparent;
 }
-/* line 224, timeline.less */
+/* line 225, timeline.less */
 #timeline .iterm.left .linetag {
   right: -10px;
 }
-/* line 228, timeline.less */
+/* line 229, timeline.less */
 body.readmode #timeline .iterm.left {
   left: 50%;
   margin-left: -150px;
 }
-/* line 232, timeline.less */
+/* line 233, timeline.less */
 body.readmode #timeline .iterm.left .bubble {
   left: 10px;
 }
-/* line 238, timeline.less */
+/* line 239, timeline.less */
 #timeline .iterm.right {
   left: 500px;
 }
-/* line 240, timeline.less */
+/* line 241, timeline.less */
 #timeline .iterm.right .bubble {
   left: 26px;
 }
-/* line 244, timeline.less */
+/* line 245, timeline.less */
 #timeline .iterm.right .connect {
   left: 14px;
   border-top: 10.666666666666666px solid transparent;
   border-right: 12px solid #ffffff;
   border-bottom: 10.666666666666666px solid transparent;
 }
-/* line 251, timeline.less */
+/* line 252, timeline.less */
 #timeline .iterm.right .linetag {
   left: -10px;
 }
-/* line 255, timeline.less */
+/* line 256, timeline.less */
 body.readmode #timeline .iterm.right {
   left: 50%;
   margin-left: -150px;
 }
-/* line 258, timeline.less */
+/* line 259, timeline.less */
 body.readmode #timeline .iterm.right .bubble {
   left: 10px;
 }

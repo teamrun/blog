@@ -28,13 +28,17 @@ header, section{
 header{
     width: @navW;
     background: @headerBGC;
+    background-image: url(../../image/headerBG.jpg);
+    background-size: auto 100%;
+    background-position: 50% 100%;
+    background-repeat: no-repeat;
     // background: #eee;
     color: @headerC;
     overflow-y: hidden;
     box-shadow: 0 0 0.75em rgba(0,0,0,0.4);
     z-index: 1000;
 
-    .trans(width 300ms ease);
+    .trans(width 300ms ease;);
 }
 #timeline{
 }
@@ -75,6 +79,7 @@ section img{
 body.readmode{
     header{
         width: @thinNavW;
+        .trans(width 300ms ease @timelineCtnTstDelay);
     }
     section{
         width: 100%;
