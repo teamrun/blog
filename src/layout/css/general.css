@@ -418,7 +418,8 @@ header {
   width: 300px;
   background: #4e9bb9;
   background-image: url(../../image/headerBG.jpg);
-  background-size: auto 100%;
+  -webkit-background-size: cover;
+  background-size: cover;
   background-position: 50% 100%;
   background-repeat: no-repeat;
   color: #ffffff;
@@ -431,7 +432,7 @@ header {
   -o-transition: width 300ms ease;
   transition: width 300ms ease;
 }
-/* line 45, general.less */
+/* line 46, general.less */
 section {
   position: static;
   -webkit-box-sizing: border-box;
@@ -441,15 +442,15 @@ section {
   background: #fff;
   margin-left: 540px;
 }
-/* line 52, general.less */
+/* line 53, general.less */
 section #blogCtn {
   position: relative;
 }
-/* line 54, general.less */
+/* line 55, general.less */
 section #blogCtn #blogCtn {
   position: absolute;
 }
-/* line 59, general.less */
+/* line 60, general.less */
 section #widget {
   position: absolute;
   bottom: 3em;
@@ -459,12 +460,12 @@ section #widget {
   background: #accded;
   cursor: pointer;
 }
-/* line 70, general.less */
+/* line 71, general.less */
 section img {
   max-width: 800px;
 }
 /* -------- 阅读模式, header略窄, timeline紧缩, section阅读区显示为主体  --------*/
-/* line 80, general.less */
+/* line 81, general.less */
 body.readmode header {
   width: 240px;
   -webkit-transition: width 300ms ease 450ms;
@@ -473,14 +474,14 @@ body.readmode header {
   -o-transition: width 300ms ease 450ms;
   transition: width 300ms ease 450ms;
 }
-/* line 84, general.less */
+/* line 85, general.less */
 body.readmode section {
   width: 100%;
   margin-left: 540px;
   padding: 1em 4em;
   padding-right: 572.5px;
 }
-/* line 92, general.less */
+/* line 93, general.less */
 body.readmode section #widget #collapse {
   height: 2em;
   width: 100%;
