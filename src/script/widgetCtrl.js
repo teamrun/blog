@@ -4,6 +4,7 @@ define(function( require, exports, module ){
 
     var $ = util.qs;
     var $A = util.qsa;
+    var dataset = util.dataset;
 
     var collapseBtn = $('#collapse');
 
@@ -32,7 +33,7 @@ define(function( require, exports, module ){
         var targets = $A('#timeline .iterm');
         var len = targets.length;
         for( var i=0; i<len; i++){
-            targets[i].style.top = targets[i].dataset.top + 'px';
+            targets[i].style.top = dataset(targets[i], 'top') + 'px';
         }
 
     } );

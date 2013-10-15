@@ -10,6 +10,7 @@ define(function( require, exports, module){
 
     var $ = util.qs;
     var $A = util.qsa;
+    var dataset = util.dataset;
 
     var blogIdentitifor = '_id';
 
@@ -123,11 +124,11 @@ define(function( require, exports, module){
                 // 计算当前元素的高度
                 curItermHeight = window.getComputedStyle( targets[i] ).height;
                 curItermHeight = curItermHeight.substr( 0, curItermHeight.length-2 );
-                console.group();
-                console.log('当前>>>左边底部:'+ class1B);
-                console.log('当前<<<右边底部'+ class2B);
-                console.log('当前iterm高度:'+ curItermHeight);
-                console.groupEnd();
+                // console.group();
+                // console.log('当前>>>左边底部:'+ class1B);
+                // console.log('当前<<<右边底部'+ class2B);
+                // console.log('当前iterm高度:'+ curItermHeight);
+                // console.groupEnd();
 
                 // 确定要添加的类 和 更新两个"底部值""
                 if( class1B >= class2B ){
@@ -143,7 +144,7 @@ define(function( require, exports, module){
                 }
                 targets[i].className = targets[i].className.replace( class2repalce, class2add );
                 targets[i].style.top = top2add + 'px';
-                targets[i].dataset.top = top2add;
+                dataset(targets[i], 'top', top2add );
             }
 
             return [ class1B, class2B ];

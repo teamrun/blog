@@ -56,7 +56,13 @@
 
 
 /**^^^^^^^^^^^^^^^ 第二期工程 ^^^^^^^^^^^^^^^^^**/
+/**__________________________________________**/
+/* - - - - - - - - timeline 相关样式配置 - - - - - - - - - */
 @timelineCtnTstDelay: 450ms;
+
+
+/* - - - - - - - - 通用类 相关样式配置 - - - - - - - - - */
+@triW: 16px;
 
 .iterm-border-radius( @radius ){
     -webkit-border-radius: @radius;
@@ -96,4 +102,22 @@
     -ms-transition: @r1, @r2, @r3;
     -o-transition: @r1, @r2, @r3;
     transition: @r1, @r2, @r3;
+}
+
+.tsf( @v ){
+    -webkit-transform: @v;
+    -moz-transform: @v;
+    -ms-transform: @v;
+    -o-transform: @v;
+    transform: @v;
+}
+
+.tri{
+    &:before{
+        border: none;
+        width: @triW;
+        height: @triW;
+        background-color: red;
+        .tsf( rotate(45deg) );
+    }
 }

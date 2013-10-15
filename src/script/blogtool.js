@@ -52,7 +52,7 @@ define( function(require, exports, module){
             var middle = '<div class="middle">' + blog.content + '</div>';
             var bottom = '<div class="bottom">' + '</div>';
 
-            return extraBefore + '<div class="bubble">' + top + middle + bottom + '</div>' + extraAfter;
+            return extraBefore + '<div class="bubble tri">' + top + middle + bottom + '</div>' + extraAfter;
         }
 
         return htmlStr;

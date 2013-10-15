@@ -1,4 +1,19 @@
 /**^^^^^^^^^^^^^^^ 第二期工程 ^^^^^^^^^^^^^^^^^**/
+/**__________________________________________**/
+/* - - - - - - - - timeline 相关样式配置 - - - - - - - - - */
+/* - - - - - - - - 通用类 相关样式配置 - - - - - - - - - */
+/* line 116, config.less */
+.tri:before {
+  border: none;
+  width: 16px;
+  height: 16px;
+  background-color: red;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
 /* line 4, reading.less */
 body.readmode .piece {
   top: 0;

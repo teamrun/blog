@@ -325,22 +325,36 @@ define(function( require, exports, module){
 	return false;
 	}
 
-	// function $param( data, key ){
-	// 	var param = '';
+	var support = function(){
+		this.dataset = (function(){ return Boolean(document.body.dataset);})();
+		return this;
+	};
 
-	// 	function helper( data ){
-	// 		if( data instanceof Array ){
-	// 			var len = data.length;
-				
-	// 		}
-	// 		else if( data[key] instanceof Object ){
-	// 			for( var j in data[key] ){
-	// 				param += key+'['+j+']=' data[key][j] + '&';
-	// 			}
-	// 		}
-	// 	}
-	// }
+	function dataset( ele, key, val ){
+		if( arguments.length == 3 ){
+			if( support.dataset ){
+				ele.dataset[key] = val;
+			}
+			else{
+				ele.setAttribute('data-'+key, val);
+			}
 
+			return true
+		}
+		else if( arguments.length == 2 ){
+			var returnVal;
+			if( support.dataset ){
+				returnVal = ele.dataset[key];
+			}
+			else{
+				returnVal = ele.getAttribute('data-'+key);
+			}
+			return returnVal;
+		}
+	}
+
+	exports.Support = support;
+	exports.dataset = dataset;
 
 	exports.qs = qs;
 	exports.qsa = qsa;
@@ -358,7 +372,6 @@ define(function( require, exports, module){
 	exports.trim = trim;
 
 	exports.Event = Event;
-
 
 	exports.addSyntaxHighLight = addSyntaxHighLight;
 	exports.showInfo = showInfo;

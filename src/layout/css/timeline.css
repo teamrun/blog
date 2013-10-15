@@ -1,4 +1,19 @@
 /**^^^^^^^^^^^^^^^ 第二期工程 ^^^^^^^^^^^^^^^^^**/
+/**__________________________________________**/
+/* - - - - - - - - timeline 相关样式配置 - - - - - - - - - */
+/* - - - - - - - - 通用类 相关样式配置 - - - - - - - - - */
+/* line 116, config.less */
+.tri:before {
+  border: none;
+  width: 16px;
+  height: 16px;
+  background-color: red;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
 /*  ------------ details of timeline  -----------*/
 /* line 12, timeline.less */
 #timeline {
@@ -201,11 +216,11 @@ body.readmode #timeline .iterm .bubble .bottom {
   padding: 0;
   border: none;
 }
-/* line 193, timeline.less */
+/* line 194, timeline.less */
 body.readmode #timeline .iterm .connect {
   display: none;
 }
-/* line 198, timeline.less */
+/* line 199, timeline.less */
 #timeline .iterm .linetag {
   position: absolute;
   top: 13.333333333333334px;
@@ -216,62 +231,62 @@ body.readmode #timeline .iterm .connect {
   -moz-border-radius: 20px;
   border-radius: 20px;
 }
-/* line 206, timeline.less */
+/* line 207, timeline.less */
 body.readmode #timeline .iterm .linetag {
   position: absolute;
   left: 136.25px;
   width: 27.5px;
   height: 27.5px;
 }
-/* line 215, timeline.less */
+/* line 216, timeline.less */
 #timeline .iterm.left {
   left: 0;
 }
-/* line 217, timeline.less */
+/* line 218, timeline.less */
 #timeline .iterm.left .connect {
   right: 14px;
   border-top: 10.666666666666666px solid transparent;
   border-left: 12px solid #ffffff;
   border-bottom: 10.666666666666666px solid transparent;
 }
-/* line 225, timeline.less */
+/* line 226, timeline.less */
 #timeline .iterm.left .linetag {
   right: -10px;
 }
-/* line 229, timeline.less */
+/* line 230, timeline.less */
 body.readmode #timeline .iterm.left {
   left: 50%;
   margin-left: -150px;
 }
-/* line 233, timeline.less */
+/* line 234, timeline.less */
 body.readmode #timeline .iterm.left .bubble {
   left: 10px;
 }
-/* line 239, timeline.less */
+/* line 240, timeline.less */
 #timeline .iterm.right {
   left: 500px;
 }
-/* line 241, timeline.less */
+/* line 242, timeline.less */
 #timeline .iterm.right .bubble {
   left: 26px;
 }
-/* line 245, timeline.less */
+/* line 246, timeline.less */
 #timeline .iterm.right .connect {
   left: 14px;
   border-top: 10.666666666666666px solid transparent;
   border-right: 12px solid #ffffff;
   border-bottom: 10.666666666666666px solid transparent;
 }
-/* line 252, timeline.less */
+/* line 253, timeline.less */
 #timeline .iterm.right .linetag {
   left: -10px;
 }
-/* line 256, timeline.less */
+/* line 257, timeline.less */
 body.readmode #timeline .iterm.right {
   left: 50%;
   margin-left: -150px;
 }
-/* line 259, timeline.less */
+/* line 260, timeline.less */
 body.readmode #timeline .iterm.right .bubble {
   left: 10px;
 }
