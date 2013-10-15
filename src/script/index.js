@@ -1,6 +1,7 @@
 define(function( require, exports, module ){
 	var util = require('./util');
 	var tools = require('./blogtool');
+	var config = require('./config');
 	var Timeline = require('./Timeline.js').Timeline;
 
 	var Widget = require('./widgetCtrl.js');
@@ -18,7 +19,7 @@ define(function( require, exports, module ){
 		var blogDataSet;
 
 		$ajax({
-			url: '/app/blog',
+			url: config.getBlogUrl,
 			action: 'get',
 			// data: {key: '_id', value: '52104667f084e7b304000002' },
 			callback: function( data ){
@@ -29,8 +30,8 @@ define(function( require, exports, module ){
 
 
 					var option = {
-						itermCtn: '#itermCtn',
-						sideFirst: 'left',
+						itermCtn: config.timeline.itermCtn,
+						sideFirst: config.timeline.sideFirst,
 						itermConstructor: tools.itermConstructor,
 						data: blogDataSet,
 					};

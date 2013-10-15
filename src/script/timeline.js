@@ -36,27 +36,6 @@ define(function( require, exports, module){
 
 
         this.position = function(){
-            // var iterms = $A( thisClass.itermCtnSelector + ' .iterm.raw');
-            // var itermCount = iterms.length;
-            // var class2add;
-            // for( var j=0; j< itermCount; j++ ){
-            //     if( thisClass.leftBottom >= this.rightBottom ){
-            //         class2add = 'right';
-            //     }
-            //     else{
-            //         class2add = 'left';
-            //     }
-            //     // 添加合适的类,添加定位数据
-            //     iterms[j].className = iterms[j].className.replace( 'raw', class2add );
-            //     iterms[j].style.top = thisClass[ class2add + 'Bottom' ] + 'px';
-
-            //     // 为下一次循环做准备
-            //     var curItermHeight = window.getComputedStyle( iterms[j] ).height;
-            //     curItermHeight = curItermHeight.substr( 0, curItermHeight.length-2 );
-
-            //     thisClass[ class2add+'Bottom' ] += Number( curItermHeight ) + Number( thisClass.defaultMargin );
-            // }
-
             var opt = {
                 targetSelector: thisClass.itermCtnSelector + ' .iterm.raw',
                 // refSelector: '',
@@ -144,6 +123,12 @@ define(function( require, exports, module){
                 // 计算当前元素的高度
                 curItermHeight = window.getComputedStyle( targets[i] ).height;
                 curItermHeight = curItermHeight.substr( 0, curItermHeight.length-2 );
+                console.group();
+                console.log('当前>>>左边底部:'+ class1B);
+                console.log('当前<<<右边底部'+ class2B);
+                console.log('当前iterm高度:'+ curItermHeight);
+                console.groupEnd();
+
                 // 确定要添加的类 和 更新两个"底部值""
                 if( class1B >= class2B ){
                     class2add = class2;
@@ -158,6 +143,7 @@ define(function( require, exports, module){
                 }
                 targets[i].className = targets[i].className.replace( class2repalce, class2add );
                 targets[i].style.top = top2add + 'px';
+                targets[i].dataset.top = top2add;
             }
 
             return [ class1B, class2B ];
@@ -173,4 +159,5 @@ define(function( require, exports, module){
 
 
     exports.Timeline = Timeline;
+    exports.posDom = posDom;
 });

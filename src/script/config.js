@@ -9,5 +9,10 @@ define(function( require, exports, module ){
         config[i] = '/app' + config[i];
     }
 
+    config.timeline = {
+        itermCtn: '#itermCtn',
+        sideFirst: 'left'
+    };
+
     module.exports = config;
 });
