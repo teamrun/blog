@@ -113,7 +113,6 @@ define(function( require, exports, module){
             var class2add, top2add;
             var class1B = opt.class1B||1, class2B = opt.class2B||0;
             var class1 = opt.class1, class2 = opt.class2;
-            var defaultMargin = opt.defaultMargin;
 
             var class2repalce=opt.class2repalce;
             // var startB1 = opt.startB1||0, startB2 = opt.startB2||-1;

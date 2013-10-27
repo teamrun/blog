@@ -5,7 +5,6 @@
 		"mongoose":     "*",
 		"express":      "*",
 		"markdown-js":  "*",
-        "formidable":   "*",
-        "sockiet.io":   "*"
+        "formidable":   "*"
 	}
 }

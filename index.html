@@ -4,15 +4,15 @@
 	<meta charset="UTF-8">
 	<title>chenllos的博客</title>
 	<!-- <link rel="stylesheet" href="src/layout/css/main.css" /> -->
-	<link rel="stylesheet" href="src/layout/css/general.css" />
+	<link rel="stylesheet" href="/src/layout/css/general.css" />
 	<!-- <link rel="stylesheet" href="src/layout/blog.css" /> -->
-	<link rel="stylesheet" href="src/layout/plugin/prism.css">
+	<link rel="stylesheet" href="/src/layout/plugin/prism.css">
 
-	<script src="src/script/base/sea.js"></script>
-	<script src="src/script/base/markdown.js"></script>
-	<script src="src/script/base/prism.js"></script>
+	<script src="/src/script/base/sea.js"></script>
+	<script src="/src/script/base/markdown.js"></script>
+	<script src="/src/script/base/prism.js"></script>
 
-	<script src="src/try.js"></script>
+	<script src="/src/try.js"></script>
 	<!--[if lt IE 9]>
 		<script src="src/script/IE9.js"></script>
 	<![endif]-->
@@ -32,22 +32,6 @@
 	<aside id="timeline">
 		<div id="line"></div>
 	    <ul id="itermCtn">
-	    	<!-- 
-	    	<li class="iterm left" style="top: 0;">
-	    		<div class="bubble">
-	    			不知道大家有没有看过这样一个视频： 女士对盲人乞丐做了什么? 
-	    		</div>
-	    		<div class="connect"></div>
-    			<div class="linetag"></div>
-	    	</li>
-	    	<li class="iterm right" style="top: 70px;">
-	    		<div class="bubble">
-	    			本文为Bloomberg BusinessweekTim Cooks Freshman Year: The Apple CEO 
-	    		</div>
-				<div class="connect"></div>
-    			<div class="linetag"></div>
-			</li>
-	    	-->
 	    </ul>
 	</aside>
 
@@ -69,9 +53,12 @@
 
 		    "alias": {
 			    "seajs-debug": "/src/script/base/sea-modules/seajs/seajs-debug/1.0.0/seajs-debug.js"
-			  }
+			  },
+			paths: {
+				'src': '/src'
+			}
 		});
-		seajs.use("/src/script/index.js");
+		seajs.use("src/script/index.js");
 	</script>
 
 

@@ -30,7 +30,7 @@ define( function(require, exports, module){
         if( len > 0 ){
             for(var n=0; n < len; n++ ){
 
-                htmlStr += '<div class="iterm raw">' + consSingalIterm( data[n] ) + '</div>';
+                htmlStr += '<li class="iterm raw">' + consSingalIterm( data[n] ) + '</li>';
             }
         }
         else{

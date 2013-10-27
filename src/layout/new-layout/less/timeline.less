@@ -1,0 +1,118 @@
+@import "config.less";
+@import "mixin.less";
+
+// timeline主体  会滚动的哦~(中的ul会有高度)
+#timeline{
+    // 为何此时的宽度为 #main总宽度 - #main padding? 而不是总宽度```
+    width: 100%;
+    // width: 70%;
+    // width: 50%;
+    position: relative;
+    float: left;
+    height: 100%;
+    overflow-y: auto;
+    background-color: rgba(43, 133, 195,0.125);
+    .tst();
+
+    #line{
+        position: absolute;
+        height: 100%;
+        width: @lineW;
+        left: 50%;
+        margin-left: -(@lineW/2);
+        background-color: fadeout(@lineBGC, 50%);
+        z-index: @lineZindex;
+    }
+    #itermCtn{
+        position: absolute;
+        
+        left: 50%;
+        right: 0;
+        top: 16px;
+        // 宽度百分百 会带来一些问题  如linetag位置会由于iterm宽度有小数点时发生轻微的不对齐
+        width: @itermCtnW;
+        margin-left: -@itermCtnW/2;
+
+        
+        list-style: none;
+    }
+    #itermCtn{
+        .iterm{
+            position: absolute;
+            // top: 20px;
+            width: @itermW;
+            // padding: 10px;
+            z-index: @itermZindex;
+
+            // outline: 2px solid pink;
+
+            .bubble{
+                position: relative;
+                width: @bubbleW;
+                padding: @bubblePadding;
+                .border-radius();
+                .boxshd( 0 0 3px rgba(0,0,0,0.375); );
+                background-color: @bubbleBGC;
+                color: @bubbleC;
+
+                &:before{
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    top: @linetagCommonTop + ( @linetagW - @bubbleTriW)/2;
+                    width: @bubbleTriW;
+                    height: @bubbleTriW;
+                    background-color: @bubbleBGC;
+                    // box-shadow 和 transform的诡异结合```实现tri的单方向阴影
+                    .boxshd( 1px -1px 3px -1px rgba(0,0,0,0.5); );
+                    .tsf(rotate(45deg));
+                }
+            }
+            .linetag{
+                position: absolute;
+                top: @linetagCommonTop;
+                width: @linetagW;
+                height: @linetagW;
+                background-color: @linetagBGC;
+                .border-radius( @linetagW );
+            }
+
+            h1,h2,h3,h4, p{
+                margin: 0.25em;
+            }
+
+            // &.left, &.right{
+            //     outline: 1px solid pink;
+            // }
+            &.left{
+                left: @leftLeft;
+
+                .bubble{
+                    margin-left: 0;
+                    &:before{
+                        // left: 100%;
+                        right: -@bubbleTriW/2;
+                    }
+                }
+                .linetag{
+                    right: -@linetagW/2;
+                    // right: 0;
+                }
+            }
+            &.right{
+                left: @rightLeft;
+                .bubble{
+                    margin-left: 100% - @bubbleW;
+                    &:before{
+                        left: -@bubbleTriW/2;
+                        // 微调阴影方向
+                        .boxshd( -1px 1px 3px -1px rgba(0,0,0,0.5); );
+                    }
+                }
+                .linetag{
+                    left: -@linetagW/2;
+                }
+            }
+        }
+    }
+}

@@ -133,7 +133,8 @@ define(function( require, exports, module){
 	};
 
 	function hasClass(obj, cls) {
-		return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
+		return (new RegExp('(\\s|^)' + cls + '(\\s|$)')).test( obj.className );
+		// return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
 	}
 
 	function addClass(obj, cls) {
@@ -249,11 +250,12 @@ define(function( require, exports, module){
 			if( xhr.readyState == 4 && xhr.status == 200){
 				try{
 					var result = parseObj( xhr.responseText );
-					opt.callback( result );
 				}
 				catch(err){
 					console.log('解析返回数据时发生错误：' + err);
+					return false;
 				}
+				opt.callback( result );
 			}
 		};
 		xhr.send( data );
@@ -268,16 +270,10 @@ define(function( require, exports, module){
 		console.log( state );
 	}
 
-	function trim( str ){
-		if( String.prototype.trim ){
-			return str.trim();
-		}
-		else{
-			return trimeForIE( str );
-		}
 
-		function trimeForIE( str ){
-			return str;
+	if( !String.prototype.trim ){
+		String.prototype.trim = function(){
+			return this.replace(/^\ +|\ +$/g, '');
 		}
 	}
 
@@ -368,8 +364,6 @@ define(function( require, exports, module){
 	exports.ajaxGet = ajaxGet;
 	exports.ajaxPost = ajaxPost;
 	exports.ajax = ajax;
-
-	exports.trim = trim;
 
 	exports.Event = Event;
 
