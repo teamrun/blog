@@ -84,7 +84,7 @@ define(function( require, exports, module){
             var option = {
                 targetSelector: '#timeline .iterm',
                 refSelector: '#timeline .iterm .bubble',
-                defaultMargin: 60,
+                defaultMargin: 0,
                 classDef: false,
                 curTopOffset: 0
             };
@@ -110,12 +110,13 @@ define(function( require, exports, module){
         var refs = $A( refSelector );
         var len = refs.length;
         if( classDef ){
-            var class2add, top2add;
+            var addClass, addTop;
             var class1B = opt.class1B||1, class2B = opt.class2B||0;
             var class1 = opt.class1, class2 = opt.class2;
 
             var class2repalce=opt.class2repalce;
-            // var startB1 = opt.startB1||0, startB2 = opt.startB2||-1;
+            // 初始化两个数组, 方便进行位置冲突微调
+            var c1TopArr = [], c2TopArr = [];
 
             var curItermHeight;
             for( var i=0; i<len ;i++ ){
@@ -131,21 +132,39 @@ define(function( require, exports, module){
 
                 // 确定要添加的类 和 更新两个"底部值""
                 if( class1B >= class2B ){
-                    class2add = class2;
+                    addClass = class2;
                     // 给元素添加定位信息top
-                    top2add = class2B;
+                    addTop = class2B;
+                    // 位置微调 防止左右一样top
+                    c2TopArr.push( addTop );
+                    adjustSlightly( c1TopArr );
                     class2B += Number( curItermHeight ) + Number( defaultMargin );
                 }
                 else{
-                    class2add = class1;
-                    top2add = class1B;
+                    addClass = class1;
+                    addTop = class1B;
+                    // 位置微调 防止左右一样top
+                    c1TopArr.push( addTop );
+                    adjustSlightly( c2TopArr );
                     class1B += Number( curItermHeight ) + Number( defaultMargin );
                 }
-                targets[i].className = targets[i].className.replace( class2repalce, class2add );
-                targets[i].style.top = top2add + 'px';
-                dataset(targets[i], 'top', top2add );
+                // 替换类名
+                targets[i].className = targets[i].className.replace( class2repalce, addClass );
+                // 填充内嵌样式
+                targets[i].style.top = addTop + 'px';
+                // 值备份
+                dataset(targets[i], 'top', addTop );
             }
 
+            function adjustSlightly( arr ){
+                // 如果对面的最后一个家伙的top和本次很接近  就把对面的家伙向上挑一点 自己往下一点
+                if( addTop - arr[ arr.length-1 ] < 30 ){
+                    // console.log( targets[i-1] );
+                    targets[i-1].style.top = (arr[ arr.length-1 ] - 10) + 'px';
+                    addTop = arr[ arr.length-1 ] - 10 + 35;
+                }
+            }
+        
             return [ class1B, class2B ];
         }
         else{

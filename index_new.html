@@ -2,18 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>chenllos的博客</title>
-    <!-- <link rel="stylesheet" href="src/layout/css/main.css" /> -->
-    <link rel="stylesheet" href="/src/layout/new-layout/css/layout.css" />
+    <title>chenllos</title>
+    <link rel="stylesheet" href="/src/layout/css/layout.css" />
+    <!-- 减少http请求,将prism的扩展名改为了less 然后由layout.less进行import, 最后直接编译,上线前压缩编译 -->
     <!-- <link rel="stylesheet" href="/src/layout/plugin/prism.css"> -->
+    
+    <script src="/src/script/base/sea.js"></script>
+    <script src="/src/script/base/markdown_prism.min.js"></script>
 
-    <!-- <script src="/src/script/base/sea.js"></script>
-    <script src="/src/script/base/markdown.js"></script>
-    <script src="/src/script/base/prism.js"></script>
-
-    <script src="/src/try.js"></script> -->
-
-    <script src="/src/script/base/jquery-1.8.3.js"></script>
+    <!-- 方便获取元素 测试用 -->
+    <!--<script src="/src/script/base/jquery-1.8.3.js"></script> -->
 
     <!--[if lt IE 9]>
         <script src="src/script/base/IE9.js"></script>
@@ -36,7 +34,7 @@
         <aside id="timeline">
             <div id="line"></div>
             <ul id="itermCtn" style="height: 460px;">
-                <li class="iterm left" data-top="1" style="top: 1px;">
+                <!-- <li class="iterm left" data-top="1" style="top: 1px;">
                     <div class="linetag"></div><div class="bubble tri"><div class="top"><h2 class="title" data-_id="52104667f084e7b304000002">书签栏小工具的编写 and “剪客工具”的原理
                     </h2></div><div class="middle"><h3>书签栏小工具</h3>
 
@@ -66,7 +64,7 @@
                 <li class="iterm right" data-top="338" style="top: 338px;"><div class="linetag"></div>
                     <div class="bubble tri"><div class="top"><h2 class="title" data-_id="5232ae8a6f47949a10000003">使用seajs-debug模块辅助调试
                     </h2></div><div class="middle"><blockquote><p>理想情况下，CMD 模块的接口不会暴露到全局，这能有效避免全局污染，但同时也会导致在调试时不方</p></blockquote></div><div class="bottom"></div></div>
-                </li>
+                </li> -->
             </ul>
         </aside>
 
@@ -80,7 +78,7 @@
         </section>
         <footer></footer>
     </div>
-    <!-- <script>
+    <script>
         seajs.config({
             debug: true,
             plugins: ['nocache'],
@@ -104,6 +102,6 @@
       ga('create', 'UA-43912366-1', 'chenllos.com');
       ga('send', 'pageview');
 
-    </script> -->
+    </script>
 </body>
 </html>

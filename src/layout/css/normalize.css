@@ -8,10 +8,45 @@
 /*--------------   #read布局样式的配置项  ---------------*/
 /*--------------   ---------------*/
 /*--------------   ---------------*/
-/* line 4, main.less */
-#main {
-  width: 100%;
+/* line 4, normalize.less */
+html,
+body {
   height: 100%;
-  padding-left: 280px;
-  background-color: #d3d6e0;
+  min-height: 450px;
+  margin: 0;
+  padding: 0;
+  font-family: 'Microsoft Yahei', '微软雅黑', 'STHeiti', 'SimHei', 'SimSun';
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* line 13, normalize.less */
+header,
+aside,
+section,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+ul,
+li {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* line 16, normalize.less */
+a {
+  text-decoration: none;
+}
+/* line 20, normalize.less */
+header,
+aside,
+section,
+nav,
+ul {
+  margin: 0;
+  padding: 0;
 }

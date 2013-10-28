@@ -1,264 +1,158 @@
 @import "config.less";
+@import "mixin.less";
 
-
-/*  ------------ details of timeline  -----------*/
-
-    // timeline布局思想:
-    // #timeline自由宽度,line总在最中间
-    // itermCtn宽度进行限制,响应式, iterm宽度为一半
-    // iterm中含有timeline中除line之外的所有其他元素:
-    //  bubble, connect,和驻留在line上的tag
-
+// timeline主体  会滚动的哦~(中的ul会有高度)
 #timeline{
-    // width为auto的元素在发生width的transition时,会先变成0, 然后再变成transition后的值,这样就会造成闪动
-    position: relative;
+    // 为何此时的宽度为 #main总宽度 - #main padding? 而不是总宽度```
     width: 100%;
+    // width: 70%;
+    // width: 50%;
+    position: relative;
+    float: left;
     height: 100%;
-    margin: @timelineMargin;
-    padding: @timelinePadding;
-    .box-sizing();
-    // background: #timelineC;
-    background: #efefef;
-    // visibility: hidden;
-
-    .trans( width 300ms ease);
-
-    body.readmode &{
-        width: @thinTimeW;
-        margin-left: @thinNavW;
-        padding: 0;
-        overflow: hidden;
-        .trans( all 450ms ease @timelineCtnTstDelay);
-    }
-
-
-    ul#itermCtn{
-        position: relative;
-        width: @timelineZoneW;
-        margin: 0 auto;
-        padding: 0;
-        .box-sizing();
-        list-style: none;
-    }
-    body.readmode & ul#itermCtn{
-        width: @thinTimeW;
-    }
-
+    overflow-y: auto;
+    background-color: rgba(43, 133, 195,0.125);
+    .tst();
 
     #line{
         position: absolute;
-        width: @lineW;
         height: 100%;
+        width: @lineW;
         left: 50%;
-        margin-left: @lineMarginLeft;
-        background: @lineBGC;
+        margin-left: -(@lineW/2);
+        background-color: fadeout(@lineBGC, 50%);
+        z-index: @lineZindex;
     }
-
-    body.readmode & #line{
-        // #timeline的宽度specilize之后,不再有padding-right, 所以只要修正自身宽度即可
-        margin-left: -( @lineW/2 );
-        .trans( margin 300ms ease 300ms);
-    }
-
-
-    .iterm{
+    #itermCtn{
         position: absolute;
-        width: @itermW;
-        margin: 1.5em 0;
-        .box-sizing();
-        font-size: 1em;
-        min-height: 4em;
+        
+        left: 50%;
+        right: 0;
+        top: 16px;
+        // 宽度百分百 会带来一些问题  如linetag位置会由于iterm宽度有小数点时发生轻微的不对齐
+        width: @itermCtnW;
+        margin-left: -@itermCtnW/2;
+        
+        list-style: none;
+    }
+    #itermCtn{
+        .iterm{
+            position: absolute;
+            // top: 20px;
+            width: @itermW;
+            // padding: 10px;
+            z-index: @itermZindex;
+            .tst( top ease 500ms; opacity ease 500ms; );
 
-        // outline: 1px solid pink;
+            &.raw{
+                opacity: 0;
+            }
 
-        body.readmode &{
-            width: @thinItermW;
-            min-height: 6em;
-            .trans( all 300ms ease);
+            // outline: 2px solid pink;
 
-            &:hover{
-                &{
-                    padding-top: @lineTagW;
-                    // border-top: 1px solid rgba(0,0,0,0.35);
+            .bubble{
+                position: relative;
+                width: @bubbleW;
+                padding: @bubblePadding;
+                .border-radius();
+                .boxshd( 0 0 3px rgba(0,0,0,0.375); );
+                background-color: @bubbleBGC;
+                color: @bubbleC;
+            }
+            .bubble{
+                
+
+                &:before{
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    z-index: 440;
+                    top: @linetagCommonTop + ( @linetagW - @bubbleTriW)/2;
+                    width: @bubbleTriW;
+                    height: @bubbleTriW;
+                    // background-color: @bubbleBGC;
+                    background-color: @topBGC;
+                    // box-shadow 和 transform的诡异结合```实现tri的单方向阴影
+                    .boxshd( 1px -1px 3px -1px rgba(0,0,0,0.5); );
+                    .tsf(rotate(45deg));
                 }
-                // .bubble{
-                //     opacity: 1;
-                //     height: auto;
-                // }
+                .top, .middle, .bottom{
+                    padding: 0 0.5em;
+                }
+                .top{
+                    position: relative;   //为使.tri不挡在标题前面 又有自己的阴影且不被投上bubble的阴影, 必须给top一个 z-index值
+                    padding: 4px;
+                    .border-radius( 4px 4px 0 0;);
+                    border: none;
+                    border-bottom: 1px solid #E6E5E4;
+                    background-color: @topBGC;
+
+                    z-index: 450;
+
+                    h1, h2, h3, h4,{
+                        font-size: 1.125em;
+                    }
+                }
+                .middle{
+                    padding: 0.5em;
+                    min-height: 60px;
+                    p{
+                        font-size: 0.875em;
+                        margin: 0.55em 0;
+                        line-height: 1.25em;
+                    }
+                }
+                .bottom{
+
+                }
+            }
+            .linetag{
+                position: absolute;
+                top: @linetagCommonTop;
+                width: @linetagW;
+                height: @linetagW;
+                background-color: @linetagBGC;
+                .border-radius( @linetagW );
+            }
+
+            h1,h2,h3,h4, p{
+                margin: 0.25em 0;
+            }
+
+            // &.left, &.right{
+            //     outline: 1px solid pink;
+            // }
+            &.left{
+                opacity: 1;
+                left: @leftLeft;
+
+                .bubble{
+                    margin-left: 0;
+                    &:before{
+                        // left: 100%;
+                        right: -@bubbleTriW/2;
+                    }
+                }
                 .linetag{
-                    top: (-@thinConnectH/2);
-                    left: ( @thinTimeW /2 - @lineTagW*0.5 );
-                    width: @lineTagW;
-                    height: @lineTagW;
+                    right: -@linetagW/2;
+                    // right: 0;
                 }
             }
-        }
-
-
-        .bubble{
-            position: relative;
-            width: @bubbleW;
-            padding: 0.5em;
-            .box-sizing();
-
-            font-size: 1em;
-            line-height: 1.375em;
-            color: #444;
-            background: @bubbleBGC;
-
-            box-shadow: 0 0 0.25em rgba(0,0,0,0.15);
-
-            .iterm-border-radius( 5px );
-
-            .trans();
-
-
-            .top{
-                margin: 0 0 0.5em 0;
-                border: none;
-                border-bottom: 1px solid rgba(0,0,0,0.125);
-                cursor: pointer;
-            }
-            .midddle{
-
-            }
-            .bottom{
-                margin: 0.5em 0 0 0;
-            }
-
-            h1, h2, h3, h4, h5{
-                margin: 0;
-                // font-size: 1em;
-            }
-            h2{
-                font-size: 1.125em;
-            }
-            h3{
-                font-size: 1em;
-            }
-            p{
-                margin: 0;
-                line-height: 1.25em;
-                font-size: 0.9em;
-                text-indent: 0em;
-            }
-            blockquote{
-                border: none;
-                border-left: 3px solid #212E32;
-                margin-left:  1em ;
-                .box-sizing();
-                padding: 0.125em 0.25em;
-                p{
-                    text-indent: 0;
-                    color: #999;
-                    font-style: italic;
+            &.right{
+                opacity: 1;
+                left: @rightLeft;
+                .bubble{
+                    margin-left: 100% - @bubbleW;
+                    &:before{
+                        left: -@bubbleTriW/2;
+                        // 微调阴影方向
+                        .boxshd( -1px 1px 3px -1px rgba(0,0,0,0.5); );
+                    }
+                }
+                .linetag{
+                    left: -@linetagW/2;
                 }
             }
-        }
-        body.readmode & .bubble{
-            opacity: 1;
-            height: auto;
-            width: @thinBubbleW ;
-            transition: all 400ms ease;
-            z-index: 1000;
-
-            h2{
-                font-size: 1em;
-            }
-
-            .top{
-                margin: 0 0 0.5em 0;
-                border: none;
-                border-bottom: 2px solid rgba(0,0,0,0.125);
-            }
-            .middle{
-                display: none;
-            }
-            .bottom{
-                display: none;
-            }
-        }
-
-
-        // 暂时把connect的样式设置的和line差不多
-        .connect{
-            // display: none;
-            position: absolute;
-            top: (@lineTagW/1.5);
-
-            width:0;
-            height:0;
-            padding: 0;
-            border: none;
-        }
-        body.readmode & .connect{
-            display: none;
-        }
-
-
-        .linetag{
-            position: absolute;
-            top: (@lineTagW/1.5);
-            width: @lineTagW;
-            height: @lineTagW;
-            background: @lineTagBGC;
-            .lineTagRadius( @lineTagW );
-        }
-        body.readmode & .linetag{
-            position: absolute;
-            left: ( @thinTimeW /2 - @lineTagW*1.375/2 );
-            width: ( @lineTagW*1.375 );
-            height: ( @lineTagW*1.375 );
-        }
-    }
-
-
-    .iterm.left{
-        left: 0;
-        .connect{
-            // right: (@lineTagW/2+( @connectBorderLRW - @connectContentW )/2);
-            right: (@lineTagW/2+( @connectBorderLRW - @connectContentW ));
-
-            border-top: @connectBorderTBW solid transparent;
-            border-left: (@connectContentW) solid @connectBGC;
-            border-bottom: @connectBorderTBW solid transparent;
-        }
-        .linetag{
-            right: (-@lineTagW/2);
-        }
-    }
-    body.readmode & .iterm.left{
-        left: 50%;
-        margin-left: @readingItermPosFix;
-
-        .bubble{
-            left: ( (@thinTimeW - @thinBubbleW) /2 );
-        }
-    }
-
-    
-    .iterm.right{
-        left: @itermW;
-        .bubble{
-            left: (@lineTagW/2 + @connectBorderLRW);
-        }
-
-        .connect{
-            left: (@lineTagW/2 + ( @connectBorderLRW - @connectContentW ));
-
-            border-top: @connectBorderTBW solid transparent;
-            border-right: (@connectContentW) solid @connectBGC;
-            border-bottom: @connectBorderTBW solid transparent;
-        }
-        .linetag{
-            left: (-@lineTagW/2);
-        }
-    }
-    body.readmode & .iterm.right{
-        left: 50%;
-        margin-left: @readingItermPosFix;
-        .bubble{
-            left: ( (@thinTimeW - @thinBubbleW) /2 );
         }
     }
 }
