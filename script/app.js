@@ -16,6 +16,10 @@ define(function( require, exports, module ){
 
 	};
 
+	var router = new Router(function( pathname ){
+		console.log( 'routing to... :' + pathname );
+	});
+
 	window.onload = function(){
 		$ajax({
 			url: config.getBlogUrl,
@@ -49,6 +53,12 @@ define(function( require, exports, module ){
 	avalon.ready(function(){
 		blogListVM = avalon.define('blogList', function(vm){
 			vm.list = [];
+			vm.enterReadMode = function(e){
+				var id= e.target.dataset.blogid;
+				console.log( id );
+
+				router.go( null, null, '/read/art/' + id );
+			}
 		});
 
 		avalon.scan( $('#timeline'), 'blogList' );
