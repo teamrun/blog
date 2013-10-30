@@ -43,7 +43,8 @@ define( function(require, exports, module){
             // var html = md2html( data.summery.text );
             var blog = new Blog( data.summery.text, 'html' );
             
-            var extraBefore = '<div class="linetag"></div>';
+            var extraBefore = '';
+            var innerBefore = '<div class="linetag"></div>';
 
             var extraAfter = '';
 
@@ -52,7 +53,7 @@ define( function(require, exports, module){
             var middle = '<div class="middle">' + blog.content + '</div>';
             var bottom = '<div class="bottom">' + '</div>';
 
-            return extraBefore + '<div class="bubble tri">' + top + middle + bottom + '</div>' + extraAfter;
+            return extraBefore + '<div class="bubble tri">'  + innerBefore + top + middle + bottom + '</div>' + extraAfter;
         }
 
         return htmlStr;

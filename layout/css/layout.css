@@ -129,20 +129,21 @@ body.readmode #main {
 #timeline #itermCtn .iterm {
   position: absolute;
   width: 50%;
-  z-index: 400;
+  z-index: 700;
   -webkit-transition: top ease 500ms, opacity ease 500ms;
   -moz-transition: top ease 500ms, opacity ease 500ms;
   transition: top ease 500ms, opacity ease 500ms;
   -webkit-backface-visibility: hidden;
 }
-/* line 48, timeline.less */
+/* line 49, timeline.less */
 #timeline #itermCtn .iterm.raw {
   opacity: 0;
 }
-/* line 54, timeline.less */
+/* line 55, timeline.less */
 #timeline #itermCtn .iterm .bubble {
   position: relative;
-  width: 94%;
+  z-index: 800;
+  width: 93%;
   padding: 0;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -153,7 +154,7 @@ body.readmode #main {
   background-color: #ffffff;
   color: #333333;
 }
-/* line 66, timeline.less */
+/* line 67, timeline.less */
 #timeline #itermCtn .iterm .bubble:before {
   content: '';
   display: block;
@@ -170,13 +171,13 @@ body.readmode #main {
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
-/* line 80, timeline.less */
+/* line 81, timeline.less */
 #timeline #itermCtn .iterm .bubble .top,
 #timeline #itermCtn .iterm .bubble .middle,
 #timeline #itermCtn .iterm .bubble .bottom {
   padding: 0 0.5em;
 }
-/* line 83, timeline.less */
+/* line 84, timeline.less */
 #timeline #itermCtn .iterm .bubble .top {
   position: relative;
   padding: 4px;
@@ -188,26 +189,26 @@ body.readmode #main {
   background-color: #f5f4f2;
   z-index: 450;
 }
-/* line 93, timeline.less */
+/* line 94, timeline.less */
 #timeline #itermCtn .iterm .bubble .top h1,
 #timeline #itermCtn .iterm .bubble .top h2,
 #timeline #itermCtn .iterm .bubble .top h3,
 #timeline #itermCtn .iterm .bubble .top h4 {
   font-size: 1.125em;
 }
-/* line 97, timeline.less */
+/* line 98, timeline.less */
 #timeline #itermCtn .iterm .bubble .middle {
   padding: 0.5em;
   min-height: 60px;
 }
-/* line 100, timeline.less */
+/* line 101, timeline.less */
 #timeline #itermCtn .iterm .bubble .middle p {
   font-size: 0.875em;
   margin: 0.55em 0;
   line-height: 1.25em;
 }
-/* line 108, timeline.less */
-#timeline #itermCtn .iterm .linetag {
+/* line 109, timeline.less */
+#timeline #itermCtn .iterm .bubble .linetag {
   position: absolute;
   z-index: 650;
   top: 15px;
@@ -217,22 +218,22 @@ body.readmode #main {
   -webkit-border-radius: 12px;
   -moz-border-radius: 12px;
   border-radius: 12px;
-  -webkit-transition: all 300ms ease;
-  -moz-transition: all 300ms ease;
-  transition: all 300ms ease;
+  -webkit-transition: all 250ms ease;
+  -moz-transition: all 250ms ease;
+  transition: all 250ms ease;
   -webkit-backface-visibility: hidden;
 }
-/* line 118, timeline.less */
-#timeline #itermCtn .iterm .linetag:hover {
-  top: 7px;
-  width: 40px;
-  height: 40px;
+/* line 119, timeline.less */
+#timeline #itermCtn .iterm .bubble:hover .linetag {
+  top: 2px;
+  width: 50px;
+  height: 50px;
   background-color: #68d3e3;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  border-radius: 20px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
 }
-/* line 127, timeline.less */
+/* line 146, timeline.less */
 #timeline #itermCtn .iterm h1,
 #timeline #itermCtn .iterm h2,
 #timeline #itermCtn .iterm h3,
@@ -240,50 +241,52 @@ body.readmode #main {
 #timeline #itermCtn .iterm p {
   margin: 0.25em 0;
 }
-/* line 134, timeline.less */
+/* line 153, timeline.less */
 #timeline #itermCtn .iterm.left {
   opacity: 1;
   left: 0%;
 }
-/* line 138, timeline.less */
+/* line 157, timeline.less */
 #timeline #itermCtn .iterm.left .bubble {
   margin-left: 0;
 }
-/* line 140, timeline.less */
+/* line 159, timeline.less */
 #timeline #itermCtn .iterm.left .bubble:before {
   right: -8px;
 }
-/* line 145, timeline.less */
-#timeline #itermCtn .iterm.left .linetag {
-  right: -12px;
+/* line 163, timeline.less */
+#timeline #itermCtn .iterm.left .bubble .linetag {
+  left: 107.52688172043011%;
+  margin-left: -12px;
 }
-/* line 149, timeline.less */
-#timeline #itermCtn .iterm.left .linetag:hover {
-  right: -20px;
+/* line 169, timeline.less */
+#timeline #itermCtn .iterm.left .bubble:hover .linetag {
+  margin-left: -25px;
 }
-/* line 154, timeline.less */
+/* line 175, timeline.less */
 #timeline #itermCtn .iterm.right {
   opacity: 1;
   left: 50%;
 }
-/* line 157, timeline.less */
+/* line 178, timeline.less */
 #timeline #itermCtn .iterm.right .bubble {
-  margin-left: 6%;
+  margin-left: 7%;
 }
-/* line 159, timeline.less */
+/* line 180, timeline.less */
 #timeline #itermCtn .iterm.right .bubble:before {
   left: -8px;
   -webkit-box-shadow: -1px 1px 3px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: -1px 1px 3px -1px rgba(0, 0, 0, 0.5);
   box-shadow: -1px 1px 3px -1px rgba(0, 0, 0, 0.5);
 }
-/* line 165, timeline.less */
-#timeline #itermCtn .iterm.right .linetag {
-  left: -12px;
+/* line 186, timeline.less */
+#timeline #itermCtn .iterm.right .bubble .linetag {
+  left: -7.526881720430108%;
+  margin-left: -12px;
 }
-/* line 168, timeline.less */
-#timeline #itermCtn .iterm.right .linetag:hover {
-  left: -20px;
+/* line 190, timeline.less */
+#timeline #itermCtn .iterm.right .bubble:hover .linetag {
+  margin-left: -25px;
 }
 /* line 4, read-timeline.less */
 body.readmode #timeline {
