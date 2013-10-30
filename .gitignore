@@ -4,10 +4,7 @@ backend/node_modules/*
 
 *.yml
 
-.idea/.name
 
 .idea/*
+layout/css/*
 
-src/layout/mainlayout.css
-
-src/layout/mainlayout.css
