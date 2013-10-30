@@ -45,7 +45,7 @@ define( function(require, exports, module){
             
             var extraBefore = '<div class="linetag"></div>';
 
-            var extraAfter = '<div class="connect"></div>';
+            var extraAfter = '';
 
             // var top = '<div class="top">' + blog.title + '</div>';
             var top = '<div class="top"><h2 class="title" data-_id="' + data._id + '">' + data.title.replace(/#+/g, '') + '</div>';

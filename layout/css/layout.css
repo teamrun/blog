@@ -58,12 +58,20 @@ header {
   margin: 0;
   padding: 0;
   background-color: #ededed;
+  -webkit-transition: all 300ms ease;
+  -moz-transition: all 300ms ease;
+  transition: all 300ms ease;
+  -webkit-backface-visibility: hidden;
 }
-/* line 12, header.less */
+/* line 13, header.less */
 header ul {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+/* line 20, header.less */
+body.readmode header {
+  width: 80px;
 }
 /* line 4, main.less */
 #main {
@@ -71,6 +79,14 @@ header ul {
   height: 100%;
   padding-left: 280px;
   background-color: #d3d6e0;
+  -webkit-transition: all 300ms ease;
+  -moz-transition: all 300ms ease;
+  transition: all 300ms ease;
+  -webkit-backface-visibility: hidden;
+}
+/* line 13, main.less */
+body.readmode #main {
+  padding-left: 80px;
 }
 /* line 5, timeline.less */
 #timeline {
@@ -80,9 +96,9 @@ header ul {
   height: 100%;
   overflow-y: auto;
   background-color: rgba(43, 133, 195, 0.125);
-  -webkit-transition: all 300ms ease;
-  -moz-transition: all 300ms ease;
-  transition: all 300ms ease;
+  -webkit-transition: width 500ms ease 300ms;
+  -moz-transition: width 500ms ease 300ms;
+  transition: width 500ms ease 300ms;
   -webkit-backface-visibility: hidden;
 }
 /* line 17, timeline.less */
@@ -94,8 +110,12 @@ header ul {
   margin-left: -2px;
   background-color: rgba(26, 159, 249, 0.5);
   z-index: 600;
+  -webkit-transition: all 300ms ease;
+  -moz-transition: all 300ms ease;
+  transition: all 300ms ease;
+  -webkit-backface-visibility: hidden;
 }
-/* line 26, timeline.less */
+/* line 28, timeline.less */
 #timeline #itermCtn {
   position: absolute;
   left: 50%;
@@ -105,7 +125,7 @@ header ul {
   margin-left: -530px;
   list-style: none;
 }
-/* line 39, timeline.less */
+/* line 40, timeline.less */
 #timeline #itermCtn .iterm {
   position: absolute;
   width: 50%;
@@ -115,14 +135,14 @@ header ul {
   transition: top ease 500ms, opacity ease 500ms;
   -webkit-backface-visibility: hidden;
 }
-/* line 47, timeline.less */
+/* line 48, timeline.less */
 #timeline #itermCtn .iterm.raw {
   opacity: 0;
 }
-/* line 53, timeline.less */
+/* line 54, timeline.less */
 #timeline #itermCtn .iterm .bubble {
   position: relative;
-  width: 94.5%;
+  width: 94%;
   padding: 0;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -133,7 +153,7 @@ header ul {
   background-color: #ffffff;
   color: #333333;
 }
-/* line 65, timeline.less */
+/* line 66, timeline.less */
 #timeline #itermCtn .iterm .bubble:before {
   content: '';
   display: block;
@@ -150,13 +170,13 @@ header ul {
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
-/* line 79, timeline.less */
+/* line 80, timeline.less */
 #timeline #itermCtn .iterm .bubble .top,
 #timeline #itermCtn .iterm .bubble .middle,
 #timeline #itermCtn .iterm .bubble .bottom {
   padding: 0 0.5em;
 }
-/* line 82, timeline.less */
+/* line 83, timeline.less */
 #timeline #itermCtn .iterm .bubble .top {
   position: relative;
   padding: 4px;
@@ -168,36 +188,51 @@ header ul {
   background-color: #f5f4f2;
   z-index: 450;
 }
-/* line 92, timeline.less */
+/* line 93, timeline.less */
 #timeline #itermCtn .iterm .bubble .top h1,
 #timeline #itermCtn .iterm .bubble .top h2,
 #timeline #itermCtn .iterm .bubble .top h3,
 #timeline #itermCtn .iterm .bubble .top h4 {
   font-size: 1.125em;
 }
-/* line 96, timeline.less */
+/* line 97, timeline.less */
 #timeline #itermCtn .iterm .bubble .middle {
   padding: 0.5em;
   min-height: 60px;
 }
-/* line 99, timeline.less */
+/* line 100, timeline.less */
 #timeline #itermCtn .iterm .bubble .middle p {
   font-size: 0.875em;
   margin: 0.55em 0;
   line-height: 1.25em;
 }
-/* line 109, timeline.less */
+/* line 108, timeline.less */
 #timeline #itermCtn .iterm .linetag {
   position: absolute;
+  z-index: 650;
   top: 15px;
   width: 24px;
   height: 24px;
   background-color: #68d3e3;
-  -webkit-border-radius: 24px;
-  -moz-border-radius: 24px;
-  border-radius: 24px;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
+  -webkit-transition: all 300ms ease;
+  -moz-transition: all 300ms ease;
+  transition: all 300ms ease;
+  -webkit-backface-visibility: hidden;
 }
 /* line 118, timeline.less */
+#timeline #itermCtn .iterm .linetag:hover {
+  top: 7px;
+  width: 40px;
+  height: 40px;
+  background-color: #68d3e3;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+}
+/* line 127, timeline.less */
 #timeline #itermCtn .iterm h1,
 #timeline #itermCtn .iterm h2,
 #timeline #itermCtn .iterm h3,
@@ -205,49 +240,102 @@ header ul {
 #timeline #itermCtn .iterm p {
   margin: 0.25em 0;
 }
-/* line 125, timeline.less */
+/* line 134, timeline.less */
 #timeline #itermCtn .iterm.left {
   opacity: 1;
   left: 0%;
 }
-/* line 129, timeline.less */
+/* line 138, timeline.less */
 #timeline #itermCtn .iterm.left .bubble {
   margin-left: 0;
 }
-/* line 131, timeline.less */
+/* line 140, timeline.less */
 #timeline #itermCtn .iterm.left .bubble:before {
   right: -8px;
 }
-/* line 136, timeline.less */
+/* line 145, timeline.less */
 #timeline #itermCtn .iterm.left .linetag {
   right: -12px;
 }
-/* line 141, timeline.less */
+/* line 149, timeline.less */
+#timeline #itermCtn .iterm.left .linetag:hover {
+  right: -20px;
+}
+/* line 154, timeline.less */
 #timeline #itermCtn .iterm.right {
   opacity: 1;
   left: 50%;
 }
-/* line 144, timeline.less */
+/* line 157, timeline.less */
 #timeline #itermCtn .iterm.right .bubble {
-  margin-left: 5.5%;
+  margin-left: 6%;
 }
-/* line 146, timeline.less */
+/* line 159, timeline.less */
 #timeline #itermCtn .iterm.right .bubble:before {
   left: -8px;
   -webkit-box-shadow: -1px 1px 3px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: -1px 1px 3px -1px rgba(0, 0, 0, 0.5);
   box-shadow: -1px 1px 3px -1px rgba(0, 0, 0, 0.5);
 }
-/* line 152, timeline.less */
+/* line 165, timeline.less */
 #timeline #itermCtn .iterm.right .linetag {
   left: -12px;
+}
+/* line 168, timeline.less */
+#timeline #itermCtn .iterm.right .linetag:hover {
+  left: -20px;
+}
+/* line 4, read-timeline.less */
+body.readmode #timeline {
+  width: 400px;
+}
+/* line 7, read-timeline.less */
+body.readmode #timeline #line {
+  left: 25px;
+  margin: 0;
+}
+/* line 11, read-timeline.less */
+body.readmode #timeline #itermCtn {
+  width: 400px;
+  left: 0;
+  margin-left: 0;
+}
+/* line 16, read-timeline.less */
+body.readmode #timeline #itermCtn .iterm {
+  width: 400px;
+  border-top: 1px solid #aaa;
+  background-color: #fff;
+}
+/* line 22, read-timeline.less */
+body.readmode #timeline #itermCtn .iterm .bubble {
+  width: 350px;
+  margin-left: 50px;
+  -webkit-box-shadow: 0 0 0 #000000;
+  -moz-box-shadow: 0 0 0 #000000;
+  box-shadow: 0 0 0 #000000;
+}
+/* line 28, read-timeline.less */
+body.readmode #timeline #itermCtn .iterm .bubble:before {
+  opacity: 0;
+}
+/* line 32, read-timeline.less */
+body.readmode #timeline #itermCtn .iterm .linetag {
+  opacity: 0;
+}
+/* line 36, read-timeline.less */
+body.readmode #timeline #itermCtn .iterm.left {
+  left: 0;
+}
+/* line 39, read-timeline.less */
+body.readmode #timeline #itermCtn .iterm.right {
+  left: 0;
 }
 /**
  * okaidia theme for JavaScript, CSS and HTML
  * Loosely based on Monokai textmate theme by http://www.monokai.nl/
  * @author ocodia
  */
-/* line 7, /Users/chensukesuke/Documents/dev/blog/src/layout/plugin/prism.less */
+/* line 7, /Users/chensukesuke/Documents/dev/blog/layout/plugin/prism.less */
 code[class*="language-"],
 pre[class*="language-"] {
   color: #f8f8f2;
@@ -266,56 +354,56 @@ pre[class*="language-"] {
   hyphens: none;
 }
 /* Code blocks */
-/* line 28, /Users/chensukesuke/Documents/dev/blog/src/layout/plugin/prism.less */
+/* line 28, /Users/chensukesuke/Documents/dev/blog/layout/plugin/prism.less */
 pre[class*="language-"] {
   padding: 1em;
   margin: 1em 0;
   overflow: auto;
   border-radius: 0.2em;
 }
-/* line 35, /Users/chensukesuke/Documents/dev/blog/src/layout/plugin/prism.less */
+/* line 35, /Users/chensukesuke/Documents/dev/blog/layout/plugin/prism.less */
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
   background: #272822;
 }
 /* Inline code */
-/* line 41, /Users/chensukesuke/Documents/dev/blog/src/layout/plugin/prism.less */
+/* line 41, /Users/chensukesuke/Documents/dev/blog/layout/plugin/prism.less */
 :not(pre) > code[class*="language-"] {
   padding: .1em;
   border-radius: .3em;
 }
-/* line 46, /Users/chensukesuke/Documents/dev/blog/src/layout/plugin/prism.less */
+/* line 46, /Users/chensukesuke/Documents/dev/blog/layout/plugin/prism.less */
 .token.comment,
 .token.prolog,
 .token.doctype,
 .token.cdata {
   color: slategray;
 }
-/* line 53, /Users/chensukesuke/Documents/dev/blog/src/layout/plugin/prism.less */
+/* line 53, /Users/chensukesuke/Documents/dev/blog/layout/plugin/prism.less */
 .token.punctuation {
   color: #f8f8f2;
 }
-/* line 57, /Users/chensukesuke/Documents/dev/blog/src/layout/plugin/prism.less */
+/* line 57, /Users/chensukesuke/Documents/dev/blog/layout/plugin/prism.less */
 .namespace {
   opacity: .7;
 }
-/* line 61, /Users/chensukesuke/Documents/dev/blog/src/layout/plugin/prism.less */
+/* line 61, /Users/chensukesuke/Documents/dev/blog/layout/plugin/prism.less */
 .token.property,
 .token.tag {
   color: #f92672;
 }
-/* line 66, /Users/chensukesuke/Documents/dev/blog/src/layout/plugin/prism.less */
+/* line 66, /Users/chensukesuke/Documents/dev/blog/layout/plugin/prism.less */
 .token.boolean,
 .token.number {
   color: #ae81ff;
 }
-/* line 71, /Users/chensukesuke/Documents/dev/blog/src/layout/plugin/prism.less */
+/* line 71, /Users/chensukesuke/Documents/dev/blog/layout/plugin/prism.less */
 .token.selector,
 .token.attr-name,
 .token.string {
   color: #a6e22e;
 }
-/* line 78, /Users/chensukesuke/Documents/dev/blog/src/layout/plugin/prism.less */
+/* line 78, /Users/chensukesuke/Documents/dev/blog/layout/plugin/prism.less */
 .token.operator,
 .token.entity,
 .token.url,
@@ -323,39 +411,39 @@ pre[class*="language-"] {
 .style .token.string {
   color: #f8f8f2;
 }
-/* line 86, /Users/chensukesuke/Documents/dev/blog/src/layout/plugin/prism.less */
+/* line 86, /Users/chensukesuke/Documents/dev/blog/layout/plugin/prism.less */
 .token.atrule,
 .token.attr-value {
   color: #e6db74;
 }
-/* line 93, /Users/chensukesuke/Documents/dev/blog/src/layout/plugin/prism.less */
+/* line 93, /Users/chensukesuke/Documents/dev/blog/layout/plugin/prism.less */
 .token.keyword {
   color: #66d9ef;
 }
-/* line 97, /Users/chensukesuke/Documents/dev/blog/src/layout/plugin/prism.less */
+/* line 97, /Users/chensukesuke/Documents/dev/blog/layout/plugin/prism.less */
 .token.regex,
 .token.important {
   color: #fd971f;
 }
-/* line 102, /Users/chensukesuke/Documents/dev/blog/src/layout/plugin/prism.less */
+/* line 102, /Users/chensukesuke/Documents/dev/blog/layout/plugin/prism.less */
 .token.important {
   font-weight: bold;
 }
-/* line 106, /Users/chensukesuke/Documents/dev/blog/src/layout/plugin/prism.less */
+/* line 106, /Users/chensukesuke/Documents/dev/blog/layout/plugin/prism.less */
 .token.entity {
   cursor: help;
 }
-/* line 109, /Users/chensukesuke/Documents/dev/blog/src/layout/plugin/prism.less */
+/* line 109, /Users/chensukesuke/Documents/dev/blog/layout/plugin/prism.less */
 pre.line-numbers {
   position: relative;
   padding-left: 3.8em;
   counter-reset: linenumber;
 }
-/* line 115, /Users/chensukesuke/Documents/dev/blog/src/layout/plugin/prism.less */
+/* line 115, /Users/chensukesuke/Documents/dev/blog/layout/plugin/prism.less */
 pre.line-numbers > code {
   position: relative;
 }
-/* line 119, /Users/chensukesuke/Documents/dev/blog/src/layout/plugin/prism.less */
+/* line 119, /Users/chensukesuke/Documents/dev/blog/layout/plugin/prism.less */
 .line-numbers .line-numbers-rows {
   position: absolute;
   pointer-events: none;
@@ -372,13 +460,13 @@ pre.line-numbers > code {
   -ms-user-select: none;
   user-select: none;
 }
-/* line 136, /Users/chensukesuke/Documents/dev/blog/src/layout/plugin/prism.less */
+/* line 136, /Users/chensukesuke/Documents/dev/blog/layout/plugin/prism.less */
 .line-numbers-rows > span {
   pointer-events: none;
   display: block;
   counter-increment: linenumber;
 }
-/* line 142, /Users/chensukesuke/Documents/dev/blog/src/layout/plugin/prism.less */
+/* line 142, /Users/chensukesuke/Documents/dev/blog/layout/plugin/prism.less */
 .line-numbers-rows > span:before {
   content: counter(linenumber);
   color: #999;
@@ -386,7 +474,7 @@ pre.line-numbers > code {
   padding-right: 0.8em;
   text-align: right;
 }
-/* line 12, layout.less */
+/* line 13, layout.less */
 body {
   overflow: hidden;
 }

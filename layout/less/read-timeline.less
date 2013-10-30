@@ -1,0 +1,45 @@
+@import "config.less";
+
+body.readmode{
+    #timeline{
+        width: @timelineThinW;
+        // margin-left: 
+        #line{
+            left: @readLineLeft;
+            margin: 0;
+        }
+        #itermCtn{
+            width: @timelineThinW;
+            left: 0;
+            margin-left: 0;
+            // background-color: red;
+            .iterm{
+                width: @timelineThinW;
+                border-top: 1px solid #aaa;
+                background-color: #fff;
+                
+
+                .bubble{
+                    width: @timelineThinW - @readLineLeft*2;
+                    margin-left: @readLineLeft*2;
+                    // border-style: none;
+                    // border-left: 1px solid #000;
+                    .boxshd( 0 0 0 #000;);
+                    &:before{
+                        opacity: 0;
+                    }
+                }
+                .linetag{
+                    opacity: 0;
+                }
+
+                &.left{
+                    left: 0;
+                }
+                &.right{
+                    left: 0;
+                }
+            }
+        }
+    }
+}

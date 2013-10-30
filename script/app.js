@@ -3,9 +3,9 @@ define(function( require, exports, module ){
 	var tools = require('./blogtool');
 	var config = require('./config');
 	var Timeline = require('./Timeline.js').Timeline;
+	var his = require('./route.js');
 
 	var Widget = require('./widgetCtrl.js');
-
 
 	var $ = util.qs;
 	var $A = util.qsa;

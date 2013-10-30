@@ -12,7 +12,7 @@
     height: 100%;
     overflow-y: auto;
     background-color: rgba(43, 133, 195,0.125);
-    .tst();
+    .tst( width 500ms ease 300ms;);
 
     #line{
         position: absolute;
@@ -22,10 +22,11 @@
         margin-left: -(@lineW/2);
         background-color: fadeout(@lineBGC, 50%);
         z-index: @lineZindex;
+
+        .tst();
     }
     #itermCtn{
         position: absolute;
-        
         left: 50%;
         right: 0;
         top: 16px;
@@ -102,17 +103,25 @@
                         line-height: 1.25em;
                     }
                 }
-                .bottom{
-
-                }
+                .bottom{}
             }
             .linetag{
                 position: absolute;
+                z-index: @lineZindex + 50;
                 top: @linetagCommonTop;
                 width: @linetagW;
                 height: @linetagW;
                 background-color: @linetagBGC;
-                .border-radius( @linetagW );
+                .border-radius( @linetagW/2 );
+                .tst();
+
+                &:hover{
+                    top: @linetagXTop;
+                    width: @linetagXW;
+                    height: @linetagXW;
+                    background-color: @linetagBGC;
+                    .border-radius( @linetagXW/2 );
+                }
             }
 
             h1,h2,h3,h4, p{
@@ -136,6 +145,10 @@
                 .linetag{
                     right: -@linetagW/2;
                     // right: 0;
+
+                    &:hover{
+                        right: -@linetagXW/2;
+                    }
                 }
             }
             &.right{
@@ -151,6 +164,10 @@
                 }
                 .linetag{
                     left: -@linetagW/2;
+
+                    &:hover{
+                        left: -@linetagXW/2;
+                    }
                 }
             }
         }

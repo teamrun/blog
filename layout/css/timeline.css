@@ -1,0 +1,207 @@
+/*--------------   header样式布局的配置项  ---------------*/
+/*--------------   #main的样式布局配置项   ---------------*/
+/*--------------   #timeline的布局配置项  ---------------*/
+/*--------------   line的布局配置项  ---------------*/
+/*--------------   line的布局配置项  ---------------*/
+/*--------------   .bubble的布局配置项  ---------------*/
+/*--------------   .lientag的布局配置项  ---------------*/
+/*--------------   #read布局样式的配置项  ---------------*/
+/*--------------   ---------------*/
+/*--------------   ---------------*/
+/* line 5, timeline.less */
+#timeline {
+  width: 100%;
+  position: relative;
+  float: left;
+  height: 100%;
+  overflow-y: auto;
+  background-color: rgba(43, 133, 195, 0.125);
+  -webkit-transition: width 500ms ease 300ms;
+  -moz-transition: width 500ms ease 300ms;
+  transition: width 500ms ease 300ms;
+  -webkit-backface-visibility: hidden;
+}
+/* line 17, timeline.less */
+#timeline #line {
+  position: absolute;
+  height: 100%;
+  width: 4px;
+  left: 50%;
+  margin-left: -2px;
+  background-color: rgba(26, 159, 249, 0.5);
+  z-index: 600;
+  -webkit-transition: all 300ms ease;
+  -moz-transition: all 300ms ease;
+  transition: all 300ms ease;
+  -webkit-backface-visibility: hidden;
+}
+/* line 28, timeline.less */
+#timeline #itermCtn {
+  position: absolute;
+  left: 50%;
+  right: 0;
+  top: 16px;
+  width: 1060px;
+  margin-left: -530px;
+  list-style: none;
+}
+/* line 40, timeline.less */
+#timeline #itermCtn .iterm {
+  position: absolute;
+  width: 50%;
+  z-index: 400;
+  -webkit-transition: top ease 500ms, opacity ease 500ms;
+  -moz-transition: top ease 500ms, opacity ease 500ms;
+  transition: top ease 500ms, opacity ease 500ms;
+  -webkit-backface-visibility: hidden;
+}
+/* line 48, timeline.less */
+#timeline #itermCtn .iterm.raw {
+  opacity: 0;
+}
+/* line 54, timeline.less */
+#timeline #itermCtn .iterm .bubble {
+  position: relative;
+  width: 94%;
+  padding: 0;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.375);
+  -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.375);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.375);
+  background-color: #ffffff;
+  color: #333333;
+}
+/* line 66, timeline.less */
+#timeline #itermCtn .iterm .bubble:before {
+  content: '';
+  display: block;
+  position: absolute;
+  z-index: 440;
+  top: 19px;
+  width: 16px;
+  height: 16px;
+  background-color: #f5f4f2;
+  -webkit-box-shadow: 1px -1px 3px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 1px -1px 3px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 1px -1px 3px -1px rgba(0, 0, 0, 0.5);
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+/* line 80, timeline.less */
+#timeline #itermCtn .iterm .bubble .top,
+#timeline #itermCtn .iterm .bubble .middle,
+#timeline #itermCtn .iterm .bubble .bottom {
+  padding: 0 0.5em;
+}
+/* line 83, timeline.less */
+#timeline #itermCtn .iterm .bubble .top {
+  position: relative;
+  padding: 4px;
+  -webkit-border-radius: 4px 4px 0 0;
+  -moz-border-radius: 4px 4px 0 0;
+  border-radius: 4px 4px 0 0;
+  border: none;
+  border-bottom: 1px solid #E6E5E4;
+  background-color: #f5f4f2;
+  z-index: 450;
+}
+/* line 93, timeline.less */
+#timeline #itermCtn .iterm .bubble .top h1,
+#timeline #itermCtn .iterm .bubble .top h2,
+#timeline #itermCtn .iterm .bubble .top h3,
+#timeline #itermCtn .iterm .bubble .top h4 {
+  font-size: 1.125em;
+}
+/* line 97, timeline.less */
+#timeline #itermCtn .iterm .bubble .middle {
+  padding: 0.5em;
+  min-height: 60px;
+}
+/* line 100, timeline.less */
+#timeline #itermCtn .iterm .bubble .middle p {
+  font-size: 0.875em;
+  margin: 0.55em 0;
+  line-height: 1.25em;
+}
+/* line 108, timeline.less */
+#timeline #itermCtn .iterm .linetag {
+  position: absolute;
+  z-index: 650;
+  top: 15px;
+  width: 24px;
+  height: 24px;
+  background-color: #68d3e3;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
+  -webkit-transition: all 300ms ease;
+  -moz-transition: all 300ms ease;
+  transition: all 300ms ease;
+  -webkit-backface-visibility: hidden;
+}
+/* line 118, timeline.less */
+#timeline #itermCtn .iterm .linetag:hover {
+  top: 7px;
+  width: 40px;
+  height: 40px;
+  background-color: #68d3e3;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+}
+/* line 127, timeline.less */
+#timeline #itermCtn .iterm h1,
+#timeline #itermCtn .iterm h2,
+#timeline #itermCtn .iterm h3,
+#timeline #itermCtn .iterm h4,
+#timeline #itermCtn .iterm p {
+  margin: 0.25em 0;
+}
+/* line 134, timeline.less */
+#timeline #itermCtn .iterm.left {
+  opacity: 1;
+  left: 0%;
+}
+/* line 138, timeline.less */
+#timeline #itermCtn .iterm.left .bubble {
+  margin-left: 0;
+}
+/* line 140, timeline.less */
+#timeline #itermCtn .iterm.left .bubble:before {
+  right: -8px;
+}
+/* line 145, timeline.less */
+#timeline #itermCtn .iterm.left .linetag {
+  right: -12px;
+}
+/* line 149, timeline.less */
+#timeline #itermCtn .iterm.left .linetag:hover {
+  right: -20px;
+}
+/* line 154, timeline.less */
+#timeline #itermCtn .iterm.right {
+  opacity: 1;
+  left: 50%;
+}
+/* line 157, timeline.less */
+#timeline #itermCtn .iterm.right .bubble {
+  margin-left: 6%;
+}
+/* line 159, timeline.less */
+#timeline #itermCtn .iterm.right .bubble:before {
+  left: -8px;
+  -webkit-box-shadow: -1px 1px 3px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: -1px 1px 3px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: -1px 1px 3px -1px rgba(0, 0, 0, 0.5);
+}
+/* line 165, timeline.less */
+#timeline #itermCtn .iterm.right .linetag {
+  left: -12px;
+}
+/* line 168, timeline.less */
+#timeline #itermCtn .iterm.right .linetag:hover {
+  left: -20px;
+}

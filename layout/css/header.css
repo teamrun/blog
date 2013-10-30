@@ -16,10 +16,18 @@ header {
   margin: 0;
   padding: 0;
   background-color: #ededed;
+  -webkit-transition: all 300ms ease;
+  -moz-transition: all 300ms ease;
+  transition: all 300ms ease;
+  -webkit-backface-visibility: hidden;
 }
-/* line 12, header.less */
+/* line 13, header.less */
 header ul {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+/* line 20, header.less */
+body.readmode header {
+  width: 80px;
 }

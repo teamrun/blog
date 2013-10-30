@@ -83,7 +83,8 @@ define(function( require, exports, module){
 
             var option = {
                 targetSelector: '#timeline .iterm',
-                refSelector: '#timeline .iterm .bubble',
+                // refSelector: '#timeline .iterm .bubble',
+                refSelector: '#timeline .iterm',
                 defaultMargin: 0,
                 classDef: false,
                 curTopOffset: 0
@@ -164,7 +165,7 @@ define(function( require, exports, module){
                     addTop = arr[ arr.length-1 ] - 10 + 35;
                 }
             }
-        
+            console.log( [ class1B, class2B ] );
             return [ class1B, class2B ];
         }
         else{
