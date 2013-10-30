@@ -6,10 +6,12 @@
     <link rel="stylesheet" href="/layout/css/layout.css" />
     <!-- 减少http请求,将prism的扩展名改为了less 然后由layout.less进行import, 最后直接编译,上线前压缩编译 -->
     <!-- <link rel="stylesheet" href="/src/layout/plugin/prism.css"> -->
-    
-    <script src="/script/base/sea.js"></script>
-    <script src="/script/base/markdown_prism.min.js"></script>
 
+    <script src="/script/base/markdown_prism.min.js"></script>
+    <script src="/script/base/sea.js"></script>
+    <script src="/script/base/avalon.js"></script>
+    <!-- <script src="/script/base/avalon.min.js"></script> -->
+    
     <!-- 方便获取元素 测试用 -->
     <!--<script src="/src/script/base/jquery-1.8.3.js"></script> -->
 
@@ -31,9 +33,21 @@
         </nav>
     </header>
     <div id="main">
-        <aside id="timeline">
+        <aside id="timeline" ms-controller="blogList">
             <div id="line"></div>
-            <ul id="itermCtn" style="height: 460px;">
+            <ul id="itermCtn" style="height: 460px;" ms-each-blog="list">
+                <li class="iterm raw" data-top="56" style="top: 56px;">
+                    <div class="bubble tri">
+                        <div class="linetag"></div>
+                        <div class="top">
+                            <h2 class="title">{{ blog.title | md2html | html }}</h2>
+                        </div>
+                        <div class="middle">
+                            {{ blog.summery.text | removeSummeryTitle | md2html | html }}
+                        </div>
+                        <div class="bottom"></div>
+                    </div>
+                </li>
             </ul>
         </aside>
 
@@ -53,7 +67,7 @@
             plugins: ['nocache'],
 
             "alias": {
-                "seajs-debug": "/src/script/base/sea-modules/seajs/seajs-debug/1.0.0/seajs-debug.js"
+                "seajs-debug": "/script/base/sea-modules/seajs/seajs-debug/1.0.0/seajs-debug.js"
               },
             paths: {
                 'script': '/script'

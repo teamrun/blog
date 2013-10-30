@@ -1,12 +1,28 @@
 define(function( require, exports, module ){
-    var readReg = /^\/read/;
-    if( readReg.test( location.pathname ) ){
-        document.body.className = 'readmode';
-    }
+    // var readReg = /^\/read/;
+    // if( readReg.test( location.pathname ) ){
+    //     document.body.className = 'readmode';
+    // }
 
-    if( location.pathname !== '/' &&  location.pathname.indexOf('read') < 0){
-        alert('going to 404 page...');
-    }
+    // if( location.pathname !== '/' &&  location.pathname.indexOf('read') < 0){
+    //     alert('going to 404 page...');
+    // }
+
+    // function pushUrl( stateObj, title, pathname ){
+    //     window.history.pushState( stateObj, title, $(this).attr('href'));
+    //     this.routes();
+    // }
+
+    var Router = function( route ){
+        this.route = route;
+        return this;
+    };
+    Router.prototype.go = function( stateObj, title, pathname ) {
+        window.history.pushState( stateObj, title, pathname );
+        this.route( pathname );
+    };
+
+    module.exports = Router;
     // 相当于在页面内部配置了一套路由系统, 根据pathname和search进行页面内的路由:
     //      显示怎样的布局
     //      发送什么请求
@@ -22,4 +38,9 @@ define(function( require, exports, module ){
     //              不符合的可以直接到404哦... 也许可行, 嗯,url载入时就执行路由?可行吗?
     //                  或则干脆nginx路由上不配,直接404了...
     // 哈哈,我真是天才~
+
+
+
+    // 函数调用push(封装好的push, 里面包含监听器,监听url的pathname)
+    // 所以应该是: app require route 和  funcs  然后绑定...
 });
