@@ -16,6 +16,10 @@ define(function( require, exports, module ){
 
 	};
 
+	// 嗯 可以用单例模式,  然后提供一个"更新路由规则"的方法,在app.js中通过"更新路由规则",将定义好的方法导入进去
+	// 这样就不用依赖来依赖去了...
+	// 我还是天才啊~~
+
 	var router = new Router(function( pathname ){
 		console.log( 'routing to... :' + pathname );
 	});
@@ -54,6 +58,7 @@ define(function( require, exports, module ){
 		blogListVM = avalon.define('blogList', function(vm){
 			vm.list = [];
 			vm.enterReadMode = function(e){
+				// 想办法实现jquery的closest方法,方便这样的代理
 				var id= e.target.dataset.blogid;
 				console.log( id );
 
@@ -64,62 +69,3 @@ define(function( require, exports, module ){
 		avalon.scan( $('#timeline'), 'blogList' );
 	});
 });
-
-/*
-define(function( require, exports, module ){
-	var util = require('./util');
-	var tools = require('./blogtool');
-	var config = require('./config');
-	var Timeline = require('./Timeline.js').Timeline;
-	var his = require('./route.js');
-
-	var Widget = require('./widgetCtrl.js');
-
-	var $ = util.qs;
-	var $A = util.qsa;
-	var $ajax = util.ajax;
-
-	var blogCtn = $('.piece');
-	window.onload = function(){
-
-		patchStyle();
-
-		var blogDataSet;
-
-		$ajax({
-			url: config.getBlogUrl,
-			action: 'get',
-			// data: {key: '_id', value: '52104667f084e7b304000002' },
-			callback: function( data ){
-				if( data || data[0] ){
-					// 使用markdown.js渲染blog 或 缩略图
-					blogDataSet = data;
-
-
-					var option = {
-						itermCtn: config.timeline.itermCtn,
-						sideFirst: config.timeline.sideFirst,
-						itermConstructor: tools.itermConstructor,
-						data: blogDataSet,
-					};
-
-					var timeline = new Timeline( option );
-
-					timeline.init();
-
-					timeline.bind();
-				}
-			}
-		});
-	}
-
-	function patchStyle(){
-		var headerNode = $('header');
-		var timelineNode = $('#timeline');
-
-		headerNodeW = window.getComputedStyle( headerNode ).width;
-	}
-
-});
-
-*/
