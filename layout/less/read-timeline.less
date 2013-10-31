@@ -29,8 +29,11 @@ body.readmode{
                     &:before{
                         opacity: 0;
                     }
+                    // 缩起时有纵向滚动条, 会使@timelineThinW可用宽度进一步压缩
+                    //      如果一直按100%来布局的话,会有横向滚动条,当然这可以用overflow-x: hidden;来避免(已写在timeline.less中)
+                    //      但是文字就会被盖住 所以给文字的父元素加个padding-right
                     .top, .middle, .bottom{
-                        padding-right: @readLineLeft * 0.5;
+                        padding-right: ceil(@readLineLeft * 0.8);
                     }
                 }
                 .linetag{
