@@ -1,4 +1,5 @@
 @import "config.less";
+@import "mixin.less";
 
 body.readmode{
     #timeline{
@@ -10,23 +11,26 @@ body.readmode{
         }
         #itermCtn{
             width: @timelineThinW;
+            padding: 0;
             left: 0;
             margin-left: 0;
             // background-color: red;
             .iterm{
-                width: @timelineThinW;
+                width: 100%;
                 border-top: 1px solid #aaa;
-                background-color: #fff;
+                // background-color: #fff;
                 
-
                 .bubble{
                     width: @timelineThinW - @readLineLeft*2;
-                    margin-left: @readLineLeft*2;
-                    // border-style: none;
-                    // border-left: 1px solid #000;
-                    .boxshd( 0 0 0 #000;);
+                    margin-left: @readLineLeft * 2;
+                    // margin: 0;
+                    .border-radius(0);
+                    .box-shadow( 0 0 0 #fff);
                     &:before{
                         opacity: 0;
+                    }
+                    .top, .middle, .bottom{
+                        padding-right: @readLineLeft * 0.5;
                     }
                 }
                 .linetag{

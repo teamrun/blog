@@ -11,15 +11,19 @@
     float: left;
     height: 100%;
     overflow-y: auto;
+    overflow-x: hidden;
     background-color: rgba(43, 133, 195,0.125);
     .tst( width 500ms ease 300ms;);
 
     #line{
+        // position: fixed;
         position: absolute;
+        // TODO: the height need to be set handlely...
         height: 100%;
         width: @lineW;
         left: 50%;
-        margin-left: -(@lineW/2);
+        // margin-left: @headerW/2;
+        margin-left: -@lineW/2;
         background-color: fadeout(@lineBGC, 50%);
         z-index: @lineZindex;
 
@@ -39,10 +43,7 @@
     #itermCtn{
         .iterm{
             position: absolute;
-            // top: 20px;
             width: @itermW;
-            // padding: 10px;
-            // z-index: @itermZindex;
             z-index: @lineZindex + 100;
             .tst( top ease 500ms; opacity ease 500ms; );
 
@@ -58,7 +59,7 @@
                 width: @bubbleW;
                 padding: @bubblePadding;
                 .border-radius();
-                .boxshd( 0 0 3px rgba(0,0,0,0.375); );
+                .box-shadow( 0 0 3px rgba(0,0,0,0.375); );
                 background-color: @bubbleBGC;
                 color: @bubbleC;
             }
@@ -75,7 +76,7 @@
                     // background-color: @bubbleBGC;
                     background-color: @topBGC;
                     // box-shadow 和 transform的诡异结合```实现tri的单方向阴影
-                    .boxshd( 1px -1px 3px -1px rgba(0,0,0,0.5); );
+                    .box-shadow( 1px -1px 3px -1px rgba(0,0,0,0.5); );
                     .tsf(rotate(45deg));
                 }
                 .top, .middle, .bottom{
@@ -117,7 +118,7 @@
                     background-color: @linetagBGC;
                     .border-radius( @linetagW/2 );
                     // 加个延时,快速划过时不变换
-                    .tst( all 350ms ease 80ms;);
+                    .tst( all 350ms ease 40ms;);
                 }
                 &:hover .linetag{
                     top: @linetagXTop;
@@ -161,7 +162,7 @@
                     &:before{
                         left: -@bubbleTriW/2;
                         // 微调阴影方向
-                        .boxshd( -1px 1px 3px -1px rgba(0,0,0,0.5); );
+                        .box-shadow( -1px 1px 3px -1px rgba(0,0,0,0.5); );
                     }
 
                     .linetag{

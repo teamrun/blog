@@ -7,50 +7,51 @@ define(function( require, exports, module ){
 
 	var Widget = require('./widgetCtrl.js');
 
+
 	var $ = util.qs,
 		$A = util.qsa,
 		$ajax = util.ajax;
 
-	// 构建路由规则
-	var rules = {
-
+	var lineObj, itermCtnObj;
+	var ids = {
+		line: 'line',
+		itermCtn: 'itermCtn'
 	};
+
+	// 构建路由规则
+	var rules = [
+		{
+			path: '/read',
+			handler: function(){
+				document.body.className = 'readmode';
+			}
+		}
+	];
 
 	// 嗯 可以用单例模式,  然后提供一个"更新路由规则"的方法,在app.js中通过"更新路由规则",将定义好的方法导入进去
 	// 这样就不用依赖来依赖去了...
 	// 我还是天才啊~~
 
 	var router = new Router(function( pathname ){
-		console.log( 'routing to... :' + pathname );
+		// UI 操作
+		var H;
+		if( pathname.indexOf('/read') >=0 ){
+			document.body.className = 'readmode';
+			H = tools.layoutSingal();
+		}
+		else{
+			H =tools.layoutTwo();
+		}
+		H = Math.ceil(H + 30);
+		lineObj.style.height = H + 'px';
+		itermCtnObj.style.height = H  + 'px';
+
+		// 数据操作: ajax获取什么的....
+
 	});
-
+	
 	window.onload = function(){
-		$ajax({
-			url: config.getBlogUrl,
-			action: 'get',
-			// data: {key: '_id', value: '52104667f084e7b304000002' },
-			callback: function( data ){
-				if( data || data[0] ){
-					// 使用markdown.js渲染blog 或 缩略图
-					blogListVM.list = data;
-
-					var opt = {
-						targetSelector: '#main #itermCtn' + ' .iterm.raw',
-						// refSelector: '',
-						classDef: true,
-						class1: 'left',
-						class2: 'right',
-						class1B: 0,
-						class2B: 40,
-						defaultMargin: 40,
-						class2repalce: 'raw'
-					};
-					console.log( opt );
-
-					tools.posDom( opt );
-				}
-			}
-		});
+		
 	};
 
 	var blogListVM, cmtVM;
@@ -67,5 +68,28 @@ define(function( require, exports, module ){
 		});
 
 		avalon.scan( $('#timeline'), 'blogList' );
+		// 下面的代码不必等到onload...
+		initFunc();
+		// 尝试给自己的$ajax方法添加 类似jquery的 fianl方法  并抛出http状态码...
+		$ajax({
+			url: config.getBlogUrl,
+			action: 'get',
+			// data: {key: '_id', value: '52104667f084e7b304000002' },
+			callback: function( data ){
+				if( data || data[0] ){
+					// 使用markdown.js渲染blog 或 缩略图
+					blogListVM.list = data;
+
+					router.route( location.pathname );
+				}
+			}
+		});
 	});
+
+	function initFunc(){
+		lineObj = $('#'+ids.line);
+		itermCtnObj = $('#'+ids.itermCtn);
+	}
+
+	window.GR = router;
 });

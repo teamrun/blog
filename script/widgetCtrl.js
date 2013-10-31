@@ -1,6 +1,5 @@
 define(function( require, exports, module ){
     var util = require('./util');
-    var timeline = require('./Timeline');
 
     var $ = util.qs;
     var $A = util.qsa;

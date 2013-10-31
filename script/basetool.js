@@ -128,16 +128,60 @@ define( function(require, exports, module){
                     addTop = arr[ arr.length-1 ] - 10 + 35;
                 }
             }
-            console.log( [ class1B, class2B ] );
-            return [ class1B, class2B ];
+            if( class1B > class2B ){
+                return class1B;
+            }
+            else{
+                return class2B;
+            }
         }
         else{
+            var callback = function(){};
+            if( opt.class2repalce ){
+                callback = function( ele ){
+                    util.removeClass( ele, opt.class2repalce );
+                };
+            }
             for( var i=0; i<len ;i++ ){
                 targets[i].style.top = curTopOffset + defaultMargin + 'px';
                 var refHeight = window.getComputedStyle( refs[i] ).height;
                 curTopOffset += defaultMargin + Number( refHeight.substr(0, refHeight.length-2) );
+
+                callback( targets[i] );
             }
+
+            return curTopOffset;
         }
+    }
+
+    function layoutTwo(){
+        console.log('calling : ' + arguments.callee.name );
+        var opt = {
+            targetSelector: '#main #itermCtn' + ' .iterm.raw',
+            // refSelector: '',
+            classDef: true,
+            class1: 'left',
+            class2: 'right',
+            class1B: 0,
+            class2B: 40,
+            defaultMargin: 30,
+            class2repalce: 'raw'
+        };
+        return posDom( opt );
+
+    }
+    function layoutSingal(){
+        var opt = {
+            targetSelector: '#main #itermCtn' + ' .iterm.raw',
+            // refSelector: '',
+            classDef: false,
+            class1B: 0,
+            class2B: 40,
+            defaultMargin: 5,
+            class2repalce: 'raw'
+        };
+        console.log('calling : ' + arguments.callee.name );
+        return posDom( opt );
     }
 
 
@@ -148,4 +192,6 @@ define( function(require, exports, module){
     exports.Blog = Blog;
 
     exports.posDom = posDom;
+    exports.layoutTwo = layoutTwo;
+    exports.layoutSingal = layoutSingal;
 });
