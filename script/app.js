@@ -62,7 +62,7 @@ define(function( require, exports, module ){
 				console.log( id );
 
 				router.go( null, null, '/read/art/' + id );
-			}
+			};
 		});
 
 		avalon.scan( $('#timeline'), 'blogList' );

@@ -68,13 +68,13 @@
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.375);
-  -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.375);
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.375);
+  -webkit-box-shadow: 0 3px 0 #dce8ed;
+  -moz-box-shadow: 0 3px 0 #dce8ed;
+  box-shadow: 0 3px 0 #dce8ed;
   background-color: #ffffff;
   color: #333333;
 }
-/* line 65, timeline.less */
+/* line 67, timeline.less */
 #timeline #itermCtn .iterm .bubble:before {
   content: '';
   display: block;
@@ -91,13 +91,13 @@
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
-/* line 79, timeline.less */
+/* line 81, timeline.less */
 #timeline #itermCtn .iterm .bubble .top,
 #timeline #itermCtn .iterm .bubble .middle,
 #timeline #itermCtn .iterm .bubble .bottom {
   padding: 0 0.5em;
 }
-/* line 82, timeline.less */
+/* line 84, timeline.less */
 #timeline #itermCtn .iterm .bubble .top {
   position: relative;
   padding: 4px;
@@ -110,25 +110,25 @@
   z-index: 840;
   cursor: pointer;
 }
-/* line 94, timeline.less */
+/* line 96, timeline.less */
 #timeline #itermCtn .iterm .bubble .top h1,
 #timeline #itermCtn .iterm .bubble .top h2,
 #timeline #itermCtn .iterm .bubble .top h3,
 #timeline #itermCtn .iterm .bubble .top h4 {
   font-size: 1.125em;
 }
-/* line 98, timeline.less */
+/* line 100, timeline.less */
 #timeline #itermCtn .iterm .bubble .middle {
   padding: 0.5em;
   min-height: 60px;
 }
-/* line 101, timeline.less */
+/* line 103, timeline.less */
 #timeline #itermCtn .iterm .bubble .middle p {
   font-size: 0.875em;
   margin: 0.55em 0;
   line-height: 1.25em;
 }
-/* line 109, timeline.less */
+/* line 111, timeline.less */
 #timeline #itermCtn .iterm .bubble .linetag {
   position: absolute;
   z-index: 650;
@@ -144,7 +144,7 @@
   transition: all 350ms ease 40ms;
   -webkit-backface-visibility: hidden;
 }
-/* line 120, timeline.less */
+/* line 122, timeline.less */
 #timeline #itermCtn .iterm .bubble:hover .linetag {
   top: 5px;
   width: 44px;
@@ -154,7 +154,7 @@
   -moz-border-radius: 22px;
   border-radius: 22px;
 }
-/* line 129, timeline.less */
+/* line 131, timeline.less */
 #timeline #itermCtn .iterm h1,
 #timeline #itermCtn .iterm h2,
 #timeline #itermCtn .iterm h3,
@@ -162,55 +162,55 @@
 #timeline #itermCtn .iterm p {
   margin: 0.25em 0;
 }
-/* line 136, timeline.less */
+/* line 138, timeline.less */
 #timeline #itermCtn .iterm.left {
   opacity: 1;
   left: 0%;
 }
-/* line 140, timeline.less */
+/* line 142, timeline.less */
 #timeline #itermCtn .iterm.left .bubble {
   margin-left: 0;
 }
-/* line 142, timeline.less */
+/* line 144, timeline.less */
 #timeline #itermCtn .iterm.left .bubble:before {
   right: -8px;
 }
-/* line 145, timeline.less */
+/* line 147, timeline.less */
 #timeline #itermCtn .iterm.left .bubble .linetag {
   left: 107.52688172043011%;
   margin-left: -12px;
 }
-/* line 149, timeline.less */
+/* line 151, timeline.less */
 #timeline #itermCtn .iterm.left .bubble:hover .linetag {
   margin-left: -22px;
 }
-/* line 154, timeline.less */
+/* line 156, timeline.less */
 #timeline #itermCtn .iterm.right {
   opacity: 1;
   left: 50%;
 }
-/* line 157, timeline.less */
+/* line 159, timeline.less */
 #timeline #itermCtn .iterm.right .bubble {
   margin-left: 7%;
 }
-/* line 159, timeline.less */
+/* line 161, timeline.less */
 #timeline #itermCtn .iterm.right .bubble:before {
   left: -8px;
   -webkit-box-shadow: -1px 1px 3px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: -1px 1px 3px -1px rgba(0, 0, 0, 0.5);
   box-shadow: -1px 1px 3px -1px rgba(0, 0, 0, 0.5);
 }
-/* line 165, timeline.less */
+/* line 167, timeline.less */
 #timeline #itermCtn .iterm.right .bubble .linetag {
   left: -7.526881720430108%;
   margin-left: -12px;
 }
-/* line 169, timeline.less */
+/* line 171, timeline.less */
 #timeline #itermCtn .iterm.right .bubble:hover .linetag {
   margin-left: -22px;
 }
 /*------------------ test ------------------*/
-/* line 186, timeline.less */
+/* line 188, timeline.less */
 #itermCtn {
   /*--- persudo as line, suc! ---*/
 
