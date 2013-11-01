@@ -162,7 +162,7 @@ define( function(require, exports, module){
             classDef: true,
             class1: 'left',
             class2: 'right',
-            class1B: 0,
+            class1B: 25,
             class2B: 40,
             defaultMargin: 30,
             class2repalce: 'raw'

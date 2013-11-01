@@ -5,16 +5,18 @@ body.readmode{
     #timeline{
         width: @timelineThinW;
         // margin-left: 
-        #line{
-            left: @readLineLeft;
-            margin: 0;
-        }
+       
         #itermCtn{
             width: @timelineThinW;
             padding: 0;
             left: 0;
             margin-left: 0;
             // background-color: red;
+
+            &:before{
+                left: @readLineLeft;
+            }
+            
             .iterm{
                 width: 100%;
                 border-top: 1px solid #aaa;

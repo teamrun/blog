@@ -12,9 +12,8 @@ define(function( require, exports, module ){
 		$A = util.qsa,
 		$ajax = util.ajax;
 
-	var lineObj, itermCtnObj;
+	var itermCtnObj;
 	var ids = {
-		line: 'line',
 		itermCtn: 'itermCtn'
 	};
 
@@ -43,7 +42,6 @@ define(function( require, exports, module ){
 			H =tools.layoutTwo();
 		}
 		H = Math.ceil(H + 30);
-		lineObj.style.height = H + 'px';
 		itermCtnObj.style.height = H  + 'px';
 
 		// 数据操作: ajax获取什么的....

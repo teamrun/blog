@@ -15,30 +15,26 @@
     background-color: rgba(43, 133, 195,0.125);
     .tst( width 500ms ease 300ms;);
 
-    #line{
-        // position: fixed;
-        position: absolute;
-        // TODO: the height need to be set handlely...
-        min-height: 100%;
-        width: @lineW;
-        left: 50%;
-        // margin-left: @headerW/2;
-        margin-left: -@lineW/2;
-        background-color: fadeout(@lineBGC, 50%);
-        z-index: @lineZindex;
-
-        .tst();
-    }
     #itermCtn{
         position: absolute;
         left: 50%;
         right: 0;
-        top: 16px;
+        top: 0px;
         // 宽度百分百 会带来一些问题  如linetag位置会由于iterm宽度有小数点时发生轻微的不对齐
         width: @itermCtnW;
         margin-left: -@itermCtnW/2;
-        
         list-style: none;
+        
+        &:before{
+            content: '';
+            display: block;
+            position: absolute;
+            height: 100%;
+            width: @lineW;
+            left: 50%;
+            margin-left: -@lineW/2;
+            background-color: rgba(0,0,0,0.25);
+        }
     }
     #itermCtn{
         .iterm{
@@ -182,4 +178,10 @@
     }
 
 //here ends #timeline 
+}
+
+
+/*------------------ test ------------------*/
+#itermCtn{
+    /*--- persudo as line, suc! ---*/
 }

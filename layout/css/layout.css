@@ -104,30 +104,27 @@ body.readmode #main {
   -webkit-backface-visibility: hidden;
 }
 /* line 18, timeline.less */
-#timeline #line {
-  position: absolute;
-  min-height: 100%;
-  width: 4px;
-  left: 50%;
-  margin-left: -2px;
-  background-color: rgba(26, 159, 249, 0.5);
-  z-index: 600;
-  -webkit-transition: all 300ms ease;
-  -moz-transition: all 300ms ease;
-  transition: all 300ms ease;
-  -webkit-backface-visibility: hidden;
-}
-/* line 32, timeline.less */
 #timeline #itermCtn {
   position: absolute;
   left: 50%;
   right: 0;
-  top: 16px;
+  top: 0px;
   width: 1060px;
   margin-left: -530px;
   list-style: none;
 }
-/* line 44, timeline.less */
+/* line 28, timeline.less */
+#timeline #itermCtn:before {
+  content: '';
+  display: block;
+  position: absolute;
+  height: 100%;
+  width: 4px;
+  left: 50%;
+  margin-left: -2px;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+/* line 40, timeline.less */
 #timeline #itermCtn .iterm {
   position: absolute;
   width: 50%;
@@ -137,11 +134,11 @@ body.readmode #main {
   transition: top ease 500ms, opacity ease 500ms;
   -webkit-backface-visibility: hidden;
 }
-/* line 50, timeline.less */
+/* line 46, timeline.less */
 #timeline #itermCtn .iterm.raw {
   opacity: 0;
 }
-/* line 56, timeline.less */
+/* line 52, timeline.less */
 #timeline #itermCtn .iterm .bubble {
   position: relative;
   z-index: 800;
@@ -156,7 +153,7 @@ body.readmode #main {
   background-color: #ffffff;
   color: #333333;
 }
-/* line 68, timeline.less */
+/* line 64, timeline.less */
 #timeline #itermCtn .iterm .bubble:before {
   content: '';
   display: block;
@@ -173,13 +170,13 @@ body.readmode #main {
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
-/* line 82, timeline.less */
+/* line 78, timeline.less */
 #timeline #itermCtn .iterm .bubble .top,
 #timeline #itermCtn .iterm .bubble .middle,
 #timeline #itermCtn .iterm .bubble .bottom {
   padding: 0 0.5em;
 }
-/* line 85, timeline.less */
+/* line 81, timeline.less */
 #timeline #itermCtn .iterm .bubble .top {
   position: relative;
   padding: 4px;
@@ -192,25 +189,25 @@ body.readmode #main {
   z-index: 840;
   cursor: pointer;
 }
-/* line 97, timeline.less */
+/* line 93, timeline.less */
 #timeline #itermCtn .iterm .bubble .top h1,
 #timeline #itermCtn .iterm .bubble .top h2,
 #timeline #itermCtn .iterm .bubble .top h3,
 #timeline #itermCtn .iterm .bubble .top h4 {
   font-size: 1.125em;
 }
-/* line 101, timeline.less */
+/* line 97, timeline.less */
 #timeline #itermCtn .iterm .bubble .middle {
   padding: 0.5em;
   min-height: 60px;
 }
-/* line 104, timeline.less */
+/* line 100, timeline.less */
 #timeline #itermCtn .iterm .bubble .middle p {
   font-size: 0.875em;
   margin: 0.55em 0;
   line-height: 1.25em;
 }
-/* line 112, timeline.less */
+/* line 108, timeline.less */
 #timeline #itermCtn .iterm .bubble .linetag {
   position: absolute;
   z-index: 650;
@@ -226,7 +223,7 @@ body.readmode #main {
   transition: all 350ms ease 40ms;
   -webkit-backface-visibility: hidden;
 }
-/* line 123, timeline.less */
+/* line 119, timeline.less */
 #timeline #itermCtn .iterm .bubble:hover .linetag {
   top: 5px;
   width: 44px;
@@ -236,7 +233,7 @@ body.readmode #main {
   -moz-border-radius: 22px;
   border-radius: 22px;
 }
-/* line 132, timeline.less */
+/* line 128, timeline.less */
 #timeline #itermCtn .iterm h1,
 #timeline #itermCtn .iterm h2,
 #timeline #itermCtn .iterm h3,
@@ -244,75 +241,80 @@ body.readmode #main {
 #timeline #itermCtn .iterm p {
   margin: 0.25em 0;
 }
-/* line 139, timeline.less */
+/* line 135, timeline.less */
 #timeline #itermCtn .iterm.left {
   opacity: 1;
   left: 0%;
 }
-/* line 143, timeline.less */
+/* line 139, timeline.less */
 #timeline #itermCtn .iterm.left .bubble {
   margin-left: 0;
 }
-/* line 145, timeline.less */
+/* line 141, timeline.less */
 #timeline #itermCtn .iterm.left .bubble:before {
   right: -8px;
 }
-/* line 148, timeline.less */
+/* line 144, timeline.less */
 #timeline #itermCtn .iterm.left .bubble .linetag {
   left: 107.52688172043011%;
   margin-left: -12px;
 }
-/* line 152, timeline.less */
+/* line 148, timeline.less */
 #timeline #itermCtn .iterm.left .bubble:hover .linetag {
   margin-left: -22px;
 }
-/* line 157, timeline.less */
+/* line 153, timeline.less */
 #timeline #itermCtn .iterm.right {
   opacity: 1;
   left: 50%;
 }
-/* line 160, timeline.less */
+/* line 156, timeline.less */
 #timeline #itermCtn .iterm.right .bubble {
   margin-left: 7%;
 }
-/* line 162, timeline.less */
+/* line 158, timeline.less */
 #timeline #itermCtn .iterm.right .bubble:before {
   left: -8px;
   -webkit-box-shadow: -1px 1px 3px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: -1px 1px 3px -1px rgba(0, 0, 0, 0.5);
   box-shadow: -1px 1px 3px -1px rgba(0, 0, 0, 0.5);
 }
-/* line 168, timeline.less */
+/* line 164, timeline.less */
 #timeline #itermCtn .iterm.right .bubble .linetag {
   left: -7.526881720430108%;
   margin-left: -12px;
 }
-/* line 172, timeline.less */
+/* line 168, timeline.less */
 #timeline #itermCtn .iterm.right .bubble:hover .linetag {
   margin-left: -22px;
+}
+/*------------------ test ------------------*/
+/* line 185, timeline.less */
+#itermCtn {
+  /*--- persudo as line, suc! ---*/
+
 }
 /* line 5, read-timeline.less */
 body.readmode #timeline {
   width: 600px;
 }
-/* line 8, read-timeline.less */
-body.readmode #timeline #line {
-  left: 25px;
-  margin: 0;
-}
-/* line 12, read-timeline.less */
+/* line 9, read-timeline.less */
 body.readmode #timeline #itermCtn {
   width: 600px;
   padding: 0;
   left: 0;
   margin-left: 0;
 }
-/* line 18, read-timeline.less */
+/* line 16, read-timeline.less */
+body.readmode #timeline #itermCtn:before {
+  left: 25px;
+}
+/* line 20, read-timeline.less */
 body.readmode #timeline #itermCtn .iterm {
   width: 100%;
   border-top: 1px solid #aaa;
 }
-/* line 23, read-timeline.less */
+/* line 25, read-timeline.less */
 body.readmode #timeline #itermCtn .iterm .bubble {
   width: 550px;
   margin-left: 50px;
@@ -323,25 +325,25 @@ body.readmode #timeline #itermCtn .iterm .bubble {
   -moz-box-shadow: 0 0 0 #ffffff;
   box-shadow: 0 0 0 #ffffff;
 }
-/* line 29, read-timeline.less */
+/* line 31, read-timeline.less */
 body.readmode #timeline #itermCtn .iterm .bubble:before {
   opacity: 0;
 }
-/* line 32, read-timeline.less */
+/* line 37, read-timeline.less */
 body.readmode #timeline #itermCtn .iterm .bubble .top,
 body.readmode #timeline #itermCtn .iterm .bubble .middle,
 body.readmode #timeline #itermCtn .iterm .bubble .bottom {
-  padding-right: 12.5px;
+  padding-right: 20px;
 }
-/* line 36, read-timeline.less */
+/* line 41, read-timeline.less */
 body.readmode #timeline #itermCtn .iterm .linetag {
   opacity: 0;
 }
-/* line 40, read-timeline.less */
+/* line 45, read-timeline.less */
 body.readmode #timeline #itermCtn .iterm.left {
   left: 0;
 }
-/* line 43, read-timeline.less */
+/* line 48, read-timeline.less */
 body.readmode #timeline #itermCtn .iterm.right {
   left: 0;
 }
