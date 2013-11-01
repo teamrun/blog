@@ -22,9 +22,10 @@
         top: 0px;
         // 宽度百分百 会带来一些问题  如linetag位置会由于iterm宽度有小数点时发生轻微的不对齐
         width: @itermCtnW;
+        min-height: 100%;
         margin-left: -@itermCtnW/2;
         list-style: none;
-        
+
         &:before{
             content: '';
             display: block;
