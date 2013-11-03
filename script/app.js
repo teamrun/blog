@@ -24,6 +24,14 @@ define(function( require, exports, module ){
 		nickname: 'nickname',
 		email: 'email'
 	};
+    // TODO: 如何实现nodejs式的路由规则? 还有啊 感觉用title查询更好啊`` english title  允许在writer页设置~
+    // TODO: 文件模块和分离  VM应该单独列出来?
+    //      要解决的问题: 怎么很好的实现有序有层次的文件依赖, 函数调用...
+    // TODO: loading
+    // TODO: 手动状态切换( 允许为全屏~  )
+    // TODO: 内存中的缓存
+    // TODO: UI, 图标, homepage, about me
+    // TODO: 更丰富的blog信息... type like数, cmt数...
 
 	// 构建路由规则
 	var rules = [
