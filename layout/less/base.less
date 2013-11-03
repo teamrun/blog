@@ -1,0 +1,25 @@
+@import "config.less";
+@import "mixin.less";
+
+.fix-flt{
+    &:after{
+        content: ".";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+    }
+}
+
+.btn{
+    display: inline-block;
+    padding: 6px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    .border-radius( 2px );
+}
+.btn-primary{
+    color: #fff;
+    background-color: @headerBGC;
+    .box-shadow( 0 3px 0 fadeOut(@headerBGC, 50%); );
+}

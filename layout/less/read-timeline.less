@@ -4,6 +4,8 @@
 body.readmode{
     #timeline{
         width: @timelineThinW;
+        background-color: #fff;
+        .tst( width 500ms ease 500ms;);
         // margin-left: 
        
         #itermCtn{
@@ -15,17 +17,18 @@ body.readmode{
 
             &:before{
                 left: @readLineLeft;
+                background-color: #95C11A;
             }
-            
+
             .iterm{
                 width: 100%;
-                border-top: 1px solid #aaa;
-                // background-color: #fff;
+                border-top: 2px solid #ddd;
                 
                 .bubble{
                     width: @timelineThinW - @readLineLeft*2;
                     margin-left: @readLineLeft * 2;
                     // margin: 0;
+                    border: none;
                     .border-radius(0);
                     .box-shadow( 0 0 0 #fff);
                     &:before{
@@ -36,6 +39,10 @@ body.readmode{
                     //      但是文字就会被盖住 所以给文字的父元素加个padding-right
                     .top, .middle, .bottom{
                         padding-right: ceil(@readLineLeft * 0.8);
+                    }
+                    .top{
+                        border: none;
+                        background-color: inherit;
                     }
                 }
                 .linetag{

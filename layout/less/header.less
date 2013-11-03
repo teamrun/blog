@@ -2,18 +2,40 @@
 @import "mixin.less";
 
 header{
+    position: relative;
+    z-index: 1000;
     float: left;
     width: @headerW;
     height: 100%;
     margin: 0;
     padding: 0;
+    color: #fff;
     background-color: @headerBGC;
     .tst();
 
     ul{
-        margin: 0;
+        margin-top: 200px;
         padding: 0;
         list-style: none;
+        li{
+            width: 80%;
+            margin-left: 10%;
+            padding: 0.125em 0;
+            text-align: center;
+            font-size: 1.5em;
+            .tst(all 400ms ease;);
+            &:hover{
+                background-color: #fff;
+                color: @headerBGC;
+            }
+            a{
+                display: inline-block;
+                height: 100%;
+                width: 100%;
+                color: inherit;
+            }
+
+        }
     }
 }
 body.readmode{

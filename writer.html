@@ -4,13 +4,13 @@
 	<meta charset="UTF-8">
 	<title>i am a writer</title>
 	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.2.1/pure-min.css" />
-	<link rel="stylesheet" href="src/layout/blog.css" />
-	<link rel="stylesheet" href="src/layout/prism.css">
+	<link rel="stylesheet" href="/layout/blog.css" />
+    <link rel="stylesheet" href="/layout/plugin/prism.css" />
 
-	<script src="/src/script/base/sea.js"></script>
+	<script src="/script/base/sea.js"></script>
     <!-- for mdstr2htmlstr and preview with syntax heightlight -->
 	<!-- 要是epiceditor有单独的导出htmlstr的功能,而不是先new对象,然后import mdstr 然后 export html ,我就不用再加载这个markdownjs了 -->
-	<script src="/src/script/base/markdown_prism.min.js"></script>
+	<script src="/script/base/markdown_prism.min.js"></script>
 	<script src="epiceditor/js/epiceditor.min.js"></script>
 	
 	<!--[if lt IE 9]>
@@ -41,9 +41,18 @@
 		
 	</footer>
 	<script>
-		seajs.config();
-		seajs.use("/src/script/writer.js");
-		var editor = new EpicEditor().load();
+		seajs.config({
+            debug: true,
+            plugins: ['nocache'],
+
+            "alias": {
+                "seajs-debug": "/script/base/sea-modules/seajs/seajs-debug/1.0.0/seajs-debug.js"
+              },
+            paths: {
+                'script': '/script'
+            }
+        });
+        seajs.use("script/writer.js");
 	</script>
 </body>
 </html>

@@ -3,17 +3,19 @@
 
 // timeline主体  会滚动的哦~(中的ul会有高度)
 #timeline{
+    position: relative;
+    z-index: 100;
+    float: left;
     // 为何此时的宽度为 #main总宽度 - #main padding? 而不是总宽度```
     width: 100%;
     // width: 70%;
     // width: 50%;
-    position: relative;
-    float: left;
     height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
-    background-color: rgba(43, 133, 195,0.125);
-    .tst( width 500ms ease 300ms;);
+    // background-color: rgba(43, 133, 195,0.125);
+    background-color: @timelineBGC;
+    .tst( width 500ms ease;);
 
     #itermCtn{
         position: absolute;
@@ -34,7 +36,8 @@
             width: @lineW;
             left: 50%;
             margin-left: -@lineW/2;
-            background-color: rgba(0,0,0,0.25);
+            // background-color: rgba(0,0,0,0.25);
+            background-color: #fff;
         }
     }
     #itermCtn{
@@ -55,12 +58,14 @@
                 z-index: @lineZindex + 200;
                 width: @bubbleW;
                 padding: @bubblePadding;
+                background-color: @bubbleBGC;
+                color: @bubbleC;
+                border: 1px solid #ddd;
+                border-bottom: none;
                 .border-radius();
                 // .box-shadow( 0 0 3px rgba(0,0,0,0.375); );
                 // .box-shadow( 5px 8px 0 -2px rgba(0,0,0,0.125); );
-                .box-shadow( 0 3px 0 #dce8ed; );
-                background-color: @bubbleBGC;
-                color: @bubbleC;
+                .box-shadow( 0 3px 0 fadeOut(@headerBGC, 50%); );
             }
             .bubble{
 
@@ -75,9 +80,20 @@
                     // background-color: @bubbleBGC;
                     background-color: @topBGC;
                     // box-shadow 和 transform的诡异结合```实现tri的单方向阴影
-                    .box-shadow( 1px -1px 3px -1px rgba(0,0,0,0.5); );
+                    // .box-shadow( 1px -1px 3px -1px rgba(0,0,0,0.5); );
                     .tsf(rotate(45deg));
                 }
+                // &:after{
+                //     content: '';
+                //     display: block;
+                //     position: absolute;
+                //     z-index: @lineZindex + 200 - 10;
+                //     top: @linetagCommonTop + ( @linetagW - @bubbleTriW)/2 + 2px;
+                //     width: @bubbleTriW;
+                //     height: @bubbleTriW;
+                //     background-color: fadeOut(@headerBGC, 50%);
+                //     .tsf(rotate(45deg));
+                // }
                 .top, .middle, .bottom{
                     padding: 0 0.5em;
                 }
@@ -106,7 +122,15 @@
                         line-height: 1.25em;
                     }
                 }
-                .bottom{}
+                .bottom{
+                    padding: 0.5em;
+                    background-color: #f5f5f5;
+                    .date{
+                        float: right;
+                        font-size: 12px;
+                        font-style: italic;
+                    }
+                }
 
                 .linetag{
                     position: absolute;
@@ -114,16 +138,20 @@
                     top: @linetagCommonTop;
                     width: @linetagW;
                     height: @linetagW;
+                    color: #fff;
                     background-color: @linetagBGC;
+                    border: 0px solid #FF968F;
                     .border-radius( @linetagW/2 );
                     // 加个延时,快速划过时不变换
-                    .tst( all 350ms ease 40ms;);
+                    .tst( all 230ms ease-in-out 40ms;);
                 }
                 &:hover .linetag{
                     top: @linetagXTop;
                     width: @linetagXW;
                     height: @linetagXW;
                     background-color: @linetagBGC;
+                    border: @linetagXW/2 solid #FF968F;
+
                     .border-radius( @linetagXW/2 );
                 }
             }
@@ -141,8 +169,9 @@
 
                 .bubble{
                     margin-left: 0;
-                    &:before{
+                    &:before, &:after{
                         right: -@bubbleTriW/2;
+                        .box-shadow( 2px 0 0 fadeOut(@headerBGC, 50%); );
                     }
                     .linetag{
                         left: 100% + percentage((100%-@bubbleW)/@bubbleW);
@@ -158,10 +187,11 @@
                 left: @rightLeft;
                 .bubble{
                     margin-left: 100% - @bubbleW;
-                    &:before{
+                    &:before, &:after{
                         left: -@bubbleTriW/2;
                         // 微调阴影方向
-                        .box-shadow( -1px 1px 3px -1px rgba(0,0,0,0.5); );
+                        // .box-shadow( -1px 1px 3px -1px rgba(0,0,0,0.5); );
+                        .box-shadow( 0 2px 0 fadeOut(@headerBGC, 50%); );
                     }
 
                     .linetag{

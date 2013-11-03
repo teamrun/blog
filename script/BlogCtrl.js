@@ -8,36 +8,36 @@ define(function( require, exports, module ){
     var $ajax = util.ajax;
 
 
-    var Blog = function( arg ){
+    var Blog = function( ){
         // Blog的构造函数,接受两种参数,md字符串,和已经构建好的obj
         // title为纯字符串 没有#号没有h2标签
-        this.title = '';
-        this.content = '';
-        if( arg instanceof String ){
-            // 通过mdstr构建blog对象
-            var titleReg = /#+.+\n+/;
+        // this.title = '';
+        // this.content = '';
+        // if( arg instanceof String ){
+        //     // 通过mdstr构建blog对象
+        //     var titleReg = /#+.+\n+/;
 
-            var tempArr = mdStr.match( titleReg );
-            thisClass.title = ( tempArr && tempArr.length >0 )? tempArr[0] : '##无题';
-            thisClass.content = mdStr.substr( thisClass.title.length, mdStr.length );
+        //     var tempArr = mdStr.match( titleReg );
+        //     thisClass.title = ( tempArr && tempArr.length >0 )? tempArr[0] : '##无题';
+        //     thisClass.content = mdStr.substr( thisClass.title.length, mdStr.length );
 
-            thisClass.title = thisClass.title.replace(/[#+\n+]/g, '');
-        }
-        else if( typeof arg === 'object' && arg instanceof Object ){
-            for( var i in arg ){
-                this[i] = arg[i];
-            }
-        }
+        //     thisClass.title = thisClass.title.replace(/[#+\n+]/g, '');
+        // }
+        // else if( typeof arg === 'object' && arg instanceof Object ){
+        //     for( var i in arg ){
+        //         this[i] = arg[i];
+        //     }
+        // }
         return this;
     };
 
     Blog.prototype.get = function( key, val, callback ){
 
         var selector = '.piece[data-_id="' + val + '"]';
-        if( helper.isDomCached( selector ) ){
-            callback( [{ _id: val , content: 'cached'}] );
-        }
-        else{
+        // if( helper.isDomCached( selector ) ){
+        //     callback( [{ _id: val , content: 'cached'}] );
+        // }
+        // else{
             var reqParam = {
                 key: key,
                 value: val
@@ -49,7 +49,7 @@ define(function( require, exports, module ){
                 data: reqParam,
                 callback: callback
             });
-        }
+        // }
         return false;
     };
     Blog.prototype.renderContent = function(){
@@ -79,5 +79,5 @@ define(function( require, exports, module ){
 
 
 
-    module.exports = Blog;
+    module.exports = new Blog();
 });

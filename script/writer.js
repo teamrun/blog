@@ -1,6 +1,6 @@
 define(function( require, exports, module ){
 	var util = require('./util');
-	var tools = require('./blogtool');
+	var tools = require('./sealup/blogtool');
 
 
 	var $ = util.qs;
@@ -10,6 +10,7 @@ define(function( require, exports, module ){
 	var exportBtn = $('#export');
 	var newBlogBtn = $('#saveblog');
 	var newBlog = '';
+	var editor = new EpicEditor().load();
 
 	exportBtn.onclick = function(){
 		// epiceditor的到处函数是一个异步的操作

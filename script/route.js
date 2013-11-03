@@ -1,4 +1,5 @@
 define(function( require, exports, module ){
+    var util = require('./util');
     // var readReg = /^\/read/;
     // if( readReg.test( location.pathname ) ){
     //     document.body.className = 'readmode';
@@ -15,6 +16,10 @@ define(function( require, exports, module ){
 
     var Router = function( route ){
         this.route = route;
+        var thisClass = this;
+        util.Event.addHandler(window,'popstate',function(e){
+            thisClass.route(location.pathname);
+        });　　
         return this;
     };
     Router.prototype.go = function( stateObj, title, pathname ) {

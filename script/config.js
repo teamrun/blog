@@ -1,8 +1,9 @@
 define(function( require, exports, module ){
     var config = {
-        getBlogUrl: '/blog',
         newBlogUrl: '/blog',
-        newCommit: '/commit'
+        getBlogUrl: '/blog',
+        newCommentUrl: '/comment',
+        getCommentUrl: '/comment'
     };
 
     for( var i in config ){

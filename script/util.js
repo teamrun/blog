@@ -299,27 +299,35 @@ define(function( require, exports, module){
 		return tempArr.join('');
 	}
 
+	function objNotEmpty( obj ){
+		for( var i in obj ){
+			return true;
+		}
+		return false;
+	}
+
 	function showInfo( type, msg ){
 		var toshow, tohide;
-	if( type === 0 ){
-		tohide = '#info_msg';
-		toshow = '#info_err';
-	}
-	else if( type === 1 ){
-		tohide = '#info_err';
-		toshow = '#info_suc';
+		if( type === 0 ){
+			tohide = '#info_msg';
+			toshow = '#info_err';
+		}
+		else if( type === 1 ){
+			tohide = '#info_err';
+			toshow = '#info_suc';
+		}
+	
+		var ele2show = qs( toshow );
+		ele2show.innerHTML = msg ;
+		ele2show.style.display = 'block';
+		setTimeout( function(){
+			ele2show.style.display = 'none';
+		}, 5000);
+	
+		qs( tohide).style.display = 'none';
+		return false;
 	}
 
-	var ele2show = qs( toshow );
-	ele2show.innerHTML = msg ;
-	ele2show.style.display = 'block';
-	setTimeout( function(){
-		ele2show.style.display = 'none';
-	}, 5000);
-
-	qs( tohide).style.display = 'none';
-	return false;
-	}
 
 	var support = function(){
 		this.dataset = (function(){ return Boolean(document.body.dataset);})();
@@ -368,6 +376,7 @@ define(function( require, exports, module){
 	exports.Event = Event;
 
 	exports.addSyntaxHighLight = addSyntaxHighLight;
+	exports.objNotEmpty = objNotEmpty;
 	exports.showInfo = showInfo;
 
 

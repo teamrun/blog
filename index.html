@@ -8,12 +8,17 @@
     <!-- <link rel="stylesheet" href="/src/layout/plugin/prism.css"> -->
 
     <script src="/script/base/markdown_prism.min.js"></script>
+    <!-- <script src="/script/base/markdown.js"></script>
+    <script src="/script/base/prism.js"></script>
+    <link rel="stylesheet" href="/layout/plugin/prism.css" /> -->
+
+
     <script src="/script/base/sea.js"></script>
     <script src="/script/base/avalon.js"></script>
     <!-- <script src="/script/base/avalon.min.js"></script> -->
     
     <!-- 方便获取元素 测试用 -->
-    <!--<script src="/src/script/base/jquery-1.8.3.js"></script> -->
+    <script src="/script/base/jquery-1.8.3.js"></script> 
 
     <!--[if lt IE 9]>
         <script src="src/script/base/IE9.js"></script>
@@ -28,7 +33,7 @@
             <ul>
                 <li><a href="http://chenllos.com">home</a></li>
                 <li><a href="http://blog.chenllos.com">blog</a></li>
-                <li><a href="chenllos.com/me">me</a></li>
+                <li><a href="chenllos.com/me">about me</a></li>
             </ul>
         </nav>
     </header>
@@ -38,22 +43,48 @@
             <ul id="itermCtn" style="height: 460px;" ms-each-blog="list">
                 <li class="iterm raw" data-top="56" style="top: 56px;">
                     <div class="bubble tri">
-                        <div class="linetag"></div>
+                        <!-- <div class="linetag"><span>&lt;&gt;</span></div> -->
+                        <div class="linetag">
+                        </div>
                         <div class="top" ms-click="enterReadMode" ms-data-blogid="blog._id">
-                            <h2 class="title">{{ blog.title | md2html | html }}</h2>
+                            <!-- 暂时无法实现closest方法,笨法实现代理 -->
+                            <h2 class="title" ms-data-blogid="blog._id">{{ blog.title | md2head }}</h2>
                         </div>
                         <div class="middle">
                             {{ blog.summery.text | removeSummeryTitle | md2html | html }}
                         </div>
-                        <div class="bottom"></div>
+                        <div class="bottom fix-flt">
+                            <!-- <p class="date">{{ dt_create | date('yy-MMM-dd  EEE: mediumTime') }}</p> -->
+                            <p class="date">{{ dt_create | date('short') }}</p>
+                        </div>
                     </div>
                 </li>
             </ul>
         </aside>
 
-        <section id="read">
-            <div id="blogCtn" style="height: 800px;"></div>
-            <div id="commentCtn"></div>
+        <section id="read" ms-controller="blog" ms-data-blogid="blogID">
+            <div id="blogCtn">
+                <!-- <h2>{{ blog.title | md2head }}</h2> -->
+                <div id="main-content"  ms-visible="blogshow"> {{ blog | md2html | addSyntexType | html  }} </div>
+                <h3 id="none-tip"  ms-visible="!blogshow">找不到文章...</h3>
+            </div>
+            <div id="commentCtn" ms-visible="blogshow" ms-controller="comment">
+                <span id="cmt-count">{{ count }}</span><span id="cmt-count-lt"> 个评论</span>
+                <div id="new-cmt">
+                    <textarea name="" id="write-cmt" placeholder="写下你的评论..."></textarea>
+                    <input type="text" id="nickname" placeholder="昵称" />
+                    <input type="text" id="email" placeholder="邮箱" />
+                    <span id="cmt-suc" ms-class-1="show:tipshow">评论提交成功!</span>
+                    <a href="javascript: void(0)" class="btn btn-primary" id="newcmt-btn" ms-click="newCmt">提交评论</a>
+                </div>
+                <ul id="cmt-list" ms-each-cmt="cmtlist" ms-visible="Boolean(count)">
+                    <li>
+                        <span class="cmter">{{ (cmt.from != '')? cmt.from : '无名'  }}</span><span>:</span>
+                        <p class="cmt-content">{{ cmt.content }}</p>
+                    </li>
+                </ul>
+                <span id="no-cmt" ms-visible="!Boolean(count)">还没有评论哦~</span>
+            </div>
             <div id="widget">
                 <div id="collapse"></div>
                 <div id="scolltop"></div>

@@ -154,10 +154,11 @@ define( function(require, exports, module){
         }
     }
 
-    function layoutTwo(){
+    // 允许个性化定制, 选择器 决定是全部定位  还是 增量定位...
+    function layoutTwo( selector ){
         console.log('calling : ' + arguments.callee.name );
         var opt = {
-            targetSelector: '#main #itermCtn' + ' .iterm.raw',
+            targetSelector: selector || '#main #itermCtn' + ' .iterm',
             // refSelector: '',
             classDef: true,
             class1: 'left',
@@ -170,14 +171,14 @@ define( function(require, exports, module){
         return posDom( opt );
 
     }
-    function layoutSingal(){
+    function layoutSingal( selector ){
         var opt = {
-            targetSelector: '#main #itermCtn' + ' .iterm.raw',
+            targetSelector: selector || '#main #itermCtn' + ' .iterm',
             // refSelector: '',
             classDef: false,
             class1B: 0,
             class2B: 40,
-            defaultMargin: 5,
+            defaultMargin: 1,
             class2repalce: 'raw'
         };
         console.log('calling : ' + arguments.callee.name );

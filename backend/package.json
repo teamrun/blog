@@ -1,10 +1,10 @@
 {
-	"name": "myBlog",
-	"version": "0.0.1",
-	"dependencies": {
-		"mongoose":     "*",
-		"express":      "*",
-		"markdown-js":  "*",
+    "name": "myBlog",
+    "version": "0.0.1",
+    "dependencies": {
+        "mongoose":     "*",
+        "express":      "*",
+        "markdown-js":  "*",
         "formidable":   "*"
-	}
+    }
 }
