@@ -32,6 +32,7 @@ define(function( require, exports, module ){
     // TODO: 内存中的缓存
     // TODO: UI, 图标, homepage, about me
     // TODO: 更丰富的blog信息... type like数, cmt数...
+    // TODO: 在pageload后构建时间线时,如果有图片就会发生初始高度和img-load后高度不一致的情况,从而导致后面的iterm布局位置不对.怎么破?
 
 	// 构建路由规则
 	var rules = [

@@ -28,7 +28,7 @@ var Blog, Comment;
 // sleep( 2000 );
 // function initDB(){
 	
-	var connect = mongoose.connect('mongodb://localhost/blog');
+	var connect = mongoose.connect( config.dburl );
 	var blogSchema = mongoose.Schema({
 		title: String,
 		alia: String,
