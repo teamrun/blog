@@ -7,4 +7,5 @@ backend/node_modules/*
 
 .idea/*
 layout/css/*.css
+node_modules/*
 
