@@ -1,7 +1,7 @@
 define( function(require, exports, module){
 
     function md2html( mdStr ){
-        return markdown.toHTML( mdStr );
+        return Converter.makeHtml( mdStr );
     }
 
     function addLanguageType( mdStr ){

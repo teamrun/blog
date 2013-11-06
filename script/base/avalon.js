@@ -3613,7 +3613,7 @@ avalon.filters.removeSummeryTitle = function(str){
     return str.replace( titlRegForAvalonFilter, '');
 }
 avalon.filters.md2html = function( str ){
-    return markdown.toHTML(str);
+    return Converter.makeHtml(str);
 };
 avalon.filters.md2head = function(str){
     return str.replace(/^#+/, '');

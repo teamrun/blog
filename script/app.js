@@ -142,7 +142,7 @@ define(function( require, exports, module ){
 				} );
 			};
 
-			vm.$watch('cmtlist', function( newVal, oblVal ){
+			vm.$watch('cmtlist', function( newVal, oldVal ){
 				// 新建评论时会发生两次值的变化
 				// 		第一次时  是假的成功,只是将用户输入添加到评论列表, 此时的新加的值是没有id的
 				// 		所以...  添加评论数 和 显示提示 只需发生一次...
