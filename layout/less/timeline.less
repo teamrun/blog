@@ -17,15 +17,16 @@
     background-color: @timelineBGC;
     .tst( width 500ms ease;);
 
+    // ui#itermCtn的样式,高度会再重置layout后计算获得
     #itermCtn{
         position: absolute;
         left: 50%;
+        margin-left: -@itermCtnW/2;
         right: 0;
         top: 0px;
         // 宽度百分百 会带来一些问题  如linetag位置会由于iterm宽度有小数点时发生轻微的不对齐
         width: @itermCtnW;
         min-height: 100%;
-        margin-left: -@itermCtnW/2;
         list-style: none;
 
         &:before{

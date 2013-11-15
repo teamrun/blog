@@ -1,5 +1,5 @@
 // Karma configuration
-// Generated on Mon Sep 02 2013 08:55:04 GMT+0800 (CST)
+// Generated on Wed Nov 13 2013 14:01:48 GMT+0800 (CST)
 
 module.exports = function(config) {
   config.set({
@@ -9,12 +9,12 @@ module.exports = function(config) {
 
 
     // frameworks to use
-    frameworks: ['jasmine','commonjs'],
+    frameworks: ['jasmine'],
 
 
     // list of files / patterns to load in the browser
     files: [
-      
+      'tests/spec/*.js', 'tests/lib/*.js', 'script/*.js'
     ],
 
 
@@ -50,10 +50,10 @@ module.exports = function(config) {
     // - Chrome
     // - ChromeCanary
     // - Firefox
-    // - Opera
-    // - Safari (only Mac)
+    // - Opera (has to be installed with `npm install karma-opera-launcher`)
+    // - Safari (only Mac; has to be installed with `npm install karma-safari-launcher`)
     // - PhantomJS
-    // - IE (only Windows)
+    // - IE (only Windows; has to be installed with `npm install karma-ie-launcher`)
     browsers: ['Chrome'],
 
 
