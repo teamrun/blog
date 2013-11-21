@@ -34,6 +34,7 @@ define(function( require, exports, module ){
     // TODO: 更丰富的blog信息... type like数, cmt数...
     // TODO: 在pageload后构建时间线时,如果有图片就会发生初始高度和img-load后高度不一致的情况,从而导致后面的iterm布局位置不对.怎么破?
 
+/* --------     使用自己构建的"路由器"     -------- */
 	// 构建路由规则
 	var rules = [
 		{
@@ -87,6 +88,45 @@ define(function( require, exports, module ){
 		itermCtnObj.style.height = H  + 'px';
 		// 获取缩略列表
 	});
+/* --------  endof 使用自己构建的"路由器"  -------- */
+
+/* --------     使用avalon提供的mmRouter     -------- */
+	// avalon.router.get('/read', function( arg ){
+	// 	console.log( arg );
+	// 	document.body.className = 'readmode';
+	// 	H = tools.layoutSingal();
+	// });
+	// avalon.router.get('/read/:blogID', function( blogID ){
+	// 	console.log( blogID );
+	// 	document.body.className = 'readmode';
+	// 	H = tools.layoutSingal();
+
+	// 	Blog.get('_id', blogID, function( data ){
+	// 		console.log( '获取了特定为blog: ');
+	// 		console.log( data );
+	// 		// 获取的是单个 所以必须有值才算成功
+	// 		if( data[0] ){
+	// 			console.log( data[0] );
+	// 			// blogVM.blog = data[0];
+	// 			UI.renderBlog( data[0], blogVM, readObj );
+	// 		}
+	// 	});
+	// 	Comment.get( id, function( data){
+	// 		console.log('获取了blog:' + blogID + ' 的评论们:');
+	// 		console.log( data );
+	// 		// 获取列表  如果为长度为0 即为没有评论 是正常数据
+	// 		if( data.code === 200 ){
+	// 			UI.renderComment( data.comments, cmtVM );
+	// 		}
+	// 	} );
+
+	// });
+	// avalon.router.get('/', function( arg ){
+	// 	console.log( arg )
+	// });
+
+/* --------  endof使用avalon提供的mmRouter   -------- */
+
 	
 	window.onload = function(){
 		
