@@ -3,7 +3,8 @@
 @headerThinW: 120px;
 // @headerW: 100px;
 // @headerBGC: #50C1D2;
-@headerBGC: #43BBEF;
+// @headerBGC: #43BBEF;
+@headerBGC: rgba(42, 141, 184,0.75);
 
 /*--------------   #main的样式布局配置项   ---------------*/
 @mainBGC: #D3D6E0;
@@ -11,43 +12,41 @@
 /*--------------   #timeline的布局配置项  ---------------*/
 
 // @timelineBGC: #FFEAC7;
-@timelineBGC: #74716F;
+@timelineBGC: #8FA5A6;
 @itermCtnW: 1020px;
 
-// @itermCtnW: 800px;
+        /*--------------   line的布局配置项   --------------*/
+        @lineW: 4px;
+        @lineBGC: #1A9FF9;
+        @lineZindex: 600;
 
-    /*--------------   line的布局配置项  ---------------*/
-    @lineW: 4px;
-    @lineBGC: #1A9FF9;
-    @lineZindex: 600;
+        @readLineLeft: 25px;
+        /*--------------   line的布局配置项   --------------*/
+        @itermW: 50%;
+        @itermBGC: #fff;
+        @itermZindex: 400;
 
-    @readLineLeft: 25px;
-    /*--------------   line的布局配置项  ---------------*/
-    @itermW: 50%;
-    @itermBGC: #fff;
-    @itermZindex: 400;
+        @leftLeft: 50% - @itermW;
+        @rightLeft: 50%;
 
-    @leftLeft: 50% - @itermW;
-    @rightLeft: 50%;
+        /*--------------   .bubble的布局配置项   ------------*/
+        @bubbleW: 93%;
+        @bubbleC: #333;
+        @bubbleBGC: #fff;
+        // @bubblePadding: 8px;
+        @bubblePadding: 0;
+        // @bubble
+        @bubbleTriW: 16px;
+        // @
+        @topBGC: #F5F4F2;
 
-    /*--------------   .bubble的布局配置项  ---------------*/
-    @bubbleW: 93%;
-    @bubbleC: #333;
-    @bubbleBGC: #fff;
-    // @bubblePadding: 8px;
-    @bubblePadding: 0;
-    // @bubble
-    @bubbleTriW: 16px;
-    // @
-    @topBGC: #F5F4F2;
+        /*--------------   .lientag的布局配置项   -----------*/
+        @linetagW: 24px;
+        @linetagBGC: #68D3E3;
+        @linetagCommonTop: 15px;
 
-    /*--------------   .lientag的布局配置项  ---------------*/
-    @linetagW: 24px;
-    @linetagBGC: #68D3E3;
-    @linetagCommonTop: 15px;
-
-    @linetagXW: 38px;
-    @linetagXTop: 27px - @linetagXW/2;
+        @linetagXW: 38px;
+        @linetagXTop: 27px - @linetagXW/2;
 
 
 /*--------------  readmode下 #timeline的布局样式的配置项  ---------------*/
@@ -61,8 +60,8 @@
 @readBGC: #B8B28F;
 @readPadding: 60px;
 @contentBGC: #fff;
-    /*--------------   #blog/cmt 布局样式的配置项  ---------------*/
-    @mainCttPd: 30px;
+        /*--------------   #blog/cmt 布局样式的配置项  ---------------*/
+        @mainCttPd: 30px;
 
 /*--------------   ---------------*/
 /*--------------   ---------------*/
