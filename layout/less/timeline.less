@@ -176,10 +176,10 @@
                     }
                     .linetag{
                         left: 100% + percentage((100%-@bubbleW)/@bubbleW);
-                        margin-left: -@linetagW/2;
+                        margin-left: -(@linetagW - @lineW )/2;
                     }
                     &:hover .linetag{
-                        margin-left: -@linetagXW/2;
+                        margin-left: -(@linetagXW - @lineW )/2;
                     }
                 }
             }
@@ -197,10 +197,10 @@
 
                     .linetag{
                         left: -(percentage((100%-@bubbleW)/@bubbleW));
-                        margin-left: -@linetagW/2;
+                        margin-left: -(@linetagW + @lineW )/2;
                     }
                     &:hover .linetag{
-                        margin-left: -@linetagXW/2;
+                        margin-left: -( @linetagXW + @lineW )/2;
                     }
                 }
             }
