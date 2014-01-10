@@ -165,7 +165,7 @@ define( function(require, exports, module){
             class2: 'right',
             class1B: 25,
             class2B: 40,
-            defaultMargin: 30,
+            defaultMargin: 40,
             class2repalce: 'raw'
         };
         return posDom( opt );

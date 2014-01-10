@@ -77,7 +77,7 @@ var Blog, Comment;
 // setTimeout()
 
 
-console.log( Blog );
+// console.log( Blog );
 
 
 function sleep( ms ){

@@ -6,7 +6,7 @@ var titleReg = new RegExp( /#+.+\n/);
 var imgReg = new RegExp(/\!\[.+\]\(.+\)/);
 
 
-console.log( dbo );
+// console.log( dbo );
 
 function getSummery( content ){
 	var summery;

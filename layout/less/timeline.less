@@ -28,7 +28,8 @@
         width: @itermCtnW;
         min-height: 100%;
         list-style: none;
-
+        
+        // 使用伪元素实现line
         &:before{
             content: '';
             display: block;
@@ -38,7 +39,7 @@
             left: 50%;
             margin-left: -@lineW/2;
             // background-color: rgba(0,0,0,0.25);
-            background-color: #fff;
+            background-color: @lineBGC;
         }
     }
     #itermCtn{
@@ -46,7 +47,9 @@
             position: absolute;
             width: @itermW;
             z-index: @lineZindex + 100;
-            .tst( top ease 500ms; opacity ease 500ms; );
+            // .tsf( perspective(1000) rotateY(0deg); );
+            .tst( top 500ms ease 100ms; opacity 500ms ease 100ms; );
+            // .tst( top 500ms ease;);
 
             &.raw{
                 opacity: 0;
@@ -66,7 +69,7 @@
                 .border-radius();
                 // .box-shadow( 0 0 3px rgba(0,0,0,0.375); );
                 // .box-shadow( 5px 8px 0 -2px rgba(0,0,0,0.125); );
-                .box-shadow( 0 3px 0 fadeOut(@headerBGC, 50%); );
+                .box-shadow( 0 0 8px rgba(80,80,80,0.125) , 0 3px 0 fadeOut(@headerBGC, 50%); );
             }
             .bubble{
 
@@ -132,29 +135,29 @@
                         font-style: italic;
                     }
                 }
-
-                .linetag{
-                    position: absolute;
-                    z-index: @lineZindex + 50;
-                    top: @linetagCommonTop;
-                    width: @linetagW;
-                    height: @linetagW;
-                    color: #fff;
-                    background-color: @linetagBGC;
-                    border: 0px solid #FF968F;
-                    .border-radius( @linetagW/2 );
-                    // 加个延时,快速划过时不变换
-                    .tst( all 230ms ease-in-out 40ms;);
-                }
-                &:hover .linetag{
-                    top: @linetagXTop;
-                    width: @linetagXW;
-                    height: @linetagXW;
-                    background-color: @linetagBGC;
-                    border: @linetagXW/2 solid #FF968F;
+                &:hover + .linetag{
+                    // top: @linetagXTop;
+                    // width: @linetagXW;
+                    // height: @linetagXW;
+                    background-color: #FF968F;
+                    // border: @linetagXW/2 solid #FF968F;
 
                     .border-radius( @linetagXW/2 );
                 }
+            }
+
+            .linetag{
+                position: absolute;
+                z-index: @lineZindex + 50;
+                top: @linetagCommonTop;
+                width: @linetagW;
+                height: @linetagW;
+                color: #fff;
+                background-color: @linetagBGC;
+                border: 0px solid #FF968F;
+                .border-radius( @linetagW/2 );
+                // 加个延时,快速划过时不变换
+                .tst( all 230ms ease-in-out 20ms;);
             }
 
             h1,h2,h3,h4, p{
@@ -174,13 +177,14 @@
                         right: -@bubbleTriW/2;
                         .box-shadow( 2px 0 0 fadeOut(@headerBGC, 50%); );
                     }
-                    .linetag{
-                        left: 100% + percentage((100%-@bubbleW)/@bubbleW);
-                        margin-left: -(@linetagW - @lineW )/2;
+                    
+                    &:hover + .linetag{
+                        // margin-right: -@linetagXW/2;
                     }
-                    &:hover .linetag{
-                        margin-left: -(@linetagXW - @lineW )/2;
-                    }
+                }
+                .linetag{
+                    margin-right: -@linetagW/2;
+                    right: 0;
                 }
             }
             &.right{
@@ -194,14 +198,13 @@
                         // .box-shadow( -1px 1px 3px -1px rgba(0,0,0,0.5); );
                         .box-shadow( 0 2px 0 fadeOut(@headerBGC, 50%); );
                     }
-
-                    .linetag{
-                        left: -(percentage((100%-@bubbleW)/@bubbleW));
-                        margin-left: -(@linetagW + @lineW )/2;
+                    &:hover + .linetag{
+                        // margin-left: -@linetagXW/2;
                     }
-                    &:hover .linetag{
-                        margin-left: -( @linetagXW + @lineW )/2;
-                    }
+                }
+                .linetag{
+                    left: 0;
+                    margin-left: -@linetagW/2;
                 }
             }
 

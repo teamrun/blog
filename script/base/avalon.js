@@ -4172,9 +4172,7 @@ avalon.filters.addSyntexType = function( str ){
                 return false
             }
         }
-
     })
-
     return avalon
 })();
 
