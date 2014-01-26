@@ -1,0 +1,199 @@
+/*--------------   header样式布局的配置项  ---------------*/
+/*--------------   #main的样式布局配置项   ---------------*/
+/*--------------   #timeline的布局配置项  ---------------*/
+/*--------------   line的布局配置项   --------------*/
+/*--------------   line的布局配置项   --------------*/
+/*--------------   .bubble的布局配置项   ------------*/
+/*--------------   .lientag的布局配置项   -----------*/
+/*--------------  readmode下 #timeline的布局样式的配置项  ---------------*/
+/*--------------   #read布局样式的配置项  ---------------*/
+/*--------------   #blog/cmt 布局样式的配置项  ---------------*/
+/*--------------   ---------------*/
+/*--------------   ---------------*/
+#timeline {
+  position: relative;
+  z-index: 100;
+  float: left;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: #dedcb8;
+  -webkit-transition: width 500ms ease;
+  -moz-transition: width 500ms ease;
+  transition: width 500ms ease;
+  -webkit-backface-visibility: hidden;
+}
+#timeline #itermCtn {
+  position: absolute;
+  left: 50%;
+  margin-left: -510px;
+  right: 0;
+  top: 0px;
+  width: 1020px;
+  min-height: 100%;
+  list-style: none;
+}
+#timeline #itermCtn:before {
+  content: '';
+  display: block;
+  position: absolute;
+  height: 100%;
+  width: 4px;
+  left: 50%;
+  margin-left: -2px;
+  background-color: #1a9ff9;
+}
+#timeline #itermCtn .iterm {
+  position: absolute;
+  width: 50%;
+  z-index: 700;
+  -webkit-transition: top 500ms ease 100ms, opacity 500ms ease 100ms;
+  -moz-transition: top 500ms ease 100ms, opacity 500ms ease 100ms;
+  transition: top 500ms ease 100ms, opacity 500ms ease 100ms;
+  -webkit-backface-visibility: hidden;
+}
+#timeline #itermCtn .iterm.raw {
+  opacity: 0;
+}
+#timeline #itermCtn .iterm .bubble {
+  position: relative;
+  z-index: 800;
+  width: 93%;
+  padding: 0;
+  background-color: #ffffff;
+  color: #333333;
+  border: 1px solid #ddd;
+  border-bottom: none;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 0 8px rgba(80, 80, 80, 0.125), 0 3px 0 rgba(42, 141, 184, 0.25);
+  -moz-box-shadow: 0 0 8px rgba(80, 80, 80, 0.125), 0 3px 0 rgba(42, 141, 184, 0.25);
+  box-shadow: 0 0 8px rgba(80, 80, 80, 0.125), 0 3px 0 rgba(42, 141, 184, 0.25);
+}
+#timeline #itermCtn .iterm .bubble:before {
+  content: '';
+  display: block;
+  position: absolute;
+  z-index: 820;
+  top: 19px;
+  width: 16px;
+  height: 16px;
+  background-color: #f5f4f2;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+#timeline #itermCtn .iterm .bubble .top,
+#timeline #itermCtn .iterm .bubble .middle,
+#timeline #itermCtn .iterm .bubble .bottom {
+  padding: 0 0.5em;
+}
+#timeline #itermCtn .iterm .bubble .top {
+  position: relative;
+  padding: 4px;
+  -webkit-border-radius: 4px 4px 0 0;
+  -moz-border-radius: 4px 4px 0 0;
+  border-radius: 4px 4px 0 0;
+  border: none;
+  border-bottom: 1px solid #E6E5E4;
+  background-color: #f5f4f2;
+  z-index: 840;
+  cursor: pointer;
+}
+#timeline #itermCtn .iterm .bubble .top h1,
+#timeline #itermCtn .iterm .bubble .top h2,
+#timeline #itermCtn .iterm .bubble .top h3,
+#timeline #itermCtn .iterm .bubble .top h4 {
+  font-size: 1.125em;
+}
+#timeline #itermCtn .iterm .bubble .middle {
+  padding: 0.5em;
+  min-height: 60px;
+}
+#timeline #itermCtn .iterm .bubble .middle p {
+  font-size: 0.875em;
+  margin: 0.55em 0;
+  line-height: 1.25em;
+}
+#timeline #itermCtn .iterm .bubble .bottom {
+  padding: 0.5em;
+  background-color: #f5f5f5;
+}
+#timeline #itermCtn .iterm .bubble .bottom .date {
+  float: right;
+  font-size: 12px;
+  font-style: italic;
+}
+#timeline #itermCtn .iterm .bubble:hover + .linetag {
+  background-color: #FF968F;
+  -webkit-border-radius: 19px;
+  -moz-border-radius: 19px;
+  border-radius: 19px;
+}
+#timeline #itermCtn .iterm .linetag {
+  position: absolute;
+  z-index: 650;
+  top: 15px;
+  width: 24px;
+  height: 24px;
+  color: #fff;
+  background-color: #68d3e3;
+  border: 0px solid #FF968F;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
+  -webkit-transition: all 230ms ease-in-out 20ms;
+  -moz-transition: all 230ms ease-in-out 20ms;
+  transition: all 230ms ease-in-out 20ms;
+  -webkit-backface-visibility: hidden;
+}
+#timeline #itermCtn .iterm h1,
+#timeline #itermCtn .iterm h2,
+#timeline #itermCtn .iterm h3,
+#timeline #itermCtn .iterm h4,
+#timeline #itermCtn .iterm p {
+  margin: 0.25em 0;
+}
+#timeline #itermCtn .iterm.left {
+  opacity: 1;
+  left: 0%;
+}
+#timeline #itermCtn .iterm.left .bubble {
+  margin-left: 0;
+}
+#timeline #itermCtn .iterm.left .bubble:before,
+#timeline #itermCtn .iterm.left .bubble:after {
+  right: -8px;
+  -webkit-box-shadow: 2px 0 0 rgba(42, 141, 184, 0.25);
+  -moz-box-shadow: 2px 0 0 rgba(42, 141, 184, 0.25);
+  box-shadow: 2px 0 0 rgba(42, 141, 184, 0.25);
+}
+#timeline #itermCtn .iterm.left .linetag {
+  margin-right: -12px;
+  right: 0;
+}
+#timeline #itermCtn .iterm.right {
+  opacity: 1;
+  left: 50%;
+}
+#timeline #itermCtn .iterm.right .bubble {
+  margin-left: 7%;
+}
+#timeline #itermCtn .iterm.right .bubble:before,
+#timeline #itermCtn .iterm.right .bubble:after {
+  left: -8px;
+  -webkit-box-shadow: 0 2px 0 rgba(42, 141, 184, 0.25);
+  -moz-box-shadow: 0 2px 0 rgba(42, 141, 184, 0.25);
+  box-shadow: 0 2px 0 rgba(42, 141, 184, 0.25);
+}
+#timeline #itermCtn .iterm.right .linetag {
+  left: 0;
+  margin-left: -12px;
+}
+/*------------------ test ------------------*/
+#itermCtn {
+  /*--- persudo as line, suc! ---*/
+
+}

@@ -8,26 +8,55 @@ var imgReg = new RegExp(/\!\[.+\]\(.+\)/);
 
 // console.log( dbo );
 
-function getSummery( content ){
-	var summery;
+function getSummary( content ){
+	var Summary;
 	if( content.length < 120 ){
-		summery = content.substr(0, content.length/2);
+		Summary = content.substr(0, content.length/2);
 	}
 	else if( content.length < 240 ){
-		summery = content.substr(0, content.length/3);
+		Summary = content.substr(0, content.length/3);
 	}
 	else if( content.length < 400 ){
-		summery = content.substr(0, content.length/4);
+		Summary = content.substr(0, content.length/4);
 	}
 	else if( content.length < 600 ){
-		summery = content.substr(0, content.length/5);
+		Summary = content.substr(0, content.length/5);
 	}
 	else{
-		summery = content.substr(0, content.length/10);
+		Summary = content.substr(0, content.length/10);
 	}
 
-	return summery;
+	return Summary;
 }
+
+function blogErrHandler( funcName, err ){
+	console.err( funcName + ': error occured ');
+	console.error(  err );
+}
+
+
+var blogMeta = {
+	_getSome: function( callback ){
+		dbo.Blog.find({},'_id title Summary author dt_create dt_modify location like comment tag').exec( function( err, data ){
+			if( !err ){
+				callback( data );
+			}
+			else{
+				blogErrHandler( arguments.callee, err );
+			}
+		});
+	},
+	getThePost: function( postsID, callback ){
+		dbo.Blog.findById( postsID, function(err, data){
+			if( !err ){
+				callback( data );
+			}
+			else{
+				blogErrHandler( arguments.callee, err );
+			}
+		} );
+	}
+};
 
 var blogCtrl = {
 	// fucntion声明时的名称并没有用,在定义的作用域中调用还是会报undefined错误,  此处写上名字只是为了可以在函数内部调用callee时可以有function name
@@ -36,13 +65,13 @@ var blogCtrl = {
 		var reqContent = req.body.content;
 
 		var blogTitle = reqContent.match( titleReg )[0];
-		var summeryObj = {};
-		summeryObj.text = getSummery( reqContent );
-		summeryObj.img = reqContent.match( imgReg );
+		var SummaryObj = {};
+		SummaryObj.text = getSummary( reqContent );
+		SummaryObj.img = reqContent.match( imgReg );
 		var blogObj = {
 			title: blogTitle,
 			content: reqContent,
-			summery: summeryObj,
+			Summary: SummaryObj,
 			dt_create: new Date(),
 			dt_modify: new Date(),
 			author: req.body.author || 'chenllos',
@@ -72,7 +101,7 @@ var blogCtrl = {
 		return false;
 	},
 
-	getSummery: function getBlogSummery( req, res ){
+	getSummary: function getBlogSummary( req, res ){
 
 	},
 
@@ -91,13 +120,9 @@ var blogCtrl = {
 			});
 		}
 		else{
-			dbo.Blog.find({},'_id title summery author dt_create dt_modify location like comment tag').exec( function( err, data ){
-				if( !err ){
-					res.send( data );
-				}
-				else{
-				}
-			});
+			blogMeta._getSome( function(err){
+				res.send( data );
+			} );
 		}
 
 		return false;
@@ -173,5 +198,6 @@ var blogCtrl = {
 var promiseBlogCtrl = {};
 
 
-module.exports = blogCtrl;
+exports.blogMeta = blogMeta;
+exports.BlogAPI = blogCtrl;
 // module.exports = promiseBlogCtrl;

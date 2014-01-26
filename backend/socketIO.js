@@ -1,24 +1,4 @@
-var express = require('express');
 // var socket = require('socket.io');
-
-var config = require('./Base/config');
-
-var route = require('./route');
-
-var app = express();
-
-
-app.use(express.bodyParser());
-app.use(express.cookieParser());
-
-route.bind( app );
-
-app.listen( config.port );
-
-
-console.log( 'app is listeing @ : ' + config.port );
-
-
 
 // var server = require('http').createServer( app ),
 // io = require('socket.io').listen(server);
@@ -40,4 +20,3 @@ console.log( 'app is listeing @ : ' + config.port );
 //     });
 
 // });
-

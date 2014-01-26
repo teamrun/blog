@@ -1,0 +1,52 @@
+@import "base/config.less";
+@import "base/mixin.less";
+
+
+aside{
+    position: fixed;
+    width: @asideW;
+    height: 100%;
+    background-color: #663A84;
+}
+
+#avatar{
+    width: 100%;
+    height: auto;
+    padding-top: 1.5em;
+    img{
+        display: block;
+        width: @fbAvatarW;
+        height: @fbAvatarW;
+        margin: 0 auto;
+        background-color: purple;
+        .border-radius();
+        // .box-shadow( 0 0 5px rgba(200,200,200,0.7););
+    }
+}
+
+nav{
+    margin-top: 1.5em;
+    ul{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    li{
+        font-size: 1.125em;
+        color: #fff;
+        padding-left: 2em;
+        a{
+            display: block;
+            color: #fff;
+        }
+    }
+}
+
+#copyright{
+    position: absolute;
+    left: 2em;
+    right: 0;
+    bottom: 2em;
+    color: #ddd;
+    font-size: 0.875em;
+}

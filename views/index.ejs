@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/layout/css/layout.css" >
+
+</head>
+<body>
+    <aside>
+        <div id="avatar">
+            <!-- <img src="/img/birds_doodle.jpg" alt=""> -->
+            <!-- <img src="/img/dao.jpg" alt=""> -->
+            <!-- <img src="/img/cat.jpg" alt=""> -->
+            <img src="/img/noface.jpg" alt="">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/posts">PostList</a></li>
+                <li><a href="/photos">Photos</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+        <div id="copyright">
+            <span>Copyright: @chenllos</span>
+        </div>
+    </aside>
+    <div id="main">
+        <div class="wrapper">
+            <% for( var i=0; i<posts.length; i++ ) { %>
+            <article>
+                <h2><a href="/posts/<%= posts[i].id %>"><%= posts[i].title %></a></h2>
+                <p><span class="writen">writenby:</span><%= posts[i].author%></p>
+            </article>
+            <% } %>
+        </div>
+        
+    </div>
+</body>
+</html>

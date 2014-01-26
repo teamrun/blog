@@ -1,0 +1,112 @@
+/* ------------------  ------------------ */
+/* ------------------  ------------------ */
+/* line 5, aside.less */
+aside {
+  position: fixed;
+  width: 180px;
+  height: 100%;
+  background-color: #663A84;
+}
+/* line 12, aside.less */
+#avatar {
+  width: 100%;
+  height: auto;
+  padding-top: 1.5em;
+}
+/* line 16, aside.less */
+#avatar img {
+  display: block;
+  width: 116px;
+  height: 116px;
+  margin: 0 auto;
+  background-color: purple;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}
+/* line 27, aside.less */
+nav {
+  margin-top: 1.5em;
+}
+/* line 29, aside.less */
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/* line 34, aside.less */
+nav li {
+  font-size: 1.125em;
+  color: #fff;
+  padding-left: 2em;
+}
+/* line 38, aside.less */
+nav li a {
+  display: block;
+  color: #fff;
+}
+/* line 45, aside.less */
+#copyright {
+  position: absolute;
+  left: 2em;
+  right: 0;
+  bottom: 2em;
+  color: #ddd;
+  font-size: 0.875em;
+}
+/* line 4, main.less */
+#main {
+  width: auto;
+  padding-top: 1em;
+  margin-left: 180px;
+}
+/* line 9, main.less */
+#main .wrapper {
+  width: 60%;
+  margin: 0 auto;
+}
+/* line 9, layout.less */
+html,
+body {
+  margin: 0;
+  font-family: 'Anonymous Pro' 'Microsoft Yahei';
+  color: #444;
+}
+/* line 15, layout.less */
+body {
+  font-size: 1em;
+  line-height: 1.5;
+}
+/* line 20, layout.less */
+p {
+  margin: 0.5em 0;
+  line-height: 1.5;
+}
+/* line 25, layout.less */
+ul {
+  margin: 0;
+  padding-left: 1.5em;
+}
+/* line 29, layout.less */
+li {
+  line-height: 1.5;
+}
+/* line 33, layout.less */
+a {
+  color: #2F83A3;
+  text-decoration: none;
+}
+/* line 37, layout.less */
+a:hover {
+  text-decoration: underline;
+}
+/* line 41, layout.less */
+.title {
+  text-transform: uppercase;
+}
+/* line 44, layout.less */
+.writen {
+  font-size: 0.875em;
+  font-style: italic;
+  color: #666;
+}

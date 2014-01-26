@@ -1,60 +1,85 @@
-
 var config = require('./Base/config');
 
 
-var Blog = require('./Ctrl/blogCtrl.js');
-var Comment = require('./Ctrl/commentCtrl.js');
+var BlogAPI = require('./apiController/blogCtrl').BlogAPI;
+var CommentAPI = require('./apiController/commentCtrl');
 
-var baseUrl = '/app';
+var pageRoute = require('./pageController');
 
-var routeList = [
-//    Blog的CGUD操作
+var apiBaseUrl = config.apiBase,
+	pageBaseUrl = config.pageBase;
+
+
+var apiRouteList = [
+/* ------------ BlogAPI的CGUD操作 ------------ */
 	{
 		action: 'post',
 		url: '/blog',
-		handler: Blog.create
+		handler: BlogAPI.create
 	},
 	{
 		action: 'get',
 		url: '/blog',
-		handler: Blog.getSome
+		handler: BlogAPI.getSome
 	},
 	{
 		action: 'get',
 		url: '/blog/:id',
-		handler: Blog.getById
+		handler: BlogAPI.getById
 	},
 	{
 		action: 'put',
 		url: '/blog/:id',
-		handler: Blog.updateOne
+		handler: BlogAPI.updateOne
 	},
-//     Comment的 CGUD 操作
+/* ------------ CommentAPI的 CGUD 操作 ------------ */
 	{
 		action: 'post',
 		url: '/comment',
-		handler: Comment.create
+		handler: CommentAPI.create
 	},
     {
         action: 'get',
         url: '/comment',
-        handler: Comment.get
+        handler: CommentAPI.get
     }
+];
+
+var pageRouteList = [
+	{
+		action: 'get',
+		url: '/',
+		handler: pageRoute.index
+	},
+	{
+		action: 'get',
+		url: '/posts',
+		handler: pageRoute.index
+	},
+	{
+		action: 'get',
+		url: '/posts/:id',
+		handler: pageRoute.thePost
+	}
 ];
 
 
 function bindRoute( app ){
-	for( var i in routeList ){
-		var routeIterm = routeList[i];
-		
-		routeIterm.url = baseUrl + routeList[i].url;
+	bindByRuleSet( app, apiRouteList, apiBaseUrl );
+	bindByRuleSet( app, pageRouteList, pageBaseUrl );
+}
 
+function bindByRuleSet( app, routeRuleSet, baseUrl ){
+	var apiCount = routeRuleSet.length;
+	for( var i=0; i<apiCount; i++ ){
+		var routeIterm = routeRuleSet[i];
+		routeIterm.url = baseUrl + routeRuleSet[i].url;
 		app[ routeIterm.action ]( routeIterm.url, routeIterm.handler );
 
 		console.log( routeIterm.action +' -|- '+ routeIterm.url +' -|- '+ routeIterm.handler.name );
 	}
+	
 }
-
 
 
 exports.bind = bindRoute;

@@ -1,0 +1,56 @@
+/*--------------   header样式布局的配置项  ---------------*/
+/*--------------   #main的样式布局配置项   ---------------*/
+/*--------------   #timeline的布局配置项  ---------------*/
+/*--------------   line的布局配置项   --------------*/
+/*--------------   line的布局配置项   --------------*/
+/*--------------   .bubble的布局配置项   ------------*/
+/*--------------   .lientag的布局配置项   -----------*/
+/*--------------  readmode下 #timeline的布局样式的配置项  ---------------*/
+/*--------------   #read布局样式的配置项  ---------------*/
+/*--------------   #blog/cmt 布局样式的配置项  ---------------*/
+/*--------------   ---------------*/
+/*--------------   ---------------*/
+header {
+  position: relative;
+  z-index: 1000;
+  float: left;
+  width: 280px;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  background-color: rgba(42, 141, 184, 0.75);
+  -webkit-transition: all 300ms ease;
+  -moz-transition: all 300ms ease;
+  transition: all 300ms ease;
+  -webkit-backface-visibility: hidden;
+}
+header ul {
+  margin-top: 200px;
+  padding: 0;
+  list-style: none;
+}
+header ul li {
+  width: 80%;
+  margin-left: 10%;
+  padding: 0.125em 0;
+  text-align: center;
+  font-size: 1.5em;
+  -webkit-transition: all 400ms ease;
+  -moz-transition: all 400ms ease;
+  transition: all 400ms ease;
+  -webkit-backface-visibility: hidden;
+}
+header ul li:hover {
+  background-color: #fff;
+  color: rgba(42, 141, 184, 0.75);
+}
+header ul li a {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  color: inherit;
+}
+body.readmode header {
+  width: 100px;
+}

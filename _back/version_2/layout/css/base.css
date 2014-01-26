@@ -1,0 +1,35 @@
+/*--------------   header样式布局的配置项  ---------------*/
+/*--------------   #main的样式布局配置项   ---------------*/
+/*--------------   #timeline的布局配置项  ---------------*/
+/*--------------   line的布局配置项   --------------*/
+/*--------------   line的布局配置项   --------------*/
+/*--------------   .bubble的布局配置项   ------------*/
+/*--------------   .lientag的布局配置项   -----------*/
+/*--------------  readmode下 #timeline的布局样式的配置项  ---------------*/
+/*--------------   #read布局样式的配置项  ---------------*/
+/*--------------   #blog/cmt 布局样式的配置项  ---------------*/
+/*--------------   ---------------*/
+/*--------------   ---------------*/
+.fix-flt:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.btn {
+  display: inline-block;
+  padding: 6px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+.btn-primary {
+  color: #fff;
+  background-color: rgba(42, 141, 184, 0.75);
+  -webkit-box-shadow: 0 3px 0 rgba(42, 141, 184, 0.25);
+  -moz-box-shadow: 0 3px 0 rgba(42, 141, 184, 0.25);
+  box-shadow: 0 3px 0 rgba(42, 141, 184, 0.25);
+}

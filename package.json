@@ -1,0 +1,17 @@
+{
+    "name": "myBlog",
+    "version": "0.1.1",
+    "description": "chenllos's blog backend",
+    "spm": {
+        "source": "script",
+        "output": ["script/app.js"]
+    },
+    "dependencies": {
+        "express":      "*",
+        "ejs":      "*",
+        "mongoose":     "*",
+        "markdown-js":  "*",
+        "gulp": "3.3.0",
+        "eventproxy": "~0.2.2"
+    }
+}
