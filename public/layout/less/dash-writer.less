@@ -1,0 +1,55 @@
+@import "base/config.less";
+@import "base/mixin.less";
+
+#writer{
+    position: relative;
+    #md, #preview{
+        position: absolute;
+        top: 1em;
+        bottom: 3.75em;
+        width: 48%;
+        background-color: #fff;
+        .tst();
+    }
+    #md{
+        left: 1em;
+    }
+    #preview{
+        right: 1em;
+        opacity: 1;
+    }
+    
+    #iframe-md{
+        height: 100%;
+        width: 100%;
+    }
+
+    #preview-btn, #submit-btn{
+        position: absolute;
+        bottom: 1em;
+    }
+    #preview-btn{
+        left: 1em;
+    }
+    #submit-btn{
+        left: 8em;
+    }
+}
+
+#writer.nopreview{
+    #md{
+        width: 84%;
+        left: 8%;
+    }
+    #preview{
+        right: 25%;
+        opacity: 0;
+        bottom: 100%;
+    }
+    #preview-btn{
+        left: 8%;
+    }
+    #submit-btn{
+        left: 16%;
+    }
+}

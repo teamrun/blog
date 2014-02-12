@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/layout/css/layout-dashboard.css" />
+    <script src="/script/common/sea.js"></script>
+    <script src="/script/common/avalon.js"></script>
+    <script src="/script/common/jquery-1.8.3.js"></script>
+    <script src="/script/common/showdown_prism.js"></script>
+</head>
+<body>
+    <aside></aside>
+    <div id="main" class="writer">
+        <section id="writer" class="nopreview">
+            <div id="md">
+                <iframe src="/partial/md-editor.html" frameborder="0" name="md" id="iframe-md"></iframe>
+            </div>
+            <div id="preview"></div>
+
+            <span class="btn btn-primary" id="preview-btn">预览</span>
+            <span class="btn btn-primary" id="submit-btn">上传blog</span>
+            
+        </section>
+        <section></section>
+        <section></section>
+        <section></section>
+
+        <article class="pop-module">
+            <div class="mask"></div>
+            <div class="content"></div>
+        </article>
+        <!-- <article class="pop-module"></article> -->
+        <!-- <article class="pop-module"></article> -->
+
+        <div id="toolbar">
+            <div class="more">
+                <span class="moretoole"></span>
+            </div>
+            <div class="tools">
+                <ul id="writer-tools">
+                    <li><i class="icon icon-"></i></li>
+                    <li><i class="icon icon-"></i></li>
+                    <li><i class="icon icon-"></i></li>
+                    <li><i class="icon icon-"></i></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        avalon.config({
+            loader: false
+        });
+        seajs.config({
+            paths: {
+                ctrl: '/script/controller'
+            }
+        });
+        seajs.use('ctrl/dash-app');
+
+    </script>
+</body>
+</html>

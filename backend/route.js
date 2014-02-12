@@ -2,7 +2,7 @@ var config = require('./Base/config');
 
 
 var BlogAPI = require('./apiController/blogCtrl').BlogAPI;
-var CommentAPI = require('./apiController/commentCtrl');
+var CommentAPI = require('./apiController/commentCtrl').CommentAPI;
 
 var pageRoute = require('./pageController');
 
@@ -49,23 +49,32 @@ var pageRouteList = [
 	{
 		action: 'get',
 		url: '/',
-		handler: pageRoute.index
+		handler: pageRoute.postsList
 	},
 	{
 		action: 'get',
 		url: '/posts',
-		handler: pageRoute.index
+		handler: pageRoute.postsList
 	},
 	{
 		action: 'get',
 		url: '/posts/:id',
 		handler: pageRoute.thePost
-	}
+	},
+    {
+        action: 'get',
+        url: '/dashboard',
+        handler: pageRoute.dashboard
+    }
 ];
 
 
 function bindRoute( app ){
+
+	console.log('api routing >-------->-------->-------->');
 	bindByRuleSet( app, apiRouteList, apiBaseUrl );
+	
+	console.log('page routing >-------->-------->-------->');
 	bindByRuleSet( app, pageRouteList, pageBaseUrl );
 }
 
@@ -76,7 +85,7 @@ function bindByRuleSet( app, routeRuleSet, baseUrl ){
 		routeIterm.url = baseUrl + routeRuleSet[i].url;
 		app[ routeIterm.action ]( routeIterm.url, routeIterm.handler );
 
-		console.log( routeIterm.action +' -|- '+ routeIterm.url +' -|- '+ routeIterm.handler.name );
+		console.log( routeIterm.action +'  ->  '+ routeIterm.url +'  ->  '+ routeIterm.handler.name );
 	}
 	
 }

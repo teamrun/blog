@@ -3,6 +3,10 @@
         "id": "2013-12-31",
         "title": "My dear wife just arrived Beijing",
         "author": "Chen Liangliang",
+        "summary": {
+            "text": "we tooke subway back to my home, well, if it can be called \"home\". My little girl kissed me and it felt so Awesome",
+            "img": "/upload/design-inside-adobe.jpg"
+            },
         "content": "we tooke subway back to my home, well, if it can be called \"home\". My little girl kissed me and it felt so Awesome",
         "like": 0,
         "comment": 0,
@@ -12,6 +16,10 @@
         "id": "2014-01-01",
         "title": "2014, you and the sun still with me",
         "author": "Liu xiaofei",
+        "summary": {
+            "text": "2014 just arrived~! My man and i waked up late to enjoy the warm bed. He got up early than me and cooked me a usual breakfast, but i feel like being like this forever~",
+            "img": "/upload/AnonymousPro.png"
+            },
         "content": "2014 just arrived~! My man and i waked up late to enjoy the warm bed. He got up early than me and cooked me a usual breakfast, but i feel like being like this forever~",
         "like": 0,
         "comment": 0,

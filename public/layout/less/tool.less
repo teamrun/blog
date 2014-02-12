@@ -1,0 +1,31 @@
+@import "base/config.less";
+@import "base/mixin.less";
+
+
+#toolbar{
+    position: fixed;
+    right: 30px;
+    top: 30px;
+
+    .more{
+        height: 2.5em;
+        width: 2.5em;
+        cursor: pointer;
+        background-color: #2F83A3;
+    }
+    .tools{
+        ul{
+            background-color: #68A5BC;
+            padding: 0.5em 0;
+        }
+        ul>li{
+            padding: 0 0.25em;
+            margin-top: 0.5em;
+            cursor: pointer;
+
+            &:first-child{
+                margin-top: 0;
+            }
+        }
+    }
+}

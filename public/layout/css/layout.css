@@ -1,11 +1,321 @@
-/* ------------------  ------------------ */
-/* ------------------  ------------------ */
+/* ------------------ 基础配置, 不可动 ------------------ */
+/* ------------------ 主色调... ------------------ */
+/*--------------   DASHBOARD的布局配置项  ---------------*/
+/*--------------   #writer  ---------------*/
+/* line 4, base/base.less */
+.btn {
+  display: inline-block;
+  height: 32px;
+  font-size: 0.875em;
+  line-height: 32px;
+  padding: 0 20px;
+  background-color: #f5f5f5;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #dddddd;
+  cursor: pointer;
+}
+/* line 17, base/base.less */
+.btn-primary {
+  background-color: #663a84;
+  color: #fff;
+}
+/* line 22, base/base.less */
+.icon {
+  display: block;
+  height: 2em;
+  width: 2em;
+  background-image: url('');
+  background-color: #EF8BD5;
+}
+/* line 32, base/base.less */
+.pop-module {
+  position: fixed;
+  top: 0;
+  height: 0px;
+  width: 100%;
+  z-index: 1000;
+  opacity: 0;
+  overflow: hidden;
+  -webkit-transition: opacity 300ms ease, height 0ms ease 300ms;
+  -moz-transition: opacity 300ms ease, height 0ms ease 300ms;
+  -ms-transition: opacity 300ms ease, height 0ms ease 300ms;
+  -o-transition: opacity 300ms ease, height 0ms ease 300ms;
+  transition: opacity 300ms ease, height 0ms ease 300ms;
+}
+/* line 45, base/base.less */
+.pop-module.active {
+  height: 100%;
+  opacity: 0.999;
+  -webkit-transition: opacity 300ms ease;
+  -moz-transition: opacity 300ms ease;
+  -ms-transition: opacity 300ms ease;
+  -o-transition: opacity 300ms ease;
+  transition: opacity 300ms ease;
+}
+/* line 51, base/base.less */
+.pop-module .mask {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.66);
+  z-index: 20;
+}
+/* line 62, base/base.less */
+.pop-module .content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  height: 400px;
+  margin-top: -200px;
+  margin-left: -380px;
+  background-color: #fff;
+  z-index: 50;
+}
+@font-face {
+  font-family: 'anonymous_proregular';
+  src: url('/font/AnonymousPro/anonymous_pro-webfont.eot');
+  src: url('/font/AnonymousPro/anonymous_pro-webfont.eot?#iefix') format('embedded-opentype'), url('/font/AnonymousPro/anonymous_pro-webfont.woff') format('woff'), url('/font/AnonymousPro/anonymous_pro-webfont.ttf') format('truetype'), url('/font/AnonymousPro/anonymous_pro-webfont.svg#anonymous_proregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* line 16, base/reset.less */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* line 18, base/reset.less */
+*::-webkit-scrollbar {
+  width: 0.5em;
+  height: 0.5em;
+  background-color: #666;
+  opacity: 0.5;
+}
+/* line 24, base/reset.less */
+*::-webkit-scrollbar-button {
+  display: none;
+}
+/* line 28, base/reset.less */
+*::-webkit-scrollbar-thumb {
+  background-color: #000;
+}
+/* line 32, base/reset.less */
+html,
+body {
+  height: auto;
+  min-height: 100%;
+  margin: 0;
+  font-family: 'anonymous_proregular' 'STHeiti' 'Microsoft Yahei';
+  color: #444444;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+/* line 42, base/reset.less */
+body {
+  font-size: 1em;
+  line-height: 1.5;
+}
+/* line 47, base/reset.less */
+p {
+  margin: 0.5em 0;
+  line-height: 1.5;
+}
+/* line 52, base/reset.less */
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+/* line 57, base/reset.less */
+li {
+  margin: 0;
+  padding: 0;
+}
+/* line 62, base/reset.less */
+a {
+  color: #2F83A3;
+  text-decoration: none;
+}
+/* line 66, base/reset.less */
+a:hover {
+  text-decoration: underline;
+}
+/* line 69, base/reset.less */
+a[href="#"],
+a[href="javascript:void(0);"] {
+  cursor: default;
+  text-decoration: none;
+}
+/* line 73, base/reset.less */
+a[href="#"]:hover,
+a[href="javascript:void(0);"]:hover {
+  text-decoration: none;
+}
+/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+/* line 7, base/prism.less */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #f8f8f2;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  font-family: Consolas, Monaco, 'Andale Mono', monospace;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+/* Code blocks */
+/* line 29, base/prism.less */
+pre[class*="language-"] {
+  padding: 1em;
+  margin: .5em 0;
+  overflow: auto;
+  border-radius: 0.3em;
+}
+/* line 36, base/prism.less */
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  background: #272822;
+}
+/* Inline code */
+/* line 42, base/prism.less */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+}
+/* line 47, base/prism.less */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: slategray;
+}
+/* line 54, base/prism.less */
+.token.punctuation {
+  color: #f8f8f2;
+}
+/* line 58, base/prism.less */
+.namespace {
+  opacity: .7;
+}
+/* line 62, base/prism.less */
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol {
+  color: #f92672;
+}
+/* line 69, base/prism.less */
+.token.boolean,
+.token.number {
+  color: #ae81ff;
+}
+/* line 74, base/prism.less */
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.builtin {
+  color: #a6e22e;
+}
+/* line 82, base/prism.less */
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+  color: #f8f8f2;
+}
+/* line 91, base/prism.less */
+.token.atrule,
+.token.attr-value {
+  color: #e6db74;
+}
+/* line 98, base/prism.less */
+.token.keyword {
+  color: #66d9ef;
+}
+/* line 102, base/prism.less */
+.token.regex,
+.token.important {
+  color: #fd971f;
+}
+/* line 107, base/prism.less */
+.token.important {
+  font-weight: bold;
+}
+/* line 111, base/prism.less */
+.token.entity {
+  cursor: help;
+}
+/* line 115, base/prism.less */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+/* line 120, base/prism.less */
+.line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  /* Same as .prism’s padding-top */
+  background: rgba(153, 122, 102, 0.08);
+  background: -moz-linear-gradient(left, rgba(153, 122, 102, 0.1) 70%, rgba(153, 122, 102, 0));
+  background: -webkit-linear-gradient(left, rgba(153, 122, 102, 0.1) 70%, rgba(153, 122, 102, 0));
+  background: -o-linear-gradient(left, rgba(153, 122, 102, 0.1) 70%, rgba(153, 122, 102, 0));
+  background: linear-gradient(left, rgba(153, 122, 102, 0.1) 70%, rgba(153, 122, 102, 0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+/* line 139, base/prism.less */
+.line-highlight:before,
+.line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: rgba(153, 122, 102, 0.4);
+  color: #f5f2f0;
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+/* line 157, base/prism.less */
+.line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}
 /* line 5, aside.less */
 aside {
   position: fixed;
-  width: 180px;
+  width: 160px;
   height: 100%;
-  background-color: #663A84;
+  background-color: #663a84;
 }
 /* line 12, aside.less */
 #avatar {
@@ -38,7 +348,7 @@ nav ul {
 nav li {
   font-size: 1.125em;
   color: #fff;
-  padding-left: 2em;
+  padding-left: 1.25em;
 }
 /* line 38, aside.less */
 nav li a {
@@ -48,7 +358,7 @@ nav li a {
 /* line 45, aside.less */
 #copyright {
   position: absolute;
-  left: 2em;
+  left: 1.25em;
   right: 0;
   bottom: 2em;
   color: #ddd;
@@ -58,55 +368,108 @@ nav li a {
 #main {
   width: auto;
   padding-top: 1em;
-  margin-left: 180px;
+  margin-left: 160px;
 }
 /* line 9, main.less */
 #main .wrapper {
-  width: 60%;
+  width: 700px;
   margin: 0 auto;
 }
-/* line 9, layout.less */
-html,
-body {
-  margin: 0;
-  font-family: 'Anonymous Pro' 'Microsoft Yahei';
-  color: #444;
+/* line 7, blog.less */
+.cover {
+  position: relative;
+  margin: 1em 0;
+  height: 300px;
+  background-size: cover;
 }
-/* line 15, layout.less */
-body {
+/* line 13, blog.less */
+.cover .cover-img {
+  display: none;
+  width: 700px;
+  height: auto;
+  opacity: 0.8;
+}
+/* line 24, blog.less */
+#post-section {
+  min-height: 300px;
+}
+/* line 30, blog.less */
+#post-section p {
+  margin: 1em 0;
+  text-indent: 0em;
+}
+/* line 35, blog.less */
+#post-section blockquote {
+  margin: 1em 0;
+  padding: 0 1em;
+  border-left: 0.375em solid #cccccc;
+  color: #aaaaaa;
+}
+/* line 44, blog.less */
+#post-section pre code {
+  font-size: 0.875em;
+}
+/* line 47, blog.less */
+#post-section pre {
+  width: 800px;
+}
+/* line 53, blog.less */
+#post-section pre[class*="language-"] {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  line-height: 1.35;
+}
+/* line 4, comment.less */
+#comment {
+  margin-top: 3em;
+}
+/* line 8, comment.less */
+#write-cmt {
+  width: 100%;
+  height: 80px;
+  padding: 0.75em 1em;
   font-size: 1em;
-  line-height: 1.5;
+  color: #444444;
+  border: 1px solid #888;
+  outline: none;
+  resize: none;
+  -webkit-box-shadow: inset 0 0 0px rgba(128, 0, 128, 0.30000000000000004);
+  -moz-box-shadow: inset 0 0 0px rgba(128, 0, 128, 0.30000000000000004);
+  box-shadow: inset 0 0 0px rgba(128, 0, 128, 0.30000000000000004);
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-transition: all 300ms ease;
+  -moz-transition: all 300ms ease;
+  -ms-transition: all 300ms ease;
+  -o-transition: all 300ms ease;
+  transition: all 300ms ease;
 }
-/* line 20, layout.less */
-p {
-  margin: 0.5em 0;
-  line-height: 1.5;
+/* line 22, comment.less */
+#write-cmt:focus {
+  outline: none;
+  border: 1px solid rgba(128, 0, 128, 0.6);
+  -webkit-box-shadow: inset 0 0 8px rgba(128, 0, 128, 0.19999999999999996);
+  -moz-box-shadow: inset 0 0 8px rgba(128, 0, 128, 0.19999999999999996);
+  box-shadow: inset 0 0 8px rgba(128, 0, 128, 0.19999999999999996);
 }
-/* line 25, layout.less */
-ul {
-  margin: 0;
-  padding-left: 1.5em;
+/* line 28, comment.less */
+#write-cmt .cmt-time {
+  margin-right: 0.5em;
 }
-/* line 29, layout.less */
-li {
-  line-height: 1.5;
+/* line 31, comment.less */
+#write-cmt .cmt-from {
+  margin-right: 0.5em;
 }
-/* line 33, layout.less */
-a {
-  color: #2F83A3;
-  text-decoration: none;
-}
-/* line 37, layout.less */
-a:hover {
-  text-decoration: underline;
-}
-/* line 41, layout.less */
+/* line 16, layout.less */
 .title {
   text-transform: uppercase;
 }
-/* line 44, layout.less */
+/* line 19, layout.less */
 .writen {
+  margin-right: 1em;
   font-size: 0.875em;
   font-style: italic;
-  color: #666;
+  color: #888;
 }

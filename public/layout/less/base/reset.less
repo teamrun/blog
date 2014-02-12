@@ -1,0 +1,76 @@
+@import "base/config.less";
+@import "base/mixin.less";
+
+@font-face {
+    font-family: 'anonymous_proregular';
+    src: url('/font/AnonymousPro/anonymous_pro-webfont.eot');
+    src: url('/font/AnonymousPro/anonymous_pro-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/font/AnonymousPro/anonymous_pro-webfont.woff') format('woff'),
+         url('/font/AnonymousPro/anonymous_pro-webfont.ttf') format('truetype'),
+         url('/font/AnonymousPro/anonymous_pro-webfont.svg#anonymous_proregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+*{
+   .box-sizing();
+    &::-webkit-scrollbar{
+        width: 0.5em;
+        height: 0.5em;
+        background-color: #666;
+        opacity: 0.5;
+    }
+    &::-webkit-scrollbar-button{
+        display: none;
+    }
+    // （拖动条？滑块？滚动条里面可以拖动的那个，肿么翻译好呢？）
+    &::-webkit-scrollbar-thumb{
+        background-color: #000;
+    }
+}
+html, body{
+    height: auto;
+    min-height: 100%;
+    margin: 0;
+    font-family: 'anonymous_proregular' 'STHeiti' 'Microsoft Yahei';
+    // font-family: 'STHeiti' 'Microsoft Yahei';
+    color: @fontC;
+    -webkit-font-smoothing: subpixel-antialiased;
+}
+
+body{
+    font-size: 1em;
+    line-height: 1.5;
+    // padding-left: @asideW;
+}
+p{
+    margin: 0.5em 0;
+    line-height: 1.5;
+}
+
+ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+li{
+    margin: 0;
+    padding: 0;
+}
+
+a{
+    color: #2F83A3;
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline;
+}
+a[href="#"], a[href="javascript:void(0);"]{
+    // color: #444;
+    cursor: default;
+    text-decoration: none;
+    &:hover{
+        text-decoration: none;
+    }
+}

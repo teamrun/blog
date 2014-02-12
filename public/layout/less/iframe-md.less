@@ -1,0 +1,52 @@
+@import "base/config.less";
+@import "base/mixin.less";
+
+@import "base/base.less";
+@import "base/reset.less";
+
+
+html{
+    height: 100%;
+}
+body{
+    height: 100%;
+    font-size: 1em;
+    color: @mdC !important;
+    background-color: @mdBGC;
+    padding: 0.75em;
+    font-family: 'Anonymous Pro';
+}
+html, body{
+    // 如果不想在没字的地方不显示下面的selectionBGC, 就不要设定这部分了
+    &::selection {
+        background: @mdSelectionBGC;
+        color: @mdSelectionC;
+    }
+
+    &::-moz-selection {
+        background: @mdSelectionBGC; 
+        color: @mdSelectionC;
+    }
+
+    &::-webkit-selection {
+        background: @mdSelectionBGC; 
+        color: @mdSelectionC;
+    }
+}
+
+*::selection {
+    background: @mdSelectionBGC;
+    // 设定好之后仍然有一定的偏色, 浏览器自动加了透明度```?
+    // 浏览器会对"用户设定的,透明度为1的bgc"进行一定的透明度增加
+    color: @mdSelectionC;
+}
+
+*::-moz-selection {
+    background: @mdSelectionBGC; 
+    color: @mdSelectionC;
+}
+
+*::-webkit-selection {
+    background: @mdSelectionBGC; 
+    color: @mdSelectionC;
+}

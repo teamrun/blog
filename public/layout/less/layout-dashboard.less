@@ -1,0 +1,37 @@
+@import "base/config.less";
+@import "base/mixin.less";
+
+@import "base/base.less";
+@import "base/reset.less";
+@import "base/prism.less";
+
+
+@import "aside.less";
+@import "main.less";
+@import "blog.less";
+@import "comment.less";
+
+@import "dash-writer.less";
+@import "tool.less";
+// @import "comment.less";
+
+html, body{
+    height: 100%;
+}
+
+#main{
+    height: 100%;
+    padding-top: 0;
+    background-color: #accded;
+    // overflow: hidden;
+    section{
+        height: 100%;
+        padding: 1em;
+        display: none;
+    }
+}
+
+
+#main.writer #writer{
+    display: block;
+}

@@ -1,5 +1,11 @@
 @import "config.less";
 
+.box-sizing( @v: border-box ){
+    -webkit-box-sizing: @v;
+    -moz-box-sizing: @v;
+    box-sizing: @v;
+}
+
 .border-radius( @v: 50%){
     -webkit-border-radius: @v;
     -moz-border-radius: @v;
@@ -9,4 +15,12 @@
     -webkit-box-shadow: @v;
     -moz-box-shadow: @v;
     box-shadow: @v;
+}
+
+.tst( @v: all 300ms ease; ){
+    -webkit-transition: @v;
+    -moz-transition: @v;
+    -ms-transition: @v;
+    -o-transition: @v;
+    transition: @v;
 }

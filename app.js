@@ -10,6 +10,7 @@ var app = express();
 
 // 使用ejs解析引擎
 app.set('view engine', 'ejs');
+
 // 视图文件都在/views
 
 

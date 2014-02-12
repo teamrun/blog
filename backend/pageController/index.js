@@ -1,9 +1,29 @@
 var path = require('path');
+var EventProxy = require('eventproxy');
+var ejs = require('ejs');
+var markdown = require( "markdown" ).markdown;
+
 var config = require('../Base/config');
-var blogMeta = require('../apiController/blogCtrl').blogMeta;
+var blogMeta = require('../apiController/blogCtrl').BlogMeta;
+var cmtMeta = require('../apiController/commentCtrl').CommentMeta;
+
 
 var viewPath = path.resolve(__dirname, '../../views');
 // console.log( '视图文件夹: ' + viewPath );
+
+
+ejs.filters.time = function( ts ) {
+    var d = new Date( ts );
+    var year = d.getFullYear();
+    var month = d.getMonth() + 1;
+    var date = d.getDate();
+    var h = d.getHours();
+    var m = d.getMinutes();
+    return year + '-' + month +'-' + date + ' ' + h + ':' + m;
+};
+ejs.filters.md = function( str ){
+    return markdown.toHTML( str );
+};
 
 function sendPostList( req, res ){
     blogMeta._getSome( function( postList ){
@@ -16,13 +36,29 @@ function sendPostList( req, res ){
 
 function sendSpecificPost( req, res ){
     var postID = req.param('id');
-    blogMeta.getThePost( postID, function( postModel ){
-        res.render(viewPath+ '/post.ejs', {title: postModel.title, art: postModel} );
+    var ep = new EventProxy();
+
+    ep.all('blog', 'cmt', function(postModel, cmtList){
+        res.render(viewPath+ '/post.ejs', {title: postModel.title, art: postModel, cmtList: cmtList} );
+    });
+
+
+    blogMeta._getThePost( postID, function( postModel ){
+        ep.emit('blog', postModel);
     } );
-    
+    cmtMeta.getByBlogID( postID, function( cmtRow){
+        ep.emit('cmt', cmtRow);
+    } );
+}
+
+function sendDashBoard( req, res ){
+    res.sendfile( viewPath + '/dashboard.html');
 }
 
 
 
-exports.index = sendPostList;
+
+exports.postsList = sendPostList;
 exports.thePost = sendSpecificPost;
+
+exports.dashboard = sendDashBoard;

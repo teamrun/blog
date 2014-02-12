@@ -37,7 +37,7 @@ function blogErrHandler( funcName, err ){
 
 var blogMeta = {
 	_getSome: function( callback ){
-		dbo.Blog.find({},'_id title Summary author dt_create dt_modify location like comment tag').exec( function( err, data ){
+		dbo.Blog.find({},'_id title summary author dt_create dt_modify location like comment tag').exec( function( err, data ){
 			if( !err ){
 				callback( data );
 			}
@@ -46,7 +46,7 @@ var blogMeta = {
 			}
 		});
 	},
-	getThePost: function( postsID, callback ){
+	_getThePost: function( postsID, callback ){
 		dbo.Blog.findById( postsID, function(err, data){
 			if( !err ){
 				callback( data );
@@ -64,16 +64,16 @@ var blogCtrl = {
 
 		var reqContent = req.body.content;
 
-		var blogTitle = reqContent.match( titleReg )[0];
+		var blogTitle = req.body.title;
 		var SummaryObj = {};
 		SummaryObj.text = getSummary( reqContent );
 		SummaryObj.img = reqContent.match( imgReg );
 		var blogObj = {
 			title: blogTitle,
 			content: reqContent,
-			Summary: SummaryObj,
-			dt_create: new Date(),
-			dt_modify: new Date(),
+			summary: SummaryObj,
+			dt_create: Date.now(),
+			dt_modify: Date.now(),
 			author: req.body.author || 'chenllos',
 			location: req.body.location,
 			like: 0,
@@ -198,6 +198,6 @@ var blogCtrl = {
 var promiseBlogCtrl = {};
 
 
-exports.blogMeta = blogMeta;
+exports.BlogMeta = blogMeta;
 exports.BlogAPI = blogCtrl;
 // module.exports = promiseBlogCtrl;

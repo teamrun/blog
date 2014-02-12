@@ -2,14 +2,34 @@ var dbo = require('../Base/dbo.js');
 var config = require('../Base/config');
 var Valid = require('../Base/valid');
 
-var commentCtrl = {
+
+function cmtErrHandler( funcName, err ){
+    console.err( funcName + ': error occured ');
+    console.error(  err );
+}
+
+
+var CommentMeta = {
+    getByBlogID: function( blogID, callback ){
+        dbo.Comment.find( {base_article: blogID}, function( err, data ){
+            if( err ){
+                cmtErrHandler( arguments.callee, err );
+            }
+            else{
+                callback( data );
+            }
+        });
+    }
+};
+
+var CommentCtrl = {
 	create: function newComment( req, res ){
         checkBlogExist( req.body.base_article, cbCheck );
         function cbCheck(){
             var commentObj = {
                 title: req.body.title,
                 content: req.body.content,
-                dt_create: new Date(),
+                dt_create: Date.now(),
                 from: req.body.from || '',
                 to: req.body.to,
                 base_article: req.body.base_article,
@@ -39,23 +59,26 @@ var commentCtrl = {
 
     get: function getCommment( req, res ){
         var query = {};
-        query.base_article = req.query.blog_id;
-        dbo.Comment.find( query, function( err, data ){
-            var resObj = {};
-            if( err ){
-                resObj.code = 500;
-                resObj.msg = 'failed query comment from db';
-                res.send( resObj );
-            }
-            else{
-                resObj.code = 200;
-                resObj.comments = data;
+        cmtMeta.getByBlogID( req.param('id'), function( data ){
 
-                res.send( resObj );
-            }
-            return false;
         } );
-        return false;
+        // query.base_article = req.param('id');
+        // dbo.Comment.find( query, function( err, data ){
+        //     var resObj = {};
+        //     if( err ){
+        //         resObj.code = 500;
+        //         resObj.msg = 'failed query comment from db';
+        //         res.send( resObj );
+        //     }
+        //     else{
+        //         resObj.code = 200;
+        //         resObj.comments = data;
+
+        //         res.send( resObj );
+        //     }
+        //     return false;
+        // } );
+        // return false;
     },
 
 	balabala: function getCommentByBase( req, res ){
@@ -79,4 +102,5 @@ function checkBlogExist( _id, cb ){
     });
 }
 
-module.exports = commentCtrl;
+exports.CommentMeta = CommentMeta;
+exports.CommentAPI = CommentCtrl;

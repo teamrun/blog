@@ -24,10 +24,10 @@ var connect = mongoose.connect( config.dburl );
 		author: String,
 
 		content: String,
-		summery: Object,
+		summary: Object,
 		tag: Array,
 
-		dt_create: Date,
+		dt_create: Number,
 		dt_modify: Array,
 
 		location: Object,
@@ -41,7 +41,7 @@ var connect = mongoose.connect( config.dburl );
 	var commentSchema = mongoose.Schema({
 		title: String,
 		content: String,
-		dt_create: String,
+		dt_create: Number,
 		from: String,
 		to: String,
 		base_article: String,
@@ -53,7 +53,7 @@ Blog = mongoose.model('blog', blogSchema);
 Comment = mongoose.model( 'comment', commentSchema );
 
 
-// importTestData();
+importTestData();
 
 function importTestData(){
 	// nodejs中"./"的路径指示的是执行node app.js的路径```

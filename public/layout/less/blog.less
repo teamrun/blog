@@ -1,0 +1,57 @@
+@import "base/config.less";
+@import "base/mixin.less";
+
+
+// blog缩略 首页显示的摘要
+// .post-item{
+    .cover{
+        position: relative;
+        margin: 1em 0;
+        height: 300px;
+        // background-position: 50% 50%;
+        background-size: cover;
+        .cover-img{
+            display: none;
+            // display: block;
+            width: @contentWrapperW;
+            height: auto;
+            opacity: 0.8;
+        }
+    }
+    
+// }
+
+#post-section{
+    min-height: 300px;
+    h1{}
+    h2{}
+    h3{}
+    h4{}
+    p{
+        margin: 1em 0;
+        text-indent: 0em;
+    }
+    // 引用:
+    blockquote{
+        margin: 1em 0;
+        padding: 0 1em;
+        border-left: 0.375em solid @quoteBorderLeftC;
+        color: lighten( @fontC, 40% );
+    }
+
+
+    // 代码
+    pre code{
+        font-size: 0.875em;
+    }
+    pre{
+        width: 800px;
+        
+    }
+    // rewrite prism code style
+    // code[class*="language-"],
+    pre[class*="language-"]{
+        .border-radius(0);
+        line-height: 1.35;
+    }
+}
