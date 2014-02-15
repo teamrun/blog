@@ -31,8 +31,8 @@
     <div id="main">
         <div class="wrapper">
             <% for( var i=0; i<posts.length; i++ ) { %>
-            <article class="post-item">
-                <h2><a href="/posts/<%= posts[i].id %>"><%= posts[i].title %></a></h2>
+            <article class="post-item" data-postid="<%= posts[i].id %>">
+                <h2 class="post-title"><a href="/posts/<%= posts[i].id %>"><%= posts[i].title %></a></h2>
                 <p><span class="writen">writenby:</span><%= posts[i].author%></p>
 
                 <!-- todo 允许用户定义cover图片的位置,达到最好的效果, 现在先用"固定高度 + bg-size:cover" -->
@@ -41,7 +41,9 @@
                     <img src="<%= posts[i].summary.img %>" class="cover-img">
                 </div>
                 <% } %>
-                <p class="summary"><%= posts[i].summary.text%></p>
+                
+                <p class="summary"><%-: posts[i].summary.text | md %></p>
+                <a href="/posts/<%= posts[i].id %>" class="post-more">Read More...</a>
             </article>
             <% } %>
         </div>

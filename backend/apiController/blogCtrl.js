@@ -2,28 +2,30 @@ var dbo = require('../Base/dbo.js');
 var config = require('../Base/config');
 var Valid = require('../Base/valid');
 
-var titleReg = new RegExp( /#+.+\n/);
+var titleReg = new RegExp( /#+.+\n+/);
 var imgReg = new RegExp(/\!\[.+\]\(.+\)/);
 
 
 // console.log( dbo );
 
-function getSummary( content ){
-	var Summary;
-	if( content.length < 120 ){
-		Summary = content.substr(0, content.length/2);
+function getSummaryText( AllBlog ){
+    var justContent = AllBlog.replace(titleReg, '');
+    var Summary;
+    var contentLength = justContent.length;
+	if( contentLength < 120 ){
+		Summary = justContent.substr(0, contentLength/2);
 	}
-	else if( content.length < 240 ){
-		Summary = content.substr(0, content.length/3);
+	else if( contentLength < 240 ){
+		Summary = justContent.substr(0, contentLength/3);
 	}
-	else if( content.length < 400 ){
-		Summary = content.substr(0, content.length/4);
+	else if( contentLength < 400 ){
+		Summary = justContent.substr(0, contentLength/4);
 	}
-	else if( content.length < 600 ){
-		Summary = content.substr(0, content.length/5);
+	else if( contentLength < 600 ){
+		Summary = justContent.substr(0, contentLength/5);
 	}
 	else{
-		Summary = content.substr(0, content.length/10);
+		Summary = justContent.substr(0, contentLength/10);
 	}
 
 	return Summary;
@@ -66,7 +68,7 @@ var blogCtrl = {
 
 		var blogTitle = req.body.title;
 		var SummaryObj = {};
-		SummaryObj.text = getSummary( reqContent );
+		SummaryObj.text = getSummaryText( reqContent );
 		SummaryObj.img = reqContent.match( imgReg );
 		var blogObj = {
 			title: blogTitle,

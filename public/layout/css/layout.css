@@ -94,7 +94,7 @@
 *::-webkit-scrollbar {
   width: 0.5em;
   height: 0.5em;
-  background-color: #666;
+  background-color: #e1d2eb;
   opacity: 0.5;
 }
 /* line 24, base/reset.less */
@@ -103,9 +103,9 @@
 }
 /* line 28, base/reset.less */
 *::-webkit-scrollbar-thumb {
-  background-color: #000;
+  background-color: #2f1b3d;
 }
-/* line 32, base/reset.less */
+/* line 33, base/reset.less */
 html,
 body {
   height: auto;
@@ -115,43 +115,48 @@ body {
   color: #444444;
   -webkit-font-smoothing: subpixel-antialiased;
 }
-/* line 42, base/reset.less */
+/* line 43, base/reset.less */
 body {
   font-size: 1em;
   line-height: 1.5;
 }
-/* line 47, base/reset.less */
+/* line 48, base/reset.less */
 p {
   margin: 0.5em 0;
   line-height: 1.5;
 }
-/* line 52, base/reset.less */
+/* line 53, base/reset.less */
 ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-/* line 57, base/reset.less */
+/* line 58, base/reset.less */
 li {
   margin: 0;
   padding: 0;
 }
-/* line 62, base/reset.less */
+/* line 63, base/reset.less */
 a {
-  color: #2F83A3;
+  color: #4E9BB9;
   text-decoration: none;
+  -webkit-transition: all 300ms ease;
+  -moz-transition: all 300ms ease;
+  -ms-transition: all 300ms ease;
+  -o-transition: all 300ms ease;
+  transition: all 300ms ease;
 }
-/* line 66, base/reset.less */
+/* line 68, base/reset.less */
 a:hover {
-  text-decoration: underline;
+  color: #663a84;
 }
-/* line 69, base/reset.less */
+/* line 71, base/reset.less */
 a[href="#"],
 a[href="javascript:void(0);"] {
   cursor: default;
   text-decoration: none;
 }
-/* line 73, base/reset.less */
+/* line 75, base/reset.less */
 a[href="#"]:hover,
 a[href="javascript:void(0);"]:hover {
   text-decoration: none;
@@ -375,46 +380,105 @@ nav li a {
   width: 700px;
   margin: 0 auto;
 }
-/* line 7, blog.less */
-.cover {
+/* line 6, blog.less */
+.post-item {
+  position: relative;
+  margin-bottom: 6em;
+}
+/* line 16, blog.less */
+.post-item:after {
+  position: absolute;
+  content: '';
+  height: 2px;
+  left: 1em;
+  right: 1em;
+  bottom: -2em;
+  background-color: #ddd;
+}
+/* line 25, blog.less */
+.post-item .post-title {
+  margin: 0.35em 0;
+  line-height: 1;
+  font-weight: bold;
+}
+/* line 30, blog.less */
+.post-item .cover {
   position: relative;
   margin: 1em 0;
   height: 300px;
   background-size: cover;
 }
-/* line 13, blog.less */
-.cover .cover-img {
+/* line 36, blog.less */
+.post-item .cover .cover-img {
   display: none;
   width: 700px;
   height: auto;
   opacity: 0.8;
 }
-/* line 24, blog.less */
-#post-section {
+/* line 44, blog.less */
+.post-item .post-more {
+  float: right;
+  margin-right: 1em;
+  margin-top: -1em;
+  font-style: italic;
+  font-weight: bold;
+}
+/* line 55, blog.less */
+.post h1:first-child,
+.post h2:first-child {
+  font-size: 1.7em;
+  -webkit-transition: all 300ms ease;
+  -moz-transition: all 300ms ease;
+  -ms-transition: all 300ms ease;
+  -o-transition: all 300ms ease;
+  transition: all 300ms ease;
+}
+/* line 58, blog.less */
+.post h1:first-child:hover,
+.post h2:first-child:hover {
+  color: #663a84;
+}
+/* line 63, blog.less */
+.post,
+.post-item {
   min-height: 300px;
 }
-/* line 30, blog.less */
-#post-section p {
+/* line 66, blog.less */
+.post h2,
+.post-item h2,
+.post h3,
+.post-item h3,
+.post h4,
+.post-item h4 {
+  margin: 0.5em 0 0.25em 0;
+}
+/* line 69, blog.less */
+.post p,
+.post-item p {
   margin: 1em 0;
   text-indent: 0em;
 }
-/* line 35, blog.less */
-#post-section blockquote {
+/* line 74, blog.less */
+.post blockquote,
+.post-item blockquote {
   margin: 1em 0;
   padding: 0 1em;
   border-left: 0.375em solid #cccccc;
   color: #aaaaaa;
 }
-/* line 44, blog.less */
-#post-section pre code {
+/* line 81, blog.less */
+.post pre code,
+.post-item pre code {
   font-size: 0.875em;
 }
-/* line 47, blog.less */
-#post-section pre {
+/* line 84, blog.less */
+.post pre,
+.post-item pre {
   width: 800px;
 }
-/* line 53, blog.less */
-#post-section pre[class*="language-"] {
+/* line 90, blog.less */
+.post pre[class*="language-"],
+.post-item pre[class*="language-"] {
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;

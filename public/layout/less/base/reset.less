@@ -18,7 +18,7 @@
     &::-webkit-scrollbar{
         width: 0.5em;
         height: 0.5em;
-        background-color: #666;
+        background-color: lighten(@themeC, 50%);
         opacity: 0.5;
     }
     &::-webkit-scrollbar-button{
@@ -26,7 +26,8 @@
     }
     // （拖动条？滑块？滚动条里面可以拖动的那个，肿么翻译好呢？）
     &::-webkit-scrollbar-thumb{
-        background-color: #000;
+        background-color: darken(@themeC, 20%);
+        // background-color: @themeC;
     }
 }
 html, body{
@@ -60,11 +61,12 @@ li{
 }
 
 a{
-    color: #2F83A3;
+    color: #4E9BB9;
     text-decoration: none;
+    .tst();
 }
 a:hover{
-    text-decoration: underline;
+    color: @themeC;
 }
 a[href="#"], a[href="javascript:void(0);"]{
     // color: #444;

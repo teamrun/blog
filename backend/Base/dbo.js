@@ -53,7 +53,7 @@ Blog = mongoose.model('blog', blogSchema);
 Comment = mongoose.model( 'comment', commentSchema );
 
 
-importTestData();
+// importTestData();
 
 function importTestData(){
 	// nodejs中"./"的路径指示的是执行node app.js的路径```

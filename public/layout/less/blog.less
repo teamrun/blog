@@ -3,7 +3,30 @@
 
 
 // blog缩略 首页显示的摘要
-// .post-item{
+.post-item{
+    position: relative;
+    margin-bottom: 6em;
+    // &:before{
+    //     position: absolute;
+    //     content: 'read more...';
+    //     bottom: -1.5em;
+    //     right: 0;
+    //     font-style: italic;
+    // }
+    &:after{
+        position: absolute;
+        content: '';
+        height: 2px;
+        left: 1em;
+        right: 1em;
+        bottom: -2em;
+        background-color: #ddd;
+    }
+    .post-title{
+        margin: 0.35em 0;
+        line-height: 1;
+        font-weight: bold;
+    }
     .cover{
         position: relative;
         margin: 1em 0;
@@ -18,15 +41,31 @@
             opacity: 0.8;
         }
     }
+    .post-more{
+        float: right;
+        margin-right: 1em;
+        margin-top: -1em;
+        font-style: italic;
+        font-weight: bold;
+    }
     
-// }
+}
 
-#post-section{
+.post{
+    h1:first-child, h2:first-child {
+        font-size: 1.7em;
+        .tst();
+        &:hover{
+            color: @themeC;
+        }
+    }
+}
+.post, .post-item{
     min-height: 300px;
     h1{}
-    h2{}
-    h3{}
-    h4{}
+    h2, h3, h4{
+        margin: 0.5em 0 0.25em 0;
+    }
     p{
         margin: 1em 0;
         text-indent: 0em;
@@ -38,8 +77,6 @@
         border-left: 0.375em solid @quoteBorderLeftC;
         color: lighten( @fontC, 40% );
     }
-
-
     // 代码
     pre code{
         font-size: 0.875em;

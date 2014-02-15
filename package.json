@@ -9,8 +9,8 @@
     "dependencies": {
         "express":      "*",
         "ejs":      "*",
-        "mongoose":     "*",
-        "markdown-js":  "*",
+        "mongoose":   "*",
+        "markdown":  "*",
         "gulp": "3.3.0",
         "eventproxy": "~0.2.2"
     }
