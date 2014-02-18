@@ -76,3 +76,24 @@ a[href="#"], a[href="javascript:void(0);"]{
         text-decoration: none;
     }
 }
+
+input, textarea{
+    font-size: 1em;
+    font-family: 'anonymous_proregular' 'STHeiti' 'Microsoft Yahei';
+    line-height: 1.35;
+    outline: none;
+    border: 2px solid #aaa;
+    .tst();
+    &:hover{
+        border-color: lighten(@themeC, 40%);
+    }
+    &:focus{
+        border-color: lighten(@themeC, 20%);
+    }
+}
+input{
+    height: 2em;
+    width: 15em;
+    padding: 0.375em 0.5em;
+    margin-bottom: 1em;
+}

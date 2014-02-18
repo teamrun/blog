@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/layout/css/layout-dashboard.css" />
     <script src="/script/common/sea.js"></script>
     <script src="/script/common/avalon.js"></script>
+    <script src="/script/common/avalon.extend.js"></script>
     <script src="/script/common/jquery-1.8.3.js"></script>
     <script src="/script/common/showdown_prism.js"></script>
 </head>
@@ -26,9 +27,28 @@
         <section></section>
         <section></section>
 
-        <article class="pop-module">
+        <article class="pop-module" id="submit-data">
             <div class="mask"></div>
-            <div class="content"></div>
+            <div class="content" ms-controller="post">
+                <i class="icon icon-close" id="close-submit">X</i>
+                <div id="other-param">
+                    <input type="text" placeholder="new post title" id="newpost-title" ms-duplex="title">
+                    <input type="text" placeholder="tags" id="new-post-tag" ms-duplex="tags">
+                    <input type="text" placeholder="author" id="post-author" ms-duplex="author">
+                    <input type="text" placeholder="geolocation" id="pos-geo" ms-duplex="location">
+                    <input type="text" placeholder="like" id="post-like" ms-duplex="like">
+                    <input type="text" placeholder="comment" id="post-comment" ms-duplex="comment">
+                </div>
+                <div id="preview">
+                    <div class="thumb"></div>
+                    <div class="whole">
+                        <article class="post">
+                            {{ content | md2html | html }}
+                        </article>
+                    </div>
+                </div>
+                
+            </div>
         </article>
         <!-- <article class="pop-module"></article> -->
         <!-- <article class="pop-module"></article> -->

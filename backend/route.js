@@ -70,11 +70,13 @@ var pageRouteList = [
 
 
 function bindRoute( app ){
+	console.log('\nserver started at:');
+	console.log( (new Date()) );
 
-	console.log('api routing >-------->-------->-------->');
+	console.log('\napi routing >-------->-------->-------->---------');
 	bindByRuleSet( app, apiRouteList, apiBaseUrl );
 	
-	console.log('page routing >-------->-------->-------->');
+	console.log('\npage routing >-------->-------->-------->---------');
 	bindByRuleSet( app, pageRouteList, pageBaseUrl );
 }
 
@@ -84,8 +86,21 @@ function bindByRuleSet( app, routeRuleSet, baseUrl ){
 		var routeIterm = routeRuleSet[i];
 		routeIterm.url = baseUrl + routeRuleSet[i].url;
 		app[ routeIterm.action ]( routeIterm.url, routeIterm.handler );
-
-		console.log( routeIterm.action +'  ->  '+ routeIterm.url +'  ->  '+ routeIterm.handler.name );
+		switch( routeIterm.action ){
+			case 'get':
+				console.log( 'GET:     ->  '+ routeIterm.url +'  ->  '+ routeIterm.handler.name );
+				break;
+			case 'put':
+				console.log( 'PUT:     ->  '+ routeIterm.url +'  ->  '+ routeIterm.handler.name );
+				break;
+			case 'post':
+				console.log( 'POST:    ->  '+ routeIterm.url +'  ->  '+ routeIterm.handler.name );
+				break;
+			case 'delete':
+				console.log( 'DELETE:  ->  '+ routeIterm.url +'  ->  '+ routeIterm.handler.name );
+				break;
+		}
+		
 	}
 	
 }

@@ -12,6 +12,7 @@
         "mongoose":   "*",
         "markdown":  "*",
         "gulp": "3.3.0",
-        "eventproxy": "~0.2.2"
+        "eventproxy": "~0.2.2",
+        "log4js": "*"
     }
 }

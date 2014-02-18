@@ -24,4 +24,4 @@ route.bind( app );
 app.listen( config.port );
 
 
-console.log( 'app is listeing @ : ' + config.port );
+console.log( '\napp is listeing @ : ' + config.port );
