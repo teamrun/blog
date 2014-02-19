@@ -109,6 +109,9 @@ define( function(require, exports, module ){
             setTimeout( function(){
                 postVM.init( postMDStr );
             }, 500);
+            setTimeout( function(){
+                Prism.highlightAll();
+            }, 700);
             _view.showSubmitPopModule();
         },
         closeSubmit: function(){

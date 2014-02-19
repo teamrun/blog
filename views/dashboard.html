@@ -43,7 +43,7 @@
                     <div class="thumb"></div>
                     <div class="whole">
                         <article class="post">
-                            {{ content | md2html | html }}
+                            {{ content | md2html | addSyntexType | html }}
                         </article>
                     </div>
                 </div>

@@ -55,6 +55,7 @@
 }
 
 #submit-data{
+    // margin-left: -@asideW;
     .mask{
         opacity: 0.55;
     }
@@ -62,16 +63,23 @@
         padding: 1em;
         top: 0%;
         margin-top: 0;
-        left: 10%;
-        margin-left: -@asideW/2;
-        width: 80%;
+        // left: @asideW;
+        left: 0;
+        margin-left: 0;
+        right: @asideW;
+        width: auto;
         height: 100%;
+        overflow: auto;
         .box-shadow( 0 0 10px @themeC; );
 
         #close-submit{
             position: absolute;
             top: 1em;
             right: 1em;
+        }
+        #other-param, #preview .thumb, #preview .whole{
+            width: @contentWrapperW;
+            margin: 0 auto;
         }
     }
 }
