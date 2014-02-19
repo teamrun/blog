@@ -49,7 +49,8 @@
 
                     <% for( var i=0; i<cmtList.length; i++){ %>
                         <li>
-                            <span class="cmt-time"><%=: cmtList[i].dt_create | time %></span>
+                            <!-- <span class="cmt-time"><%=: cmtList[i].dt_create | time %></span> -->
+                            <span class="cmt-time-client" data-ts="<%= cmtList[i].dt_create %>"><%=: cmtList[i].dt_create | time %></span>
                             <a href="<%= cmtList[i].site? cmtList[i].site: 'javascript:void(0);' %>" class="cmt-from"><%= cmtList[i].from + ':' %></a>
                             <span class="cmt-comtent"><%= cmtList[i].content %></span>
                         </li>
