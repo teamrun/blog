@@ -27,7 +27,7 @@ var connect = mongoose.connect( config.dburl );
 		summary: Object,
 		tag: Array,
 
-		dt_create: Number,
+		dt_create: Date,
 		dt_modify: Array,
 
 		location: Object,
@@ -41,7 +41,7 @@ var connect = mongoose.connect( config.dburl );
 	var commentSchema = mongoose.Schema({
 		title: String,
 		content: String,
-		dt_create: Number,
+		dt_create: Date,
 		from: String,
 		to: String,
 		base_article: String,
@@ -73,8 +73,8 @@ function importTestData(){
 		});
 
 		for( var i=0; i<count; i++ ){
-            blogArr[i].dt_create = Date.now();
-            blogArr[i].dt_modify = Date.now();
+            blogArr[i].dt_create = new Date();
+            blogArr[i].dt_modify = [new Date()];
 			var tmpBlog = new Blog( blogArr[i] );
 			tmpBlog.save( function(err){
 				saveCB( err, tmpBlog, ep );

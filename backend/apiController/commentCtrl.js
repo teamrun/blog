@@ -29,7 +29,7 @@ var CommentCtrl = {
             var commentObj = {
                 title: req.body.title,
                 content: req.body.content,
-                dt_create: Date.now(),
+                dt_create: new Date(),
                 from: req.body.from || '',
                 to: req.body.to,
                 base_article: req.body.base_article,

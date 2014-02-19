@@ -12,8 +12,8 @@ var viewPath = path.resolve(__dirname, '../../views');
 // console.log( '视图文件夹: ' + viewPath );
 
 
-ejs.filters.time = function( ts ) {
-    var d = new Date( ts );
+ejs.filters.time = function( dateObj ) {
+    var d = dateObj;
     var year = d.getFullYear();
     var month = d.getMonth() + 1;
     var date = d.getDate();
