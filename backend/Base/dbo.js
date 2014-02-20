@@ -42,7 +42,9 @@ var connect = mongoose.connect( config.dburl );
 		title: String,
 		content: String,
 		dt_create: Date,
-		from: String,
+        commenter: String,
+        commenter_email: String,
+        commenter_site: String,
 		to: String,
 		base_article: String,
 		base_cmt: String

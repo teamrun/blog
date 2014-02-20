@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <title>Dashboard</title>
     <link rel="stylesheet" href="/layout/css/layout-dashboard.css" />
-    <script src="/script/common/sea.js"></script>
-    <script src="/script/common/avalon.js"></script>
-    <script src="/script/common/avalon.extend.js"></script>
-    <script src="/script/common/jquery-1.8.3.js"></script>
-    <script src="/script/common/showdown_prism.js"></script>
+    <script src="/dist/3rdpartylib/sea.js"></script>
+    <script src="/dist/3rdpartylib/avalon.all.js"></script>
+    <script src="/dist/3rdpartylib/jquery.all.js"></script>
+    <script src="/dist/3rdpartylib/showdown_prism.js"></script>
 </head>
 <body>
     <aside></aside>
@@ -74,10 +73,10 @@
         });
         seajs.config({
             paths: {
-                ctrl: '/script/controller'
+                script: '/script/controller'
             }
         });
-        seajs.use('ctrl/dash-app');
+        seajs.use('script/controller/dashappCtrl');
 
     </script>
 </body>

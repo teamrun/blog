@@ -1731,7 +1731,6 @@ Prism.languages.clike = {
   'ignore': /&(lt|gt|amp);/gi,
   'punctuation': /[{}[\];(),.:]/g
 };
-;
 Prism.languages.javascript = Prism.languages.extend('clike', {
   'keyword': /\b(var|let|if|else|while|do|for|return|in|instanceof|function|new|with|typeof|try|throw|catch|finally|null|break|continue)\b/g,
   'number': /\b-?(0x[\dA-Fa-f]+|\d*\.?\d+([Ee]-?\d+)?|NaN|-?Infinity)\b/g

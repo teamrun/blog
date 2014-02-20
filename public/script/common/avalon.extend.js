@@ -1,3 +1,7 @@
+avalon.config({
+    loader: false
+});
+
 avalon.filters.richText = function( str ){
     return str.replace(/\r?\n/ig, '<br/>');
 };

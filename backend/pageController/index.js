@@ -11,15 +11,23 @@ var cmtMeta = require('../apiController/commentCtrl').CommentMeta;
 var viewPath = path.resolve(__dirname, '../../views');
 // console.log( '视图文件夹: ' + viewPath );
 
+function doubleDigit( n ){
+    if( n < 10 ){
+        return String('0' + n);
+    }
+    return n;
+}
 
 ejs.filters.time = function( dateObj ) {
     var d = dateObj;
     var year = d.getFullYear();
+
     var month = d.getMonth() + 1;
+
     var date = d.getDate();
     var h = d.getHours();
     var m = d.getMinutes();
-    return year + '-' + month +'-' + date + ' ' + h + ':' + m;
+    return year + '-' + doubleDigit(month) +'-' + doubleDigit(date) + ' ' + doubleDigit(h) + ':' + doubleDigit(m);
 };
 ejs.filters.md = function( str ){
     return markdown.toHTML( str );

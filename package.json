@@ -1,18 +1,25 @@
 {
-    "name": "myBlog",
-    "version": "0.1.1",
-    "description": "chenllos's blog backend",
-    "spm": {
-        "source": "script",
-        "output": ["script/app.js"]
-    },
-    "dependencies": {
-        "express":      "*",
-        "ejs":      "*",
-        "mongoose":   "*",
-        "markdown":  "*",
-        "gulp": "3.3.0",
-        "eventproxy": "~0.2.2",
-        "log4js": "*"
-    }
+  "name": "myBlog",
+  "version": "0.1.1",
+  "description": "chenllos's blog backend",
+  "spm": {
+    "source": "script",
+    "output": [
+      "script/app.js"
+    ]
+  },
+  "dependencies": {
+    "express": "*",
+    "ejs": "*",
+    "mongoose": "*",
+
+    "markdown": "*",
+    "eventproxy": "~0.2.2",
+    "log4js": "*",
+
+    "gulp-util": "~2.2.14",
+    "gulp": "~3.3.0",
+    "gulp-concat": "2.1.7",
+    "gulp-uglify": "0.2.1"
+  }
 }

@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <title><%= title %></title>
     <link rel="stylesheet" href="/layout/css/layout.css" >
-    <script src="/script/common/jquery-1.8.3.js"></script>
-    <script src="/script/common/showdown_prism.js"></script>
-    <script src="/script/blog_view.js"></script>
+    <script src="/dist/3rdpartylib/sea.js"></script>
+    <script src="/dist/3rdpartylib/avalon.all.js"></script>
+    <script src="/dist/3rdpartylib/jquery.all.js"></script>
+    <script src="/dist/3rdpartylib/showdown_prism.js"></script>
     <!--[if lt IE 9]>
     <script src="/script/common/html5shiv.min.js"></script>
     <![endif]-->
@@ -38,9 +39,12 @@
                 <article class="post"><%-: art.content | md %></article>
             </section>
 
-            <section id="comment">
+            <section id="comment" ms-controller="comment">
                 <div id="cmtcreate-ctn">
-                    <textarea name="" id="write-cmt" placeholder="write down your comment..." spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"></textarea>
+                    <textarea name="" id="write-cmt" placeholder="Write down your comment... *" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"></textarea>
+                    <input type="text" placeholder="Your name *" id="cmt-author">
+                    <input type="text" placeholder="Your site/blog" id="author-site">
+                    <input type="text" placeholder="Your email " id="author-email">
                     <span class="btn btn-primary" id="pub-cmt">发表评论</span>
                 </div>
                 
@@ -50,11 +54,17 @@
                     <% for( var i=0; i<cmtList.length; i++){ %>
                         <li>
                             <!-- <span class="cmt-time"><%=: cmtList[i].dt_create | time %></span> -->
-                            <span class="cmt-time-client" data-ts="<%= cmtList[i].dt_create %>"><%=: cmtList[i].dt_create | time %></span>
-                            <a href="<%= cmtList[i].site? cmtList[i].site: 'javascript:void(0);' %>" class="cmt-from"><%= cmtList[i].from + ':' %></a>
+                            <span class="cmt-time-client" data-timeutc="<%= cmtList[i].dt_create %>"><%=: cmtList[i].dt_create | time %></span>
+                            <a href="<%= cmtList[i].site? cmtList[i].site: 'javascript:void(0);' %>" class="cmt_author"><%= cmtList[i].commenter + ':' %></a>
                             <span class="cmt-comtent"><%= cmtList[i].content %></span>
                         </li>
                     <% } %>
+
+                        <li class="newly-pubed" ms-repeat-cmt="comments">
+                            <span class="cmt-time-client" ms-data-timeutc="cmt.dt_create">{{ cmt.dt_create | date('yyyy-MM-dd HH:mm' ) }}</span>
+                            <a ms-href="cmt.site" class="cmt_author">{{ cmt.commenter + ':' }}</a>
+                            <span class="cmt-comtent">{{ cmt.content }}</span>
+                        </li>
 
                     </ul>
                 </div>
@@ -62,5 +72,16 @@
 
         </div>
     </div>
+    <script>
+        avalon.config({
+            loader: false
+        });
+        seajs.config({
+            paths: {
+                script: '/script'
+            }
+        });
+        seajs.use('script/controller/viewblogCtrl');
+    </script>
 </body>
 </html>

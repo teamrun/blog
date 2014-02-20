@@ -30,7 +30,9 @@ var CommentCtrl = {
                 title: req.body.title,
                 content: req.body.content,
                 dt_create: new Date(),
-                from: req.body.from || '',
+                commenter: req.body.commenter || '',
+                commenter_email: req.body.email || '',
+                commenter_site: req.body.site || '',
                 to: req.body.to,
                 base_article: req.body.base_article,
                 base_cmt: req.body.base_cmt || ''
@@ -88,14 +90,14 @@ var CommentCtrl = {
 
 function checkBlogExist( _id, cb ){
     dbo.Blog.findById( _id, function( err, data ){
-        console.log( err );
-        console.log( data );
+        // console.log( err );
+        // console.log( data );
         if( err ){
             console.error('err occured when check blog exits for new cmt');
         }
         else{
             if( data._doc ){
-                console.log( data );
+                // console.log( data );
                 cb( data );
             }
         }

@@ -1,5 +1,6 @@
 define( function(require, exports, module ){
-    var Config = require( '../config/config' );
+    var Config = require( '../config/config' ),
+        Msg = require('../common/msg');
 
     var _id = {
         previewBtn: 'preview-btn',
