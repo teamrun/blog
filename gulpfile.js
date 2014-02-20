@@ -2,7 +2,8 @@ var gulp = require('gulp');
 var gutil = require('gulp-util');
 
 var concat = require('gulp-concat'),
-    uglify = require('gulp-uglify');
+    uglify = require('gulp-uglify'),
+    less = require( 'gulp-less' );
 
 var scriptPath = './public/script',
     destPath = './public/dist';
@@ -32,15 +33,22 @@ gulp.task('move-js', function(){
         .pipe( gulp.dest( destPath+'/3rdpartylib') );
 });
 
+gulp.task('compile-less', function(){
+    gulp.src( './public/layout/less/layout*.less' )
+        // .pipe(  less( { paths: ['./public/layout/css'] } )  )
+        .pipe(  less( {compress: true} )  )
+        .pipe( gulp.dest('./public/layout/css') );
+});
 
 
 
 
 
-gulp.task('default', ['concat-min-avalon', 'concat-min-jquery-all', 'min-showdown-prism', 'move-js'], function(){
+
+gulp.task('default', ['concat-min-avalon', 'concat-min-jquery-all', 'min-showdown-prism', 'move-js', 'compile-less'], function(){
     // place code for your default task here
 });
 
-gulp.task( 'local',  ['concat-min-avalon', 'concat-min-jquery-all', 'min-showdown-prism', 'move-js'], function(){
+gulp.task( 'local',  ['concat-min-avalon', 'concat-min-jquery-all', 'min-showdown-prism', 'move-js', 'compile-less'], function(){
     // place code for your default task here
 });
