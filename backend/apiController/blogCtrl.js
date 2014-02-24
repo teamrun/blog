@@ -1,6 +1,7 @@
-var dbo = require('../Base/dbo.js');
-var config = require('../Base/config');
-var Valid = require('../Base/valid');
+var dbo = require('../base/dbo.js');
+var logger = require('../base/log');
+var config = require('../config');
+var Valid = require('../base/valid');
 
 var titleReg = new RegExp( /#+.+\n+/);
 var imgReg = new RegExp(/\!\[.+\]\(.+\)/);
@@ -32,8 +33,8 @@ function getSummaryText( AllBlog ){
 }
 
 function blogErrHandler( funcName, err ){
-	console.err( funcName + ': error occured ');
-	console.error(  err );
+	logger.error( funcName + ': error occured ');
+	logger.error(  err );
 }
 
 
@@ -180,8 +181,8 @@ var blogCtrl = {
 				}
 			}
 			dbo.Blog.update({id: blogID}, updates, function(err, data){
-				console.log( data );
-				console.log( err );
+				logger.debug( data );
+				logger.debug( err );
 			} );
 		}
 		else{

@@ -3,7 +3,8 @@ var EventProxy = require('eventproxy');
 var ejs = require('ejs');
 var markdown = require( "markdown" ).markdown;
 
-var config = require('../Base/config');
+var config = require('../config');
+var logger = require('../base/log');
 var blogMeta = require('../apiController/blogCtrl').BlogMeta;
 var cmtMeta = require('../apiController/commentCtrl').CommentMeta;
 
@@ -59,6 +60,10 @@ function sendSpecificPost( req, res ){
     } );
 }
 
+function sendAbout( req, res ){
+    res.sendfile( viewPath + '/about.html' );
+}
+
 function sendDashBoard( req, res ){
     res.sendfile( viewPath + '/dashboard.html');
 }
@@ -68,5 +73,6 @@ function sendDashBoard( req, res ){
 
 exports.postsList = sendPostList;
 exports.thePost = sendSpecificPost;
+exports.about = sendAbout;
 
 exports.dashboard = sendDashBoard;

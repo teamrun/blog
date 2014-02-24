@@ -2,8 +2,9 @@ var express = require('express');
 var path = require('path');
 var ejs = require('ejs');
 
-var config = require('./backend/Base/config');
+var config = require('./backend/config');
 var route = require('./backend/route');
+var logger = require('./backend/base/log');
 
 var app = express();
 
@@ -24,4 +25,4 @@ route.bind( app );
 app.listen( config.port );
 
 
-console.log( '\napp is listeing @ : ' + config.port );
+logger.info( 'app is listeing @ : ' + config.port );

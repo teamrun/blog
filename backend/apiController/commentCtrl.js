@@ -1,11 +1,12 @@
-var dbo = require('../Base/dbo.js');
-var config = require('../Base/config');
-var Valid = require('../Base/valid');
+var dbo = require('../base/dbo.js');
+var logger = require('../base/log');
+var config = require('../config');
+var Valid = require('../base/valid');
 
 
 function cmtErrHandler( funcName, err ){
-    console.err( funcName + ': error occured ');
-    console.error(  err );
+    logger.error( funcName + ': error occured ');
+    logger.error(  err );
 }
 
 
@@ -93,7 +94,7 @@ function checkBlogExist( _id, cb ){
         // console.log( err );
         // console.log( data );
         if( err ){
-            console.error('err occured when check blog exits for new cmt');
+            logger.error('err occured when check blog exits for new cmt');
         }
         else{
             if( data._doc ){

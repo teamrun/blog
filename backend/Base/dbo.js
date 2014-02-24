@@ -1,9 +1,12 @@
-var mongoose = require('mongoose');
-var config = require('./config');
-
 var fs = require('fs');
 var path = require('path');
+
 var EventProxy = require('eventproxy');
+var mongoose = require('mongoose');
+
+var config = require('../config');
+var logger = require('./log');
+
 
 
 var Blog, Comment;
@@ -59,11 +62,11 @@ Comment = mongoose.model( 'comment', commentSchema );
 
 function importTestData(){
 	// nodejs中"./"的路径指示的是执行node app.js的路径```
-	console.log( __dirname );
-	console.log( path.resolve('./') );
+	logger.debug( __dirname );
+	logger.debug( path.resolve('./') );
 	fs.readFile( './backend/Base/database.json', 'utf-8', function( err, data ){
 		if( err ){
-			console.error( err );
+			logger.error( err );
 			return false;
 		}
 
@@ -71,7 +74,7 @@ function importTestData(){
 		var count = blogArr.length;
 		var ep = new EventProxy();
 		ep.after('save test data', count, function( list ){
-			console.log( list );
+			loger.debug( list );
 		});
 
 		for( var i=0; i<count; i++ ){

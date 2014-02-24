@@ -1,5 +1,5 @@
-var config = require('./Base/config');
-
+var logger = require('./base/log');
+var config = require('./config');
 
 var BlogAPI = require('./apiController/blogCtrl').BlogAPI;
 var CommentAPI = require('./apiController/commentCtrl').CommentAPI;
@@ -61,6 +61,11 @@ var pageRouteList = [
 		url: '/posts/:id',
 		handler: pageRoute.thePost
 	},
+	{
+		action: 'get',
+		url: '/about',
+		handler: pageRoute.about
+	},
     {
         action: 'get',
         url: '/dashboard',
@@ -70,13 +75,13 @@ var pageRouteList = [
 
 
 function bindRoute( app ){
-	console.log('\nserver started at:');
-	console.log( (new Date()) );
+	logger.info('server started at:');
+	logger.info( (new Date()) );
 
-	console.log('\napi routing >-------->-------->-------->---------');
+	logger.debug('api routing >-------->-------->-------->---------');
 	bindByRuleSet( app, apiRouteList, apiBaseUrl );
 	
-	console.log('\npage routing >-------->-------->-------->---------');
+	logger.debug('page routing >-------->-------->-------->---------');
 	bindByRuleSet( app, pageRouteList, pageBaseUrl );
 }
 
@@ -88,16 +93,16 @@ function bindByRuleSet( app, routeRuleSet, baseUrl ){
 		app[ routeIterm.action ]( routeIterm.url, routeIterm.handler );
 		switch( routeIterm.action ){
 			case 'get':
-				console.log( 'GET:     ->  '+ routeIterm.url +'  ->  '+ routeIterm.handler.name );
+				logger.debug( 'GET:     ->  '+ routeIterm.url +'  ->  '+ routeIterm.handler.name );
 				break;
 			case 'put':
-				console.log( 'PUT:     ->  '+ routeIterm.url +'  ->  '+ routeIterm.handler.name );
+				logger.debug( 'PUT:     ->  '+ routeIterm.url +'  ->  '+ routeIterm.handler.name );
 				break;
 			case 'post':
-				console.log( 'POST:    ->  '+ routeIterm.url +'  ->  '+ routeIterm.handler.name );
+				logger.debug( 'POST:    ->  '+ routeIterm.url +'  ->  '+ routeIterm.handler.name );
 				break;
 			case 'delete':
-				console.log( 'DELETE:  ->  '+ routeIterm.url +'  ->  '+ routeIterm.handler.name );
+				logger.debug( 'DELETE:  ->  '+ routeIterm.url +'  ->  '+ routeIterm.handler.name );
 				break;
 		}
 		
