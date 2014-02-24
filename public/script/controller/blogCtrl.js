@@ -1,7 +1,7 @@
 define(function( require, exports, module ){
 
 
-    var comment = require('script/view/viewblog/comment');
+    var comment = require('script/view/blog/comment');
     comment.init();
 
 });

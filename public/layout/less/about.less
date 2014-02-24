@@ -1,0 +1,119 @@
+@import "base/config.less";
+@import "base/mixin.less";
+
+@aboutContentW: 350px;
+@aboutContentH: 400px;
+
+@tstTime: 180ms;
+
+/*为遵守"animation的执行不会影响ele本来的属性, 动得时候是一回事, 但是回归平静之后还是元素本身的属性值*/
+/*因此, 要实现path的名片中 "倾斜向下, 过坠 反弹, 恢复"的效果, 就要使之最开始即是"恢复"的样子*/
+/*也许没有反弹...可能是错觉*/
+/*怎么实现下落过程中的倾斜呢~?  0% 0deg -> 1% 5deg -> 开始下坠前的百分一 5deg, 即在视线看不到的时候进入动画的倾斜, 一直到开始其他变化的百分比时再改变这个rotate
+*/
+/*下面就是怎么控制"下坠, 反弹 恢复"了``` 动画时间的拿捏```*/
+
+/* 
+ * 算是完成啦~  哈哈 
+ * 看上去还算顺畅
+ * 没有反弹,那是错觉
+ *  
+ */
+@-webkit-keyframes path-card{
+    /*
+    0%{
+        -webkit-transform: translateY(0)  rotate(0deg);
+    }
+    1%{
+        -webkit-transform: translateY(0)  rotate(3deg);
+    }
+    50%{
+        -webkit-transform: translateY(0)  rotate(3deg);
+    }
+    80%{
+        -webkit-transform: translateY(15px)  rotate(5deg);
+    }
+    100%{
+        -webkit-transform: translateY(0)  rotate(0deg);
+    }
+    */
+
+    0%{
+        -webkit-transform: translateY(0)  rotate(0deg);
+    }
+    1%{
+        -webkit-transform: translateY(0)  rotate(-1deg);
+    }
+    50%{
+        -webkit-transform: translateY(0)  rotate(-1deg);
+    }
+    75%{
+        -webkit-transform: translateY(15px)  rotate(2deg);
+    }
+    100%{
+        -webkit-transform: translateY(0)  rotate(0deg);
+    }
+}
+
+#about{
+    opacity: 0.99;
+    .tst(none 0 ease;);
+
+    &.active{
+        height: 100%;
+        .tst(none 0 ease;);
+        
+        .mask{
+            opacity: 1;
+        }
+        .content{
+            top: 50%;
+            .tst( top @tstTime ease-out; );
+            -webkit-animation: path-card @tstTime*1.5 ease-out 1;
+        }
+    }
+    &.hide{
+        height: 0;
+        .tst(height 0 ease @tstTime;);
+
+        .mask{
+            opacity: 0;
+        }
+        .content{
+            top: 100%;
+            margin-top: 50px;
+            .tst( all @tstTime ease );
+            .tsf( translateY( 2deg ) );
+        }
+    }
+    .mask{
+        opacity: 0;
+        .tst( opacity @tstTime ease; );
+    }
+
+    .content{
+        width: @aboutContentW;
+        height: @aboutContentH;
+        left: 50%;
+        margin-left: -@aboutContentW/2;
+        top: -@aboutContentH/1.5;
+        margin-top: -@aboutContentH/1.5;
+        .tsf(  rotate(0deg) );
+    }
+}
+
+#about .content{
+    padding: 1em;
+    .border-radius( 6px );
+    background-image: url('/img/bg_about.png');
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    
+    h2{
+        margin: 0;
+        .tst();
+        &:hover{
+            color: @themeC;
+        }
+    }
+}
