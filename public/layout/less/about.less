@@ -2,7 +2,7 @@
 @import "base/mixin.less";
 
 @aboutContentW: 350px;
-@aboutContentH: 400px;
+@aboutContentH: 300px;
 
 @tstTime: 180ms;
 
@@ -48,7 +48,7 @@
         -webkit-transform: translateY(0)  rotate(-1deg);
     }
     75%{
-        -webkit-transform: translateY(15px)  rotate(2deg);
+        -webkit-transform: translateY(18px)  rotate(2deg);
     }
     100%{
         -webkit-transform: translateY(0)  rotate(0deg);
@@ -103,17 +103,37 @@
 }
 
 #about .content{
-    padding: 1em;
+    // padding: 1em;
+    text-align: center;
     .border-radius( 6px );
-    background-image: url('/img/bg_about.png');
-    background-repeat: no-repeat;
-    background-size: 100% auto;
-    
-    h2{
+    .box-shadow( 4px 4px 20px rgba(0, 0,0,0.75); );
+
+    h1{
         margin: 0;
         .tst();
         &:hover{
             color: @themeC;
         }
     }
+    .hero{
+        height: @fbAvatarW;
+        margin-bottom: 0.5*@fbAvatarW;
+        padding-top: 0.5*@fbAvatarW;
+        background-image: url('/img/bg_about.png');
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+
+        .border-radius( 6px 6px 0 0; );
+
+        .avatar{
+            display: block;
+            height: @fbAvatarW;
+            width: @fbAvatarW;
+            margin: 0 auto;
+            .border-radius( 100% );
+            // .box-shadow( 0 0 5px @themeC; );
+        }
+
+    }
+
 }

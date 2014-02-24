@@ -60,8 +60,8 @@ function sendSpecificPost( req, res ){
     } );
 }
 
-function sendAbout( req, res ){
-    res.sendfile( viewPath + '/about.html' );
+function sendPhotoGallery( req, res ){
+    res.render( viewPath + '/photo.ejs' );
 }
 
 function sendDashBoard( req, res ){
@@ -73,6 +73,6 @@ function sendDashBoard( req, res ){
 
 exports.postsList = sendPostList;
 exports.thePost = sendSpecificPost;
-exports.about = sendAbout;
+exports.photoGallery = sendPhotoGallery;
 
 exports.dashboard = sendDashBoard;

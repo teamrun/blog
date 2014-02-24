@@ -63,8 +63,8 @@ var pageRouteList = [
 	},
 	{
 		action: 'get',
-		url: '/about',
-		handler: pageRoute.about
+		url: '/photos',
+		handler: pageRoute.photoGallery
 	},
     {
         action: 'get',

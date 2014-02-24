@@ -396,7 +396,11 @@ nav li a {
   padding-left: 1.25em;
   color: #fff;
 }
-/* line 46, aside.less */
+/* line 43, aside.less */
+nav li a:hover {
+  color: #4e9bb9;
+}
+/* line 50, aside.less */
 #copyright {
   position: absolute;
   left: 1.25em;
@@ -625,7 +629,7 @@ nav li a {
   }
   /* line 50, about.less */
   75% {
-    -webkit-transform: translateY(15px) rotate(2deg);
+    -webkit-transform: translateY(18px) rotate(2deg);
   }
   /* line 53, about.less */
   100% {
@@ -704,11 +708,11 @@ nav li a {
 /* line 94, about.less */
 #about .content {
   width: 350px;
-  height: 400px;
+  height: 300px;
   left: 50%;
   margin-left: -175px;
-  top: -266.6666666666667px;
-  margin-top: -266.6666666666667px;
+  top: -200px;
+  margin-top: -200px;
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
   -ms-transform: rotate(0deg);
@@ -717,16 +721,16 @@ nav li a {
 }
 /* line 105, about.less */
 #about .content {
-  padding: 1em;
+  text-align: center;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   border-radius: 6px;
-  background-image: url('/img/bg_about.png');
-  background-repeat: no-repeat;
-  background-size: 100% auto;
+  -webkit-box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.75);
+  box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.75);
 }
-/* line 112, about.less */
-#about .content h2 {
+/* line 111, about.less */
+#about .content h1 {
   margin: 0;
   -webkit-transition: all 300ms ease;
   -moz-transition: all 300ms ease;
@@ -734,9 +738,31 @@ nav li a {
   -o-transition: all 300ms ease;
   transition: all 300ms ease;
 }
-/* line 115, about.less */
-#about .content h2:hover {
+/* line 114, about.less */
+#about .content h1:hover {
   color: #663a84;
+}
+/* line 118, about.less */
+#about .content .hero {
+  height: 116px;
+  margin-bottom: 58px;
+  padding-top: 58px;
+  background-image: url('/img/bg_about.png');
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  -webkit-border-radius: 6px 6px 0 0;
+  -moz-border-radius: 6px 6px 0 0;
+  border-radius: 6px 6px 0 0;
+}
+/* line 128, about.less */
+#about .content .hero .avatar {
+  display: block;
+  height: 116px;
+  width: 116px;
+  margin: 0 auto;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
 }
 /* line 17, layout.less */
 .title {

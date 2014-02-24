@@ -1,7 +1,7 @@
 {
   "name": "myBlog",
   "version": "0.1.1",
-  "description": "chenllos's blog backend",
+  "description": "chenllos's blog project",
   "spm": {
     "source": "script",
     "output": [
@@ -21,6 +21,7 @@
     "gulp": "~3.3.0",
     "gulp-concat": "2.1.7",
     "gulp-uglify": "0.2.1",
-    "gulp-less": "*"
+    "gulp-less": "*",
+    "gulp-changed": "*"
   }
 }
