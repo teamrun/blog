@@ -1,16 +1,12 @@
 <!doctype html>
 <html>
 <head>
-    <meta charset="UTF-8">
     <title><%= title %></title>
-    <link rel="stylesheet" href="/layout/css/layout.css" >
+    <% include helper/head %>
+    
     <script src="/dist/3rdpartylib/sea.js"></script>
     <script src="/dist/3rdpartylib/avalon.all.js"></script>
-    <script src="/dist/3rdpartylib/jquery.all.js"></script>
-    <script src="/dist/3rdpartylib/showdown_prism.js"></script>
-    <!--[if lt IE 9]>
-    <script src="/script/common/html5shiv.min.js"></script>
-    <![endif]-->
+    
 </head>
 <body>
     
@@ -59,6 +55,8 @@
 
     <% include helper/module_about %>
 
+    <script src="/dist/3rdpartylib/jquery.all.js"></script>
+    <script src="/dist/3rdpartylib/showdown_prism.js"></script>
     <script src="/script/view/blog/pageInit.js"></script>
     <script>
         avalon.config({

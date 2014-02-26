@@ -93,16 +93,16 @@ function bindByRuleSet( app, routeRuleSet, baseUrl ){
 		app[ routeIterm.action ]( routeIterm.url, routeIterm.handler );
 		switch( routeIterm.action ){
 			case 'get':
-				logger.debug( 'GET:     ->  '+ routeIterm.url +'  ->  '+ routeIterm.handler.name );
+				logger.debug( 'GET:       '+ routeIterm.url +'  ->  '+ routeIterm.handler.name );
 				break;
 			case 'put':
-				logger.debug( 'PUT:     ->  '+ routeIterm.url +'  ->  '+ routeIterm.handler.name );
+				logger.debug( 'PUT:       '+ routeIterm.url +'  ->  '+ routeIterm.handler.name );
 				break;
 			case 'post':
-				logger.debug( 'POST:    ->  '+ routeIterm.url +'  ->  '+ routeIterm.handler.name );
+				logger.debug( 'POST:      '+ routeIterm.url +'  ->  '+ routeIterm.handler.name );
 				break;
 			case 'delete':
-				logger.debug( 'DELETE:  ->  '+ routeIterm.url +'  ->  '+ routeIterm.handler.name );
+				logger.debug( 'DELETE:    '+ routeIterm.url +'  ->  '+ routeIterm.handler.name );
 				break;
 		}
 		
