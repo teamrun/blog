@@ -3,13 +3,13 @@
 <head>
     <title><%= title %></title>
     <% include helper/head %>
-    
+
     <script src="/dist/3rdpartylib/sea.js"></script>
     <script src="/dist/3rdpartylib/avalon.all.js"></script>
-    
+
 </head>
 <body>
-    
+
     <% include helper/aside %>
 
     <div id="main">
@@ -27,7 +27,7 @@
                     <input type="text" placeholder="Your email " id="author-email">
                     <span class="btn btn-primary" id="pub-cmt">发表评论</span>
                 </div>
-                
+
                 <div id="cmtlist-ctn">
                     <ul>
 
@@ -62,12 +62,12 @@
         avalon.config({
             loader: false
         });
-        seajs.config({
-            paths: {
-                script: '/script'
-            }
-        });
-        seajs.use('script/controller/blogCtrl');
+        // seajs.config({
+        //     paths: {
+        //         script: '/script'
+        //     }
+        // });
+        seajs.use('/dist/script/controller/blogCtrl');
     </script>
 </body>
 </html>

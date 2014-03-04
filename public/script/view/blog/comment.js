@@ -1,5 +1,5 @@
 define( function( require, exports, module ){
-    var Msg = require('script/common/msg');
+    var Msg = require('../../common/msg');
 
     var apiUrl = '/app';
 
