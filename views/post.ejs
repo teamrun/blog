@@ -62,12 +62,12 @@
         avalon.config({
             loader: false
         });
-        // seajs.config({
-        //     paths: {
-        //         script: '/script'
-        //     }
-        // });
-        seajs.use('/dist/script/controller/blogCtrl');
+        seajs.config({
+            paths: {
+                script: cllVersion.scriptPath
+            }
+        });
+        seajs.use('script/controller/blogCtrl');
     </script>
 </body>
 </html>

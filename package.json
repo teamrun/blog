@@ -21,6 +21,7 @@
     "gulp": "~3.3.0",
     "gulp-concat": "2.1.7",
     "gulp-uglify": "0.2.1",
+    "gulp-rename": "*",
     "gulp-less": "*",
     "gulp-seajs": "*",
     "gulp-changed": "*"

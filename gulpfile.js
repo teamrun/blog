@@ -4,7 +4,8 @@ var gutil = require('gulp-util');
 var concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
     less = require( 'gulp-less' ),
-    changed = require('gulp-changed');
+    changed = require('gulp-changed'),
+    rename = require('gulp-rename');
 
 // test
 var replace = require('gulp-replace');
@@ -57,13 +58,22 @@ gulp.task( 'stable-files', function(){
     
 });
 
+gulp.task('move-version-product', function(){
+    gulp.src( './public/script/config/version_product.js' )
+        .pipe( rename( 'version.js') )
+        .pipe( gulp.dest(destPath) );
+});
+gulp.task('move-version-dev', function(){
+    gulp.src( './public/script/config/version_dev.js' )
+        .pipe( rename( 'version.js') )
+        .pipe( gulp.dest(destPath) );
+});
 
 gulp.task('build-seajs', function(){
     gulp.src( './public/script/controller/blogCtrl.js' )
         .pipe( seajs( '/dist/script/controller/blogCtrl.js') )
         .pipe( gulp.dest(destPath+'/script/controller') );
 });
-
 
 
 gulp.task('compile-less', function(){
@@ -78,10 +88,10 @@ gulp.task('compile-less', function(){
 
 
 
-gulp.task('default', [ 'stable-files', 'build-seajs', 'compile-less'], function(){
+gulp.task('default', [ 'stable-files', 'move-version-product', 'build-seajs', 'compile-less'], function(){
     // place code for your default task here
 });
 
-gulp.task( 'local',  ['stable-files', 'build-seajs', 'compile-less'], function(){
+gulp.task( 'dev',  ['stable-files', 'move-version-dev', 'build-seajs', 'compile-less'], function(){
     // place code for your default task here
 });
