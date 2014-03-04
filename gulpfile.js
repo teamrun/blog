@@ -7,8 +7,6 @@ var concat = require('gulp-concat'),
     changed = require('gulp-changed'),
     rename = require('gulp-rename');
 
-// test
-var replace = require('gulp-replace');
 var seajs = require( 'gulp-seajs' );
 
 var scriptPath = './public/script',
@@ -49,12 +47,6 @@ gulp.task( 'stable-files', function(){
     gulp.src( [scriptPath+'/3rdpartylib/sea.js', scriptPath+'/3rdpartylib/html5shiv.min.js' ]  )
         .pipe( changed( destPath+'/3rdpartylib' ) )
         .pipe( gulp.dest( destPath+'/3rdpartylib') );
-
-    // test
-    // gulp.src( scriptPath+'/common/route.js' )
-    //     .pipe( replace('Router', 'Replaced') )
-    //     .pipe( gulp.dest(destPath+'/common') );
-
     
 });
 
