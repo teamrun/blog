@@ -92,6 +92,6 @@ gulp.task('default', [ 'stable-files', 'move-version-product', 'build-seajs', 'c
     // place code for your default task here
 });
 
-gulp.task( 'dev',  ['stable-files', 'move-version-dev', 'build-seajs', 'compile-less'], function(){
+gulp.task( 'dev',  ['stable-files', 'move-version-dev'], function(){
     // place code for your default task here
 });
