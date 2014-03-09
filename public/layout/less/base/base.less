@@ -19,6 +19,16 @@
     color: #fff;
 }
 
+.fix-flt{
+    &:after{
+        content: ".";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+    }
+}
+
 .icon{
     display: block;
     height: 2em;

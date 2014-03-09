@@ -1,26 +1,29 @@
-@import "base/config.less";
-@import "base/mixin.less";
+@import "../base/config.less";
+@import "../base/mixin.less";
 
 
 // blog缩略 首页显示的摘要
 .post-item{
     position: relative;
-    margin-bottom: 6em;
-    // &:before{
-    //     position: absolute;
-    //     content: 'read more...';
-    //     bottom: -1.5em;
-    //     right: 0;
-    //     font-style: italic;
-    // }
-    &:after{
+    margin-top: 5em;
+    
+    &:first-child{
+        margin-top: 0;
+
+        &:before{
+            display: none;
+        }
+    }
+
+
+    &:before{
         position: absolute;
         content: '';
         height: 2px;
-        left: 1em;
-        right: 1em;
-        bottom: -2em;
-        background-color: #ddd;
+        left: 0;
+        right: 0;
+        top: -2em;
+        background-color: #efefef;
     }
     .post-title{
         margin: 0.35em 0;

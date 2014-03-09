@@ -1,10 +1,10 @@
-@import "base/config.less";
-@import "base/mixin.less";
+@import "../base/config.less";
+@import "../base/mixin.less";
 
 @aboutContentW: 350px;
 @aboutContentH: 300px;
 
-@tstTime: 180ms;
+@tstTime: 230ms;
 
 /*为遵守"animation的执行不会影响ele本来的属性, 动得时候是一回事, 但是回归平静之后还是元素本身的属性值*/
 /*因此, 要实现path的名片中 "倾斜向下, 过坠 反弹, 恢复"的效果, 就要使之最开始即是"恢复"的样子*/
@@ -48,7 +48,7 @@
         -webkit-transform: translateY(0)  rotate(-1deg);
     }
     75%{
-        -webkit-transform: translateY(18px)  rotate(2deg);
+        -webkit-transform: translateY(20px)  rotate(2.5deg);
     }
     100%{
         -webkit-transform: translateY(0)  rotate(0deg);

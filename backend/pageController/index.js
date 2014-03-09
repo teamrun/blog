@@ -1,6 +1,5 @@
 var path = require('path');
 var EventProxy = require('eventproxy');
-var ejs = require('ejs');
 var markdown = require( "markdown" ).markdown;
 
 var config = require('../config');
@@ -19,7 +18,7 @@ function doubleDigit( n ){
     return n;
 }
 
-ejs.filters.time = function( dateObj ) {
+function time( dateObj ) {
     var d = dateObj;
     var year = d.getFullYear();
 
@@ -29,18 +28,20 @@ ejs.filters.time = function( dateObj ) {
     var h = d.getHours();
     var m = d.getMinutes();
     return year + '-' + doubleDigit(month) +'-' + doubleDigit(date) + ' ' + doubleDigit(h) + ':' + doubleDigit(m);
-};
-ejs.filters.md = function( str ){
+}
+function md2html( str ){
     return markdown.toHTML( str );
-};
+}
 
 function sendPostList( req, res ){
     blogMeta._getSome( function( postList ){
-        res.render( viewPath+ '/index.ejs', {
+        res.render( 'index', {
             title: 'chenllos的博客',
-            posts: postList
+            posts: postList,
+            mdFilter: md2html
         });
     });
+    // res.render('index', { title: 'Chenllos' });
 }
 
 function sendSpecificPost( req, res ){
@@ -48,7 +49,13 @@ function sendSpecificPost( req, res ){
     var ep = new EventProxy();
 
     ep.all('blog', 'cmt', function(postModel, cmtList){
-        res.render(viewPath+ '/post.ejs', {title: postModel.title, art: postModel, cmtList: cmtList} );
+        res.render('post', {
+            title: postModel.title,
+            art: postModel,
+            cmtList: cmtList,
+            mdFilter: md2html,
+            timeFilter: time
+        } );
     });
 
 
@@ -61,7 +68,9 @@ function sendSpecificPost( req, res ){
 }
 
 function sendPhotoGallery( req, res ){
-    res.render( viewPath + '/photo.ejs' );
+    res.render( 'photo', {
+        title: 'Photo Gallery'
+    } );
 }
 
 function sendDashBoard( req, res ){

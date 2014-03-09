@@ -1,12 +1,13 @@
-@import "base/config.less";
-@import "base/mixin.less";
+@import "../base/config.less";
+@import "../base/mixin.less";
 
 
 aside{
     position: fixed;
     width: @asideW;
     height: 100%;
-    background-color: @themeC;
+    background-color: fadeOut(@themeC, 40%);
+    .box-shadow(0 0 3px fadeOut(#000, 75%););
 }
 
 #avatar{
