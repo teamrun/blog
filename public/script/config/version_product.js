@@ -1,5 +1,5 @@
 var cllVersion = {
     scriptPath: '/dist/script',
-    ts: '20140309004',
-    cmt: 'npm 等脚本未执行...'
+    ts: '20140309005',
+    cmt: '模板换用jade'
 };
