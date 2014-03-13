@@ -1,4 +1,5 @@
 var path = require('path');
+var ejs = require('ejs');
 var EventProxy = require('eventproxy');
 var markdown = require( "markdown" ).markdown;
 
@@ -18,7 +19,7 @@ function doubleDigit( n ){
     return n;
 }
 
-function time( dateObj ) {
+ejs.filters.time = function( dateObj ) {
     var d = dateObj;
     var year = d.getFullYear();
 
@@ -28,17 +29,16 @@ function time( dateObj ) {
     var h = d.getHours();
     var m = d.getMinutes();
     return year + '-' + doubleDigit(month) +'-' + doubleDigit(date) + ' ' + doubleDigit(h) + ':' + doubleDigit(m);
-}
-function md2html( str ){
+};
+ejs.filters.md = function( str ){
     return markdown.toHTML( str );
-}
+};
 
 function sendPostList( req, res ){
     blogMeta._getSome( function( postList ){
         res.render( 'index', {
             title: 'chenllos的博客',
-            posts: postList,
-            mdFilter: md2html
+            posts: postList
         });
     });
     // res.render('index', { title: 'Chenllos' });
@@ -52,9 +52,7 @@ function sendSpecificPost( req, res ){
         res.render('post', {
             title: postModel.title,
             art: postModel,
-            cmtList: cmtList,
-            mdFilter: md2html,
-            timeFilter: time
+            cmtList: cmtList
         } );
     });
 

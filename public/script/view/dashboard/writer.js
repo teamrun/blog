@@ -3,16 +3,16 @@ define( function(require, exports, module ){
         Msg = require('script/common/msg');
 
     var _id = {
-        previewBtn: 'preview-btn',
-        submitBtn: 'submit-btn',
-        submitPopModule: 'submit-data',
+        popSubmitSettingBtn: 'pop-submit-setting',
+        confirmSubmitBtn: 'comfirm-submit',
+        submitSettingModule: 'submit-data',
         closeSubmit: 'close-submit'
     };
     var _class = {
 
     };
 
-    var submitBtn, previewBtn, submitPopModule, closeSubmit;
+    var popSubmitSettingBtn, confirmSubmitBtn, submitSettingModule, closeSubmit;
     var iframeBody;
 
     var vmHelper = {
@@ -58,10 +58,10 @@ define( function(require, exports, module ){
             previewZone.html( html );
         },
         showSubmitPopModule: function(){
-            submitPopModule.addClass('active');
+            submitSettingModule.addClass('active');
         },
         hideSubmitPopModule: function(){
-            submitPopModule.removeClass('active');
+            submitSettingModule.removeClass('active');
         }
 
     };
@@ -80,7 +80,7 @@ define( function(require, exports, module ){
         getPostTitle: function( mdStr ){
             var title = mdStr.match( /^#+.+\n+/)[0];
             if( title ){
-                title = title.replace(/^#+/, '').replace(/\n+/, '');
+                title = title.replace(/^#+ ?/, '').replace(/\n+/, '');
             }
             else{
                 title = '无题';
@@ -93,9 +93,9 @@ define( function(require, exports, module ){
         bind: function(){
             _event.bindTimer();
 
-            submitBtn.bind('click', _event.popSubmit );
+            popSubmitSettingBtn.bind('click', _event.popSubmit );
             closeSubmit.bind('click', _event.closeSubmit );
-            // submitBtn.bind('click', _event.submitPost );
+            confirmSubmitBtn.bind('click', _event.submitPost );
         },
         bindTimer: function(){
             setInterval(function(){
@@ -125,10 +125,10 @@ define( function(require, exports, module ){
             var title = _data.getPostTitle( postMDStr );
             console.log(title);
             var param = {
-                title: title,
-                content: postMDStr,
-                author: 'chenllos',
-                location: '',
+                title: postVM.title,
+                content: postVM.content,
+                author: postVM.author,
+                location: postVM.location,
                 tags: ['webdev', 'module', 'diveinto']
             };
 
@@ -140,10 +140,11 @@ define( function(require, exports, module ){
     };
 
     function init(){
-        previewBtn = $( '#' + _id.previewBtn );
-        submitBtn = $( '#' + _id.submitBtn );
+        popSubmitSettingBtn = $( '#' + _id.popSubmitSettingBtn );
+        confirmSubmitBtn = $( '#' + _id.confirmSubmitBtn );
         iframeBody = window.frames['md'].document.body;
-        submitPopModule = $( '#'+_id.submitPopModule );
+        
+        submitSettingModule = $( '#'+_id.submitSettingModule );
         closeSubmit = $( '#'+_id.closeSubmit );
         // = $( '#'+_id. );
         // = $( '#'+_id. );

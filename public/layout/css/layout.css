@@ -124,9 +124,8 @@ body {
   height: auto;
   min-height: 100%;
   margin: 0;
-  font-family: 'anonymous_proregular' 'STHeiti' 'Microsoft Yahei';
-  color: #444444;
-  -webkit-font-smoothing: subpixel-antialiased;
+  font-family: 'anonymous_proregular' 'Helvetica' 'Microsoft Yahei';
+  color: #555555;
 }
 /* line 43, base/reset.less */
 body {
@@ -232,7 +231,7 @@ pre[class*="language-"] {
 /* Code blocks */
 /* line 29, base/prism.less */
 pre[class*="language-"] {
-  padding: 1em;
+  padding: 0.5em 1em;
   margin: .5em 0;
   overflow: auto;
   border-radius: 0.3em;
@@ -240,7 +239,7 @@ pre[class*="language-"] {
 /* line 36, base/prism.less */
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-  background: #272822;
+  background: #26292C;
 }
 /* Inline code */
 /* line 42, base/prism.less */
