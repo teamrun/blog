@@ -5,6 +5,7 @@ var concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
     less = require( 'gulp-less' ),
     changed = require('gulp-changed'),
+    replace = require('gulp-replace'),
     rename = require('gulp-rename');
 
 var seajs = require( 'gulp-seajs' );
@@ -50,13 +51,16 @@ gulp.task( 'stable-files', function(){
     
 });
 
-gulp.task('move-version-product', function(){
+gulp.task('update-version-product', function(){
     gulp.src( './public/script/config/version_product.js' )
+        .pipe( replace( /[0-9|-]+/, Date.now() ) )
         .pipe( rename( 'version.js') )
         .pipe( gulp.dest(destPath) );
 });
-gulp.task('move-version-dev', function(){
+
+gulp.task('update-version-dev', function(){
     gulp.src( './public/script/config/version_dev.js' )
+        .pipe( replace( /[0-9|-]+/, Date.now().toString() ) )
         .pipe( rename( 'version.js') )
         .pipe( gulp.dest(destPath) );
 });
@@ -80,10 +84,14 @@ gulp.task('compile-less', function(){
 
 
 
-gulp.task('default', [ 'stable-files', 'move-version-product', 'build-seajs', 'compile-less'], function(){
+gulp.task('default', [ 'stable-files', 'update-version-product', 'build-seajs', 'compile-less'], function(){
     // place code for your default task here
 });
 
-gulp.task( 'dev',  ['stable-files', 'move-version-dev'], function(){
+gulp.task( 'dev',  ['stable-files', 'update-version-dev'], function(){
+    // place code for your default task here
+});
+
+gulp.task( 'test',  ['update-version-dev'], function(){
     // place code for your default task here
 });

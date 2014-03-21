@@ -18,46 +18,20 @@
     &::-webkit-scrollbar{
         width: 0.5em;
         height: 0.5em;
-        background-color: lighten(@themeC, 50%);
-        opacity: 0.5;
+        padding-right: 2px;
+        background-color: rgba( 255,255,255,0.5 );
+        // border-radius: 0.5em;
+        // opacity: 0.5;
     }
     &::-webkit-scrollbar-button{
         display: none;
     }
     // （拖动条？滑块？滚动条里面可以拖动的那个，肿么翻译好呢？）
     &::-webkit-scrollbar-thumb{
-        background-color: darken(@themeC, 20%);
+        background-color: fadeOut(#5FAADF, 20%);
+        border-radius: 0.5em;
         // background-color: @themeC;
     }
-}
-html, body{
-    height: auto;
-    min-height: 100%;
-    margin: 0;
-    font-family: 'anonymous_proregular' 'Helvetica' 'Microsoft Yahei';
-    // font-family: 'Proxima Nova' 'Helvetica';
-    color: @fontC;
-    // -webkit-font-smoothing: subpixel-antialiased;
-}
-
-body{
-    font-size: 1em;
-    line-height: 1.5;
-    // padding-left: @asideW;
-}
-p{
-    margin: 0.5em 0;
-    line-height: 1.5;
-}
-
-ul{
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-li{
-    margin: 0;
-    padding: 0;
 }
 
 a{
@@ -75,25 +49,4 @@ a[href="#"], a[href="javascript:void(0);"]{
     &:hover{
         text-decoration: none;
     }
-}
-
-input, textarea{
-    font-size: 1em;
-    font-family: 'anonymous_proregular' 'STHeiti' 'Microsoft Yahei';
-    line-height: 1.35;
-    outline: none;
-    border: 2px solid #aaa;
-    .tst();
-    &:hover{
-        border-color: lighten(@themeC, 40%);
-    }
-    &:focus{
-        border-color: lighten(@themeC, 20%);
-    }
-}
-input{
-    height: 2em;
-    width: 15em;
-    padding: 0.375em 0.5em;
-    margin-bottom: 1em;
 }

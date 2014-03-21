@@ -25,6 +25,7 @@
     "gulp-rename": "*",
     "gulp-less": "*",
     "gulp-seajs": "*",
-    "gulp-changed": "*"
+    "gulp-changed": "*",
+    "gulp-replace": "*"
   }
 }

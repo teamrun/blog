@@ -12,7 +12,7 @@
         <div class="wrapper">
             <? for( var i=0; i<posts.length; i++ ) { ?>
             <article class="post-item fix-flt" data-postid="<?= posts[i].id ?>">
-                <h2 class="post-title"><a href="/posts/<?= posts[i].id ?>"><?= posts[i].title ?></a></h2>
+                <h1 class="post-title"><a href="/posts/<?= posts[i].id ?>"><?= posts[i].title ?></a></h1>
                 <p><span class="writen">writenby:</span><?= posts[i].author?></p>
 
                 <!-- todo 允许用户定义cover图片的位置,达到最好的效果, 现在先用"固定高度 + bg-size:cover" -->
