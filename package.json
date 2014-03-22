@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "express": "*",
-    "ejs": "*",
     "jade": "*",
     "mongoose": "*",
 

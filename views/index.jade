@@ -1,0 +1,17 @@
+extends helper/layout
+
+block content
+    - each post in posts
+        article.post-item.fix-flt(data-postid=post.id)
+            h2.post-title: a(href="/posts/#{post.id}")=post.title
+            p
+                span.writen writenby:
+                = post.author
+            if post.summary.img
+                .cover(style="background-image: url('#{post.summary.img}')")
+                    img.cover-img(src=post.summary.img)
+            
+            .summery!= mdFilter(post.summary.text)
+            a.post-more(href="/posts/#{post.id}") Read More...
+
+

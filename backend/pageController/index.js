@@ -1,5 +1,4 @@
 var path = require('path');
-var ejs = require('ejs');
 var EventProxy = require('eventproxy');
 var markdown = require( "markdown" ).markdown;
 
@@ -7,6 +6,8 @@ var config = require('../config');
 var logger = require('../base/log');
 var blogMeta = require('../apiController/blogCtrl').BlogMeta;
 var cmtMeta = require('../apiController/commentCtrl').CommentMeta;
+
+var render = require('./render');
 
 
 var viewPath = path.resolve(__dirname, '../../views');
@@ -19,29 +20,29 @@ function doubleDigit( n ){
     return n;
 }
 
-ejs.filters.time = function( dateObj ) {
+function time( dateObj ) {
     var d = dateObj;
     var year = d.getFullYear();
-
     var month = d.getMonth() + 1;
-
     var date = d.getDate();
     var h = d.getHours();
     var m = d.getMinutes();
     return year + '-' + doubleDigit(month) +'-' + doubleDigit(date) + ' ' + doubleDigit(h) + ':' + doubleDigit(m);
-};
-ejs.filters.md = function( str ){
+}
+
+function md( str ){
     return markdown.toHTML( str );
-};
+}
 
 function sendPostList( req, res ){
     blogMeta._getSome( function( postList ){
-        res.render( 'index', {
+        var data = {
             title: 'chenllos的博客',
-            posts: postList
-        });
+            posts: postList,
+            mdFilter: md
+        };
+        render.index( res, data);
     });
-    // res.render('index', { title: 'Chenllos' });
 }
 
 function sendSpecificPost( req, res ){

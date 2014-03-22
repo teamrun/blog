@@ -10,7 +10,7 @@ var app = express();
 
 
 // 使用ejs解析引擎
-app.set('view engine', 'ejs');
+app.set('view engine', 'jade');
 // app.set('view engine', 'jade');
 app.set('views', path.join(__dirname, 'views'));
 // 视图文件都在/views
