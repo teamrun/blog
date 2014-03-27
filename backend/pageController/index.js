@@ -1,5 +1,8 @@
+var fs = require('fs');
 var path = require('path');
+
 var EventProxy = require('eventproxy');
+var jade = require('jade');
 var markdown = require( "markdown" ).markdown;
 
 var config = require('../config');
@@ -50,11 +53,16 @@ function sendSpecificPost( req, res ){
     var ep = new EventProxy();
 
     ep.all('blog', 'cmt', function(postModel, cmtList){
-        res.render('post', {
+        var data = {
             title: postModel.title,
             art: postModel,
-            cmtList: cmtList
-        } );
+            cmtList: cmtList,
+            timeFilter: time,
+            mdFilter: md
+        };
+
+       render.post( res, data );
+
     });
 
 
@@ -67,9 +75,10 @@ function sendSpecificPost( req, res ){
 }
 
 function sendPhotoGallery( req, res ){
-    res.render( 'photo', {
+    var data = {
         title: 'Photo Gallery'
-    } );
+    };
+    render.photo( res, data );
 }
 
 function sendDashBoard( req, res ){

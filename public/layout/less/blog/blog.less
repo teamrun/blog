@@ -44,6 +44,11 @@
             opacity: 0.8;
         }
     }
+    .summery{
+        p:first-child{
+            text-indent: 2em;
+        }
+    }
     .post-more{
         float: right;
         margin-right: 1em;
@@ -56,7 +61,7 @@
 
 .post{
     h1:first-child, h2:first-child {
-        font-size: 1.7em;
+        font-size: 2em;
         .tst();
         &:hover{
             color: @themeC;
@@ -73,14 +78,14 @@
         margin: 1em 0;
         text-indent: 0em;
     }
-    // 引用:
+    // -------------------------- 引用:
     blockquote{
         margin: 1em 0;
         padding: 0 1em;
         border-left: 0.375em solid @quoteBorderLeftC;
         color: lighten( @fontC, 40% );
     }
-    // 代码
+    // -------------------------- 代码
     pre code{
         font-size: 0.875em;
     }
@@ -93,4 +98,10 @@
         .border-radius(0);
         line-height: 1.35;
     }
+    // -------------------------- 图片
+    img{
+        margin: 0 0 0 10px;
+        .box-shadow( 0 0 20px rgba(0,0,0,0.375); );
+    }
+
 }

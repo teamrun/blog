@@ -79,6 +79,29 @@ gulp.task('compile-less', function(){
 });
 
 
+var liveReload = require('gulp-livereload');
+var lr = liveReload();
+
+
+gulp.task('watch', function(){
+    // 当前目录下的文件
+    gulp.watch('./public/layout/less/*.less', ['compile-less']);
+    // n(n=1,2,3..)层子目录下的文件 多深都会监控
+    gulp.watch('./public/layout/less/**/*.less', ['compile-less']);
+
+    gulp.watch('./public/layout/css/layout*.css', function( file ){
+        lr.changed( file.path );
+    });
+
+    gulp.watch('./views/*.jade', function( file ){
+        // jade file 没有在页面上的映射, 所以会导致全面刷新
+        // timeout是为了给app中jade编译留时间
+        setTimeout( function(){
+            lr.changed( file.path );
+        }, 800 );
+        
+    });
+});
 
 
 
@@ -87,10 +110,10 @@ gulp.task('default', [ 'stable-files', 'update-version-product', 'build-seajs', 
     // place code for your default task here
 });
 
-gulp.task( 'dev',  ['stable-files', 'update-version-dev'], function(){
+gulp.task( 'dev',  ['stable-files', 'update-version-dev', 'compile-less', 'watch'], function(){
     // place code for your default task here
 });
 
-gulp.task( 'test',  ['update-version-dev'], function(){
+gulp.task( 'test',  ['compile-less', 'watch'], function(){
     // place code for your default task here
 });

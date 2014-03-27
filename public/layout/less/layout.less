@@ -6,16 +6,18 @@
 @import "base/prism.less";
 
 
-
-
 .title{
     text-transform: uppercase;
 }
 .writen{
     margin-right: 1em;
     font-size: 0.875em;
-    font-style: italic;
+    // font-style: italic;
     color: #888;
+}
+
+.create-time{
+
 }
 
 body{
@@ -23,68 +25,32 @@ body{
     background-size: cover;
     background-attachment: fixed;
 
-    background-color: #f9f9f9;
+    background-color: #f3f3f3;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 * {
-    font-family: Helvetica Neue, Helvetica, Arial, freesans,clean,sans-serif;
+    font-family: Helvetica, sans-serif;
 }
 
-html,body,h1,h2,h3,h4,h5,h6,p,blockquote,pre,code,em,img,small,strong,sub,sup,b,i,dl,dt,dd,ol,ul,li,table,tbody,tfoot,thead,tr,th,td {
+html,body{
     border: 0;
     font-size: 16px;
     margin: 0;
     padding: 0;
     outline: 0;
 }
+h1,h2,h3,h4,h5,h6,p,blockquote,ol,ul,li,table,tbody,tfoot,thead,tr,th,td{
+    line-height: 1.5;
+}
 
 body {
-    /*-webkit-font-smoothing: antialiased;*/
-    // background-color: rgba(255,255,255,0.0);
     padding: 0;
     color: #333;
 }
 
-/* Highlighed Text Color */
-
 ::selection {background: #68C6DF; color:#FFFFFF;}
 
-
-/* EMBEDS */
-img {
-    display: block;
-    padding: 0;
-    max-width: 100%;
-}
-
-.video_embed {
-    display: block;
-    padding: 10px 0;
-    height: 400px;
-    width: auto;
-}
-
-/* STYLES */
-
-
-strong {
-    color: #252525;
-}
 
 a {
     color: #47B1C7;
@@ -95,172 +61,22 @@ a:hover {
     color: #EA4C89;
 }
 
-hr {
-    border: 0;
-    border-top: 1px solid #eaeaea;
-    display: block;
-    height: 1px;
-    margin: 1em 0;
-    padding: 0;
+ol, ul{
+    padding: 0 0 0 1em;
+    list-style-position: inside;
 }
 
-
-/* HEADERS */
-
-
-h1 {
-    font-size: 1.5em;
-    font-weight: bold;
-    line-height: 1;
-    
-    padding-top: 16px;
-    margin-bottom: 4px;
-}
-
-
-h2, h3, h4, h5, h6 {
-  line-height: 1.1em;
-  padding-top: 16px;
-  margin-bottom: 4px;
-}
-
-
-h2 {
-    font-size: 1.1em;
-    font-weight: bold;
-}
-
-h3 {
-  font-weight: normal;
-  color: #ea4c89;
-  font-size: 1em;
-}
-
-h4 {
-  font-weight: normal;
-  color: #999;
-  text-transform: uppercase;
-  font-size: 1.1em;
-}
-
-h5, h6 {
-  font-size: .8em;
-}
-
-h5 {
-  color: #339BCB;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-h6 {
-  font-weight: normal;
-  color: #AAA;
-}
-p{
-    line-height: 1.5;
-}
-
-
-
-dl,ol,ul,p,blockquote,pre {
-    margin-top: 12px;
-    margin-bottom: 18px;
-}
-
-
-
-/* LISTS */
-
-ol,ul {
-    margin: .8em 1em;
-    padding-left: .8em;
-}
-
-ol li {
-    margin-left: 1em;
-    margin-bottom: .3em;
-}
-
-ul li {
-    margin-left: 1em;
-    margin-bottom: .3em;
-}
-
-ol ol,ol ul,ul ol,ul ul {
-    margin: .3em 0;
-}
-
-/* code */
-/* preformatted */
-blockquote {
-    border-left: solid .4em #ddd;
-    padding-left: 10px;
-    quotes: none;
-}
-
-pre,code,tt {
-    font: 1em 'Bitstream Vera Sans Mono', Courier New, monospace;
-}
-
-code {
-    color: #2c92b0;
-    border: 1px solid #E8E8E8;
-    font-size: .95em;
-    border-radius: 3px;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-}
-
-
-/* tables */
-table {
-    margin-right: auto;
-    margin-top: 10px;
-    margin-bottom: 5px;
-    border-bottom: 1px solid #ddd;
-    border-right: 1px solid #ddd;
-    border-spacing: 0;
-}
-
-table th {
-    padding: 3px 10px;
-    background-color: #eee;
-    border-top: 1px solid #ddd;
-    border-left: 1px solid #ddd;
-}
-
-table tr {
-}
-
-table td {
-    padding: 3px 10px;
-    border-top: 1px solid #ddd;
-    border-left: 1px solid #ddd;
-}
-
-/* sub */
-sup,sub,a.footnote {
-    font-size: 1.4ex;
-    height: 0;
-    line-height: 1;
-    vertical-align: super;
+code{
     position: relative;
-    font-weight: 800;
-}
-
-sub {
-    vertical-align: sub;
     top: -1px;
+    padding: 0 4px;
+    font-size: 0.85em;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    background-color: rgba(100,100,100,0.25);
 }
-
-small {
-    font-size: 85%;
-}
-
-mark {
-    background: #ff0;
-    color: #000;
-    font-style: italic;
-    font-weight: 600;
+pre code{
+    position: static;
+    background-color: transparent;
+    border: none;
 }

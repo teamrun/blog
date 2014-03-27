@@ -17,14 +17,15 @@
     "eventproxy": "~0.2.2",
     "log4js": "*",
 
-    "gulp-util": "~2.2.14",
+    "gulp-util": "*",
     "gulp": "~3.3.0",
-    "gulp-concat": "2.1.7",
-    "gulp-uglify": "0.2.1",
+    "gulp-concat": "*",
+    "gulp-uglify": "*",
     "gulp-rename": "*",
     "gulp-less": "*",
     "gulp-seajs": "*",
     "gulp-changed": "*",
-    "gulp-replace": "*"
+    "gulp-replace": "*",
+    "gulp-livereload": "*"
   }
 }

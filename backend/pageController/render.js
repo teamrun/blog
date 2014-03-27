@@ -16,29 +16,31 @@ function sendPage( res, html ){
 var pages = ['index', 'photo', 'post'];
 var compiledJade={}, compileOption = { filename: helperPath };
 var render = {};
-
+    
+console.time('\tre compile jade views');
 // 通过map实现每个页面渲染func的生成
-    function constructCompileFunc(){
-        var done = 0, all = pages.length;
-        pages.map( function( p ){
-            // render[p] = function(){};
-            fs.readFile( path.join( viewerPath, '/index.jade' ), function( err, jadeStr ){
-                if( err ){
-                    logger.err( 'read jade file err: ' + p + '.jade');
+function constructCompileFunc(){
+    var done = 0, all = pages.length;
+    pages.map( function( p ){
+        // render[p] = function(){};
+        fs.readFile( path.join( viewerPath, p+'.jade' ), function( err, jadeStr ){
+            if( err ){
+                logger.err( 'read jade file err: ' + p + '.jade');
+            }
+            else{
+                compiledJade[ p ] = jade.compile( jadeStr, compileOption );
+                render[ p ] = function( res, data ){
+                    var html = compiledJade[p]( data );
+                    sendPage( res, html );
+                };
+                done++;
+                if( done >= all ){
+                    console.timeEnd('\tre compile jade views');
                 }
-                else{
-                    compiledJade[ p ] = jade.compile( jadeStr, compileOption );
-                    render[ p ] = function( res, data ){
-                        sendPage( res, compiledJade[ p ]( data ) );
-                    };
-                    done++;
-                    if( done >= all ){
-                        logger.debug('render function constructed ...');
-                    }
-                }
-            } );
+            }
         } );
-    }
+    } );
+}
 
 constructCompileFunc();
 
@@ -50,11 +52,11 @@ if( envStr.indexOf("env: 'dev'") >=0 ){
     logger.info( 'developing...' );
 
     fs.watch( viewerPath, function(){
-        logger.debug('viewer changed, re constructing render ...');
+        console.time('\tre compile jade views');
         constructCompileFunc();
     } );
     fs.watch( helperPath, function(){
-        logger.debug('helper changed, re constructing render ...');
+        console.time('\tre compile jade views');
         constructCompileFunc();
     } );
 

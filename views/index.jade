@@ -5,8 +5,9 @@ block content
         article.post-item.fix-flt(data-postid=post.id)
             h2.post-title: a(href="/posts/#{post.id}")=post.title
             p
-                span.writen writenby:
-                = post.author
+                //- span.writen writenby:#{post.author}
+                span.create-time(data-createtime="#{post.dt_create}") generating...
+
             if post.summary.img
                 .cover(style="background-image: url('#{post.summary.img}')")
                     img.cover-img(src=post.summary.img)
@@ -15,3 +16,5 @@ block content
             a.post-more(href="/posts/#{post.id}") Read More...
 
 
+block footer
+    //- p jade compile speed test, hatihatihati kao~

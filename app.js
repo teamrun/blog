@@ -1,6 +1,5 @@
 var express = require('express');
 var path = require('path');
-var ejs = require('ejs');
 
 var config = require('./backend/config');
 var route = require('./backend/route');
@@ -14,9 +13,6 @@ app.set('view engine', 'jade');
 // app.set('view engine', 'jade');
 app.set('views', path.join(__dirname, 'views'));
 // 视图文件都在/views
-
-ejs.open = '<?';
-ejs.close = '?>';
 
 
 app.use(express.bodyParser());
