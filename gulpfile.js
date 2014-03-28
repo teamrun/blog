@@ -73,23 +73,33 @@ gulp.task('build-seajs', function(){
 
 gulp.task('compile-less', function(){
     gulp.src( './public/layout/less/layout*.less' )
-        // .pipe(  less( { paths: ['./public/layout/css'] } )  )
         .pipe(  less( {compress: true} )  )
+        .pipe( gulp.dest('./public/layout/css') );
+});
+
+gulp.task('compile-less-dev', function(){
+    gulp.src( './public/layout/less/layout*.less' )
+        .pipe(  less( )  )
         .pipe( gulp.dest('./public/layout/css') );
 });
 
 
 var liveReload = require('gulp-livereload');
-var lr = liveReload();
 
 
 gulp.task('watch', function(){
+    var lr = liveReload();
+    
     // 当前目录下的文件
-    gulp.watch('./public/layout/less/*.less', ['compile-less']);
+    gulp.watch('./public/layout/less/*.less', ['compile-less-dev']);
     // n(n=1,2,3..)层子目录下的文件 多深都会监控
-    gulp.watch('./public/layout/less/**/*.less', ['compile-less']);
+    gulp.watch('./public/layout/less/**/*.less', ['compile-less-dev']);
 
-    gulp.watch('./public/layout/css/layout*.css', function( file ){
+    gulp.watch('./public/layout/css/layout.css', function( file ){
+        lr.changed( file.path );
+    });
+
+    gulp.watch('./public/layout/css/layout-blog.css', function( file ){
         lr.changed( file.path );
     });
 
@@ -110,7 +120,7 @@ gulp.task('default', [ 'stable-files', 'update-version-product', 'build-seajs', 
     // place code for your default task here
 });
 
-gulp.task( 'dev',  ['stable-files', 'update-version-dev', 'compile-less', 'watch'], function(){
+gulp.task( 'dev',  ['stable-files', 'update-version-dev', 'compile-less-dev', 'watch'], function(){
     // place code for your default task here
 });
 
