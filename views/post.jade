@@ -1,9 +1,5 @@
 extends helper/layout
 
-block head
-    script(src="/dist/3rdpartylib/sea.js")
-    script(src="/dist/3rdpartylib/avalon.all.js")
-
 block content
     section#post-section(data-postid=art.id)
         article.post!= mdFilter( art.content )

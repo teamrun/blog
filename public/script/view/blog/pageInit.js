@@ -68,6 +68,7 @@ define( function( require, exports, module ){
         _event.bind();
     }
 
-    init();
-
+    module.exports = {
+        init: init
+    };
 } );

@@ -11,7 +11,9 @@ html
         script.
             document.write('<scr'+'ipt src="/dist/version.js?ts=' + (new Date()).valueOf() + '"></scr'+'ipt>')
         script.
-            document.write('<scr'+'ipt src="'+cllVersion.scriptPath+'/3rdpartylib/sea.js?ts=' + cllVersion.ts + '"></scr'+'ipt>')
+            document.write('<scr'+'ipt src="/dist/3rdpartylib/sea.js?ts=' + cllVersion.ts + '"></scr'+'ipt>')
+            document.write('<scr'+'ipt src="/dist/3rdpartylib/avalon.all.js?ts=' + cllVersion.ts + '"></scr'+'ipt>')
+        
 
         block head
         <!--[if lt IE 9]>
@@ -47,8 +49,4 @@ html
                     li 现就职于<a href="http://wiz.cn" target="_blank">为知笔记</a>
 
         script(src="/dist/3rdpartylib/jquery.all.js")
-        //- script(src="/script/view/blog/pageInit.js")
-        script.
-            seajs.use( cllVersion.scriptPath + '/view/blog/pageInit.js');
-
         block footer
