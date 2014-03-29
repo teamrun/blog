@@ -3,8 +3,9 @@
 
 
 @codePadding: 0.75em;
+@codeLineHeight: 1.35;
 @inlineCodeC: rgba(0,0,0,0.625);
-@codeFontFmaily: 'Anonymous Pro', Monaco, Menlo;
+@codeFontFmaily: 'Anonymous Pro', 'Source Code Pro', Monaco, Inconsolata, Menlo;
 // @codeFontFmaily: Menlo;
 
 // blog缩略 首页显示的摘要
@@ -61,7 +62,6 @@
         font-style: italic;
         font-weight: bold;
     }
-    
 }
 
 .post{
@@ -73,6 +73,26 @@
         }
     }
 }
+.post-item, .post{
+    .post-info{
+        margin: 1em 0 -0.5em 0;
+
+        .create-time{
+            display: inline-block;
+            // height: @iconW;
+            height: 25px;
+            .time-text{
+                position: relative;
+                top: -5px;
+                margin-left: 0.5em;
+                color: #bbb;
+                // display: inline-block;
+                // padding: 0.5em 0;
+            }
+        }
+    }
+}
+
 .post, .post-item{
     min-height: 200px;
     h1{
@@ -95,27 +115,30 @@
     }
     // -------------------------- 行内代码
     code{
-        position: relative;
-        top: -2px;
-        display: inline-block;
+        // position: relative;
+        // top: -1px;
+        // display: inline-block;
         padding: 2px 3px 0 3px;
         color: @inlineCodeC;
         font-family: @codeFontFmaily;
         font-size: 0.875em;
         line-height: 1.25;
         border: 1px solid #ccc;
-        background-color: rgba(0,0,0,0.075);
+        background-color: #EAEAEA;
         .border-radius(3px);
         .box-shadow(inset 0 0 5px rgba(0,0,0,0.075););
     }
     // -------------------------- 代码
     pre{
         // width: 800px;
+        background-color: #26292C;
     }
     // re write color
     pre code{
+        display: inline-block;
         color: #fff;
         letter-spacing: 0;
+        border: none;
     }
     // rewrite prism code style
     // code[class*="language-"],
@@ -123,18 +146,16 @@
         padding: 0;
         max-height: 500px;
         .border-radius(0);
-        line-height: 1.35;
         background-color: rgb(38, 41, 44);
 
         &::-webkit-scrollbar{
             background-color: rgba( 255,255,255,0.75 );
         }
 
-        code{
+        code, code[class*="language-"]{
             padding: @codePadding 0;
             font-size: 14px;
-            line-height: 1.5;
-            border: none;
+            line-height: @codeLineHeight;
             background-color: transparent;
             letter-spacing: 1px;
             font-family: @codeFontFmaily;
@@ -151,7 +172,7 @@
             padding: @codePadding 0;
             width: 2em;
             left: -3em;
-            line-height: 1.5;
+            line-height: @codeLineHeight;
             border-right: 2px solid rgba(255,255,255,0.125);
 
             & > span:before {

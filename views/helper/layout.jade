@@ -1,3 +1,6 @@
+mixin avatar()
+  img(src="/img/nico.jpg" alt="nico" class!=attributes.class)
+
 doctype html
 html
     head
@@ -5,17 +8,21 @@ html
         title= title
         link(rel="stylesheet" href="/layout/css/layout.css")
         link(rel="stylesheet" href="/layout/css/layout-blog.css")
-        script(src="/dist/version.js")
         script.
             document.write('<scr'+'ipt src="/dist/version.js?ts=' + (new Date()).valueOf() + '"></scr'+'ipt>')
+        script.
+            document.write('<scr'+'ipt src="'+cllVersion.scriptPath+'/3rdpartylib/sea.js?ts=' + cllVersion.ts + '"></scr'+'ipt>')
 
         block head
         <!--[if lt IE 9]>
         script(src="/script/3rdpartylib/html5shiv.min.js")
         <![endif]-->
+        <!--[if IE 8]>
+        link(rel="stylesheet" href="/layout/css/fuckIE8.css")
+        <![endif]-->
     body
         aside
-            div#avatar: img(src="/img/nico.jpg" alt="noface")
+            div#avatar: +avatar()
             nav
                 ul
                     li: a(href="/") Home
@@ -33,13 +40,15 @@ html
         #about.pop-module
             .mask
             .content
-                .hero: img.avatar(src="/img/noface.jpg")
+                .hero: +avatar()(class="avatar")
                 h1 chenllos
                 ul#feature
                     li 前端开发工程狮
                     li 现就职于<a href="http://wiz.cn" target="_blank">为知笔记</a>
 
         script(src="/dist/3rdpartylib/jquery.all.js")
-        script(src="/script/view/blog/pageInit.js")
+        //- script(src="/script/view/blog/pageInit.js")
+        script.
+            seajs.use( cllVersion.scriptPath + '/view/blog/pageInit.js');
 
         block footer

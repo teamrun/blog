@@ -72,13 +72,13 @@ gulp.task('build-seajs', function(){
 
 
 gulp.task('compile-less', function(){
-    gulp.src( './public/layout/less/layout*.less' )
+    gulp.src( ['./public/layout/less/layout*.less', './public/layout/less/fuck*.less' ] )
         .pipe(  less( {compress: true} )  )
         .pipe( gulp.dest('./public/layout/css') );
 });
 
 gulp.task('compile-less-dev', function(){
-    gulp.src( './public/layout/less/layout*.less' )
+    gulp.src( ['./public/layout/less/layout*.less', './public/layout/less/fuck*.less'] )
         .pipe(  less( )  )
         .pipe( gulp.dest('./public/layout/css') );
 });
