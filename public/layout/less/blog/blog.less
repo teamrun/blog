@@ -91,14 +91,14 @@
         margin: 1em 0;
         padding: 0 1em;
         border-left: 0.375em solid @quoteBorderLeftC;
-        color: lighten( @fontC, 40% );
+        color: lighten( @fontC, 30% );
     }
     // -------------------------- 行内代码
     code{
         position: relative;
         top: -2px;
         display: inline-block;
-        padding: 0 3px;
+        padding: 2px 3px 0 3px;
         color: @inlineCodeC;
         font-family: @codeFontFmaily;
         font-size: 0.875em;
@@ -164,5 +164,12 @@
         margin: 0 0 0 10px;
         .box-shadow( 0 0 20px rgba(0,0,0,0.375); );
     }
+    // list
+    ol, ul{
+        padding: 0 0 0 1em;
+        margin-left: 2em;
+        // color: #666;
+    }
+
 
 }

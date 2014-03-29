@@ -103,7 +103,7 @@ gulp.task('watch', function(){
         lr.changed( file.path );
     });
 
-    gulp.watch('./views/*.jade', function( file ){
+    gulp.watch(['./views/*.jade', './views/**/*.jade'], function( file ){
         // jade file 没有在页面上的映射, 所以会导致全面刷新
         // timeout是为了给app中jade编译留时间
         setTimeout( function(){
