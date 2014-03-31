@@ -18,12 +18,12 @@
     "log4js": "*",
 
     "gulp-util": "*",
-    "gulp": "~3.3.0",
+    "gulp": "3.5.2",
     "gulp-concat": "*",
     "gulp-uglify": "*",
     "gulp-rename": "*",
     "gulp-less": "*",
-    "gulp-seajs": "*",
+    "gulp-seajs": "0.3.1",
     "gulp-changed": "*",
     "gulp-replace": "*",
     "gulp-livereload": "*"

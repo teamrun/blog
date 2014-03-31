@@ -88,7 +88,8 @@ var liveReload = require('gulp-livereload');
 
 
 gulp.task('watch', function(){
-    var lr = liveReload();
+    // var lr = liveReload( 9000 );
+    var lr = liveReload( );
     
     // 当前目录下的文件
     gulp.watch('./public/layout/less/*.less', ['compile-less-dev']);

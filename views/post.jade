@@ -25,6 +25,13 @@ block content
                     a.cmt_author(ms-href="cmt.site") {{ cmt.commenter + ':' }}
                     span.cmt-comtent {{ cmt.content }}
 
+block modules
+    #view-img-module.pop-module(ms-controller="imgView")
+        .mask
+        .content( ms-css-width="width" ms-css-height="height" ms-css-margin-left="-width/2" ms-css-margin-top="-height/2" )
+            i.icon.icon-close.close-module
+            img( ms-src="src" )
+
 block footer
     script(src="/dist/3rdpartylib/showdown_prism.js")
     script.
