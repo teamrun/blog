@@ -1,0 +1,1 @@
+avalon.config({ loader: false});

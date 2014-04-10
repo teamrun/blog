@@ -15,16 +15,16 @@ var scriptPath = './public/script',
 
 
 /* name guide:
- * actions: move concat uglify compile build 
- * 
- * 
+ * actions: move concat uglify compile build
+ *
+ *
  */
 
 
 gulp.task( 'stable-files', function(){
     gutil.log( 'gonna do these works:' );
     gutil.log( '\t concat-uglify-avalon' );
-    gulp.src( [scriptPath+ '/3rdpartylib/avalon.js', scriptPath+ '/common/avalon.extend.js'] )
+    gulp.src( [scriptPath+ '/3rdpartylib/avalon.js', scriptPath+ '/3rdpartylib/avalon.extend.js'] )
         .pipe( changed( destPath+'/3rdpartylib' ) )
         .pipe( concat('avalon.all.js') )
         .pipe( uglify() )
@@ -47,7 +47,7 @@ gulp.task( 'stable-files', function(){
     gulp.src( [scriptPath+'/3rdpartylib/sea.js', scriptPath+'/3rdpartylib/html5shiv.min.js' ]  )
         .pipe( changed( destPath+'/3rdpartylib' ) )
         .pipe( gulp.dest( destPath+'/3rdpartylib') );
-    
+
 });
 
 gulp.task('update-version-product', function(){
@@ -67,6 +67,10 @@ gulp.task('update-version-dev', function(){
 gulp.task('build-seajs', function(){
     gulp.src( './public/script/controller/blogCtrl.js' )
         .pipe( seajs( '/dist/script/controller/blogCtrl.js') )
+        .pipe( rename('blogCtrl_debug.js') )
+        .pipe( gulp.dest(destPath+'/script/controller') )
+        .pipe( uglify() )
+        .pipe( rename('blogCtrl.js') )
         .pipe( gulp.dest(destPath+'/script/controller') );
 });
 
@@ -90,7 +94,7 @@ var liveReload = require('gulp-livereload');
 gulp.task('watch', function(){
     // var lr = liveReload( 9000 );
     var lr = liveReload( );
-    
+
     // 当前目录下的文件
     gulp.watch('./public/layout/less/*.less', ['compile-less-dev']);
     // n(n=1,2,3..)层子目录下的文件 多深都会监控
@@ -110,7 +114,7 @@ gulp.task('watch', function(){
         setTimeout( function(){
             lr.changed( file.path );
         }, 800 );
-        
+
     });
 });
 

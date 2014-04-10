@@ -1,4 +1,5 @@
 var express = require('express');
+var bodyParser = require('body-parser');
 var path = require('path');
 
 var config = require('./backend/config');
@@ -15,8 +16,8 @@ app.set('views', path.join(__dirname, 'views'));
 // 视图文件都在/views
 
 
-app.use(express.bodyParser());
-app.use(express.cookieParser());
+app.use( bodyParser() );
+// app.use(express.cookieParser());
 // 默认的js css等静态资源根目录
 app.use(express.static( __dirname + '/public'));
 
