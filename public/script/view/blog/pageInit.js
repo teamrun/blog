@@ -23,7 +23,8 @@ define( function( require, exports, module ){
                 var dataStr = ele.dataset['createtime'];
                 var date = new Date( dataStr );
                 var y = date.getFullYear(), m = date.getMonth()+1, d = date.getDate(), h = date.getHours();
-                ele.innerHTML = util.makeDouble(h) + ' ' +util.makeDouble(m)+'/'+util.makeDouble(d)+'/'+y;
+                // ele.innerHTML = util.makeDouble(h) + ' ' +util.makeDouble(m)+'/'+util.makeDouble(d)+'/'+y;
+                ele.innerHTML = y + '/' + util.makeDouble(m)+'/'+util.makeDouble(d);
             });
         }
     };

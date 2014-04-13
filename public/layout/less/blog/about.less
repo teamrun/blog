@@ -2,9 +2,11 @@
 @import "../base/mixin.less";
 
 @aboutContentW: 350px;
-@aboutContentH: 300px;
+@aboutContentH: 320px;
 
 @tstTime: 230ms;
+
+@contentBDR: 4px;
 
 /*为遵守"animation的执行不会影响ele本来的属性, 动得时候是一回事, 但是回归平静之后还是元素本身的属性值*/
 /*因此, 要实现path的名片中 "倾斜向下, 过坠 反弹, 恢复"的效果, 就要使之最开始即是"恢复"的样子*/
@@ -105,7 +107,7 @@
 #about .content{
     // padding: 1em;
     text-align: center;
-    .border-radius( 6px );
+    .border-radius( @contentBDR );
     .box-shadow( 0px 3px 20px rgba(0, 0,0,0.375); );
 
     h1{
@@ -123,20 +125,24 @@
         list-style: none;
     }
     .hero{
-        height: @fbAvatarW;
-        margin-bottom: 0.5*@fbAvatarW;
-        padding-top: 0.5*@fbAvatarW;
-        background-image: url('/img/bg_about.png');
+        height: @fbAvatarW*1.5;
+        margin-bottom: 0.25*@fbAvatarW;
+        // margin-bottom: 0;
+        padding-top: 0.75*@fbAvatarW;
+        background-image: url('/img/bg-about.png');
+        // background-p
+        background-color: @themeC;
         background-repeat: no-repeat;
-        background-size: 100% auto;
+        background-size: cover;
 
-        .border-radius( 6px 6px 0 0; );
+        .border-radius( @contentBDR @contentBDR 0 0; );
 
         .avatar{
             display: block;
             height: @fbAvatarW;
             width: @fbAvatarW;
             margin: 0 auto;
+            border: 2px solid #fff;
             .border-radius( 100% );
             // .box-shadow( 0 0 5px @themeC; );
         }
