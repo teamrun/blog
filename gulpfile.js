@@ -21,6 +21,13 @@ var scriptPath = './public/script',
  */
 
 
+var blogWatchPort = 3003;
+var scriptTagToReplace = /script\(id="livereload-script".+/;
+var liveReloadScript = 'script(id="livereload-script" src="http://127.0.0.1:3003/livereload.js?ext=Chrome&extver=2.0.9")';
+var liveReloadTag = 'script(id="livereload-script")';
+
+
+
 gulp.task( 'stable-files', function(){
     gutil.log( 'gonna do these works:' );
     gutil.log( '\t concat-uglify-avalon' );
@@ -75,30 +82,39 @@ gulp.task('build-seajs', function(){
 });
 
 
-gulp.task('compile-less', function(){
+gulp.task('less-compress', function(){
     gulp.src( ['./public/layout/less/layout*.less', './public/layout/less/fuck*.less' ] )
         .pipe(  less( {compress: true} )  )
         .pipe( gulp.dest('./public/layout/css') );
 });
 
-gulp.task('compile-less-dev', function(){
+gulp.task('less', function(){
     gulp.src( ['./public/layout/less/layout*.less', './public/layout/less/fuck*.less'] )
         .pipe(  less( )  )
         .pipe( gulp.dest('./public/layout/css') );
 });
 
+gulp.task('add-lr', function(){
+    gulp.src('views/helper/layout.jade')
+        .pipe(replace( scriptTagToReplace, liveReloadScript ) )
+        .pipe( gulp.dest('views/helper/') );
+});
+
+gulp.task('remove-lr', function(){
+    gulp.src('views/helper/layout.jade')
+        .pipe(replace( scriptTagToReplace, liveReloadTag ) )
+        .pipe( gulp.dest('views/helper/') );
+});
 
 var liveReload = require('gulp-livereload');
 
-
 gulp.task('watch', function(){
-    // var lr = liveReload( 9000 );
-    var lr = liveReload( );
+    var lr = liveReload( blogWatchPort );
 
     // 当前目录下的文件
-    gulp.watch('./public/layout/less/*.less', ['compile-less-dev']);
+    gulp.watch('./public/layout/less/*.less', ['less']);
     // n(n=1,2,3..)层子目录下的文件 多深都会监控
-    gulp.watch('./public/layout/less/**/*.less', ['compile-less-dev']);
+    gulp.watch('./public/layout/less/**/*.less', ['less']);
 
     gulp.watch('./public/layout/css/layout.css', function( file ){
         lr.changed( file.path );
@@ -121,14 +137,20 @@ gulp.task('watch', function(){
 
 
 
-gulp.task('default', [ 'stable-files', 'update-version-product', 'build-seajs', 'compile-less'], function(){
+gulp.task('default', [ 'stable-files', 'update-version-product', 'build-seajs', 'less-compress', 'remove-lr'], function(){
     // place code for your default task here
 });
 
-gulp.task( 'dev',  ['stable-files', 'update-version-dev', 'compile-less-dev', 'watch'], function(){
+gulp.task( 'dev',  ['stable-files', 'update-version-dev', 'less'], function(){
     // place code for your default task here
 });
 
-gulp.task( 'test',  ['compile-less', 'watch'], function(){
+
+// wd for watch-dev
+gulp.task( 'wd',  ['dev', 'add-lr', 'watch'], function(){
+    // place code for your default task here
+});
+
+gulp.task( 'test',  ['watch'], function(){
     // place code for your default task here
 });
