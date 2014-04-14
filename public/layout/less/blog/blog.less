@@ -126,7 +126,7 @@
         font-size: 0.875em;
         line-height: 1.25;
         border: 1px solid #ccc;
-        background-color: #EAEAEA;
+        background-color: #fafafa;
         .border-radius(3px);
         .box-shadow(inset 0 0 5px rgba(0,0,0,0.075););
     }
@@ -141,6 +141,7 @@
         color: #fff;
         letter-spacing: 0;
         border: none;
+        background-color: #26292C;
     }
     // rewrite prism code style
     // code[class*="language-"],
@@ -148,7 +149,6 @@
         padding: 0;
         max-height: 500px;
         .border-radius(0);
-        background-color: rgb(38, 41, 44);
 
         &::-webkit-scrollbar{
             background-color: rgba( 255,255,255,0.75 );
@@ -156,10 +156,8 @@
 
         code, code[class*="language-"]{
             padding: @codePadding 0;
-            font-size: 14px;
+            font-size: 1em;
             line-height: @codeLineHeight;
-            background-color: transparent;
-            // letter-spacing: 1px;
             font-family: @codeFontFmaily;
 
             span{
