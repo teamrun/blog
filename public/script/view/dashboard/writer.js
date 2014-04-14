@@ -12,6 +12,8 @@ define( function(require, exports, module ){
 
     };
 
+    var tagSeperator = /[\s,;，；　]/;
+
     var popSubmitSettingBtn, confirmSubmitBtn, submitSettingModule, closeSubmit;
     var iframeBody;
 
@@ -129,7 +131,7 @@ define( function(require, exports, module ){
                 content: postVM.content,
                 author: postVM.author,
                 location: postVM.location,
-                tags: ['webdev', 'module', 'diveinto']
+                tags: postVM.tags.split( tagSeperator )
             };
 
             $.post( Config.api.newPost, param, function( data, status ){
