@@ -1,0 +1,20 @@
+section#comment(ms-controller="comment")
+    #cmtcreate-ctn
+        textarea#write-cmt(placeholder="Write down your comment... *" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off")
+        input(type="text" placeholder="Your name *" id="cmt-author")
+        input(type="text" placeholder="Your email " id="author-email")
+        input(type="text" placeholder="Your site / blog" id="author-site")
+        span.btn.btn-primary#pub-cmt 评论
+
+    #cmtlist-ctn
+        ul
+            - each cmt in cmtList
+                li
+                    span.cmt-time-client(data-timeutc=cmt.dt_create)= timeFilter(cmt.dt_create)
+                    a(href=cmt.site? cmt.site: 'javascript:void(0);')= cmt.commenter+': '
+                    span.cmt-comtent= cmt.content
+
+            li.newly-pubed(ms-repeat-cmt="comments")
+                span.cmt-time-client(ms-data-timeutc="cmt.dt_create") {{ cmt.dt_create | date('yyyy-MM-dd HH:mm' ) }}
+                a.cmt_author(ms-href="cmt.site") {{ cmt.commenter + ':' }}
+                span.cmt-comtent {{ cmt.content }}

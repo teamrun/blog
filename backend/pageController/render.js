@@ -5,20 +5,21 @@ var jade = require('jade');
 
 var logger = require('../base/log');
 
-var helperPath = path.join( __dirname, '../../views/helper');
-var viewerPath = path.join( __dirname, '../../views');
+var viewPathSet = {
+    helper: path.join( __dirname, '../../views/helper'),
+    viewer: path.join( __dirname, '../../views'),
+    error: path.join( __dirname, '../../views/error/'),
+    partial: path.join( __dirname, '../../views/partial/')
+};
 
-// watch helper&page&error jade file changes
-var watchingJadeArr = [ helperPath, viewerPath, path.join( viewerPath, './error/') ];
-
-logger.debug( helperPath );
+// logger.debug( viewPathSet.helper );
 
 function sendPage( res, html ){
     res.end( html );
 }
 
 var pages = ['index', 'photo', 'post', 'error/index'];
-var compiledJade={}, compileOption = { filename: helperPath };
+var compiledJade={}, compileOption = { filename: viewPathSet.helper };
 var render = {};
     
 console.time('\tre compile jade views');
@@ -27,7 +28,7 @@ function constructCompileFunc(){
     var done = 0, all = pages.length;
     pages.map( function( p ){
         // render[p] = function(){};
-        fs.readFile( path.join( viewerPath, p+'.jade' ), function( err, jadeStr ){
+        fs.readFile( path.join( viewPathSet.viewer, p+'.jade' ), function( err, jadeStr ){
             if( err ){
                 logger.err( 'read jade file err: ' + p + '.jade');
             }
@@ -55,12 +56,12 @@ logger.debug( typeof envStr );
 if( envStr.indexOf("env: 'dev'") >=0 ){
     logger.info( 'developing...' );
 
-    watchingJadeArr.forEach(function( jadeFolder ){
-        fs.watch( jadeFolder, function(){
+    for( var key in viewPathSet ){
+        fs.watch( viewPathSet[key], function(){
             console.time('\tre compile jade views');
             constructCompileFunc();
         } );
-    });
+    }
 
 }
 else{
