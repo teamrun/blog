@@ -7,6 +7,7 @@ var concat = require('gulp-concat'),
     changed = require('gulp-changed'),
     replace = require('gulp-replace'),
     rename = require('gulp-rename');
+var liveReload = require('gulp-livereload');
 
 var seajs = require( 'gulp-seajs' );
 
@@ -106,11 +107,10 @@ gulp.task('remove-lr', function(){
         .pipe( gulp.dest('views/helper/') );
 });
 
-var liveReload = require('gulp-livereload');
-
 gulp.task('watch', function(){
     var lr = liveReload( blogWatchPort );
 
+    // watch less & css -------------------------------------------------
     // 当前目录下的文件
     gulp.watch('./public/layout/less/*.less', ['less']);
     // n(n=1,2,3..)层子目录下的文件 多深都会监控
@@ -124,6 +124,7 @@ gulp.task('watch', function(){
         lr.changed( file.path );
     });
 
+    // watch jade --------------------------------------------------------
     gulp.watch(['./views/*.jade', './views/**/*.jade'], function( file ){
         console.log( file.path )
         // jade file 没有在页面上的映射, 所以会导致全面刷新
@@ -131,8 +132,10 @@ gulp.task('watch', function(){
         setTimeout( function(){
             lr.changed( file.path );
         }, 800 );
-
     });
+
+    // watch stable js ----------------------------------------------------
+    gulp.watch( [scriptPath+ '/3rdpartylib/*.js', scriptPath+ '/3rdpartylib/**/*.js' ], ['stable-files'] );
 });
 
 

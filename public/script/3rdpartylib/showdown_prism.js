@@ -1371,7 +1371,14 @@ var _ = self.Prism = {
           // element.className = 'language-markup';
           var langSign = /[\$|```]/g;
           var langReg = new RegExp( '[\$|```].+[\$|```]' );
+          // old:
           var langtype = element.innerText.match( langReg )[0];
+
+          // new
+          // var matchResult = element.innerText.match( langReg );
+          // var langtype = matchResult? matchResult[0] : 'unknown';
+
+
           element.innerText = element.innerText.replace( /[\$|```].+[\$|```]\n+/, '' );
           element.className = 'language-' + langtype.replace( langSign, '');
 
