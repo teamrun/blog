@@ -4,7 +4,7 @@ block content
     section#post-section(data-postid=art.id)
         article.post!= mdFilter( art.content )
 
-    //- include partial/disqus.jade
+    include partial/disqus.jade
 
 block modules
     #view-img-module.pop-module(ms-controller="imgView")
