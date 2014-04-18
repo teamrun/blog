@@ -95,13 +95,13 @@ gulp.task('less', function(){
 });
 
 gulp.task('add-lr', function(){
-    gulp.src('views/helper/layout.jade')
+    gulp.src('views/helper/base.jade')
         .pipe(replace( scriptTagToReplace, liveReloadScript ) )
         .pipe( gulp.dest('views/helper/') );
 });
 
 gulp.task('remove-lr', function(){
-    gulp.src('views/helper/layout.jade')
+    gulp.src('views/helper/base.jade')
         .pipe(replace( scriptTagToReplace, liveReloadTag ) )
         .pipe( gulp.dest('views/helper/') );
 });
@@ -125,6 +125,7 @@ gulp.task('watch', function(){
     });
 
     gulp.watch(['./views/*.jade', './views/**/*.jade'], function( file ){
+        console.log( file.path )
         // jade file 没有在页面上的映射, 所以会导致全面刷新
         // timeout是为了给app中jade编译留时间
         setTimeout( function(){
