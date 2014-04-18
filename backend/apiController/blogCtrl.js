@@ -5,6 +5,7 @@ var Valid = require('../base/valid');
 
 var titleReg = new RegExp( /#+.+\n+/);
 var imgReg = new RegExp(/\!\[.+\]\(.+\)/);
+var mongoIdReg = /[0-9a-zA-Z]{24}/;
 
 
 // console.log( dbo );
@@ -37,6 +38,9 @@ function blogErrHandler( funcName, err ){
 	logger.error(  err );
 }
 
+function mongoIdFilter( id ){
+    return mongoIdReg.test( id );
+}
 
 var blogMeta = {
 	_getSome: function( callback ){
@@ -50,11 +54,16 @@ var blogMeta = {
 		});
 	},
 	_getThePost: function( postsID, callback ){
+        if( !mongoIdFilter(postsID) ){
+            callback( 'no legal id!', undefined );
+            return;
+        }
 		dbo.Blog.findById( postsID, function(err, data){
 			if( !err ){
-				callback( data );
+				callback( null, data );
 			}
 			else{
+                callback( 'query db err', undefined );
 				blogErrHandler( arguments.callee, err );
 			}
 		} );

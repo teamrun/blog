@@ -11,6 +11,7 @@ var blogMeta = require('../apiController/blogCtrl').BlogMeta;
 var cmtMeta = require('../apiController/commentCtrl').CommentMeta;
 
 var render = require('./render');
+var errorHandling = require('./error');
 
 
 var viewPath = path.resolve(__dirname, '../../views');
@@ -64,10 +65,20 @@ function sendSpecificPost( req, res ){
        render.post( res, data );
 
     });
+    ep.bind('error', function(){
+        // unbind all callback of event proxy
+        ep.unbind();
+        render['error/index']( res, {title: '出错了...'} );
+    });
 
 
-    blogMeta._getThePost( postID, function( postModel ){
-        ep.emit('blog', postModel);
+    blogMeta._getThePost( postID, function( err, postModel ){
+        if( err ){
+           ep.emit('error', err);
+        }
+        else{
+            ep.emit('blog', postModel);
+        }
     } );
     cmtMeta.getByBlogID( postID, function( cmtRow){
         ep.emit('cmt', cmtRow);
