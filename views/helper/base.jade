@@ -1,0 +1,21 @@
+//- 基础html 有最基础的文档声明, 编码声明, 样式引入, 低版本IE补丁, 
+
+doctype html
+html
+    head
+        meta(charset="UTF-8")
+        title= title
+        link(rel="stylesheet" href="/layout/css/layout.css")
+        link(rel="stylesheet" href="/layout/css/layout-blog.css")
+        block head-base
+        <!--[if lt IE 9]>
+        script(src="/script/3rdpartylib/html5shiv.min.js")
+        <![endif]-->
+        <!--[if IE 8]>
+        link(rel="stylesheet" href="/layout/css/fuckIE8.css")
+        <![endif]-->
+    body
+        block body-base
+
+        script(id="livereload-script" src="http://127.0.0.1:3003/livereload.js?ext=Chrome&extver=2.0.9")
+        block footer-base

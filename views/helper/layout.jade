@@ -2,55 +2,45 @@ mixin avatar()
   img(src="/img/avatar.jpg" alt="avatar" class!=attributes.class)
   //- img(src="/img/nico.jpg" alt="avatar" class!=attributes.class)
 
-doctype html
-html
-    head
-        meta(charset="UTF-8")
-        title= title
-        link(rel="stylesheet" href="/layout/css/layout.css")
-        link(rel="stylesheet" href="/layout/css/layout-blog.css")
-        script.
-            document.write('<scr'+'ipt src="/dist/version.js?ts=' + (new Date()).valueOf() + '"></scr'+'ipt>')
-        script.
-            document.write('<scr'+'ipt src="/dist/3rdpartylib/sea.js?ts=' + cllVersion.ts + '"></scr'+'ipt>')
-            document.write('<scr'+'ipt src="/dist/3rdpartylib/avalon.all.js?ts=' + cllVersion.ts + '"></scr'+'ipt>')
-        
+extends ./base.jade
+block head-base
+    script.
+        document.write('<scr'+'ipt src="/dist/version.js?ts=' + (new Date()).valueOf() + '"></scr'+'ipt>')
+    script.
+        document.write('<scr'+'ipt src="/dist/3rdpartylib/sea.js?ts=' + cllVersion.ts + '"></scr'+'ipt>')
+        document.write('<scr'+'ipt src="/dist/3rdpartylib/avalon.all.js?ts=' + cllVersion.ts + '"></scr'+'ipt>')
+    
 
-        block head
-        <!--[if lt IE 9]>
-        script(src="/script/3rdpartylib/html5shiv.min.js")
-        <![endif]-->
-        <!--[if IE 8]>
-        link(rel="stylesheet" href="/layout/css/fuckIE8.css")
-        <![endif]-->
-    body
-        aside
-            div#avatar: +avatar()
-            nav
-                ul
-                    li: a(href="/") Home
-                    li: a(href="/posts") Postlist
-                    li: a(href="/photos") Photos
-                    li: a#about-link(href="/about") About
-            #copyright
-                span Made with ♥︎
+    block head
+block body-base
+    aside
+        div#avatar: +avatar()
+        nav
+            ul
+                li: a(href="/") Home
+                li: a(href="/posts") Postlist
+                li: a(href="/photos") Photos
+                li: a#about-link(href="/about") About
+        #copyright
+            span Made with ♥︎
 
-        #main
-            .wrapper
-                block content
+    #main
+        .wrapper
+            block content
 
 
-        block modules
+    block modules
 
-        #about.pop-module
-            .mask
-            .content
-                .hero: +avatar()(class="avatar")
-                h1 chenllos
-                ul#feature
-                    li 前端开发工程狮
-                    li 现就职于<a href="http://wiz.cn" target="_blank">为知笔记</a>
+    #about.pop-module
+        .mask
+        .content
+            .hero: +avatar()(class="avatar")
+            h1 chenllos
+            ul#feature
+                li 前端开发工程狮
+                li 现就职于<a href="http://wiz.cn" target="_blank">为知笔记</a>
 
+    
+    block footer-base
         script(src="/dist/3rdpartylib/jquery.all.js")
-        script(id="livereload-script" src="http://127.0.0.1:3003/livereload.js?ext=Chrome&extver=2.0.9")
         block footer
