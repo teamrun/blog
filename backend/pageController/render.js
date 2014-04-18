@@ -7,13 +7,17 @@ var logger = require('../base/log');
 
 var helperPath = path.join( __dirname, '../../views/helper');
 var viewerPath = path.join( __dirname, '../../views');
+
+// watch helper&page&error jade file changes
+var watchingJadeArr = [ helperPath, viewerPath, path.join( viewerPath, './error/') ];
+
 logger.debug( helperPath );
 
 function sendPage( res, html ){
     res.end( html );
 }
 
-var pages = ['index', 'photo', 'post'];
+var pages = ['index', 'photo', 'post', 'error/index'];
 var compiledJade={}, compileOption = { filename: helperPath };
 var render = {};
     
@@ -51,14 +55,12 @@ logger.debug( typeof envStr );
 if( envStr.indexOf("env: 'dev'") >=0 ){
     logger.info( 'developing...' );
 
-    fs.watch( viewerPath, function(){
-        console.time('\tre compile jade views');
-        constructCompileFunc();
-    } );
-    fs.watch( helperPath, function(){
-        console.time('\tre compile jade views');
-        constructCompileFunc();
-    } );
+    watchingJadeArr.forEach(function( jadeFolder ){
+        fs.watch( jadeFolder, function(){
+            console.time('\tre compile jade views');
+            constructCompileFunc();
+        } );
+    });
 
 }
 else{
