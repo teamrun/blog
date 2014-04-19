@@ -23,7 +23,7 @@ var scriptPath = './public/script',
 
 
 var blogWatchPort = 3003;
-var scriptTagToReplace = /script\(id="livereload-script".+/;
+var scriptTagToReplace = /script\(id\="livereload\-script".+/;
 var liveReloadScript = 'script(id="livereload-script" src="http://127.0.0.1:3003/livereload.js?ext=Chrome&extver=2.0.9")';
 var liveReloadTag = 'script(id="livereload-script")';
 
