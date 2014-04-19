@@ -10,9 +10,11 @@
   },
   "dependencies": {
     "express": "*",
-    "cookies": "~0.4.0",
+    "cookie-parser": "*",
+    "compression": "*",
     "body-parser": "~1.0.1",
     "jade": "*",
+
     "mongoose": "*",
 
     "markdown": "*",
