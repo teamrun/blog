@@ -10,35 +10,22 @@ block head-base
         document.write('<scr'+'ipt src="/dist/3rdpartylib/sea.js?ts=' + cllVersion.ts + '"></scr'+'ipt>')
         document.write('<scr'+'ipt src="/dist/3rdpartylib/avalon.all.js?ts=' + cllVersion.ts + '"></scr'+'ipt>')
     
-
     block head
 block body-base
-    aside
-        div#avatar: +avatar()
-        nav
-            ul
-                li: a(href="/") Home
-                li: a(href="/posts") Postlist
-                li: a(href="/photos") Photos
-                li: a#about-link(href="/about") About
-        #copyright
-            span Made with ♥︎
+    //- 左侧边栏
+    include ../partial/aside.jade
 
     #main
         .wrapper
             block content
+    
+    //- 弹出about
+    include ../partial/about.jade
 
-
+    //- 其他弹出层
     block modules
 
-    #about.pop-module
-        .mask
-        .content
-            .hero: +avatar()(class="avatar")
-            h1 chenllos
-            ul#feature
-                li 前端开发工程狮
-                li 现就职于<a href="http://wiz.cn" target="_blank">为知笔记</a>
+    
     
     block footer-base
         script(src="/dist/3rdpartylib/jquery.all.js")
