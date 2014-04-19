@@ -1,6 +1,10 @@
 @import "config.less";
 @import "mixin.less";
 
+
+@scrollPathwayBGC: #f9f9f9;
+@scrollBarBGC: #9a9a9a;
+
 @font-face {
     font-family: 'anonymous_proregular';
     src: url('/font/AnonymousPro/anonymous_pro-webfont.eot');
@@ -16,10 +20,11 @@
 *{
    .box-sizing();
     &::-webkit-scrollbar{
-        width: 0.65em;
-        height: 0.5em;
+        width: 10px;
+        height: 10px;
         padding-right: 2px;
-        background-color: rgba( 255,255,255,0.5 );
+        background-color: @scrollPathwayBGC;
+        box-shadow: inset 0 0 2px @scrollBarBGC;
         // border-radius: 0.5em;
         // opacity: 0.5;
     }
@@ -28,9 +33,10 @@
     }
     // （拖动条？滑块？滚动条里面可以拖动的那个，肿么翻译好呢？）
     &::-webkit-scrollbar-thumb{
-        background-color: fadeOut(#5FAADF, 40%);
+        // background-color: fadeOut(#5FAADF, 40%);
         border-radius: 0.5em;
-        // background-color: @themeC;
+        border: 1px solid @scrollPathwayBGC;
+        background-color: @scrollBarBGC;
     }
 }
 
