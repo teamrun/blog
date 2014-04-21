@@ -4,7 +4,8 @@
 
 @codePadding: 0.75em;
 @codeLineHeight: 1.35;
-@inlineCodeC: rgba(0,0,0,0.625);
+// @inlineCodeC: rgba(0,0,0,0.625);
+@inlineCodeC: darken(@themeC, 10%);
 @codeFontFmaily: 'Anonymous Pro', 'Source Code Pro', Monaco, Inconsolata, Menlo;
 // @codeFontFmaily: Menlo;
 
@@ -76,6 +77,7 @@
 
 }
 .post-item, .post{
+    min-height: 200px;
     .post-info{
         margin: 1em 0 -0.5em 0;
 
@@ -93,10 +95,7 @@
             }
         }
     }
-}
 
-.post, .post-item{
-    min-height: 200px;
     h1{
         margin: 0;
         line-height: 1.2;
@@ -121,6 +120,7 @@
         // top: -1px;
         // display: inline-block;
         padding: 2px 3px 0 3px;
+
         color: @inlineCodeC;
         font-family: @codeFontFmaily;
         font-size: 0.875em;
@@ -155,7 +155,7 @@
         }
 
         code, code[class*="language-"]{
-            padding: @codePadding 0;
+            padding: @codePadding 1em @codePadding 0;
             font-size: 1em;
             line-height: @codeLineHeight;
             font-family: @codeFontFmaily;

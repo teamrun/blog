@@ -10,3 +10,7 @@ layout/css/*.css
 /public/layout/css/*.css
 node_modules/*
 
+
+public/dist/*
+public/dist/**/*
+

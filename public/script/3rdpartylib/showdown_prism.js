@@ -1369,23 +1369,32 @@ var _ = self.Prism = {
 
       for (var i=0, element; element = elements[i++];) {
           // element.className = 'language-markup';
-          var langSign = /[\$|```]/g;
-          var langReg = new RegExp( '[\$|```].+[\$|```]' );
+          var langSign = /[\$|`{3}]/g;
+          var langReg = new RegExp( '[\$|`{3}].+[\$|`{3}]' );
+          console.log( element.innerHTML );
           // old:
-          var langtype = element.innerText.match( langReg )[0];
+          // var langtype = element.innerText.match( langReg )[0];
+          
 
           // new
-          // var matchResult = element.innerText.match( langReg );
-          // var langtype = matchResult? matchResult[0] : 'unknown';
+          var matchResult = element.innerText.match( langReg );
+          var langtype = matchResult? matchResult[0] : 'unknown';
+          // console.log('lang type: ' + matchResult );
 
 
-          element.innerText = element.innerText.replace( /[\$|```].+[\$|```]\n+/, '' );
-          element.className = 'language-' + langtype.replace( langSign, '');
+          if( element.className.indexOf('language-') < 0 ){
+            element.innerText = element.innerText.replace( /[\$|```].+[\$|```]\n+/, '' );
+            element.className = 'language-' + langtype.replace( langSign, '');
 
-          element.parentNode.className = element.parentNode.className + ' line-numbers';
+            element.parentNode.className = element.parentNode.className + ' line-numbers';
 
-          // console.log( langtype );
-          _.highlightElement(element, async === true, callback);
+            // console.log( langtype );
+            _.highlightElement(element, async === true, callback);
+          }
+          else{
+            continue;
+          }
+          
       }
   },
     
@@ -1637,7 +1646,11 @@ if (script) {
   _.filename = script.src;
   
   if (document.addEventListener && !script.hasAttribute('data-manual')) {
-    document.addEventListener('DOMContentLoaded', _.highlightRenderedMDPage);
+    // 页面中有两个document的话(有iframe, 或其他插件), 只执行一次
+    document.addEventListener('DOMContentLoaded', function(){
+      _.highlightRenderedMDPage();
+      document.removeEventListener();
+    });
   }
 }
 

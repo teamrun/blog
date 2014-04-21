@@ -19,7 +19,8 @@ block content
 
 
 block footer
-    script(src="/dist/3rdpartylib/showdown_prism.js")
+    script.
+        document.write( '<scr'+'ipt src="'+cllVersion.scriptPath+'/3rdpartylib/showdown_prism.js"></scr'+'ipt>')
     script.
         seajs.config({
             paths: {
