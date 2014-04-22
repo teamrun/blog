@@ -30,31 +30,32 @@ var liveReloadTag = 'script(id="livereload-script")';
 
 
 gulp.task( 'stable-files', function(){
+    var thirdPartyScriptPath = destPath + '/script';
     gutil.log( 'gonna do these works:' );
     gutil.log( '\t concat-uglify-avalon' );
     gulp.src( [scriptPath+ '/3rdpartylib/avalon.js', scriptPath+ '/3rdpartylib/avalon.extend.js'] )
-        .pipe( changed( destPath+'/3rdpartylib' ) )
+        .pipe( changed( thirdPartyScriptPath+'/3rdpartylib' ) )
         .pipe( concat('avalon.all.js') )
         .pipe( uglify() )
-        .pipe( gulp.dest( destPath+'/3rdpartylib') );
+        .pipe( gulp.dest( thirdPartyScriptPath+'/3rdpartylib') );
 
     gutil.log( '\t concat-uglify-jquery-all' );
     gulp.src( [scriptPath+ '/3rdpartylib/jquery-*.js', scriptPath+ '/3rdpartylib/jquery.*.js'] )
-        .pipe( changed( destPath+'/3rdpartylib' ) )
+        .pipe( changed( thirdPartyScriptPath+'/3rdpartylib' ) )
         .pipe( concat('jquery.all.js') )
         .pipe( uglify() )
-        .pipe( gulp.dest( destPath+'/3rdpartylib') );
+        .pipe( gulp.dest( thirdPartyScriptPath+'/3rdpartylib') );
 
     gutil.log( '\t uglify-showdown-prism' );
     gulp.src(  scriptPath+ '/3rdpartylib/showdown_prism.js' )
-        .pipe( changed( destPath+'/3rdpartylib' ) )
+        .pipe( changed( thirdPartyScriptPath+'/3rdpartylib' ) )
         .pipe( uglify() )
-        .pipe( gulp.dest( destPath+'/3rdpartylib') );
+        .pipe( gulp.dest( thirdPartyScriptPath+'/3rdpartylib') );
 
     gutil.log('\t move-js');
     gulp.src( [scriptPath+'/3rdpartylib/sea.js', scriptPath+'/3rdpartylib/html5shiv.min.js' ]  )
-        .pipe( changed( destPath+'/3rdpartylib' ) )
-        .pipe( gulp.dest( destPath+'/3rdpartylib') );
+        .pipe( changed( thirdPartyScriptPath+'/3rdpartylib' ) )
+        .pipe( gulp.dest( thirdPartyScriptPath+'/3rdpartylib') );
 
 });
 
