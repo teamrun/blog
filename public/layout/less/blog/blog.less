@@ -200,17 +200,21 @@
 
 #view-img-module{
     .content{
-        .border-radius(5px);
+        // 大小随图片变化.
+        width: auto;
+        height: auto;
+        padding: 20px;
         text-align: center;
-        padding: 30px;
+        // background-color: rgba(255,255,255,0.5);
         background-color: #fcfcfc;
+        .border-radius(5px);
         .close-module{
             position: absolute;
             right: 3px;
             top: 3px;
         }
         img{
-            .box-shadow( 0 0 20px rgba(0,0,0,0.375); );
+            // .box-shadow( 0 0 20px rgba(0,0,0,0.375); );
             // display: block;
             // margin: 0 auto;
         }

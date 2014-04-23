@@ -1371,7 +1371,6 @@ var _ = self.Prism = {
           // element.className = 'language-markup';
           var langSign = /[\$|`{3}]/g;
           var langReg = new RegExp( '[\$|`{3}].+[\$|`{3}]' );
-          console.log( element.innerHTML );
           // old:
           // var langtype = element.innerText.match( langReg )[0];
           
