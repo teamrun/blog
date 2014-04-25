@@ -57,7 +57,6 @@ function sendSpecificPost( req, res ){
         var data = {
             title: postModel.title,
             art: postModel,
-            cmtList: cmtList,
             timeFilter: time,
             mdFilter: md
         };

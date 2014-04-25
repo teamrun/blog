@@ -6,9 +6,14 @@ block content
             h2.post-title: a(href="/posts/#{post.id}")=post.title
             p.post-info
                 //- span.writen writenby:#{post.author}
-                span.create-time
-                    i.icon
-                    span.time-text(data-createtime="#{post.dt_create}") generating...
+                span.create-time.info-item
+                    i.icon.icon-date
+                    span.time-text.info-text(data-createtime="#{post.dt_create}") generating...
+                if post.tag.length > 0
+                span.tags.info-item
+                    i.icon.icon-tag
+                    - each tag in post.tag
+                        span.tag-item.info-text= tag
 
             if post.summary.img
                 .cover(style="background-image: url('#{post.summary.img}')")

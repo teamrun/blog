@@ -44,7 +44,7 @@ function mongoIdFilter( id ){
 
 var blogMeta = {
 	_getSome: function( callback ){
-		dbo.Blog.find({},'_id title summary author dt_create dt_modify location like comment tag').sort({dt_modify: 'desc'}).exec( function( err, data ){
+		dbo.Blog.find({},'_id title summary author dt_create dt_modify location like tag').sort({dt_modify: 'desc'}).exec( function( err, data ){
 			if( !err ){
 				callback( data );
 			}
