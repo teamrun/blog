@@ -23,7 +23,7 @@ app.set('views', path.join(__dirname, 'views'));
 // Respense Header:
 //      Content-Encoding:gzip
 // compress() should have been included **Before** the static file server
-app.use( compress() );
+// app.use( compress() );
 
 // 参数解析, 文件上传
 app.use( bodyParser() );

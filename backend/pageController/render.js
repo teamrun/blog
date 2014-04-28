@@ -18,7 +18,7 @@ function sendPage( res, html ){
     res.end( html );
 }
 
-var pages = ['index', 'photo', 'post', 'error/index'];
+var pages = ['index', 'photo', 'post', 'error/404'];
 var compiledJade={}, compileOption = { filename: viewPathSet.helper };
 var render = {};
     

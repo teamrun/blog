@@ -51,37 +51,27 @@ function sendPostList( req, res ){
 
 function sendSpecificPost( req, res ){
     var postID = req.param('id');
-    var ep = new EventProxy();
-
-    ep.all('blog', 'cmt', function(postModel, cmtList){
-        var data = {
-            title: postModel.title,
-            art: postModel,
-            timeFilter: time,
-            mdFilter: md
-        };
-
-       render.post( res, data );
-
-    });
-    ep.bind('error', function(){
-        // unbind all callback of event proxy
-        ep.unbind();
-        render['error/index']( res, {title: '出错了...'} );
-    });
-
 
     blogMeta._getThePost( postID, function( err, postModel ){
         if( err ){
            ep.emit('error', err);
         }
         else{
-            ep.emit('blog', postModel);
+            if( !postModel ){
+                render['error/404']( res, {route: 'sendSpecificPost'});
+                return false;
+            }
+            var data = {
+                title: postModel.title,
+                art: postModel,
+                timeFilter: time,
+                mdFilter: md
+            };
+
+           render.post( res, data );
         }
     } );
-    cmtMeta.getByBlogID( postID, function( cmtRow){
-        ep.emit('cmt', cmtRow);
-    } );
+
 }
 
 function sendPhotoGallery( req, res ){

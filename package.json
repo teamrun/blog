@@ -21,6 +21,9 @@
     "eventproxy": "~0.2.2",
     "log4js": "*",
 
+    "mocha": "*",
+    "should": "*",
+
     "gulp-util": "*",
     "gulp": "~3.6.0",
     "gulp-concat": "*",

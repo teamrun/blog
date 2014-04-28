@@ -1,0 +1,12 @@
+
+```
+var name = 'three ` makes a code block ';
+function test(){
+    console.log('test');
+}
+```
+
+    var name = 'three ` makes a code block ';
+    function test(){
+        console.log('test');
+    }
