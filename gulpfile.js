@@ -142,20 +142,10 @@ gulp.task('watch', function(){
 
 
 
-gulp.task('default', [ 'stable-files', 'update-version-product', 'build-seajs', 'less-compress', 'remove-lr'], function(){
-    // place code for your default task here
-});
+gulp.task('default', [ 'stable-files', 'update-version-product', 'build-seajs', 'less-compress', 'remove-lr'] );
 
-gulp.task( 'dev',  ['stable-files', 'update-version-dev', 'less'], function(){
-    // place code for your default task here
-});
+gulp.task( 'dev',  ['stable-files', 'update-version-dev', 'less'] );
 
+gulp.task( 'wd',  ['dev', 'add-lr', 'watch'] );
 
-// wd for watch-dev
-gulp.task( 'wd',  ['dev', 'add-lr', 'watch'], function(){
-    // place code for your default task here
-});
-
-gulp.task( 'test',  ['watch'], function(){
-    // place code for your default task here
-});
+gulp.task( 'test',  ['watch'] );

@@ -5,8 +5,6 @@ mixin avatar()
 extends ./base.jade
 block head-base
     script.
-        document.write('<scr'+'ipt src="/dist/version.js?ts=' + (new Date()).valueOf() + '"></scr'+'ipt>')
-    script.
         document.write('<scr'+'ipt src="/dist/script/3rdpartylib/sea.js?ts=' + cllVersion.ts + '"></scr'+'ipt>')
         document.write('<scr'+'ipt src="/dist/script/3rdpartylib/avalon.all.js?ts=' + cllVersion.ts + '"></scr'+'ipt>')
     

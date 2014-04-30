@@ -27,4 +27,4 @@
 //     });
 // });
 
-console.log('二手房个人我i了几个');
+console.log('all script in test folder will be run');
