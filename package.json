@@ -1,38 +1,50 @@
 {
-  "name": "myBlog",
-  "version": "0.1.1",
-  "description": "chenllos's blog project",
-  "spm": {
-    "source": "script",
-    "output": [
-      "script/app.js"
-    ]
+  "name": "blog",
+  "version": "0.4.0",
+  "description": "chenllos'blog project",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
   },
   "dependencies": {
-    "express": "*",
-    "cookie-parser": "*",
-    "compression": "*",
-    "body-parser": "~1.0.1",
-    "jade": "*",
-
-    "mongoose": "*",
-
-    "markdown": "*",
-    "eventproxy": "~0.2.2",
-    "log4js": "*",
-
-    "mocha": "*",
-    "should": "*",
-
-    "gulp-util": "*",
-    "gulp": "~3.6.0",
-    "gulp-concat": "*",
-    "gulp-uglify": "*",
-    "gulp-rename": "*",
-    "gulp-less": "*",
-    "gulp-seajs": ">=0.4.0",
-    "gulp-changed": "*",
-    "gulp-replace": "*",
-    "gulp-livereload": "*"
-  }
+    "body-parser": "~1.0.2",
+    "compression": "~1.0.1",
+    "cookie-parser": "~1.0.1",
+    "eventproxy": "~0.2.7",
+    "express": "~4.0.0",
+    "favicon": "~0.0.2",
+    "gulp": "~3.6.1",
+    "gulp-livereload": "~1.3.1",
+    "gulp-concat": "~2.2.0",
+    "gulp-changed": "~0.3.0",
+    "gulp-less": "~1.2.3",
+    "gulp-rename": "~1.2.0",
+    "gulp-replace": "~0.2.0",
+    "gulp-util": "~2.2.14",
+    "gulp-seajs": "~0.4.0",
+    "gulp-uglify": "~0.2.1",
+    "jade": "~1.3.1",
+    "node-markdown": "~0.1.1",
+    "log4js": "~0.6.13",
+    "mongoose": "~3.8.8",
+    "should": "~3.3.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node app.js",
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/teamrun/blog.git"
+  },
+  "keywords": [
+    "blog"
+  ],
+  "author": "chenllos",
+  "license": "mit",
+  "bugs": {
+    "url": "https://github.com/teamrun/blog/issues"
+  },
+  "homepage": "https://github.com/teamrun/blog"
 }

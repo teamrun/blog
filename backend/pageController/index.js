@@ -3,7 +3,10 @@ var path = require('path');
 
 var EventProxy = require('eventproxy');
 var jade = require('jade');
-var markdown = require( "markdown" ).markdown;
+// new nd parser, based on showdown
+var md2html = require( "node-markdown" ).Markdown;
+// old nd parser
+// var md2html = require( "markdown" ).markdown.toHTML;
 
 var config = require('../config');
 var logger = require('../base/log');
@@ -35,7 +38,7 @@ function time( dateObj ) {
 }
 
 function md( str ){
-    return markdown.toHTML( str );
+    return md2html( str );
 }
 
 function sendPostList( req, res ){
