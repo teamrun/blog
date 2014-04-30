@@ -2119,7 +2119,19 @@ Prism.hooks.add('after-highlight', function (env) {
     return;
   }
 
-  var linesNum = (1 + env.code.split('\n').length);
+  // old
+  // var linesNum = (1 + env.code.split('\n').length);
+
+  // new
+  var linesNum;
+  var lineArr = env.code.split('\n');
+  if( lineArr[ lineArr.length-1 ] === '' ){
+    linesNum = lineArr.length;
+  }
+  else{
+    linesNum = lineArr.length+1;
+  }
+
   var lineNumbersWrapper;
 
   lines = new Array(linesNum);
