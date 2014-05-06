@@ -1,25 +1,22 @@
+var path = require('path');
+
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 
-var concat = require('gulp-concat'),
-    uglify = require('gulp-uglify'),
-    less = require( 'gulp-less' ),
-    changed = require('gulp-changed'),
-    replace = require('gulp-replace'),
-    rename = require('gulp-rename');
+var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
+var less = require( 'gulp-less' );
+var changed = require('gulp-changed');
+var replace = require('gulp-replace');
+var rename = require('gulp-rename');
+var cond = require('gulp-cond');
+var seajs = require( 'gulp-seajs' );
+
 var liveReload = require('gulp-livereload');
 
-var seajs = require( 'gulp-seajs' );
 
 var scriptPath = './public/script',
     destPath = './public/dist';
-
-
-/* name guide:
- * actions: move concat uglify compile build
- *
- *
- */
 
 
 var blogWatchPort = 3003;
@@ -27,106 +24,118 @@ var scriptTagToReplace = /script\(id\="livereload\-script".+/;
 var liveReloadScript = 'script(id="livereload-script" src="http://127.0.0.1:3003/livereload.js?ext=Chrome&extver=2.0.9")';
 var liveReloadTag = 'script(id="livereload-script")';
 
+// config *------------*------------*------------*------------
+
+    var proEnv = false;
+    var taskName = process.argv[2];
+    var proTasks = [undefined, 'default', 'deploy', 'pro', 'tpro'];
+    if( proTasks.indexOf( taskName ) >=0 ){
+        proEnv = true;
+    }
+    var pwd = path.resolve('./');
+
+    var src3rd = scriptPath+'/3rdpartylib';
+
+    var Conf = {
+        less: {
+                file: ['./public/layout/less/layout*.less', './public/layout/less/fuck*.less'],
+                watch: ['./public/layout/less/*.less', './public/layout/less/**/*.less'],
+                dest: './public/layout/css'
+            },
+        jade: {
+                watch: ['./views/*.jade', './views/**/*.jade']
+            },
+        concat: {
+                file: {
+                    'avalon.all.js': [src3rd+'/avalon.js', src3rd+'/avalon.extend.js'],
+                    'jquery.all.js': [src3rd+'/jquery-*.js', src3rd+'/jquery.*.js'],
+                    'showdown_prism.js': [ src3rd+'/showdown.js', src3rd+'/prism.js']
+                },
+                watch: [ src3rd+ '/*.js', src3rd+ '/**/*.js' ],
+                dest: destPath+'/script/3rdpartylib'
+            },
+        mv: {
+                file: [src3rd+'/sea.js', src3rd+'/html5shiv.min.js' ],
+                dest: destPath+'/script/3rdpartylib'
+            },
+        version: {
+                pro: './public/script/config/version_product.js',
+                dev: './public/script/config/version_dev.js',
+                dest: destPath
+            },
+        seajs: {
+                file: {
+                    '/dist/script/controller/blogCtrl.js': './public/script/controller/blogCtrl.js'
+                },
+                dest: destPath+'/script/controller'
+            }
+    };
 
 
-gulp.task( 'stable-files', function(){
-    var thirdPartyScriptPath = destPath + '/script';
-    gutil.log( 'gonna do these works:' );
-    gutil.log( '\t concat-uglify-avalon' );
-    gulp.src( [scriptPath+ '/3rdpartylib/avalon.js', scriptPath+ '/3rdpartylib/avalon.extend.js'] )
-        .pipe( changed( thirdPartyScriptPath+'/3rdpartylib' ) )
-        .pipe( concat('avalon.all.js') )
-        .pipe( uglify() )
-        .pipe( gulp.dest( thirdPartyScriptPath+'/3rdpartylib') );
 
-    gutil.log( '\t concat-uglify-jquery-all' );
-    gulp.src( [scriptPath+ '/3rdpartylib/jquery-*.js', scriptPath+ '/3rdpartylib/jquery.*.js'] )
-        .pipe( changed( thirdPartyScriptPath+'/3rdpartylib' ) )
-        .pipe( concat('jquery.all.js') )
-        .pipe( uglify() )
-        .pipe( gulp.dest( thirdPartyScriptPath+'/3rdpartylib') );
+// endof config *------------*------------*------------*------
 
-    gutil.log( '\t uglify-showdown-prism' );
-    gulp.src(  scriptPath+ '/3rdpartylib/showdown_prism.js' )
-        .pipe( changed( thirdPartyScriptPath+'/3rdpartylib' ) )
-        .pipe( uglify() )
-        .pipe( gulp.dest( thirdPartyScriptPath+'/3rdpartylib') );
 
-    gutil.log('\t move-js');
-    gulp.src( [scriptPath+'/3rdpartylib/sea.js', scriptPath+'/3rdpartylib/html5shiv.min.js' ]  )
-        .pipe( changed( thirdPartyScriptPath+'/3rdpartylib' ) )
-        .pipe( gulp.dest( thirdPartyScriptPath+'/3rdpartylib') );
 
+gulp.task('less', function(){
+    gulp.src( Conf.less.file )
+        .pipe(  cond( proEnv,
+            less({compress:true}),
+            less({dumpLineNumbers:'comments'})
+        ) )
+        .pipe( replace(pwd, '') )
+        .pipe( gulp.dest( Conf.less.dest ) );
 });
 
-gulp.task('update-version-product', function(){
-    gulp.src( './public/script/config/version_product.js' )
+gulp.task( 'third', function(){
+    
+    for( var name in Conf.concat.file ){
+        gulp.src( Conf.concat.file[name] )
+            .pipe( concat( name ) )
+            .pipe( cond( proEnv, uglify()) )
+            .pipe( gulp.dest( Conf.concat.dest ) );
+    }
+
+    gulp.src( Conf.mv.file )
+        .pipe( gulp.dest(Conf.mv.dest) );
+});
+
+gulp.task('version', function(){
+    var versionFile = proEnv? Conf.version.pro : Conf.version.dev;
+    gulp.src( versionFile )
         .pipe( replace( /[0-9|-]+/, Date.now() ) )
         .pipe( rename( 'version.js') )
         .pipe( gulp.dest(destPath) );
 });
 
-gulp.task('update-version-dev', function(){
-    gulp.src( './public/script/config/version_dev.js' )
-        .pipe( replace( /[0-9|-]+/, Date.now().toString() ) )
-        .pipe( rename( 'version.js') )
-        .pipe( gulp.dest(destPath) );
+gulp.task('seajs', function(){
+    for( var moduleID in Conf.seajs.file ){
+        gulp.src( Conf.seajs.file[moduleID] )
+            .pipe( seajs( moduleID ) )
+            .pipe( cond( proEnv, uglify()) )
+            .pipe( gulp.dest( Conf.seajs.dest ) );
+    }
 });
 
-gulp.task('build-seajs', function(){
-    gulp.src( './public/script/controller/blogCtrl.js' )
-        .pipe( seajs( '/dist/script/controller/blogCtrl.js') )
-        .pipe( rename('blogCtrl_debug.js') )
-        .pipe( gulp.dest(destPath+'/script/controller') )
-        .pipe( uglify() )
-        .pipe( rename('blogCtrl.js') )
-        .pipe( gulp.dest(destPath+'/script/controller') );
-});
-
-
-gulp.task('less-compress', function(){
-    gulp.src( ['./public/layout/less/layout*.less', './public/layout/less/fuck*.less' ] )
-        .pipe(  less( {compress: true} )  )
-        .pipe( gulp.dest('./public/layout/css') );
-});
-
-gulp.task('less', function(){
-    gulp.src( ['./public/layout/less/layout*.less', './public/layout/less/fuck*.less'] )
-        .pipe(  less( )  )
-        .pipe( gulp.dest('./public/layout/css') );
-});
-
-gulp.task('add-lr', function(){
+gulp.task('lr', function(){
     gulp.src('views/helper/base.jade')
-        .pipe(replace( scriptTagToReplace, liveReloadScript ) )
-        .pipe( gulp.dest('views/helper/') );
-});
-
-gulp.task('remove-lr', function(){
-    gulp.src('views/helper/base.jade')
-        .pipe(replace( scriptTagToReplace, liveReloadTag ) )
+        .pipe( cond( proEnv,
+            replace(scriptTagToReplace,liveReloadTag),
+            replace(scriptTagToReplace,liveReloadScript) 
+        ) )
         .pipe( gulp.dest('views/helper/') );
 });
 
 gulp.task('watch', function(){
     var lr = liveReload( blogWatchPort );
 
-    // watch less & css -------------------------------------------------
-    // 当前目录下的文件
-    gulp.watch('./public/layout/less/*.less', ['less']);
-    // n(n=1,2,3..)层子目录下的文件 多深都会监控
-    gulp.watch('./public/layout/less/**/*.less', ['less']);
-
-    gulp.watch('./public/layout/css/layout.css', function( file ){
-        lr.changed( file.path );
-    });
-
-    gulp.watch('./public/layout/css/layout-blog.css', function( file ){
+    gulp.watch( Conf.less.watch, ['less']);
+    gulp.watch( Conf.less.dest+'/*.css', function( file ){
         lr.changed( file.path );
     });
 
     // watch jade --------------------------------------------------------
-    gulp.watch(['./views/*.jade', './views/**/*.jade'], function( file ){
+    gulp.watch( Conf.jade.watch, function( file ){
         console.log( file.path )
         // jade file 没有在页面上的映射, 所以会导致全面刷新
         // timeout是为了给app中jade编译留时间
@@ -140,12 +149,14 @@ gulp.task('watch', function(){
 });
 
 
+gulp.task('all', [ 'less', 'third', 'version', 'seajs', 'lr'] )
+
+gulp.task('default', [ 'all'] );
+
+gulp.task( 'dev',  [ 'all' ] );
+
+gulp.task( 'wd',  [ 'all', 'watch' ] );
 
 
-gulp.task('default', [ 'stable-files', 'update-version-product', 'build-seajs', 'less-compress', 'remove-lr'] );
-
-gulp.task( 'dev',  ['stable-files', 'update-version-dev', 'less'] );
-
-gulp.task( 'wd',  ['dev', 'add-lr', 'watch'] );
-
-gulp.task( 'test',  ['watch'] );
+gulp.task('test', [ 'all' ]);
+gulp.task('tpro', [ 'all' ]);
