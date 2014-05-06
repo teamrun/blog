@@ -85,7 +85,7 @@ function sendPhotoGallery( req, res ){
 }
 
 function sendDashBoard( req, res ){
-    res.sendfile( viewPath + '/dashboard.html');
+    render.dashboard( res, {});
 }
 
 

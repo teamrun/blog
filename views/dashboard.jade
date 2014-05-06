@@ -1,0 +1,67 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    title Dashboard
+    link(rel='stylesheet', href='/layout/css/layout.css')
+    link(rel='stylesheet', href='/layout/css/layout-dashboard.css')
+    script(src='/dist/script/3rdpartylib/sea.js')
+    script(src='/dist/script/3rdpartylib/avalon.all.js')
+    script(src='/dist/script/3rdpartylib/jquery.all.js')
+    script(src='/dist/script/3rdpartylib/showdown_prism.js')
+  body
+    aside
+    #main.writer
+      section#writer.nopreview
+        #md
+          iframe#iframe-md(src='/partial/md-editor.html', frameborder='0', name='md')
+        #preview
+        // <span class="btn btn-primary" id="preview-btn">预览</span> 
+        span#pop-submit-setting.btn.btn-primary 上传blog
+      section
+      section
+      section
+      article#submit-data.pop-module
+        .mask
+        .content(ms-controller='post')
+          i#close-submit.icon.icon-close
+          #other-param
+            input#newpost-title(type='text', placeholder='new post title', ms-duplex='title')
+            input#new-post-tag(type='text', placeholder='tags', ms-duplex='tags')
+            input#post-author(type='text', placeholder='author', ms-duplex='author')
+            input#pos-geo(type='text', placeholder='geolocation', ms-duplex='location')
+            input#post-like(type='text', placeholder='like', ms-duplex='like')
+            input#post-comment(type='text', placeholder='comment', ms-duplex='comment')
+            a#comfirm-submit.btn.btn-primary(href='javascript:void(0)') 提交
+          #preview
+            .thumb
+            .whole
+              article.post
+                | {{ content | md2html | addSyntexType | html }}
+      //
+         <article class="pop-module"></article> 
+      //
+         <article class="pop-module"></article> 
+      #toolbar
+        .more
+          span.moretoole
+        .tools
+          ul#writer-tools
+            li
+              i.icon.icon-
+            li
+              i.icon.icon-
+            li
+              i.icon.icon-
+            li
+              i.icon.icon-
+    script.
+      avalon.config({
+        loader: false
+      });
+      seajs.config({
+        paths: {
+        script: '/script'
+      }
+      });
+      seajs.use('script/controller/dashappCtrl');
