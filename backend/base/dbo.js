@@ -4,7 +4,7 @@ var path = require('path');
 var EventProxy = require('eventproxy');
 var mongoose = require('mongoose');
 
-var config = require('../config');
+var config = require('../../config');
 var logger = require('./log');
 
 

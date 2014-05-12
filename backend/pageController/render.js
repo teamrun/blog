@@ -4,12 +4,13 @@ var path = require('path');
 var jade = require('jade');
 
 var logger = require('../base/log');
+var config = require('../../config');
 
 var viewPathSet = {
-    helper: path.join( __dirname, '../../views/helper'),
-    viewer: path.join( __dirname, '../../views'),
-    error: path.join( __dirname, '../../views/error/'),
-    partial: path.join( __dirname, '../../views/partial/')
+    helper: path.resolve( config.viewPath, 'helper'),
+    viewer: path.resolve( config.viewPath ),
+    error: path.resolve( config.viewPath, 'error'),
+    partial: path.resolve( config.viewPath, 'partial')
 };
 
 // logger.debug( viewPathSet.helper );

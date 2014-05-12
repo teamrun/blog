@@ -8,7 +8,7 @@ var md2html = require( "node-markdown" ).Markdown;
 // old nd parser
 // var md2html = require( "markdown" ).markdown.toHTML;
 
-var config = require('../config');
+var config = require('../../config');
 var logger = require('../base/log');
 var blogMeta = require('../apiController/blogCtrl').BlogMeta;
 var cmtMeta = require('../apiController/commentCtrl').CommentMeta;

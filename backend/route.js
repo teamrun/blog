@@ -1,5 +1,5 @@
 var logger = require('./base/log');
-var config = require('./config');
+var config = require('../config');
 
 var BlogAPI = require('./apiController/blogCtrl').BlogAPI;
 var CommentAPI = require('./apiController/commentCtrl').CommentAPI;

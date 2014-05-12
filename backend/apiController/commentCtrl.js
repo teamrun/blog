@@ -1,6 +1,6 @@
 var dbo = require('../base/dbo.js');
 var logger = require('../base/log');
-var config = require('../config');
+var config = require('../../config');
 var Valid = require('../base/valid');
 
 

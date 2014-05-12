@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var compress = require( 'compression' );
 
-var config = require('./backend/config');
+var config = require('./config');
 var routeRules = require('./backend/route');
 var logger = require('./backend/base/log');
 
