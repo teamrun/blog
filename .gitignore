@@ -13,4 +13,5 @@ node_modules/*
 
 public/dist/*
 public/dist/**/*
-
+uploaded/*
+!./uploaded/.keep

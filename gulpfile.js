@@ -75,7 +75,15 @@ var liveReloadTag = 'script(id="livereload-script")';
 
 // endof config *------------*------------*------------*------
 
-
+gulp.task('changeEnv', function(){
+    gulp.src('./config.js' )
+        .pipe( cond( proEnv,
+            replace( /var\ env\ \= .+/, 'var env = \'pro\';'),
+            replace( /var\ env\ \= .+/, 'var env = \'dev\';' )
+            )
+        )
+        .pipe( gulp.dest( './' ) );
+});
 
 gulp.task('less', function(){
     gulp.src( Conf.less.file )
@@ -149,7 +157,7 @@ gulp.task('watch', function(){
 });
 
 
-gulp.task('all', [ 'less', 'third', 'version', 'seajs', 'lr'] )
+gulp.task('all', [ 'changeEnv', 'less', 'third', 'version', 'seajs', 'lr'] )
 
 gulp.task('default', [ 'all'] );
 

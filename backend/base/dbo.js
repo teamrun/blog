@@ -54,8 +54,29 @@ var connect = mongoose.connect( config.dburl );
 		// subcom
 	});
 
+	/*
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 */
+	var photoSchema = mongoose.Schema({
+		event: String,
+		title: String,
+
+		dt_create: Date,
+		dt_modify: Array,
+
+		exif: Object,
+
+		like: Number
+	});
+
+
 Blog = mongoose.model('blog', blogSchema);
 Comment = mongoose.model( 'comment', commentSchema );
+Photo = mongoose.model( 'photo', photoSchema );
 
 
 // importTestData();
@@ -104,3 +125,4 @@ function saveCB( err, blogObj, ep ){
 
 exports.Blog = Blog;
 exports.Comment = Comment;
+exports.Photo = Photo;

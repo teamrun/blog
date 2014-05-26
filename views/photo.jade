@@ -1,4 +1,7 @@
 extends helper/layout
 
 block content
-    h2 in building, coming soon...
+    //- h2 in building, coming soon...
+    form(action="/app/photo", method="post", enctype="multipart/form-data")
+        input(type="file", name="photo")
+        input(type="submit",value="提交")

@@ -3,6 +3,7 @@ var config = require('../config');
 
 var BlogAPI = require('./apiController/blogCtrl').BlogAPI;
 var CommentAPI = require('./apiController/commentCtrl').CommentAPI;
+var PhotoAPI = require('./apiController/photoCtrl').PhotoAPI;
 
 var pageRoute = require('./pageController');
 
@@ -42,7 +43,13 @@ var apiRouteList = [
         action: 'get',
         url: '/comment',
         handler: CommentAPI.get
-    }
+    },
+/* ------------ Photo 的 CGUD 操作 ------------ */
+	{
+		action: 'post',
+		url: '/photo',
+		handler: PhotoAPI.upload
+	}
 ];
 
 var pageRouteList = [
