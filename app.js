@@ -1,9 +1,13 @@
 var path = require('path');
 
 var express = require('express');
+var morgan = require('morgan');
+
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var compress = require( 'compression' );
+// 文件上传
+var multer = require('multer');
 
 var config = require('./config');
 var routeRules = require('./backend/route');
@@ -25,8 +29,23 @@ app.set('views', path.join(__dirname, 'views'));
 // compress() should have been included **Before** the static file server
 // app.use( compress() );
 
+// morgan log出所有的http请求
+if( config.env === 'dev' ){
+    app.use( morgan('dev') );
+}
+
+
 // 参数解析, 文件上传
+// app.use( function( req, res, next ){
+//     if( req.path.indexOf( '/app/photo' ) >=0 ){
+//         return bodyParser( req, res, next );
+//     }
+//     return next();
+// } );
 app.use( bodyParser() );
+app.use( multer({ dest: './uploaded'}) );
+
+// cookie 解析
 app.use( cookieParser() );
 
 // 默认的js css等静态资源根目录
