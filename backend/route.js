@@ -77,6 +77,16 @@ var pageRouteList = [
         action: 'get',
         url: '/dashboard',
         handler: pageRoute.dashboard
+    },
+    {
+    	action: 'get',
+    	url: '/404',
+    	handler: pageRoute[404]
+    },
+    {
+    	action: 'get',
+    	url: '/500',
+    	handler: pageRoute[500]
     }
 ];
 

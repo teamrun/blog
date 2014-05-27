@@ -3,7 +3,7 @@ var fs = require('fs')
 var mkdirp = require('mkdirp')
 var _ = require('underscore')
 
-var env = 'pro';
+var env = 'dev';
 
 var HomePath = process.env[(process.platform =='win32')?'USERPROFILE':'HOME'];
 

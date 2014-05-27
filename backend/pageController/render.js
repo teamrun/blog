@@ -26,7 +26,8 @@ var pages = {
     photo: 'photo.jade',
     post: 'post.jade',
     dashboard: 'dashboard.jade',
-    '404': 'error/404.jade'
+    '404': 'error/404.jade',
+    '500': 'error/500.jade'
 }
 
 var compiledJade={}, compileOption = { filename: viewPathSet.helper };
@@ -47,7 +48,7 @@ function preCompile( filePath, pageName ){
     // fs.readFile( path.join( viewPathSet.viewer, p+'.jade' ), function( err, jadeStr ){
     fs.readFile( filePath, function( err, jadeStr ){
         if( err ){
-            logger.err( 'read jade file err: ' + p + '.jade');
+            logger.err( 'read jade file err: ' + filePath + '.jade');
         }
         else{
             compiledJade[ pageName ] = jade.compile( jadeStr, compileOption );

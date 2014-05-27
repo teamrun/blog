@@ -88,6 +88,14 @@ function sendDashBoard( req, res ){
     render.dashboard( res, {});
 }
 
+var ErrorPage = {
+    404: function(req, res){
+        render[404](res, {});
+    },
+    500: function(req, res){
+        render[500](res, {});
+    }
+}
 
 
 
@@ -96,3 +104,6 @@ exports.thePost = sendSpecificPost;
 exports.photoGallery = sendPhotoGallery;
 
 exports.dashboard = sendDashBoard;
+
+exports['404'] = ErrorPage[404];
+exports['500'] = ErrorPage[500];

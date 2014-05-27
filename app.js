@@ -2,7 +2,6 @@ var path = require('path');
 
 var express = require('express');
 var morgan = require('morgan');
-
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var compress = require( 'compression' );
@@ -12,6 +11,7 @@ var multer = require('multer');
 var config = require('./config');
 var routeRules = require('./backend/route');
 var logger = require('./backend/base/log');
+var render = require('./backend/pageController/render');
 
 var app = express();
 
@@ -34,14 +34,7 @@ if( config.env === 'dev' ){
     app.use( morgan('dev') );
 }
 
-
 // 参数解析, 文件上传
-// app.use( function( req, res, next ){
-//     if( req.path.indexOf( '/app/photo' ) >=0 ){
-//         return bodyParser( req, res, next );
-//     }
-//     return next();
-// } );
 app.use( bodyParser() );
 app.use( multer({ dest: './uploaded'}) );
 
@@ -56,6 +49,28 @@ app.use( express.static( __dirname + '/public') ) ;
 
 
 routeRules.bind( app );
+
+if( config.env === 'dev' ){
+    // error handler by express
+    app.use(function(err, req, res, next) {
+        res.status(err.status || 500);
+        // render[500]( res, {
+        //     message: err.message,
+        //     error: err
+        // } );
+        res.redirect('/500');
+    });
+}
+else if( config.env === 'pro' ){
+    app.use(function(err, req, res, next) {
+        res.status(err.status || 500);
+        render[500]( res, {
+            message: err.message,
+            error: {}
+        });
+    });
+}
+
 app.listen( config.port );
 
 
