@@ -52,12 +52,12 @@ function sendPostList( req, res ){
     });
 }
 
-function sendSpecificPost( req, res ){
+function sendSpecificPost( req, res, next ){
     var postID = req.param('id');
 
     blogMeta._getThePost( postID, function( err, postModel ){
         if( err ){
-           ep.emit('error', err);
+           next( err );
         }
         else{
             if( !postModel ){

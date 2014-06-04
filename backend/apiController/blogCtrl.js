@@ -27,7 +27,7 @@ function getSummaryText( AllBlog ){
 		Summary = justContent.substr(0, contentLength/5);
 	}
 	else{
-		Summary = justContent.substr(0, contentLength/10);
+		Summary = justContent.substr(0, 200);
 	}
 
 	return Summary;
@@ -55,7 +55,7 @@ var blogMeta = {
 	},
 	_getThePost: function( postsID, callback ){
         if( !mongoIdFilter(postsID) ){
-            callback( 'no legal id!', undefined );
+            callback( {msg: 'no legal id!', code: 404}, undefined );
             return;
         }
 		dbo.Blog.findById( postsID, function(err, data){

@@ -50,26 +50,35 @@ app.use( express.static( __dirname + '/public') ) ;
 
 routeRules.bind( app );
 
-if( config.env === 'dev' ){
+//if( config.env === 'dev' ){
     // error handler by express
     app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        // render[500]( res, {
-        //     message: err.message,
-        //     error: err
-        // } );
-        res.redirect('/500');
+        if( err ){
+            if( req.path.indexOf('/app') == 0 ){
+                res.json( {code: err.code||'500', msg: err } );
+            }
+            else{
+                // render[500]( res, {
+                //     message: err.message,
+                //     error: err
+                // } );
+                res.redirect('/'+err.code||'500');
+            }
+        }
+        else{
+            next();
+        }
     });
-}
-else if( config.env === 'pro' ){
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        render[500]( res, {
-            message: err.message,
-            error: {}
-        });
-    });
-}
+//}
+//else if( config.env === 'pro' ){
+//    app.use(function(err, req, res, next) {
+//        res.status(err.status || 500);
+//        render[500]( res, {
+//            message: err.message,
+//            error: {}
+//        });
+//    });
+//}
 
 app.listen( config.port );
 
