@@ -3,7 +3,8 @@ backend/node_modules/*
 
 
 *.yml
-
+.DS_Store
+**/.DS_Store
 
 .idea/*
 layout/css/*.css
