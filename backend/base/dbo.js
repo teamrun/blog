@@ -64,6 +64,10 @@ var connect = mongoose.connect( config.dburl );
 	var photoSchema = mongoose.Schema({
 		event: String,
 		title: String,
+		// title之外的说明文字
+		intro: String,
+		// path.join( photoLib, src ) to find the photo file and res back
+		src: String, 
 
 		dt_create: Date,
 		dt_modify: Array,
