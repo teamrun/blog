@@ -68,6 +68,7 @@ var connect = mongoose.connect( config.dburl );
 		intro: String,
 		// path.join( photoLib, src ) to find the photo file and res back
 		src: String, 
+		majorColor: String,
 
 		dt_create: Date,
 		dt_modify: Array,

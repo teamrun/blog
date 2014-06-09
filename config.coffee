@@ -17,13 +17,16 @@ config =
   # 视图文件路径
   viewPath: "./views"
   photoThumb: "./thumb"
+  photoThumb2x: "./thumb2x"
   photoBlurThumb: "./thumb_blur"
+  photoBlurThumb2x: './thumb_blur2x'
+  photoThumbSize: 400
+  photoThumbSize2x: 800
   notAllow: [""]
 
 envConfig =
   dev:
     photoLib: path.join(HomePath, "./Pictures/blogPhoto")
-    
     # 上传临时文件夹
     uploadTmp: path.join(HomePath, "./Pictures/uploadTmp")
 
@@ -32,8 +35,17 @@ envConfig =
     photoLib: path.join(HomePath, "./blogPhoto")
 
 _.extend config, envConfig[env]
+
+config.photoThumb = path.join config.photoLib, config.photoThumb
+config.photoThumb2x = path.join config.photoLib, config.photoThumb2x
+config.photoBlurThumb = path.join config.photoLib, config.photoBlurThumb
+config.photoBlurThumb2x = path.join config.photoLib, config.photoBlurThumb2x
+
 mkdirp.sync config.uploadTmp
 mkdirp.sync config.photoLib
-mkdirp.sync path.join(config.photoLib, config.photoThumb)
-mkdirp.sync path.join(config.photoLib, config.photoBlurThumb)
+mkdirp.sync config.photoThumb
+mkdirp.sync config.photoBlurThumb
+mkdirp.sync config.photoThumb2x
+mkdirp.sync config.photoBlurThumb2x
+
 module.exports = config

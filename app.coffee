@@ -51,6 +51,7 @@ routeRules.bind app
 # error handler by express
 app.use (err, req, res, next) ->
   if err
+    logger.error err
     if req.path.indexOf("/app") is 0
       res.json
         code: err.code or "500"

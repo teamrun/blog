@@ -77,12 +77,7 @@ function sendSpecificPost( req, res, next ){
 
 }
 
-function sendPhotoGallery( req, res ){
-    var data = {
-        title: 'Photo Gallery'
-    };
-    render.photo( res, data );
-}
+
 
 function sendDashBoard( req, res ){
     render.dashboard( res, {});
@@ -97,11 +92,14 @@ var ErrorPage = {
     }
 }
 
+PhotoPageCtrl = require './photo'
+
 
 
 exports.postsList = sendPostList;
 exports.thePost = sendSpecificPost;
-exports.photoGallery = sendPhotoGallery;
+
+exports.PhotoPage = PhotoPageCtrl;
 
 exports.dashboard = sendDashBoard;
 
