@@ -1,4 +1,6 @@
 #### js2coffee version 0.3.0
+timerStr = 'blog程序启动用时'
+console.time timerStr
 #### ---- app.js
 path = require("path")
 express = require("express")
@@ -9,6 +11,9 @@ compress = require("compression")
 
 # 文件上传
 multer = require("multer")
+# coffee 缓存
+require('coffee-cache')
+
 config = require("./config")
 routeRules = require("./backend/route")
 logger = require("./backend/base/log")
@@ -79,6 +84,8 @@ app.use (err, req, res, next) ->
 #}
 app.listen config.port, () ->
   logger.info "app is listeing @ : " + config.port
+  console.timeEnd timerStr
+
   # stack = app._router.stack
   # countArr = [0..app._router.stack.length-1]
   # for n in countArr

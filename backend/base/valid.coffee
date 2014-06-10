@@ -1,0 +1,3 @@
+valid = {}
+
+module.valid = valid
