@@ -87,6 +87,12 @@ PhotoMeta =
       thumbOpt.callback = Util.epcbGen ep, 'thumb2x'
       Util.img.genThumb thumbOpt
 
+  getGallery: (opt, callback) ->
+    PhotoModal.find {},'_id event title src dt_create intro like'
+      .sort {dt_create: 'desc'}
+      .exec ( err, data ) ->
+        callback err, data
+
 
 
 # Photo 的 CRUG 操作
@@ -102,6 +108,14 @@ PhotoAPI =
           code: 200
           msg: 'photo upload succed!'
         }
+
+  getGallery: (req, res, next) ->
+    PhotoMeta.getGallery( {}, (err, data) ->
+      if err
+        next err
+      else
+        req.json( data )
+    )
 
 
 exports.PhotoAPI = PhotoAPI

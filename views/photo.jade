@@ -1,12 +1,19 @@
 extends helper/layout
 
 block content
-    //- h2 in building, coming soon...
-    form(action="/app/photo", method="post", enctype="multipart/form-data")
-        input(type="file", name="photo")
-        input(type="text", name="type", value="file")
-        input(type="text", name="event", value="济南")
-        input(type="text", name="title")
-        textarea(name="intro")
+    h2 in building, coming soon...
+    //- a(href="javascript:(function(){alert(1)})()") 锚点hack
+    div#line
+    ul
+        - each photo in photoGallery
+            li.item
+                img(src="#{ prefix+photo.src }")
+    //- form(action="/app/photo", method="post", enctype="multipart/form-data")
+    //-     input(type="file", name="photo")
+    //-     input(type="text", name="type", value="file")
+    //-     input(type="text", name="event", value="济南")
+    //-     input(type="text", name="title")
+    //-     input(type="text", name="majorColor")
+    //-     textarea(name="intro")
 
-        input(type="submit",value="提交")
+    //-     input(type="submit",value="提交")

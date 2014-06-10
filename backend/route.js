@@ -1,3 +1,5 @@
+var url = require('url')
+
 var logger = require('./base/log');
 var config = require('../config');
 
@@ -68,10 +70,19 @@ var pageRouteList = [
 		url: '/posts/:id',
 		handler: pageRoute.thePost
 	},
+
+
 	{
 		action: 'get',
 		url: '/photos',
-		handler: pageRoute.photoGallery
+		handler: pageRoute.Photo.sendTimeline
+	},
+
+	{
+		action: 'get',
+		// 怎样的拼接才是最优雅的~? path / url ?
+		url: config.photoThumbSrc+':photoSrc',
+		handler: pageRoute.Photo.sendPhotoThumb
 	},
     {
         action: 'get',

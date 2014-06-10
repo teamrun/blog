@@ -16,23 +16,27 @@ config =
   
   # 视图文件路径
   viewPath: "./views"
-  photoThumb: "./thumb"
-  photoThumb2x: "./thumb2x"
-  photoBlurThumb: "./thumb_blur"
-  photoBlurThumb2x: './thumb_blur2x'
+
+  # photo : file
+  photoThumb: "./thumb/"
+  photoThumb2x: "./thumb2x/"
+  photoBlurThumb: "./thumb_blur/"
+  photoBlurThumb2x: "./thumb_blur2x/"
   photoThumbSize: 400
   photoThumbSize2x: 800
+  # photo : url
+  photoThumbSrc: '/photo/thumb/'
   notAllow: [""]
 
 envConfig =
   dev:
-    photoLib: path.join(HomePath, "./Pictures/blogPhoto")
+    photoLib: path.join(HomePath, "./Pictures/blogPhoto/")
     # 上传临时文件夹
-    uploadTmp: path.join(HomePath, "./Pictures/uploadTmp")
+    uploadTmp: path.join(HomePath, "./Pictures/uploadTmp/")
 
   pro:
-    uploadTmp: path.join("/var/tmp")
-    photoLib: path.join(HomePath, "./blogPhoto")
+    uploadTmp: path.join("/var/tmp/")
+    photoLib: path.join(HomePath, "./blogPhoto/")
 
 _.extend config, envConfig[env]
 

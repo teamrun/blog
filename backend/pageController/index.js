@@ -92,14 +92,15 @@ var ErrorPage = {
     }
 }
 
-PhotoPageCtrl = require './photo'
+
+var PhotoPageCtrl = require('./photo')
 
 
 
 exports.postsList = sendPostList;
 exports.thePost = sendSpecificPost;
 
-exports.PhotoPage = PhotoPageCtrl;
+exports.Photo = PhotoPageCtrl;
 
 exports.dashboard = sendDashBoard;
 
