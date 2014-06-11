@@ -62,11 +62,11 @@ app.use (err, req, res, next) ->
         code: err.code or "500"
         msg: err
     else
-      # render[500]( res, {
-      #     message: err.message,
-      #     error: err
-      # } );
-      res.redirect "/#{err.code or '500'}"
+      render[500]( res, {
+          message: err.message,
+          error: err
+      } );
+      # res.redirect "/#{err.code or '500'}"
   else
     next()
   return
