@@ -43,7 +43,7 @@ preCompile = (filePath, pageName) ->
   # fs.readFile( path.join( viewPathSet.viewer, p+'.jade' ), function( err, jadeStr ){
   fs.readFile filePath, (err, jadeStr) ->
     if err
-      logger.err "read jade file err: " + filePath + ".jade"
+      logger.error "read jade file err: #{filePath}"
     else
       compiledJade[pageName] = jade.compile(jadeStr, compileOption)
       render[pageName] = (res, data) ->

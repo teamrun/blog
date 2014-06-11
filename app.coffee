@@ -20,8 +20,6 @@ logger = require("./backend/base/log")
 render = require("./backend/pageController/render")
 app = express()
 
-logger.info(config.photoLib)
-logger.info(config.uploadTmp)
 
 # 使用ejs解析引擎
 app.set "view engine", "jade"

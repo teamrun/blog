@@ -15,7 +15,7 @@ config =
   pageBase: ""
   
   # 视图文件路径
-  viewPath: "./views"
+  viewPath: path.resolve __dirname, "./views"
 
   # photo : file
   photoThumb: "./thumb/"
