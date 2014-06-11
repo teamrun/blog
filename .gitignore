@@ -17,3 +17,4 @@ public/dist/**/*
 uploaded/*
 !./uploaded/.keep
 .coffee/
+.coffee/*
