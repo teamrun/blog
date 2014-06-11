@@ -3,8 +3,11 @@ path = require 'path'
 gm = require 'gm'
 imageMagick = gm.subClass({ imageMagick: true });
 
-v = './fixture/vertical.jpg'
-h = './fixture/horizontal.jpg'
+
+console.log 'coffee-script wont run while mocha test'
+
+v = '../fixture/vertical.jpg'
+h = '../fixture/horizontal.jpg'
 imgArr = [ v, h ]
 
 # for img in imgArr
